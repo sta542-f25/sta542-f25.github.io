@@ -158,7 +158,7 @@
     "href": "syllabus/syllabus_overview.html",
     "title": "Course overview",
     "section": "",
-    "text": "This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics.\nPrerequisites: single-variable calculus.",
+    "text": "This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nPrerequisite: Statistical Science 521; Corequisite: Statistical Science 532.",
     "crumbs": [
       "Syllabus",
       "Overview"
@@ -169,7 +169,7 @@
     "href": "syllabus/syllabus_overview.html#description",
     "title": "Course overview",
     "section": "",
-    "text": "This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics.\nPrerequisites: single-variable calculus.",
+    "text": "This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nPrerequisite: Statistical Science 521; Corequisite: Statistical Science 532.",
     "crumbs": [
       "Syllabus",
       "Overview"
@@ -180,7 +180,7 @@
     "href": "syllabus/syllabus_overview.html#meetings",
     "title": "Course overview",
     "section": "Meetings",
-    "text": "Meetings\n\n\n\n\n\n\n\n\n\nMeeting\nLocation\nTime\nStaff\n\n\n\n\nLectures\nOld Chem 201\nMoWe 11:45 AM - 1:00 PM\nJohn",
+    "text": "Meetings\n\n\n\nMeeting\nLocation\nTime\nStaff\n\n\n\n\nLectures\nOld Chem 201\nMoWe 11:45 AM - 1:00 PM\nJohn",
     "crumbs": [
       "Syllabus",
       "Overview"
