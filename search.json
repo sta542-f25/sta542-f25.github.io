@@ -147,7 +147,7 @@
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\nTo be posted\nWelcome!\n\n\n\n\n\nWed, Aug 27\nTo be posted\n\n\n\n\n\n2\nMon, Sep 1\nTo be posted\nLabor Day - No Lecture\n\n\n\n\n\nWed, Sep 3\nTo be posted\n\n\n\n\n\n3\nMon, Sep 8\nTo be posted\n\n\n\n\n\n\nWed, Sep 10\nTo be posted\n\n\n\n\n\n4\nMon, Sep 15\nTo be posted\n\n\n\n\n\n\nWed, Sep 17\nTo be posted\n\n\n\n\n\n5\nMon, Sep 22\nTo be posted\n\n\n\n\n\n\nWed, Sep 24\nTo be posted\n\n\n\n\n\n6\nMon, Sep 29\nTo be posted\n\n\n\n\n\n\nWed, Oct 1\nTo be posted\n\n\n\n\n\n7\nMon, Oct 6\nTo be posted\n\n\n\n\n\n\nWed, Oct 8\nTo be posted\n\n\n\n\n\n8\nMon, Oct 13\nTo be posted\nFall Break - No Lecture\n\n\n\n\n\nWed, Oct 15\nTo be posted\n\n\n\n\n\n9\nMon, Oct 20\nTo be posted\n\n\n\n\n\n\nWed, Oct 22\nTo be posted\n\n\n\n\n\n10\nMon, Oct 27\nTo be posted\n\n\n\n\n\n\nWed, Oct 29\nTo be posted\n\n\n\n\n\n11\nMon, Nov 3\nTo be posted\n\n\n\n\n\n\nWed, Nov 5\nTo be posted\n\n\n\n\n\n12\nMon, Nov 10\nTo be posted\n\n\n\n\n\n\nWed, Nov 12\nTo be posted\n\n\n\n\n\n13\nMon, Nov 17\nTo be posted\n\n\n\n\n\n\nWed, Nov 19\nTo be posted\n\n\n\n\n\n14\nMon, Nov 24\nTo be posted\n\n\n\n\n\n\nWed, Nov 26\nTo be posted\nThanksgiving - No Lecture",
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nMon, Aug 25\nTo be posted\nWelcome!\n\n\n\n\n\n\n\n\nWed, Aug 27\nTo be posted\n\n\n\n\n\n\n\n\n2\nMon, Sep 1\nTo be posted\nLabor Day - No Lecture\n\n\n\n\n\n\n\n\nWed, Sep 3\nTo be posted\n\n\n\n\n\n\n\n\n3\nMon, Sep 8\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Sep 10\nTo be posted\n\n\n\n\n\n\n\n\n4\nMon, Sep 15\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Sep 17\nTo be posted\n\n\n\n\n\n\n\n\n5\nMon, Sep 22\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Sep 24\nTo be posted\n\n\n\n\n\n\n\n\n6\nMon, Sep 29\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Oct 1\nTo be posted\n\n\n\n\n\n\n\n\n7\nMon, Oct 6\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Oct 8\nTo be posted\n\n\n\n\n\n\n\n\n8\nMon, Oct 13\nTo be posted\nFall Break - No Lecture\n\n\n\n\n\n\n\n\nWed, Oct 15\nTo be posted\n\n\n\n\n\n\n\n\n9\nMon, Oct 20\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Oct 22\nTo be posted\n\n\n\n\n\n\n\n\n10\nMon, Oct 27\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Oct 29\nTo be posted\n\n\n\n\n\n\n\n\n11\nMon, Nov 3\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Nov 5\nTo be posted\n\n\n\n\n\n\n\n\n12\nMon, Nov 10\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Nov 12\nTo be posted\n\n\n\n\n\n\n\n\n13\nMon, Nov 17\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Nov 19\nTo be posted\n\n\n\n\n\n\n\n\n14\nMon, Nov 24\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Nov 26\nTo be posted\nThanksgiving - No Lecture",
     "crumbs": [
       "Syllabus",
       "Schedule"
@@ -158,29 +158,7 @@
     "href": "syllabus/syllabus_overview.html",
     "title": "Course overview",
     "section": "",
-    "text": "This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nPrerequisite: Statistical Science 521; Corequisite: Statistical Science 532.",
-    "crumbs": [
-      "Syllabus",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "syllabus/syllabus_overview.html#description",
-    "href": "syllabus/syllabus_overview.html#description",
-    "title": "Course overview",
-    "section": "",
-    "text": "This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nPrerequisite: Statistical Science 521; Corequisite: Statistical Science 532.",
-    "crumbs": [
-      "Syllabus",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "syllabus/syllabus_overview.html#meetings",
-    "href": "syllabus/syllabus_overview.html#meetings",
-    "title": "Course overview",
-    "section": "Meetings",
-    "text": "Meetings\n\n\n\nMeeting\nLocation\nTime\nStaff\n\n\n\n\nLectures\nOld Chem 201\nMoWe 11:45 AM - 1:00 PM\nJohn",
+    "text": "Class meeting: MoWe 11:45 AM - 1:00 PM in Old Chem 201;\nDescriptions: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nPrerequisite: STA 521; Corequisite: STA 532.",
     "crumbs": [
       "Syllabus",
       "Overview"
