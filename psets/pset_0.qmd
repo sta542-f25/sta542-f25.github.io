@@ -1,0 +1,12 @@
+---
+title: "Problem Set 0"
+subtitle: Due Monday September 8 at 3PM
+---
+
+Some linear algebra trick we'll need.
+Multivariate normal.
+Conjugate Bayes.
+Linear Model
+Prediction intervals
+
+
