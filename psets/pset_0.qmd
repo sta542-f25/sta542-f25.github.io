@@ -1,12 +1,14 @@
 ---
 title: "Problem Set 0"
-subtitle: Due Monday September 8 at 3PM
+subtitle: Due Monday September 8 at 11AM
+editor: 
+  mode: source
 ---
 
-Some linear algebra trick we'll need.
-Multivariate normal.
-Conjugate Bayes.
-Linear Model
-Prediction intervals
+Some linear algebra trick we'll need. 
 
+Multivariate normal. 
 
+Conjugate Bayes. 
+
+Linear Model Prediction intervals
