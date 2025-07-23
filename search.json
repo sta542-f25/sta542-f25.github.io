@@ -4,11 +4,7 @@
     "href": "syllabus/syllabus_team.html",
     "title": "Teaching team",
     "section": "",
-    "text": "Mug\nName\nRole\nOffice Hours\n\n\n\n\n\nChen, Andy\nTA\nTue 11:30 PM - 12:30 PM\nFri 1:00 PM - 2:00 PM\nOld Chem 203B\n\n\n\nHuang, Konnie\nTA\nMonTue 1:00 PM - 2:00 PM\nZoom\n\n\n\nJacobson, Gwen\nHead TA\nWed 5:00 PM - 7:00 PM\nOld Chem 025\n\n\n\nZito, John\nInstructor\nTue 2:00 PM - 4:00 PM\nOld Chem 207",
-    "crumbs": [
-      "Syllabus",
-      "Teaching team"
-    ]
+    "text": "Mug\nName\nRole\nOffice Hours\n\n\n\n\n\n\nTA\nOld Chem 203B\n\n\n\nZito, John\nInstructor\nTue 2:00 PM - 4:00 PM\nor by appointment\nOld Chem 207"
   },
   {
     "objectID": "syllabus/syllabus_policies.html",
@@ -114,40 +110,28 @@
     "href": "syllabus/syllabus_materials.html",
     "title": "Course materials",
     "section": "",
-    "text": "You are not required to purchase a textbook for this class. I strive to make the lectures self-contained and sufficient for all of the assignments. However, if you wish to follow along with one, these are all good options:\n\n[Ross] A First Course in Probability by Sheldon Ross;\n[HTZ] Probability and Statistical Inference by Robert Hogg, Elliot Tanis, and Dale Zimmerman;\n[DS] Probability and Statistics by Morris Degroot and Mark Schervish;\n[Wass] All of Statistics by Larry Wasserman.\n\nIn the PREPARE column of the course schedule, I will indicate which parts of a book correspond to the lectures.",
-    "crumbs": [
-      "Syllabus",
-      "Materials"
-    ]
+    "text": "The course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:\n\n[SS] Time Series Analysis and Its Applications, 5e by Robert Shumway and David Stoffer (free pdf);\n[Skä] Bayesian Filtering and Smoothing, 1e by Simo Särkkä (free pdf);\n[WH] Bayesian Forecasting and Dynamic Models, 2e by Mike West and Jeff Harrison (free pdf);\n[PPC] Dynamic Linear Models with R by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli (free pdf);\n[HA] Forecasting: Principles and Practice, 3e by Rob Hyndman and George Athanasopoulos (online edition);\n[PFW] Time Series: Modeling, Computation, and Inference, 2e by Raquel Prado, Marco Ferreira, and Mike West;\n[Ham] Time Series Analysis by James Hamilton;\n[DK] Time Series Analysis by State Space Methods, 2e by James Durbin and Siem Jan Koopman.\n\nI will list readings in the PREPARE column of the course schedule."
   },
   {
     "objectID": "syllabus/syllabus_materials.html#textbooks",
     "href": "syllabus/syllabus_materials.html#textbooks",
     "title": "Course materials",
     "section": "",
-    "text": "You are not required to purchase a textbook for this class. I strive to make the lectures self-contained and sufficient for all of the assignments. However, if you wish to follow along with one, these are all good options:\n\n[Ross] A First Course in Probability by Sheldon Ross;\n[HTZ] Probability and Statistical Inference by Robert Hogg, Elliot Tanis, and Dale Zimmerman;\n[DS] Probability and Statistics by Morris Degroot and Mark Schervish;\n[Wass] All of Statistics by Larry Wasserman.\n\nIn the PREPARE column of the course schedule, I will indicate which parts of a book correspond to the lectures.",
-    "crumbs": [
-      "Syllabus",
-      "Materials"
-    ]
+    "text": "The course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:\n\n[SS] Time Series Analysis and Its Applications, 5e by Robert Shumway and David Stoffer (free pdf);\n[Skä] Bayesian Filtering and Smoothing, 1e by Simo Särkkä (free pdf);\n[WH] Bayesian Forecasting and Dynamic Models, 2e by Mike West and Jeff Harrison (free pdf);\n[PPC] Dynamic Linear Models with R by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli (free pdf);\n[HA] Forecasting: Principles and Practice, 3e by Rob Hyndman and George Athanasopoulos (online edition);\n[PFW] Time Series: Modeling, Computation, and Inference, 2e by Raquel Prado, Marco Ferreira, and Mike West;\n[Ham] Time Series Analysis by James Hamilton;\n[DK] Time Series Analysis by State Space Methods, 2e by James Durbin and Siem Jan Koopman.\n\nI will list readings in the PREPARE column of the course schedule."
   },
   {
     "objectID": "syllabus/syllabus_materials.html#technology",
     "href": "syllabus/syllabus_materials.html#technology",
     "title": "Course materials",
     "section": "Technology",
-    "text": "Technology\nLecture will largely be a low tech affair: pencil and paper should be sufficient most of the time. You should plan to bring a laptop or tablet device to lab. In general, you will need access to a device with internet so that you can use the following:\n\nThis course page that you are on right now;\nR/RStudio via the Duke Container Manager;\nCanvas, through which you can access…\n\nGradescope;\nEd Discussion;\n\nZoom (e.g. for remote office hours).\n\nIf access to technology becomes a concern for you during the semester, contact the instructor immediately to discuss options.",
-    "crumbs": [
-      "Syllabus",
-      "Materials"
-    ]
+    "text": "Technology\nLecture will largely be a low tech affair: pencil and paper should be sufficient most of the time. You should plan to bring a laptop or tablet device to lab. In general, you will need access to a device with internet so that you can use the following:\n\nThis course page that you are on right now;\nR/RStudio via the Duke Container Manager;\nCanvas, through which you can access…\n\nGradescope;\nEd Discussion;\n\nZoom (e.g. for remote office hours).\n\nIf access to technology becomes a concern for you during the semester, contact the instructor immediately to discuss options."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nMon, Aug 25\nTo be posted\nWelcome!\n\n\n\n\n\n\n\n\nWed, Aug 27\nTo be posted\n\n\n\n\n\n\n\n\n2\nMon, Sep 1\nTo be posted\n❌ Labor Day - No Lecture\n\n\n\n\n\n\n\n\nWed, Sep 3\nTo be posted\n\n\n\n\n\n\n\n\n3\nMon, Sep 8\nTo be posted\n\n\n\n\nPSET 0 @ 11AM\n\n\n\n\nWed, Sep 10\nTo be posted\n\n\n\n\n\n\n\n\n4\nMon, Sep 15\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Sep 17\nTo be posted\n\n\n\n\n\n\n\n\n5\nMon, Sep 22\nTo be posted\n\n\n\n\nPSET 1 @ 11AM\n\n\n\n\nWed, Sep 24\nTo be posted\n\n\n\n\n\n\n\n\n6\nMon, Sep 29\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Oct 1\nTo be posted\n\n\n\n\n\n\n\n\n7\nMon, Oct 6\nTo be posted\n\n\n\n\nPSET 2 @ 11AM\n\n\n\n\nWed, Oct 8\nTo be posted\n📝 Midterm\n\n\n\n\n\n\n8\nMon, Oct 13\nTo be posted\n❌ Fall Break - No Lecture\n\n\n\n\n\n\n\n\nWed, Oct 15\nTo be posted\n\n\n\n\n\n\n\n\n9\nMon, Oct 20\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Oct 22\nTo be posted\n\n\n\n\n\n\n\n\n10\nMon, Oct 27\nTo be posted\n\n\n\n\nPSET 3 @ 11AM\n\n\n\n\nWed, Oct 29\nTo be posted\n\n\n\n\n\n\n\n\n11\nMon, Nov 3\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Nov 5\nTo be posted\n\n\n\n\n\n\n\n\n12\nMon, Nov 10\nTo be posted\n\n\n\n\nPSET 4 @ 11AM\n\n\n\n\nWed, Nov 12\nTo be posted\n\n\n\n\n\n\n\n\n13\nMon, Nov 17\nTo be posted\n\n\n\n\n\n\n\n\n\n\nWed, Nov 19\nTo be posted\n\n\n\n\n\n\n\n\n14\nMon, Nov 24\nTo be posted\n\n\n\n\nPSET 5 @ 11AM\n\n\n\n\nWed, Nov 26\nTo be posted\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\n17\nSun, Dec 14\nTo be posted\n📝 Final (9AM - 12PM)",
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nMon, Aug 25\nTo be posted\nWelcome!\n\n\n\n\n\n\n\n\nWed, Aug 27\nTo be posted\nARMA\n\n\n\n\n\n\n2\nMon, Sep 1\nTo be posted\n❌ Labor Day - No Lecture\n\n\n\n\n\n\n\n\nWed, Sep 3\nTo be posted\nARMA\n\n\n\n\n\n\n3\nMon, Sep 8\nTo be posted\nARMA\n\n\nPSET 0 @ 11AM\n\n\n\n\nWed, Sep 10\nTo be posted\nARMA\n\n\n\n\n\n\n4\nMon, Sep 15\nTo be posted\nARMA\n\n\n\n\n\n\n\n\nWed, Sep 17\nTo be posted\nARMA\n\n\n\n\n\n\n5\nMon, Sep 22\nTo be posted\nARMA\n\n\nPSET 1 @ 11AM\n\n\n\n\nWed, Sep 24\nTo be posted\nARMA\n\n\n\n\n\n\n6\nMon, Sep 29\nTo be posted\nVAR\n\n\n\n\n\n\n\n\nWed, Oct 1\nTo be posted\nVAR\n\n\n\n\n\n\n7\nMon, Oct 6\nTo be posted\nVAR\n\n\nPSET 2 @ 11AM\n\n\n\n\nWed, Oct 8\nTo be posted\n📝 Midterm\n\n\n\n\n\n\n8\nMon, Oct 13\nTo be posted\n❌ Fall Break - No Lecture\n\n\n\n\n\n\n\n\nWed, Oct 15\nTo be posted\nDLM\n\n\n\n\n\n\n9\nMon, Oct 20\nTo be posted\nDLM\n\n\n\n\n\n\n\n\nWed, Oct 22\nTo be posted\nDLM\n\n\n\n\n\n\n10\nMon, Oct 27\nTo be posted\nDLM\n\n\nPSET 3 @ 11AM\n\n\n\n\nWed, Oct 29\nTo be posted\nDLM\n\n\n\n\n\n\n11\nMon, Nov 3\nTo be posted\nHMMs\n\n\n\n\n\n\n\n\nWed, Nov 5\nTo be posted\nHMMs\n\n\n\n\n\n\n12\nMon, Nov 10\nTo be posted\nNonlinear\n\n\nPSET 4 @ 11AM\n\n\n\n\nWed, Nov 12\nTo be posted\nNonlinear\n\n\n\n\n\n\n13\nMon, Nov 17\nTo be posted\nModern\n\n\n\n\n\n\n\n\nWed, Nov 19\nTo be posted\nModern\n\n\n\n\n\n\n14\nMon, Nov 24\nTo be posted\nModern\n\n\nPSET 5 @ 11AM\n\n\n\n\nWed, Nov 26\nTo be posted\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n\n17\nSun, Dec 14\nTo be posted\n📝 Final (9AM - 12PM)",
     "crumbs": [
       "Syllabus",
       "Schedule"
@@ -172,110 +156,97 @@
     ]
   },
   {
+    "objectID": "syllabus/syllabus_overview.html#teaching-team",
+    "href": "syllabus/syllabus_overview.html#teaching-team",
+    "title": "Course overview",
+    "section": "Teaching team",
+    "text": "Teaching team\n\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\n\n\nTA\nOld Chem 203B\n\n\n\nZito, John\nInstructor\nTue 2:00 PM - 4:00 PM\nor by appointment\nOld Chem 207",
+    "crumbs": [
+      "Syllabus",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "syllabus/syllabus_overview.html#textbooks",
+    "href": "syllabus/syllabus_overview.html#textbooks",
+    "title": "Course overview",
+    "section": "Textbooks",
+    "text": "Textbooks\nThe course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:\n\n[SS] Time Series Analysis and Its Applications, 5e by Robert Shumway and David Stoffer (free pdf);\n[Skä] Bayesian Filtering and Smoothing, 1e by Simo Särkkä (free pdf);\n[WH] Bayesian Forecasting and Dynamic Models, 2e by Mike West and Jeff Harrison (free pdf);\n[PPC] Dynamic Linear Models with R by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli (free pdf);\n[HA] Forecasting: Principles and Practice, 3e by Rob Hyndman and George Athanasopoulos (online edition);\n[PFW] Time Series: Modeling, Computation, and Inference, 2e by Raquel Prado, Marco Ferreira, and Mike West;\n[Ham] Time Series Analysis by James Hamilton;\n[DK] Time Series Analysis by State Space Methods, 2e by James Durbin and Siem Jan Koopman.\n\nI will list readings in the PREPARE column of the course schedule.",
+    "crumbs": [
+      "Syllabus",
+      "Overview"
+    ]
+  },
+  {
     "objectID": "syllabus/syllabus_resources.html",
     "href": "syllabus/syllabus_resources.html",
     "title": "University resources",
     "section": "",
-    "text": "If you are having difficulty with the costs associated with this course (obtaining a laptop, mostly), here are some resources:\n\nKarsh Office of Undergraduate Support: Regardless of your aid package, Karsh offers loans and resources for connecting students with campus programs that might help alleviate course costs.\nDukeLIFE: The Course Material Assistance program offers assistance for eligible students, including through the LIFE Loaner Laptop Program. Students who are eligible for DukeLIFE benefits are notified before the start of the semester; program resources are limited.\nDuke Link: They have a small supply of laptops that can be rented out for five days at a time.",
-    "crumbs": [
-      "Syllabus",
-      "University resources"
-    ]
+    "text": "If you are having difficulty with the costs associated with this course (obtaining a laptop, mostly), here are some resources:\n\nKarsh Office of Undergraduate Support: Regardless of your aid package, Karsh offers loans and resources for connecting students with campus programs that might help alleviate course costs.\nDukeLIFE: The Course Material Assistance program offers assistance for eligible students, including through the LIFE Loaner Laptop Program. Students who are eligible for DukeLIFE benefits are notified before the start of the semester; program resources are limited.\nDuke Link: They have a small supply of laptops that can be rented out for five days at a time."
   },
   {
     "objectID": "syllabus/syllabus_resources.html#course-costs",
     "href": "syllabus/syllabus_resources.html#course-costs",
     "title": "University resources",
     "section": "",
-    "text": "If you are having difficulty with the costs associated with this course (obtaining a laptop, mostly), here are some resources:\n\nKarsh Office of Undergraduate Support: Regardless of your aid package, Karsh offers loans and resources for connecting students with campus programs that might help alleviate course costs.\nDukeLIFE: The Course Material Assistance program offers assistance for eligible students, including through the LIFE Loaner Laptop Program. Students who are eligible for DukeLIFE benefits are notified before the start of the semester; program resources are limited.\nDuke Link: They have a small supply of laptops that can be rented out for five days at a time.",
-    "crumbs": [
-      "Syllabus",
-      "University resources"
-    ]
+    "text": "If you are having difficulty with the costs associated with this course (obtaining a laptop, mostly), here are some resources:\n\nKarsh Office of Undergraduate Support: Regardless of your aid package, Karsh offers loans and resources for connecting students with campus programs that might help alleviate course costs.\nDukeLIFE: The Course Material Assistance program offers assistance for eligible students, including through the LIFE Loaner Laptop Program. Students who are eligible for DukeLIFE benefits are notified before the start of the semester; program resources are limited.\nDuke Link: They have a small supply of laptops that can be rented out for five days at a time."
   },
   {
     "objectID": "syllabus/syllabus_resources.html#tech-support",
     "href": "syllabus/syllabus_resources.html#tech-support",
     "title": "University resources",
     "section": "Tech support",
-    "text": "Tech support\nContact the Duke OIT Service Desk at oit.duke.edu/help.",
-    "crumbs": [
-      "Syllabus",
-      "University resources"
-    ]
+    "text": "Tech support\nContact the Duke OIT Service Desk at oit.duke.edu/help."
   },
   {
     "objectID": "syllabus/syllabus_resources.html#academic-support",
     "href": "syllabus/syllabus_resources.html#academic-support",
     "title": "University resources",
     "section": "Academic support",
-    "text": "Academic support\nThere are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the Academic Resource Center. The Academic Resource Center (ARC) offers free services to all students during their undergraduate careers at Duke. Services include Learning Consultations, Peer Tutoring and Study Groups, ADHD/LD Coaching, Outreach Workshops, and more. Because learning is a process unique to every individual, they work with each student to discover and develop their own academic strategy for success at Duke. Contact the ARC to schedule an appointment. Undergraduates in any year, studying any discipline can benefit! Contact ARC@duke.edu, 919-684-5917.",
-    "crumbs": [
-      "Syllabus",
-      "University resources"
-    ]
+    "text": "Academic support\nThere are times you may need help with the class that is beyond what can be provided by the teaching team. In those instances, I encourage you to visit the Academic Resource Center. The Academic Resource Center (ARC) offers free services to all students during their undergraduate careers at Duke. Services include Learning Consultations, Peer Tutoring and Study Groups, ADHD/LD Coaching, Outreach Workshops, and more. Because learning is a process unique to every individual, they work with each student to discover and develop their own academic strategy for success at Duke. Contact the ARC to schedule an appointment. Undergraduates in any year, studying any discipline can benefit! Contact ARC@duke.edu, 919-684-5917."
   },
   {
     "objectID": "syllabus/syllabus_resources.html#accessibility",
     "href": "syllabus/syllabus_resources.html#accessibility",
     "title": "University resources",
     "section": "Accessibility",
-    "text": "Accessibility\nIf any portion of the course is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.\nThe Student Disability Access Office (SDAO) is available to ensure that students can engage with their courses and related assignments. Students should contact the SDAO to request or update accommodations under these circumstances.",
-    "crumbs": [
-      "Syllabus",
-      "University resources"
-    ]
+    "text": "Accessibility\nIf any portion of the course is not accessible to you due to challenges with technology or the course format, please let me know so we can make appropriate accommodations.\nThe Student Disability Access Office (SDAO) is available to ensure that students can engage with their courses and related assignments. Students should contact the SDAO to request or update accommodations under these circumstances."
   },
   {
     "objectID": "syllabus/syllabus_resources.html#mental-health-and-well-being",
     "href": "syllabus/syllabus_resources.html#mental-health-and-well-being",
     "title": "University resources",
     "section": "Mental health and well-being",
-    "text": "Mental health and well-being\nDuke is committed to holistic student well-being, including mental, emotional, and physical health. The university offers resources to help students manage daily stress, encourage intentional self-care, and access just-in-time support. If you find you need support, your mental and/or emotional health concerns are impacting your day-to-day activities and your academic performance, or you need someone to talk to, the resources below are available to you:\n\nDukeReach: DukeReach provides comprehensive outreach services to support students in managing all aspects of well-being, including referrals and follow-up services for students who are experiencing significant challenges related to mental health, physical health, social adjustment, and/or a variety of other stressors. You can reach the DukeReach team at dukereach@duke.edu.\nCounseling and Psychological Services (CAPS): CAPS services include individual and group counseling services, psychiatric services, and workshops. CAPS also provides referrals to off-campus resources for specialized care. You can reach CAPS at (919) 660-1000.\nTimelyCare: TimelyCare is an online platform that is a convenient, confidential, and free way for Duke students to receive 24/7 mental health support through TalkNow and scheduled counseling.\nBC Fellows for Healthy Relationship: The BC Fellows meet with students individually and in groups, supporting the development of healthy relationships and building meaningful community in all areas of a student’s life.\nDukeLine: Students who want to connect anonymously with a Peer Coach can text 984-230-4888 from 5 to 11 p.m. daily. DukeLine offers in-the-moment anonymous, non-emergency text support from a peer.\nDuWell: DuWell provides Moments of Mindfulness (stress management and resilience building) and meditation programming (Koru workshop) to assist students in developing a daily emotional well-being practice. All are welcome, and no experience is necessary. You can reach DuWell at (919) 681-8421.",
-    "crumbs": [
-      "Syllabus",
-      "University resources"
-    ]
+    "text": "Mental health and well-being\nDuke is committed to holistic student well-being, including mental, emotional, and physical health. The university offers resources to help students manage daily stress, encourage intentional self-care, and access just-in-time support. If you find you need support, your mental and/or emotional health concerns are impacting your day-to-day activities and your academic performance, or you need someone to talk to, the resources below are available to you:\n\nDukeReach: DukeReach provides comprehensive outreach services to support students in managing all aspects of well-being, including referrals and follow-up services for students who are experiencing significant challenges related to mental health, physical health, social adjustment, and/or a variety of other stressors. You can reach the DukeReach team at dukereach@duke.edu.\nCounseling and Psychological Services (CAPS): CAPS services include individual and group counseling services, psychiatric services, and workshops. CAPS also provides referrals to off-campus resources for specialized care. You can reach CAPS at (919) 660-1000.\nTimelyCare: TimelyCare is an online platform that is a convenient, confidential, and free way for Duke students to receive 24/7 mental health support through TalkNow and scheduled counseling.\nBC Fellows for Healthy Relationship: The BC Fellows meet with students individually and in groups, supporting the development of healthy relationships and building meaningful community in all areas of a student’s life.\nDukeLine: Students who want to connect anonymously with a Peer Coach can text 984-230-4888 from 5 to 11 p.m. daily. DukeLine offers in-the-moment anonymous, non-emergency text support from a peer.\nDuWell: DuWell provides Moments of Mindfulness (stress management and resilience building) and meditation programming (Koru workshop) to assist students in developing a daily emotional well-being practice. All are welcome, and no experience is necessary. You can reach DuWell at (919) 681-8421."
   },
   {
     "objectID": "syllabus/syllabus_assignments.html",
     "href": "syllabus/syllabus_assignments.html",
     "title": "Assignments and grading",
     "section": "",
-    "text": "Your final course grade will be calculated as follows:\nYour final letter grade will be determined based on these thresholds:",
+    "text": "Your final course grade will be calculated as follows:\nYour final letter grade will be determined based on the usual thresholds, which will never move upward but may move downward in your favor:",
     "crumbs": [
       "Syllabus",
       "Assignments and grading"
     ]
   },
   {
-    "objectID": "syllabus/syllabus_assignments.html#labs-10",
-    "href": "syllabus/syllabus_assignments.html#labs-10",
+    "objectID": "syllabus/syllabus_assignments.html#problem-sets",
+    "href": "syllabus/syllabus_assignments.html#problem-sets",
     "title": "Assignments and grading",
-    "section": "Labs (10%)",
-    "text": "Labs (10%)\nIn lab every Thursday, you will complete a guided activity that illustrates how the latest course material can be applied to various domains of science and technology. Often this activity will also teach you how to implement some of the ideas from the course in the R programming language. Ideally you should be able to finish the activity by the end of your lab period, but in any case, you must submit your lab work by 11:59 ET PM that same day. Each lab problem will be graded for completion on the following scale:\n\n1.0: a complete, good faith attempt;\n0.5: partially complete;\n0.0: no submission, or mostly incomplete.\n\n\n\n\n\n\n\nNote\n\n\n\nYour two lowest lab scores will be dropped at the end of the semester.",
+    "section": "Problem Sets",
+    "text": "Problem Sets",
     "crumbs": [
       "Syllabus",
       "Assignments and grading"
     ]
   },
   {
-    "objectID": "syllabus/syllabus_assignments.html#problem-sets-30",
-    "href": "syllabus/syllabus_assignments.html#problem-sets-30",
+    "objectID": "syllabus/syllabus_assignments.html#exams",
+    "href": "syllabus/syllabus_assignments.html#exams",
     "title": "Assignments and grading",
-    "section": "Problem Sets (30%)",
-    "text": "Problem Sets (30%)\nMathematics is like everything else in life; if you practice, you improve. As such, the problem sets are really the heart of the course. They will mostly consist of pencil-and-paper math problems, but sometimes you will be asked to do some coding. You may compose you solutions however you like (scan or photograph written work, LaTeX, Quarto, handwriting capture on a tablet, whatever) so long as you ultimately upload a single .pdf file to Gradescope.\n\n\n\n\n\n\nNote\n\n\n\nYour lowest problem set score will be dropped at the end of the semester.",
-    "crumbs": [
-      "Syllabus",
-      "Assignments and grading"
-    ]
-  },
-  {
-    "objectID": "syllabus/syllabus_assignments.html#exams-20-each",
-    "href": "syllabus/syllabus_assignments.html#exams-20-each",
-    "title": "Assignments and grading",
-    "section": "Exams (20% each)",
-    "text": "Exams (20% each)\nThese will be traditional, in-class, sit-down, written exams with no technology, and with no outside resources apart from a note sheet that you and only you have prepared (both sides of a standard 8.5” x 11” piece of paper).\n\n\n\n\n\n\nNote\n\n\n\nIf you do better on the final exam than you did on one of the midterms, we will replace your lowest midterm exam score with your final exam score.",
+    "section": "Exams",
+    "text": "Exams",
     "crumbs": [
       "Syllabus",
       "Assignments and grading"
