@@ -7,3 +7,30 @@ title: "Course overview"
 **Descriptions**: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;
 
 **Prerequisite**: STA 521; **Corequisite**: STA 532.
+
+## Teaching team
+
++--------------------+---------------+---------------+------------------------+
+| Mug                | Name          | Role          | Office Hours           |
++====================+===============+===============+========================+
+|                    |               | TA            | Old Chem 203B          |
++--------------------+---------------+---------------+------------------------+
+| ![](jz.jpg){.circ} | Zito, John    | Instructor    | Tue 2:00 PM - 4:00 PM\ |
+|                    |               |               | *or by appointment*\   |
+|                    |               |               | Old Chem 207           |
++--------------------+---------------+---------------+------------------------+
+
+## Textbooks
+
+The course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:
+
+-   `[SS]` *Time Series Analysis and Its Applications, 5e* by Robert Shumway and David Stoffer ([free pdf](https://doi.org/10.1007/978-3-031-70584-7));
+-   `[Skä]` *Bayesian Filtering and Smoothing, 1e* by Simo Särkkä ([free pdf](https://users.aalto.fi/~ssarkka/pub/cup_book_online_20131111.pdf));
+-   `[WH]` *Bayesian Forecasting and Dynamic Models, 2e* by Mike West and Jeff Harrison ([free pdf](https://doi.org/10.1007/b98971));
+-   `[PPC]` *Dynamic Linear Models with `R`* by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli ([free pdf](https://doi.org/10.1007/b135794));
+-   `[HA]` *Forecasting: Principles and Practice, 3e* by Rob Hyndman and George Athanasopoulos ([online edition](https://otexts.com/fpp3/));
+-   `[PFW]` *Time Series: Modeling, Computation, and Inference, 2e* by Raquel Prado, Marco Ferreira, and Mike West;
+-   `[Ham]` *Time Series Analysis* by James Hamilton;
+-   `[DK]` *Time Series Analysis by State Space Methods, 2e* by James Durbin and Siem Jan Koopman.
+
+I will list readings in the **PREPARE** column of the [course schedule](https://sta542-f25.github.io/).
