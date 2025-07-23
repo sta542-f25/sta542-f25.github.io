@@ -59,16 +59,10 @@ website:
         contents:
           - href: syllabus/syllabus_overview.qmd
             text: Overview
-          - href: syllabus/syllabus_team.qmd
-            text: Teaching team
-          - href: syllabus/syllabus_materials.qmd
-            text: Materials
           - href: syllabus/syllabus_assignments.qmd
             text: Assignments and grading
           - href: syllabus/syllabus_policies.qmd
             text: Policies
-          - href: syllabus/syllabus_resources.qmd
-            text: University resources
           - href: index.qmd
             text: Schedule
             
