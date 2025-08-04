@@ -138,11 +138,15 @@
     ]
   },
   {
-    "objectID": "psets/pset_0.html",
-    "href": "psets/pset_0.html",
+    "objectID": "psets/pset-0.html",
+    "href": "psets/pset-0.html",
     "title": "Problem Set 0",
     "section": "",
-    "text": "Some linear algebra trick we’ll need.\nMultivariate normal.\nConjugate Bayes.\nLinear Model Prediction intervals"
+    "text": "Some linear algebra trick we’ll need.\nMultivariate normal.\nConjugate Bayes.\nLinear Model Prediction intervals",
+    "crumbs": [
+      "Problem Sets",
+      "Problem Set 0"
+    ]
   },
   {
     "objectID": "syllabus/syllabus_overview.html",
