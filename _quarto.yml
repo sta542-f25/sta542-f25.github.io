@@ -65,6 +65,12 @@ website:
             text: Policies
           - href: index.qmd
             text: Schedule
+      - section: "Problem Sets"
+        contents:
+          - href: psets/pset-0.qmd
+            text: Problem Set 0
+          - href: psets/pset-1.qmd
+            text: Probem Set 1
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
