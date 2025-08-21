@@ -5,6 +5,15 @@ editor:
   mode: source
 ---
 
+linear combos of independent normals are normal 
+
+turn this into a matrix equation 
+
+the beta gamma conjugacy stuff
+
+parametric bootstrap
+
+
 Some linear algebra trick we'll need. 
 
 Multivariate normal. 
