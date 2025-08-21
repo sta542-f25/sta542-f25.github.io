@@ -4,7 +4,7 @@ title: "Course overview"
 
 **Class meeting**: MoWe 11:45 AM - 1:00 PM in Old Chem 201;
 
-**Description**: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;
+**Description**: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and ~~frequency domain methods~~, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, ~~particularly those coming from the high-frequency and ultra-long biomedical time series~~. The primary audience for this course is graduate students in statistics;
 
 **Prerequisite**: STA 521; **Corequisite**: STA 532.
 
@@ -13,7 +13,7 @@ title: "Course overview"
 +--------------------+---------------+---------------+------------------------+
 | Mug                | Name          | Role          | Office Hours           |
 +====================+===============+===============+========================+
-|                    |               | TA            | Old Chem 203B          |
+| ![](al.jpg){.circ} | Li, Aihua     | TA            | ???                    |
 +--------------------+---------------+---------------+------------------------+
 | ![](jz.jpg){.circ} | Zito, John    | Instructor    | Tue 2:00 PM - 4:00 PM\ |
 |                    |               |               | *or by appointment*\   |
