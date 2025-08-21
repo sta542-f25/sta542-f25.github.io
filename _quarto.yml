@@ -93,5 +93,3 @@ code-overflow: wrap
 
 execute:
   freeze: auto
-
-editor: visual
