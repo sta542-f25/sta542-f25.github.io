@@ -1,0 +1,29 @@
+---
+title: "ar-1"
+format: html
+---
+
+$$
+\begin{aligned}
+y_t&=\beta_0+\beta_1y_{t-1}+\varepsilon_t,\quad \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)\\
+y_0&\sim\text{N}(\mu_0,\,\gamma_0)
+\end{aligned}
+$$
+
+$y_0$ independent of the errors. I don't like the notation for the initial condition variance.
+
+marginal distributions
+joint distributions 
+conditional (forecast) distributions
+stationarity
+dependence structure
+method of moments (Yule-Walker)
+maximum likelihood (unconditional and conditional)
+emphasize sequential recursions 
+bayesian inference 
+probabilistic prediction 
+parametric bootstrap 
+point prediction 
+interval prediction 
+density prediction
+
