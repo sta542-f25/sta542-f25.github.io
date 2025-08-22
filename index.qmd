@@ -1,5 +1,6 @@
 ---
 title: "STA 542 Introduction to Time Series Analysis"
+subtitle: "Duke University Fall 2025"
 execute: 
   freeze: false
 editor_options: 
