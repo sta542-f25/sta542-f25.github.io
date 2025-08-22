@@ -66,8 +66,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="STA 542 Fall 2025">
+<meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -122,19 +152,11 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../psets/pset-0.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
   </div>
 </li>
       </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Lecture notes</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">R Explainers</span></span>
   </li>
     </ul>
     </div>
@@ -150,6 +172,108 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Slicing-and-dicing the <strong>multivariate normal distribution</strong> is a very important skill in time series analysis, so let’s make sure we can do that. A random vector <span class="math inline">\(\mathbf{x}=\begin{bmatrix}x_1&amp;x_2&amp;\cdots&amp;x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n\)</span> has the multivariate normal distribution with mean vector <span class="math inline">\(E(\mathbf{x})=\boldsymbol{\mu}=\begin{bmatrix}\mu_1&amp;\mu_2&amp;\cdots&amp;\mu_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n\)</span> and covarianfe matirx <span class="math inline">\(\text{cov}(\mathbf{x})=\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}\)</span> if its density is</p>
+<p><span class="math display">\[
+f(\mathbf{x})
+=
+\frac{1}
+{
+(2\pi)^{\frac{n}{2}}
+|\boldsymbol{\Sigma}|^{1/2}
+}
+\exp
+\left(
+-\frac{1}{2}
+(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right)
+,
+\quad
+\mathbf{x}
+\in
+\mathbb{R}^n.
+\]</span></p>
+<p>We denote this <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span>.</p>
+<ol type="a">
+<li>Let <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span>, and fix constants <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span> and <span class="math inline">\(\mathbf{c}\in\mathbb{R}^m\)</span>. Show that</li>
+</ol>
+<p><span class="math display">\[
+\mathbf{y}
+=
+\mathbf{A}
+\mathbf{x}
++
+\mathbf{c}
+\sim
+\text{N}_m
+\left(
+\mathbf{A}
+\boldsymbol{\mu}
++
+\mathbf{c}
+,\,
+\mathbf{A}
+\boldsymbol{\Sigma}
+\mathbf{A}^{\scriptscriptstyle\mathsf{T}}
+\right)
+.
+\]</span></p>
+<ol start="2" type="a">
+<li>Consider the joint distribution <span class="math inline">\(p(\mathbf{x},\,\mathbf{y})=p(\mathbf{y}\,|\,\mathbf{x})p(\mathbf{x})\)</span> written hierarchically as <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span> and <span class="math inline">\(\mathbf{y}\,|\,\mathbf{x}\sim\text{N}_m(\mathbf{H}\mathbf{x}+\mathbf{u},\,\mathbf{R})\)</span>. Use the result in part a to show that the joint distribution implied by this hierarchy is</li>
+</ol>
+<p><span class="math display">\[
+\begin{bmatrix}
+\mathbf{x}
+\\
+\mathbf{y}
+\end{bmatrix}
+\sim
+\text{N}_{n+m}
+\left(
+\begin{bmatrix}
+\boldsymbol{\mu}
+\\
+\mathbf{H}\boldsymbol{\mu}+\mathbf{u}
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\boldsymbol{\Sigma}
+&amp;
+\boldsymbol{\Sigma}\mathbf{H}^{\scriptscriptstyle\mathsf{T}}
+\\
+\mathbf{H}
+\boldsymbol{\Sigma}
+&amp;
+\mathbf{H}
+\boldsymbol{\Sigma}
+\mathbf{H}^{\scriptscriptstyle\mathsf{T}} + \mathbf{R}
+\end{bmatrix}
+\right)
+.
+\]</span></p>
+<ol start="3" type="a">
+<li>Use the result in part a to show that the linear combination of independent normals is normal. That is, if <span class="math inline">\(x_i\sim\text{N}(\mu_i,\,\sigma^2_i)\)</span> are independent and <span class="math inline">\(a_i\in\mathbb{R}\)</span> are constant, then prove that</li>
+</ol>
+<p><span class="math display">\[
+\sum\limits_{i=1}^na_ix_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Jacobian</p>
+</div>
+</div>
+</div>
 
 
 
