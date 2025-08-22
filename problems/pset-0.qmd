@@ -5,27 +5,19 @@ editor:
   mode: source
 ---
 
-## Problem 1
-
-{{< include bank/review/linear-combos.qmd >}}
-
-## Problem 2
-
-{{< include bank/review/matrix-eq.qmd >}}
-
-## Problem 3
+## Problem X
 
 {{< include bank/review/mvnormal.qmd >}}
 
-## Problem 4
+## Problem X
 
 {{< include bank/review/mle.qmd >}}
 
-## Problem 5
+## Problem X
 
 {{< include bank/review/bayes.qmd >}}
 
-## Problem 6
+## Problem X
 
 {{< include bank/review/online-least-squares.qmd >}}
 

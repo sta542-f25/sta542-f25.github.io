@@ -1,0 +1,98 @@
+Slicing-and-dicing the **multivariate normal distribution** is a very important skill in time series analysis, so let's make sure we can do that. A random vector $\mathbf{x}=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ has the multivariate normal distribution with mean vector $E(\mathbf{x})=\boldsymbol{\mu}=\begin{bmatrix}\mu_1&\mu_2&\cdots&\mu_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ and covarianfe matirx $\text{cov}(\mathbf{x})=\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}$ if its density is
+
+$$
+f(\mathbf{x})
+=
+\frac{1}
+{
+(2\pi)^{\frac{n}{2}}
+|\boldsymbol{\Sigma}|^{1/2}
+}
+\exp
+\left(
+-\frac{1}{2}
+(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right)
+,
+\quad
+\mathbf{x}
+\in
+\mathbb{R}^n.
+$$
+
+We denote this $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$.
+
+a. Let $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$, and fix constants $\mathbf{A}\in\mathbb{R}^{m\times n}$ and $\mathbf{c}\in\mathbb{R}^m$. Show that 
+
+$$
+\mathbf{y}
+=
+\mathbf{A}
+\mathbf{x}
++
+\mathbf{c}
+\sim
+\text{N}_m
+\left(
+\mathbf{A}
+\boldsymbol{\mu}
++
+\mathbf{c}
+,\,
+\mathbf{A}
+\boldsymbol{\Sigma}
+\mathbf{A}^{\scriptscriptstyle\mathsf{T}}
+\right)
+.
+$$
+
+b. Consider the joint distribution $p(\mathbf{x},\,\mathbf{y})=p(\mathbf{y}\,|\,\mathbf{x})p(\mathbf{x})$ written hierarchically as $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$ and $\mathbf{y}\,|\,\mathbf{x}\sim\text{N}_m(\mathbf{H}\mathbf{x}+\mathbf{u},\,\mathbf{R})$. Use the result in part a to show that the joint distribution implied by this hierarchy is
+
+$$
+\begin{bmatrix}
+\mathbf{x}
+\\
+\mathbf{y}
+\end{bmatrix}
+\sim
+\text{N}_{n+m}
+\left(
+\begin{bmatrix}
+\boldsymbol{\mu}
+\\
+\mathbf{H}\boldsymbol{\mu}+\mathbf{u}
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\boldsymbol{\Sigma}
+&
+\boldsymbol{\Sigma}\mathbf{H}^{\scriptscriptstyle\mathsf{T}}
+\\
+\mathbf{H}
+\boldsymbol{\Sigma}
+&
+\mathbf{H}
+\boldsymbol{\Sigma}
+\mathbf{H}^{\scriptscriptstyle\mathsf{T}} + \mathbf{R}
+\end{bmatrix}
+\right)
+.
+$$
+
+c. Use the result in part a to show that the linear combination of independent normals is normal. That is, if $x_i\sim\text{N}(\mu_i,\,\sigma^2_i)$ are independent and $a_i\in\mathbb{R}$ are constant, then prove that
+
+$$
+\sum\limits_{i=1}^na_ix_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
+$$
+
+
+
+
+::: {.callout-tip collapse="true"}
+## Hint
+
+Jacobian
+
+:::
