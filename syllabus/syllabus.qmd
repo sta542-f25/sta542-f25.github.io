@@ -35,3 +35,68 @@ The course does not have a designated textbook, and you are not required to purc
 -   `[DK]` *Time Series Analysis by State Space Methods, 2e* by James Durbin and Siem Jan Koopman.
 
 I will list readings in the **PREPARE** column of the [course schedule](https://sta542-f25.github.io/).
+
+## Assignments and grading
+
+The course consists of the following components:
+
+- There will be 5 - 6 problems sets due roughly every two weeks;
+- There will be two in-class, pencil-and-paper exams. The only resource you are allowed is both sides of one 8.5" x 11" sheet of notes prepared by you;
+- The course will conclude with a final project where each student writes a report that applies or extends ideas from the course. Full details about the project will be announced later in the semester.
+
+These components will be weighted like this:
+
+::: {.center-table}
+| Category     | Percentage |
+|--------------|------------|
+| Problem Sets | 25%        |
+| Exam 1       | 25%        |
+| Exam 2       | 25%        |
+| Project      | 25%        |
+:::
+
+Your final letter grade will be determined based on the usual thresholds, which will never move upward but may move downward in your favor:
+
+::: {.center-table}
+| Letter Grade | Final Course Grade |
+|--------------|--------------------|
+| A+           | \>= 97             |
+| A            | 93 - 96.99         |
+| A-           | 90 - 92.99         |
+| B+           | 87 - 89.99         |
+| B            | 83 - 86.99         |
+| B-           | 80 - 82.99         |
+| C+           | 77 - 79.99         |
+| C            | 73 - 76.99         |
+| C-           | 70 - 72.99         |
+| D+           | 67 - 69.99         |
+| D            | 63 - 66.99         |
+| D-           | 60 - 62.99         |
+| F            | \< 60              |
+:::
+
+
+## Communication
+
+
+## Late work and extensions
+
+No late work will be accepted unless you request an extension in advance by e-mailing the instructor directly (john.zito\@duke.edu). All reasonable requests will be entertained, but extensions will not be long.
+
+## Regrade requests
+
+
+
+## Attendance
+
+
+
+## Collaboration
+
+
+
+## Use of outside resources, including AI
+
+
+
+## Duke Community Standard
