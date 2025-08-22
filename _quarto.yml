@@ -54,14 +54,15 @@ website:
     contents:
       - href: syllabus/syllabus.qmd
         text: Syllabus
+      - section: "Background"
+      - section: "Lecture notes"
+      - section: "R Explainers"
       - section: "Problem Sets"
         contents:
           - href: problems/pset-0.qmd
             text: Problem Set 0
           #- href: problems/pset-1.qmd
           #  text: Probem Set 1
-      - section: "Lecture notes"
-      - section: "R Explainers"
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'
