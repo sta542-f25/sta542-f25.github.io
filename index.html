@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>STA 542 Introduction to Time Series Analysis – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
@@ -22,15 +19,12 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./psets/pset-0.html" rel="next">
-<link href="./syllabus/syllabus_policies.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -39,8 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6a296005b0efd8d491511f7e9e4b8ed1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-6a296005b0efd8d491511f7e9e4b8ed1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -67,39 +60,29 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 <meta property="og:title" content="STA 542 Introduction to Time Series Analysis – STA 542 Fall 2025">
-<meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
+<meta property="og:description" content="Duke University Fall 2025">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./syllabus/syllabus_overview.html">Syllabus</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">STA 542 Introduction to Time Series Analysis</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="./img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -108,78 +91,48 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./syllabus/syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_assignments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignments and grading</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_policies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Schedule</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./psets/pset-0.html" class="sidebar-item-text sidebar-link">
+  <a href="./psets/pset-0.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./psets/pset-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Probem Set 1</span></a>
-  </div>
-</li>
       </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Lecture notes</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">R Explainers</span></span>
   </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./syllabus/syllabus_overview.html">Syllabus</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
-<div class="quarto-title">
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">STA 542 Introduction to Time Series Analysis</h1>
+<p class="subtitle lead">Duke University Fall 2025</p>
 </div>
 
 
@@ -193,29 +146,26 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
-
-
-<p>Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.</p>
+</header><p>Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.</p>
 <div class="cell page-columns page-full">
 <div class="cell-output-display column-screen-inset-right">
-<div id="zeciisdoul" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zeciisdoul table {
+<div id="yztuccysuo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yztuccysuo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zeciisdoul thead, #zeciisdoul tbody, #zeciisdoul tfoot, #zeciisdoul tr, #zeciisdoul td, #zeciisdoul th {
+#yztuccysuo thead, #yztuccysuo tbody, #yztuccysuo tfoot, #yztuccysuo tr, #yztuccysuo td, #yztuccysuo th {
   border-style: none;
 }
 
-#zeciisdoul p {
+#yztuccysuo p {
   margin: 0;
   padding: 0;
 }
 
-#zeciisdoul .gt_table {
+#yztuccysuo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -241,12 +191,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_caption {
+#yztuccysuo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zeciisdoul .gt_title {
+#yztuccysuo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -258,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#zeciisdoul .gt_subtitle {
+#yztuccysuo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -270,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#zeciisdoul .gt_heading {
+#yztuccysuo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -282,13 +232,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_bottom_border {
+#yztuccysuo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_col_headings {
+#yztuccysuo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -303,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_col_heading {
+#yztuccysuo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -323,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#zeciisdoul .gt_column_spanner_outer {
+#yztuccysuo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -335,15 +285,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#zeciisdoul .gt_column_spanner_outer:first-child {
+#yztuccysuo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zeciisdoul .gt_column_spanner_outer:last-child {
+#yztuccysuo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zeciisdoul .gt_column_spanner {
+#yztuccysuo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -355,11 +305,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#zeciisdoul .gt_spanner_row {
+#yztuccysuo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zeciisdoul .gt_group_heading {
+#yztuccysuo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -385,7 +335,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#zeciisdoul .gt_empty_group_heading {
+#yztuccysuo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -400,15 +350,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#zeciisdoul .gt_from_md > :first-child {
+#yztuccysuo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zeciisdoul .gt_from_md > :last-child {
+#yztuccysuo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zeciisdoul .gt_row {
+#yztuccysuo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -427,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#zeciisdoul .gt_stub {
+#yztuccysuo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -440,7 +390,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zeciisdoul .gt_stub_row_group {
+#yztuccysuo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -454,15 +404,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#zeciisdoul .gt_row_group_first td {
+#yztuccysuo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zeciisdoul .gt_row_group_first th {
+#yztuccysuo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zeciisdoul .gt_summary_row {
+#yztuccysuo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -472,16 +422,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zeciisdoul .gt_first_summary_row {
+#yztuccysuo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_first_summary_row.thick {
+#yztuccysuo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zeciisdoul .gt_last_summary_row {
+#yztuccysuo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -491,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_grand_summary_row {
+#yztuccysuo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -501,7 +451,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zeciisdoul .gt_first_grand_summary_row {
+#yztuccysuo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -511,7 +461,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_last_grand_summary_row_top {
+#yztuccysuo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -521,11 +471,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_striped {
+#yztuccysuo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zeciisdoul .gt_table_body {
+#yztuccysuo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -534,7 +484,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_footnotes {
+#yztuccysuo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -548,7 +498,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_footnote {
+#yztuccysuo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -557,7 +507,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zeciisdoul .gt_sourcenotes {
+#yztuccysuo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -571,7 +521,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#zeciisdoul .gt_sourcenote {
+#yztuccysuo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -579,76 +529,75 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#zeciisdoul .gt_left {
+#yztuccysuo .gt_left {
   text-align: left;
 }
 
-#zeciisdoul .gt_center {
+#yztuccysuo .gt_center {
   text-align: center;
 }
 
-#zeciisdoul .gt_right {
+#yztuccysuo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zeciisdoul .gt_font_normal {
+#yztuccysuo .gt_font_normal {
   font-weight: normal;
 }
 
-#zeciisdoul .gt_font_bold {
+#yztuccysuo .gt_font_bold {
   font-weight: bold;
 }
 
-#zeciisdoul .gt_font_italic {
+#yztuccysuo .gt_font_italic {
   font-style: italic;
 }
 
-#zeciisdoul .gt_super {
+#yztuccysuo .gt_super {
   font-size: 65%;
 }
 
-#zeciisdoul .gt_footnote_marks {
+#yztuccysuo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zeciisdoul .gt_asterisk {
+#yztuccysuo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zeciisdoul .gt_indent_1 {
+#yztuccysuo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zeciisdoul .gt_indent_2 {
+#yztuccysuo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zeciisdoul .gt_indent_3 {
+#yztuccysuo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zeciisdoul .gt_indent_4 {
+#yztuccysuo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zeciisdoul .gt_indent_5 {
+#yztuccysuo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zeciisdoul .katex-display {
+#yztuccysuo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zeciisdoul div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yztuccysuo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
-
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <colgroup>
 <col style="width: 2%">
@@ -658,326 +607,262 @@ ul.task-list li input[type="checkbox"] {
 <col style="width: 15%">
 <col style="width: 12%">
 </colgroup>
-<thead>
-<tr class="gt_col_headings header">
+<thead><tr class="gt_col_headings header">
 <th id="week" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>WEEK</strong></th>
 <th id="date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><strong>DATE</strong></th>
 <th id="prepare" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>PREPARE</strong></th>
 <th id="topic" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>TOPIC</strong></th>
 <th id="materials" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>MATERIALS</strong></th>
 <th id="due" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>DUE</strong></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">1</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Aug 25</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Welcome!</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Aug 27</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">ARMA</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">2</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Sep 1</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
-<td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">❌ <em>Labor Day - No Lecture</em></td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
+<td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">❌ <em>Labor Day - No Lecture</em>
 </td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Sep 3</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">ARMA</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">3</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Sep 8</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">ARMA</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><a href="https://sta542-f25.github.io/psets/pset-0.html">PSET 0</a> @ 11AM</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">
+<a href="https://sta542-f25.github.io/psets/pset-0.html">PSET 0</a> @ 11AM</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Sep 10</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">ARMA</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">4</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Sep 15</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">ARMA</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Sep 17</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">ARMA</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">5</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Sep 22</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">ARMA</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><a href="https://sta542-f25.github.io/psets/pset-1.html">PSET 1</a> @ 11AM</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">PSET 1 @ 11AM</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Sep 24</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">ARMA</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">6</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Sep 29</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">VAR</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Oct 1</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">VAR</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">7</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Oct 6</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">VAR</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 <td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">PSET 2 @ 11AM</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Oct 8</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
-<td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">📝 <strong>Midterm</strong></td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+<td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">📝 <strong>Midterm</strong>
 </td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">8</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Oct 13</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
-<td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">❌ <em>Fall Break - No Lecture</em></td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
+<td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">❌ <em>Fall Break - No Lecture</em>
 </td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Oct 15</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">DLM</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">9</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Oct 20</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">DLM</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Oct 22</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">DLM</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">10</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Oct 27</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">DLM</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 <td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">PSET 3 @ 11AM</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Oct 29</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">DLM</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">11</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Nov 3</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">HMMs</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Nov 5</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">HMMs</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">12</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Nov 10</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Nonlinear</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 <td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">PSET 4 @ 11AM</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Nov 12</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Nonlinear</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">13</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Nov 17</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Modern</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Nov 19</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
 <td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Modern</td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
-</td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">14</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Mon, Nov 24</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
 <td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Modern</td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 <td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">PSET 5 @ 11AM</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_center gt_striped" headers="week"><br>
-</td>
+<td class="gt_row gt_center gt_striped" headers="week"><br></td>
 <td class="gt_row gt_right gt_striped" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">Wed, Nov 26</td>
 <td class="gt_row gt_left gt_striped" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><em>To be posted</em></td>
-<td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">❌ <em>Thanksgiving - No Lecture</em></td>
-<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br>
+<td class="gt_row gt_left gt_striped" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3">❌ <em>Thanksgiving - No Lecture</em>
 </td>
-<td class="gt_row gt_left gt_striped" headers="due"><br>
-</td>
+<td class="gt_row gt_left gt_striped" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3"><br></td>
+<td class="gt_row gt_left gt_striped" headers="due"><br></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_center" headers="week" style="border-top-width: 2px; border-top-style: solid; border-top-color: black">17</td>
 <td class="gt_row gt_right" headers="date" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">Sun, Dec 14</td>
 <td class="gt_row gt_left" headers="prepare" style="color: #B4B4B4; border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><em>To be posted</em></td>
-<td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">📝 <strong>Final (9AM - 12PM)</strong></td>
-<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
+<td class="gt_row gt_left" headers="topic" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black">📝 <strong>Final (9AM - 12PM)</strong>
 </td>
-<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br>
-</td>
+<td class="gt_row gt_left" headers="materials" style="border-right-width: 1px; border-right-style: solid; border-right-color: #D3D3D3; border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
+<td class="gt_row gt_left" headers="due" style="border-top-width: 2px; border-top-style: solid; border-top-color: black"><br></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </div>
 
 
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1394,21 +1279,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./syllabus/syllabus_policies.html" class="pagination-link" aria-label="Policies">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Policies</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./psets/pset-0.html" class="pagination-link" aria-label="Problem Set 0">
-        <span class="nav-page-text">Problem Set 0</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2025 John Zito</p>
 </div>   
@@ -1420,8 +1292,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

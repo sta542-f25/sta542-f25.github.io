@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>STA 542 Introduction to Time Series Analysis – STA 542 Fall 2025</title>
+<title>mvnormal – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +23,21 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-45d4a9c4202cce139915204cb34c8932.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-6a296005b0efd8d491511f7e9e4b8ed1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -67,9 +67,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="STA 542 Introduction to Time Series Analysis – STA 542 Fall 2025">
-<meta property="og:description" content="Syllabus">
-<meta property="og:image" content="https://sta542-f25.github.io/jz.jpg">
+<meta property="og:title" content="STA 542 Fall 2025">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -82,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">STA 542 Introduction to Time Series Analysis</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -96,8 +94,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -107,10 +105,16 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../syllabus/syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Syllabus</span></a>
+ <span class="menu-text">Problem Sets</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -118,235 +122,36 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_team.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Teaching team</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_materials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Materials</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_assignments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignments and grading</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_policies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./syllabus/syllabus_resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">University resources</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Schedule</span></a>
+  <a href="../../../psets/pset-0.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Problem Set 0</span></a>
   </div>
 </li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Lecture notes</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">R Explainers</span></span>
   </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#teaching-team" id="toc-teaching-team" class="nav-link" data-scroll-target="#teaching-team">Teaching team</a></li>
-  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
-  <li><a href="#assignments-and-grading" id="toc-assignments-and-grading" class="nav-link" data-scroll-target="#assignments-and-grading">Assignments and grading</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">STA 542 Introduction to Time Series Analysis</h1>
-<p class="subtitle lead">Syllabus</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
 
-
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p><strong>Class meeting</strong>: MoWe 11:45 AM - 1:00 PM in Old Chem 201;</p>
-<p><strong>Descriptions</strong>: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;</p>
-<p><strong>Prerequisite</strong>: STA 521; <strong>Corequisite</strong>: STA 532.</p>
-</section>
-<section id="teaching-team" class="level2">
-<h2 class="anchored" data-anchor-id="teaching-team">Teaching team</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 20%">
-<col style="width: 19%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Mug</th>
-<th>Name</th>
-<th>Role</th>
-<th>Office Hours</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>TA</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><img src="jz.jpg" class="circ img-fluid"></td>
-<td>Zito, John</td>
-<td>Instructor</td>
-<td>Tue 2:00 PM - 4:00 PM<br>
-<em>or by appointment</em><br>
-Old Chem 207</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="textbooks" class="level2">
-<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
-<p>The course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:</p>
-<ul>
-<li><code>[SS]</code> <em>Time Series Analysis and Its Applications, 5e</em> by Robert Shumway and David Stoffer (<a href="https://doi.org/10.1007/978-3-031-70584-7">free pdf</a>);</li>
-<li><code>[Skä]</code> <em>Bayesian Filtering and Smoothing, 1e</em> by Simo Särkkä (<a href="https://users.aalto.fi/~ssarkka/pub/cup_book_online_20131111.pdf">free pdf</a>);</li>
-<li><code>[WH]</code> <em>Bayesian Forecasting and Dynamic Models, 2e</em> by Mike West and Jeff Harrison (<a href="https://doi.org/10.1007/b98971">free pdf</a>);</li>
-<li><code>[PPC]</code> <em>Dynamic Linear Models with <code>R</code></em> by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli (<a href="https://doi.org/10.1007/b135794">free pdf</a>);</li>
-<li><code>[HA]</code> <em>Forecasting: Principles and Practice, 3e</em> by Rob Hyndman and George Athanasopoulos (<a href="https://otexts.com/fpp3/">online edition</a>);</li>
-<li><code>[PFW]</code> <em>Time Series: Modeling, Computation, and Inference, 2e</em> by Raquel Prado, Marco Ferreira, and Mike West;</li>
-<li><code>[Ham]</code> <em>Time Series Analysis</em> by James Hamilton;</li>
-<li><code>[DK]</code> <em>Time Series Analysis by State Space Methods, 2e</em> by James Durbin and Siem Jan Koopman.</li>
-</ul>
-<p>I will list readings in the <strong>PREPARE</strong> column of the <a href="https://sta542-f25.github.io/">course schedule</a>.</p>
-</section>
-<section id="assignments-and-grading" class="level2">
-<h2 class="anchored" data-anchor-id="assignments-and-grading">Assignments and grading</h2>
-<p>Your final course grade will be calculated as follows:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Category</th>
-<th>Percentage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Problem Sets</td>
-<td>??%</td>
-</tr>
-<tr class="even">
-<td>Midterm Exam</td>
-<td>??%</td>
-</tr>
-<tr class="odd">
-<td>Final exam</td>
-<td>??%</td>
-</tr>
-</tbody>
-</table>
-<p>Your final letter grade will be determined based on the usual thresholds, which will never move upward but may move downward in your favor:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Letter Grade</th>
-<th>Final Course Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A+</td>
-<td>&gt;= 97</td>
-</tr>
-<tr class="even">
-<td>A</td>
-<td>93 - 96.99</td>
-</tr>
-<tr class="odd">
-<td>A-</td>
-<td>90 - 92.99</td>
-</tr>
-<tr class="even">
-<td>B+</td>
-<td>87 - 89.99</td>
-</tr>
-<tr class="odd">
-<td>B</td>
-<td>83 - 86.99</td>
-</tr>
-<tr class="even">
-<td>B-</td>
-<td>80 - 82.99</td>
-</tr>
-<tr class="odd">
-<td>C+</td>
-<td>77 - 79.99</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>73 - 76.99</td>
-</tr>
-<tr class="odd">
-<td>C-</td>
-<td>70 - 72.99</td>
-</tr>
-<tr class="even">
-<td>D+</td>
-<td>67 - 69.99</td>
-</tr>
-<tr class="odd">
-<td>D</td>
-<td>63 - 66.99</td>
-</tr>
-<tr class="even">
-<td>D-</td>
-<td>60 - 62.99</td>
-</tr>
-<tr class="odd">
-<td>F</td>
-<td>&lt; 60</td>
-</tr>
-</tbody>
-</table>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
