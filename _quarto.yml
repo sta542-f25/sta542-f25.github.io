@@ -56,9 +56,9 @@ website:
         text: Syllabus
       - section: "Problem Sets"
         contents:
-          - href: psets/pset-0.qmd
+          - href: problems/pset-0.qmd
             text: Problem Set 0
-          #- href: psets/pset-1.qmd
+          #- href: problems/pset-1.qmd
           #  text: Probem Set 1
       - section: "Lecture notes"
       - section: "R Explainers"
