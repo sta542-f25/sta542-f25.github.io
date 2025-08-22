@@ -1,0 +1,38 @@
+Here is a cdf indexed by a parameter $\theta>0$:
+
+$$
+F(x;\,\theta)
+=
+1 - \frac{1}{(1+x)^\theta},\quad x\geq 0.
+$$
+
+a. Describe an algorithm that will simulate (pseudo)random numbers from this distribution;
+b. Let $x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}F(x;\,\theta)$ and derive the maximum likelihood estimator $\hat{\theta}_n^{(\text{MLE})}$ for the parameter $\theta$;
+c. Derive the *exact* sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$;
+d. Implement the **parametric bootstrap** to simulate the sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.
+
+::: {.callout-tip collapse="true"}
+## Hint
+
+Here is a schematic of how the parametric bootstrap works. We start with some ground truth parameter value $\theta_0>0$, and then implement this:
+
+$$
+\begin{matrix}
+\text{0. True distribution} &&& F_{\theta_0} && \\
+&&& \downarrow && \\
+\text{1. Original data} &&& x_{1:n} && \\
+&&& \downarrow && \\
+\text{2. Estimate} &&& \hat{\theta}_n && \\
+&&& \downarrow && \\
+\text{3. Plug-in} &&& F_{\hat{\theta}_n} && \\
+&\swarrow &\swarrow& \cdots &\searrow&\searrow \\
+\text{4. Synthetic data}&x_{1:m}^{(1)} &x_{1:m}^{(2)}& \cdots &x_{1:m}^{(k-1)}&x_{1:m}^{(k)} \\
+&\downarrow &\downarrow& \cdots &\downarrow&\downarrow \\
+\text{5. Bootstrap estimates}&\hat{\theta}_m^{(1)} &\hat{\theta}_m^{(2)}& \cdots &\hat{\theta}_m^{(k-1)}&\hat{\theta}_m^{(k)} \\
+\end{matrix}
+$$
+
+If you implemented this correctly, and if the original sample size $n$ is "large enough," then a histogram of the $k$ estimates $\hat{\theta}_m^{(1)}$, $\hat{\theta}_m^{(2)}$, ..., $\hat{\theta}_m^{(k)}$ ought to resemble the exact density you derived in part c. The reason this is the *parametric* bootstrap is because we are simulating the synthetic datasets from the "plug-in" member of our chosen parametric family $F_{\hat{\theta}_n}$. If instead we simulated from the empirical distribution $\hat{F}_n(x)=\sum_{i=1}^nI(X_i\leq x)/n$, then that would just be the ordinary, nonparametric bootstrap. 
+
+Don't you just love statistics?!
+:::

@@ -5,19 +5,28 @@ editor:
   mode: source
 ---
 
-linear combos of independent normals are normal 
+## Problem 1
 
-turn this into a matrix equation 
+{{< include bank/review/linear-combos.qmd >}}
 
-the beta gamma conjugacy stuff
+## Problem 2
 
-parametric bootstrap
+{{< include bank/review/matrix-eq.qmd >}}
+
+## Problem 3
+
+{{< include bank/review/mvnormal.qmd >}}
+
+## Problem 4
+
+{{< include bank/review/mle.qmd >}}
+
+## Problem 5
+
+{{< include bank/review/bayes.qmd >}}
+
+## Problem 6
+
+{{< include bank/review/online-least-squares.qmd >}}
 
 
-Some linear algebra trick we'll need. 
-
-Multivariate normal. 
-
-Conjugate Bayes. 
-
-Linear Model Prediction intervals

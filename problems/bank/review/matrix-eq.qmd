@@ -1,0 +1,17 @@
+Consider this recurrence relation, which is initialized from $x_{-1},\,x_0,\,a_0\in\mathbb{R}$:
+
+$$
+x_t
+=
+\phi_1 x_{t-1}
++
+\phi_2
+x_{t-2}
++
+\theta_0a_t
++
+\theta_1
+a_{t-1}.
+$$
+
+$\mathbf{a}=$

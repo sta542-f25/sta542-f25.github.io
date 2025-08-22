@@ -1,0 +1,20 @@
+Recall the parametric family from the previous part:
+
+$$
+F(x;\,\theta)
+=
+1 - \frac{1}{(1+x)^\theta},\quad x\geq 0.
+$$
+
+Consider the Bayesian model
+
+$$
+\begin{aligned}
+\theta &\sim \text{Gamma}(a_0,\,b_0) \\
+x_i\,|\, \theta &\overset{\text{iid}}{\sim }F(x;\,\theta).
+\end{aligned}
+$$
+
+a. Derive the posterior distribution $p(\theta\,|\,x_{1:n})$;
+b. Show that the posterior mean $E(\theta\,|\,x_{1:n})$ can be written as a convex combination of the prior mean and the MLE;
+c. Derive the posterior predictive distribution $p(x_{n+1}\,|\,x_{1:n})$.

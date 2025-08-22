@@ -1,5 +1,5 @@
-Use whatever method you prefer to prove that linear combinations of independent normals are normal. That is, if $X_i\sim\text{N}(\mu_i,\,\sigma^2_i)$ are independent and $a_i\in\mathbb{R}$ are constant, then prove that
+Use whatever method you prefer to prove that linear combinations of independent normals are normal. That is, if $x_i\sim\text{N}(\mu_i,\,\sigma^2_i)$ are independent and $a_i\in\mathbb{R}$ are constant, then prove that
 
 $$
-\sum\limits_{i=1}^na_iX_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
+\sum\limits_{i=1}^na_ix_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
 $$
