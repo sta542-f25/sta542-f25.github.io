@@ -7,9 +7,6 @@ website:
   description: "Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025."
   site-url: "https://sta542-f25.github.io/"
 
-  #repo-url: https://github.com/sta240-s25/sta240-s25.github.io/
-  #repo-actions: [edit, issue]
-
   open-graph: true
 
 #  draft-mode: unlinked
