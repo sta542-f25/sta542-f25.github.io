@@ -1,4 +1,4 @@
-Slicing-and-dicing the **multivariate normal distribution** is a very important skill in time series analysis, so let's make sure we can do that. A random vector $\mathbf{x}=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ has the multivariate normal distribution with mean vector $E(\mathbf{x})=\boldsymbol{\mu}=\begin{bmatrix}\mu_1&\mu_2&\cdots&\mu_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ and covarianfe matirx $\text{cov}(\mathbf{x})=\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}$ if its density is
+Slicing-and-dicing the **multivariate normal distribution** is a very important skill in time series analysis, so let's make sure we can do that. A random vector $\mathbf{x}=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ has the multivariate normal distribution with mean vector $E(\mathbf{x})=\boldsymbol{\mu}=\begin{bmatrix}\mu_1&\mu_2&\cdots&\mu_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ and covariance matrix $\text{cov}(\mathbf{x})=\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}$ if its density is
 
 $$
 f(\mathbf{x})
@@ -22,7 +22,7 @@ f(\mathbf{x})
 \mathbb{R}^n.
 $$
 
-We denote this $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$.
+We denote this $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$. If $n=1$, then the distribution collapses to the univariate normal. WHAT ELSE
 
 a. Let $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$, and fix constants $\mathbf{A}\in\mathbb{R}^{m\times n}$ and $\mathbf{c}\in\mathbb{R}^m$. Show that 
 

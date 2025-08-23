@@ -5,6 +5,14 @@ editor:
   mode: source
 ---
 
+- MvNormal 1
+- MvNormal 2
+- Confidence versus prediction
+- MLE
+- Bayes
+- ?
+- Recursive OLS
+
 ## Problem X
 
 {{< include bank/review/mvnormal.qmd >}}
