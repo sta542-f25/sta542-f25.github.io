@@ -1,29 +1,217 @@
 ---
-title: "ar-1"
+title: "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask"
 format: html
 ---
+
+> [A model is a probability distribution over a sequence.](https://youtu.be/nNyo7zpu-Ec?si=3Qg5anbJxVdkTNlP&t=275).
+
+In the spirit of Larry Wasserman's [*All of Statistics*](https://doi.org/10.1007/978-0-387-21736-9) and [*All of Nonparametric Statistics*](https://doi.org/10.1007/0-387-30623-4), this note introduces "All of Time Series Analysis" for the simplest time series model: the **autoregression of order 1**, or AR(1) for short. Topics include:
+
+- the distributional structure of the model (joint, marginal, and conditional distributions, mean and covariance);
+- stationarity;
+- classical inference via method of moments and maximum likelihood;
+- Bayesian inference with conjugate priors;
+- probabilistic prediction (point, interval, and density forecasting) from both inferential perspectives;
+- forecast evaluation.
+
+Once you're comfortable with all that, everything else in the course is in some sense just a theme and variations on these main ideas.
+
+::: callout-note
+## A quick word on notation
+Two things you have to get used to:
+
+- We will not use uppercase $Y_t$ versus lowercase $y_t$ to distinguish random variables versus fixed realizations. Everything will just be $y_t$, and context will make clear if something functions as a random variable or a constant;
+- The symbol $p$ will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same sentence. So $p(x)$ is the density of the random variable $x$, and $p(y,\,z)$ is the joint density of the random pair $(y,\,z)$, and $p(\boldsymbol{\beta}\,|\,\sigma^2)$ is the conditional density of...you get the idea.
+:::
+
+## What is a time series model?
+
+## The simplest time series model
+
+In truth, the "simplest" time series model is the one where there is no dependence at all: $y_t\overset{\text{iid}}{\sim}F$. But in that case, why bother with STA 542? Things get interesting when there is dependence, and in particular the kind of dependence where you think the past can help to predict the future. The simplest model that captures this basic idea is the **autoregression of order 1**, or AR(1) for short: 
 
 $$
 \begin{aligned}
 y_t&=\beta_0+\beta_1y_{t-1}+\varepsilon_t,\quad \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)\\
-y_0&\sim\text{N}(\mu_0,\,\gamma_0)
+y_0&\sim\text{N}(\mu_0,\,\gamma_0).
 \end{aligned}
 $$
 
-$y_0$ independent of the errors. I don't like the notation for the initial condition variance.
+This takes the form of a simple linear regression where $y_t$ is the response and its first lagged value $y_{t-1}$ is the predictor, hence the name 
+
+$y_0$ independent of the errors. 
+
+I don't like the notation for the initial condition variance.
+
+## What is the joint distribution?
+
+$y_t\,|\,y_{t-1}\sim\text{N}(\beta_0+\beta_1y_{t-1},\,\sigma^2)$
+
+$$
+p(y_{0:T}) = p(y_0)\prod_{t=1}^Tp(y_t\,|\,y_{t-1})
+$$
+
+to understand the joint distribution
+
+$$
+\begin{aligned}
+y_0
+&=
+y_0
+\\
+y_1
+&=
+\beta_0+\beta_1y_0+\varepsilon_1
+\\
+y_2
+&=
+\beta_0+\beta_1
+\\
+y_3
+&=
+\\
+&\vdots
+\\
+y_t
+&=
+\end{aligned}
+$$
+
+summarized
+
+$$
+\begin{bmatrix}
+y_0\\
+y_1\\
+y_2\\
+y_3\\
+\vdots \\
+y_T
+\end{bmatrix}
+=
+\begin{bmatrix}
+bloop
+\end{bmatrix}
++
+\begin{bmatrix}
+1 & 0 & 0 & 0 & \cdots & 0
+\end{bmatrix}
+\begin{bmatrix}
+y_0\\
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3\\
+\vdots \\
+\varepsilon_T
+\end{bmatrix}
+$$
+
+So $\sim\text{N}_{T+1}()$ and $\mathbf{y}$ is a linear transformation of BLAH, so it is also normal, with mean and covariance. What are these?
+
+## Stationarity
+
+Most interesting time series are not stationary. This comes down to us as an historical artifact because certain kinds of (classical) statistical theory require it as an assumption in order to prove theorems, but it's never true in practice.
+
+weird concept. dependent but not too dependent. necessary for stable prediction and inference, but do we really care? Probably false in practice, but so what. I just want a model that generates good and useful predictions. 
+
+Important historically and theoretically, and it simplifies the model tremendously.
+
+## Classical inference
+
+### Method of moments
+
+### Maximum likelihood estimaton
+
+## Bayesian inference
+
+$$
+\begin{aligned}
+\sigma^2
+&\sim
+\text{IG}(a_0,\,b_0)
+\\
+\boldsymbol{\beta}
+\,|\,
+\sigma^2
+&\sim 
+\text{N}_2(\bar{\boldsymbol{\beta}}_0,\,)
+\\
+y_t\,|\,y_{t-1},\,\boldsymbol{\beta},\,\sigma^2
+&\sim
+\end{aligned}
+$$
+
+So we want this:
+
+$$
+p(\boldsymbol{\beta},\,\sigma^2\,|\,y_{0:T})
+=
+\frac
+{p(y_{1:T}\,|\,\boldsymbol{\beta},\,\sigma^2,\,y_0)p(\boldsymbol{\beta},\,\sigma^2)}
+{p(y_{1:T}\,|\,y_0)}
+$$
+
+For simplicity, we're just going to condition on $y_0$. 
+
+Also, we do not have to assume stationarity to do this.
+
+Our prior is conjugate, so we can compute the exact posterior.
+
+::: callout-tip 
+conjugate updates
+:::
+
+Other priors: normal - IG that isn't conjugate, whatever else is in West's book, the prior that enforces stationarity, either with accept-reject or the Heaps stuff, maybe that West Huerta thing idk.
+
+## Forecasting
+
+### Classical
+
+typically ignores estimation uncertainty from coefficients. 
+
+show a picture comparing
+
+::: callout-tip 
+sieve bootstrap Buhlmann bernoulli
+:::
+
+these draws are a discrete approximation. 
+
+point forecast: sample mean or median
+interval forecast: quantiles, HPD, whatever
+
+
+### Bayes
+
+Probabilistic prediction is automatic, and it's easier (not easy, but easier) to augment your inferences with more sources of uncertainty: missing data, model uncertainty, etc. 
+
+## Forecast evaluation
 
 marginal distributions
+
 joint distributions 
+
 conditional (forecast) distributions
+
 stationarity
+
 dependence structure
+
 method of moments (Yule-Walker)
+
 maximum likelihood (unconditional and conditional)
+
 emphasize sequential recursions 
+
 bayesian inference 
+
 probabilistic prediction 
+
 parametric bootstrap 
+
 point prediction 
+
 interval prediction 
+
 density prediction
 
