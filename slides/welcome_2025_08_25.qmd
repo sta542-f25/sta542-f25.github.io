@@ -1,0 +1,68 @@
+---
+title: "Welcome to STA 542!"
+subtitle: "Introduction to Time Series Analysis"
+format: revealjs
+auto-stretch: false
+---
+
+# What is a time series?
+
+Web traffic
+Server load
+Finance
+Ngrams
+Macro
+Neuro
+Music
+digital personal health (steps)
+motion capture 
+climate
+audio signal shit
+energy demand
+housing
+inventory
+
+## Fan chart demo
+
+
+## Point forecast
+
+## Forecast interval
+
+## Forecast density 
+
+## Then the data finally arrive
+
+So...how'd we do?
+
+## The main themes of the course
+
+We will focus on the following:
+
+::: incremental
+1. If you understand how to manipulate the multivariate normal, much (most?) of time series analysis is immediately accessible;
+1. Inference should be [sequential]{style="color:red;"}. We want recursive estimation techniques to handle data that are *streaming* in real-time;
+1. Predictions should be [probabilistic]{style="color:red;"}. We want point, interval, and density forecasts that incorporate many sources of uncertainty;
+:::
+
+. . .
+
+And there is a secret fourth theme:
+
+::: incremental
+4. A Bayesian approach is an *excellent* way of achieving the goals of sequential inference and probabilistic prediction.
+:::
+
+# Syllabus highlights
+
+## Bookmark the course page! {.large}
+
+::::: {.columns .v-center-container}
+::: {.column width="30%"}
+{{< qrcode https://sta542-f25.github.io/ width=300 height=300 >}}
+:::
+
+::: {.column width="70%"}
+<https://sta542-f25.github.io/>
+:::
+:::::
