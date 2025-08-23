@@ -1,10 +1,14 @@
 ---
-title: "Course overview"
+title: "Syllabus"
 ---
+
+## Course description
 
 **Class meeting**: MoWe 11:45 AM - 1:00 PM in Old Chem 201;
 
-**Description**: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and ~~frequency domain methods~~, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, ~~particularly those coming from the high-frequency and ultra-long biomedical time series~~. The primary audience for this course is graduate students in statistics;
+**What the course catalog says**: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and ~~frequency domain methods~~, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, ~~particularly those coming from the high-frequency and ultra-long biomedical time series~~. The primary audience for this course is graduate students in statistics;
+
+**What JZ says**: A time series is a sequence of time-ordered random variables where the future depends on the past in some meaningful way. A time series model is the joint probability distribution of these variables. In this course, we will study many of the main methods for specifying this distribution: autoregressive moving average (ARMA) models, vector autoregressions (VARs), dynamic linear models (DLMs), hidden Markov models (HMMs), etc. Throughout, we will focus on sequential inference (recursive estimation when the data are streaming) and probabilistic prediction (point, interval, and density forecasting). Classical and Bayesian approaches to inference will be discussed, but the latter will be emphasized.
 
 **Prerequisite**: STA 521; **Corequisite**: STA 532.
 
@@ -13,7 +17,7 @@ title: "Course overview"
 +---------------------------+---------------+---------------+------------------------+
 | Mug                       | Name          | Role          | Office Hours           |
 +===========================+===============+===============+========================+
-| ![](images/al.jpg){.circ} | Li, Aihua     | TA            | ???                    |
+| ![](images/al.jpg){.circ} | Li, Aihua     | TA            | TBD                    |
 +---------------------------+---------------+---------------+------------------------+
 | ![](images/jz.jpg){.circ} | Zito, John    | Instructor    | Tue 2:00 PM - 4:00 PM\ |
 |                           |               |               | *or by appointment*\   |
@@ -32,19 +36,14 @@ The course does not have a designated textbook, and you are not required to purc
 -   `[HA]` *Forecasting: Principles and Practice, 3e* by Rob Hyndman and George Athanasopoulos ([online edition](https://otexts.com/fpp3/));
 -   `[PFW]` *Time Series: Modeling, Computation, and Inference, 2e* by Raquel Prado, Marco Ferreira, and Mike West;
 -   `[Ham]` *Time Series Analysis* by James Hamilton;
--   `[DK]` *Time Series Analysis by State Space Methods, 2e* by James Durbin and Siem Jan Koopman.
+-   `[DK]` *Time Series Analysis by State Space Methods, 2e* by James Durbin and Siem Jan Koopman;
+-   `[BD]` *Time Series: Theory and Methods* by Peter Brockwell and Richard Davis.
 
 I will list readings in the **PREPARE** column of the [course schedule](https://sta542-f25.github.io/).
 
 ## Assignments and grading
 
-The course consists of the following components:
-
-- There will be 5 - 6 problems sets due roughly every two weeks;
-- There will be two in-class, pencil-and-paper exams. The only resource you are allowed is both sides of one 8.5" x 11" sheet of notes prepared by you;
-- The course will conclude with a final project where each student writes a report that applies or extends ideas from the course. Full details about the project will be announced later in the semester.
-
-These components will be weighted like this:
+There are four course components, weighted as follows:
 
 ::: {.center-table}
 | Category     | Percentage |
@@ -75,28 +74,69 @@ Your final letter grade will be determined based on the usual thresholds, which 
 | F            | \< 60              |
 :::
 
+Here are some details about the course assignments:
+
+- **Problem sets**: there will be six in total, with one due roughly every two weeks;
+- **Exams**: there will be two written, in-class exams. The only resource you are allowed is both sides of one 8.5" x 11" sheet of notes prepared by you. The exam dates are...
+
+    - Wednesday October 8 11:45 AM - 12:00 PM in Old Chem 201;
+    - Monday November 24 11:45 AM - 12:00 PM in Old Chem 201;
+    
+- **Final project**: to end the semester, each student will write a final report that applies or extends ideas from the course. This is due at 9AM on Wednesday December 10. Full details about the project will be announced after the first exam.
 
 ## Communication
+
+If you wish to ask content-related questions in writing, please do not do so via e-mail. Instead, please use the course discussion forum [Ed Discussion](https://edstem.org/us/courses/83787/discussion). That way all members of the teaching team can see your question, and all students can benefit from the ensuing discussion. You are also encouraged to answer one another’s questions.
+
+If you have questions about personal matters that may not be appropriate for the public course forum (e.g. illness, accommodations, etc), then please e-mail the instructor directly (john.zito\@duke.edu).
+
+::: callout-note
+You can ask questions anonymously on Ed. The teaching team will still know your identity, but your peers will not.
+:::
 
 
 ## Late work and extensions
 
 No late work will be accepted unless you request an extension in advance by e-mailing the instructor directly (john.zito\@duke.edu). All reasonable requests will be entertained, but extensions will not be long.
 
-## Regrade requests
-
-
-
 ## Attendance
 
-
+Live your life. Attendance is not strictly required for any of the class meetings. The responsibility lies with us to make class meetings sufficiently engaging and informative that you choose to attend.
 
 ## Collaboration
 
+You are *enthusiastically encouraged* to work together and help one another on labs and problem sets. I would much rather you consult your peers than some daft language model. What I ask is that you *acknowledge* your collaborators. So, at the end of each problem in your write-up, leave a comment like "Ursula, Ignatius and I worked together on this problem," or "Ethel explained to me how to do part b." You are not being judged based on your acknowledgements, and there is no penalty for getting "too much" help from others. If you omit acknowledgements, I will assume you did your work solo. If your classmates tell a different story, I will have questions. But otherwise, so long as you are thorough and honest, there will be no problems.
 
+Having said all of that, you should not be crassly handing your solutions to others for them to brainlessly copy. This is plagiarism, and all involved will earn a zero on the assignment and be referred to the conduct office, both sharers and recipients alike. The write-up you submit must be your own work.
 
 ## Use of outside resources, including AI
 
+There are at least two reasons you might seek outside resources:
 
+-   ✅ **Extra practice or alternative instruction**: Go crazy. Knock yourself out. Have a ball. The internet includes many good (and horrible) resources for learning this material, so if you find something that really resonates with you, have at it;
+-   ❌ **Doing the problems for you**: If you find a solution online, or ask a language model to generate one, and you copy it down and submit it as your own work, that is plagiarism. If we detect it, you will earn a zero for that part of your write-up.
+
+"[Using ChatGPT to complete assignments is like bringing a forklift into the weight room; you will never improve your cognitive fitness that way](https://www.newyorker.com/culture/the-weekend-essay/why-ai-isnt-going-to-make-art)." Furthermore, 50% of your final course grade is determined by your performance on old school, no-tech exams. As such, if you outsource all of your *thinking* to an AI, you will probably fail both exams. To avoid this, I suggest you refrain from using language models to do the problems for you.
+
+## Regrade requests
+
+If you receive a graded assignment back, and you believe that some part of it was graded incorrectly, you may dispute the grade by submitting a [regrade request](https://guides.gradescope.com/hc/en-us/articles/21854736042253-Submitting-a-Regrade-Request) in Gradescope. JZ is the sole reviewer of these. Note the following:
+
+-   You have one week after you receive a grade to submit a regrade request;
+-   You should submit separate regrade requests for each question you wish to dispute, not a single catch-all request;
+-   Requests will be considered if there was an error in the grade calculation or if a correct answer was mistakenly marked as incorrect;
+-   Requests to dispute the number of points deducted for an incorrect response will not be considered.
+
+::: callout-warning
+A regrade request can result in your grade going up, staying the same, or going down if we determine that, in fact, the original grader was too lenient.
+:::
 
 ## Duke Community Standard
+
+Duke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, respect, and accountability. Members of this community commit to reflect upon and uphold these principles in all academic and non-academic endeavors, and to protect and promote a culture of integrity.
+
+Duke University has high expectations for students’ scholarship and conduct. In accepting admission, students indicate their willingness to subscribe to and be governed by the rules and regulations of the university, which flow from the [Duke Community Standard (DCS)](https://dukecommunitystandard.students.duke.edu).
+
+Regardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including but not limited to the [academic integrity policy](https://dukecommunitystandard.students.duke.edu/policy/academic-dishonesty/) (e.g., completing one’s own work, following proper citation of sources, adhering to guidance around group work projects, and more). Ignoring these requirements is a violation of the DCS.
+
+Students can direct any questions or concerns regarding academic integrity to the Office of Student Conduct and Community Standards at `conduct@duke.edu` and can access the DCS guide at <https://dukecommunitystandard.students.duke.edu/>.
