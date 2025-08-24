@@ -62,7 +62,7 @@ a. So, imagine we have observed $n-1$ pairs, and we have computed the estimate $
 $$
 \hat{\boldsymbol{\beta}}_n
 =
-h(\hat{\boldsymbol{\beta}}_{n-1},\,\mathbf{x}_n,\,y_n)
+h(\hat{\boldsymbol{\beta}}_{n-1},\,\mathbf{x}_n,\,y_n).
 $$
 
 b. Write a `for` loop in `R` that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used `lm`. Do this for the `mtcars` dataset and the regression `mpg ~ wt`.

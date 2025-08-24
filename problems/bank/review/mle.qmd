@@ -9,12 +9,12 @@ $$
 a. Describe an algorithm that will simulate (pseudo)random numbers from this distribution;
 b. Let $x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}F(x;\,\theta)$ and derive the maximum likelihood estimator $\hat{\theta}_n^{(\text{MLE})}$ for the parameter $\theta$;
 c. Derive the *exact* sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$;
-d. Implement the **parametric bootstrap** to simulate the sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.
+d. Implement the bootstrap to simulate the sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Here is a schematic of how the parametric bootstrap works. We start with some ground truth parameter value $\theta_0>0$, and then implement this:
+Here is a schematic of how the bootstrap works. We start with some ground truth parameter value $\theta_0>0$, and then implement this:
 
 $$
 \begin{matrix}

@@ -15,7 +15,7 @@ editor:
 
 ## Problem X
 
-{{< include bank/review/mvnormal.qmd >}}
+{{< include bank/review/prediction-interval.qmd >}}
 
 ## Problem X
 
