@@ -142,14 +142,18 @@ window.Quarto = {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Lecture notes</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -182,7 +186,7 @@ F(x;\,\theta)
 <li>Describe an algorithm that will simulate (pseudo)random numbers from this distribution;</li>
 <li>Let <span class="math inline">\(x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}F(x;\,\theta)\)</span> and derive the maximum likelihood estimator <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span> for the parameter <span class="math inline">\(\theta\)</span>;</li>
 <li>Derive the <em>exact</em> sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>;</li>
-<li>Implement the <strong>parametric bootstrap</strong> to simulate the sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.</li>
+<li>Implement the bootstrap to simulate the sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -196,7 +200,7 @@ Hint
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Here is a schematic of how the parametric bootstrap works. We start with some ground truth parameter value <span class="math inline">\(\theta_0&gt;0\)</span>, and then implement this:</p>
+<p>Here is a schematic of how the bootstrap works. We start with some ground truth parameter value <span class="math inline">\(\theta_0&gt;0\)</span>, and then implement this:</p>
 <p><span class="math display">\[
 \begin{matrix}
 \text{0. True distribution} &amp;&amp;&amp; F_{\theta_0} &amp;&amp; \\

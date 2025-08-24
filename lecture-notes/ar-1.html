@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ar-1 – STA 542 Fall 2025</title>
+<title>Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,7 +96,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="ar-1 – STA 542 Fall 2025">
+<meta property="og:title" content="Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask – STA 542 Fall 2025">
 <meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">ar-1</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -142,14 +142,18 @@ window.Quarto = {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Lecture notes</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -163,15 +167,36 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-a-time-series-model" id="toc-what-is-a-time-series-model" class="nav-link active" data-scroll-target="#what-is-a-time-series-model">What is a time series model?</a></li>
+  <li><a href="#the-simplest-time-series-model" id="toc-the-simplest-time-series-model" class="nav-link" data-scroll-target="#the-simplest-time-series-model">The simplest time series model</a></li>
+  <li><a href="#what-is-the-joint-distribution" id="toc-what-is-the-joint-distribution" class="nav-link" data-scroll-target="#what-is-the-joint-distribution">What is the joint distribution?</a></li>
+  <li><a href="#stationarity" id="toc-stationarity" class="nav-link" data-scroll-target="#stationarity">Stationarity</a></li>
+  <li><a href="#classical-inference" id="toc-classical-inference" class="nav-link" data-scroll-target="#classical-inference">Classical inference</a>
+  <ul class="collapse">
+  <li><a href="#method-of-moments" id="toc-method-of-moments" class="nav-link" data-scroll-target="#method-of-moments">Method of moments</a></li>
+  <li><a href="#maximum-likelihood-estimaton" id="toc-maximum-likelihood-estimaton" class="nav-link" data-scroll-target="#maximum-likelihood-estimaton">Maximum likelihood estimaton</a></li>
+  </ul></li>
+  <li><a href="#bayesian-inference" id="toc-bayesian-inference" class="nav-link" data-scroll-target="#bayesian-inference">Bayesian inference</a></li>
+  <li><a href="#forecasting" id="toc-forecasting" class="nav-link" data-scroll-target="#forecasting">Forecasting</a>
+  <ul class="collapse">
+  <li><a href="#classical" id="toc-classical" class="nav-link" data-scroll-target="#classical">Classical</a></li>
+  <li><a href="#bayes" id="toc-bayes" class="nav-link" data-scroll-target="#bayes">Bayes</a></li>
+  </ul></li>
+  <li><a href="#forecast-evaluation" id="toc-forecast-evaluation" class="nav-link" data-scroll-target="#forecast-evaluation">Forecast evaluation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ar-1</h1>
+<h1 class="title">Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask</h1>
 </div>
 
 
@@ -188,16 +213,216 @@ window.Quarto = {
 </header>
 
 
+<blockquote class="blockquote">
+<p><a href="https://youtu.be/nNyo7zpu-Ec?si=3Qg5anbJxVdkTNlP&amp;t=275">A model is a probability distribution over a sequence.</a>.</p>
+</blockquote>
+<p>In the spirit of Larry Wasserman’s <a href="https://doi.org/10.1007/978-0-387-21736-9"><em>All of Statistics</em></a> and <a href="https://doi.org/10.1007/0-387-30623-4"><em>All of Nonparametric Statistics</em></a>, this note introduces “All of Time Series Analysis” for the simplest time series model: the <strong>autoregression of order 1</strong>, or AR(1) for short. Topics include:</p>
+<ul>
+<li>the distributional structure of the model (joint, marginal, and conditional distributions, mean and covariance);</li>
+<li>stationarity;</li>
+<li>classical inference via method of moments and maximum likelihood;</li>
+<li>Bayesian inference with conjugate priors;</li>
+<li>probabilistic prediction (point, interval, and density forecasting) from both inferential perspectives;</li>
+<li>forecast evaluation.</li>
+</ul>
+<p>Once you’re comfortable with all that, everything else in the course is in some sense just a theme and variations on these main ideas.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A quick word on notation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two things you have to get used to:</p>
+<ul>
+<li>We will not use uppercase <span class="math inline">\(Y_t\)</span> versus lowercase <span class="math inline">\(y_t\)</span> to distinguish random variables versus fixed realizations. Everything will just be <span class="math inline">\(y_t\)</span>, and context will make clear if something functions as a random variable or a constant;</li>
+<li>The symbol <span class="math inline">\(p\)</span> will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same sentence. So <span class="math inline">\(p(x)\)</span> is the density of the random variable <span class="math inline">\(x\)</span>, and <span class="math inline">\(p(y,\,z)\)</span> is the joint density of the random pair <span class="math inline">\((y,\,z)\)</span>, and <span class="math inline">\(p(\boldsymbol{\beta}\,|\,\sigma^2)\)</span> is the conditional density of…you get the idea.</li>
+</ul>
+</div>
+</div>
+<section id="what-is-a-time-series-model" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-time-series-model">What is a time series model?</h2>
+</section>
+<section id="the-simplest-time-series-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-simplest-time-series-model">The simplest time series model</h2>
+<p>In truth, the “simplest” time series model is the one where there is no dependence at all: <span class="math inline">\(y_t\overset{\text{iid}}{\sim}F\)</span>. But in that case, why bother with STA 542? Things get interesting when there is dependence, and in particular the kind of dependence where you think the past can help to predict the future. The simplest model that captures this basic idea is the <strong>autoregression of order 1</strong>, or AR(1) for short:</p>
 <p><span class="math display">\[
 \begin{aligned}
 y_t&amp;=\beta_0+\beta_1y_{t-1}+\varepsilon_t,\quad \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)\\
-y_0&amp;\sim\text{N}(\mu_0,\,\gamma_0)
+y_0&amp;\sim\text{N}(\mu_0,\,\gamma_0).
 \end{aligned}
 \]</span></p>
-<p><span class="math inline">\(y_0\)</span> independent of the errors. I don’t like the notation for the initial condition variance.</p>
-<p>marginal distributions joint distributions conditional (forecast) distributions stationarity dependence structure method of moments (Yule-Walker) maximum likelihood (unconditional and conditional) emphasize sequential recursions bayesian inference probabilistic prediction parametric bootstrap point prediction interval prediction density prediction</p>
+<p>This takes the form of a simple linear regression where <span class="math inline">\(y_t\)</span> is the response and its first lagged value <span class="math inline">\(y_{t-1}\)</span> is the predictor, hence the name</p>
+<p><span class="math inline">\(y_0\)</span> independent of the errors.</p>
+<p>I don’t like the notation for the initial condition variance.</p>
+</section>
+<section id="what-is-the-joint-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-joint-distribution">What is the joint distribution?</h2>
+<p><span class="math inline">\(y_t\,|\,y_{t-1}\sim\text{N}(\beta_0+\beta_1y_{t-1},\,\sigma^2)\)</span></p>
+<p><span class="math display">\[
+p(y_{0:T}) = p(y_0)\prod_{t=1}^Tp(y_t\,|\,y_{t-1})
+\]</span></p>
+<p>to understand the joint distribution</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_0
+&amp;=
+y_0
+\\
+y_1
+&amp;=
+\beta_0+\beta_1y_0+\varepsilon_1
+\\
+y_2
+&amp;=
+\beta_0+\beta_1
+\\
+y_3
+&amp;=
+\\
+&amp;\vdots
+\\
+y_t
+&amp;=
+\end{aligned}
+\]</span></p>
+<p>summarized</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+y_0\\
+y_1\\
+y_2\\
+y_3\\
+\vdots \\
+y_T
+\end{bmatrix}
+=
+\begin{bmatrix}
+bloop
+\end{bmatrix}
++
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+y_0\\
+\varepsilon_1\\
+\varepsilon_2\\
+\varepsilon_3\\
+\vdots \\
+\varepsilon_T
+\end{bmatrix}
+\]</span></p>
+<p>So <span class="math inline">\(\sim\text{N}_{T+1}()\)</span> and <span class="math inline">\(\mathbf{y}\)</span> is a linear transformation of BLAH, so it is also normal, with mean and covariance. What are these?</p>
+</section>
+<section id="stationarity" class="level2">
+<h2 class="anchored" data-anchor-id="stationarity">Stationarity</h2>
+<p>Most interesting time series are not stationary. This comes down to us as an historical artifact because certain kinds of (classical) statistical theory require it as an assumption in order to prove theorems, but it’s never true in practice.</p>
+<p>weird concept. dependent but not too dependent. necessary for stable prediction and inference, but do we really care? Probably false in practice, but so what. I just want a model that generates good and useful predictions.</p>
+<p>Important historically and theoretically, and it simplifies the model tremendously.</p>
+</section>
+<section id="classical-inference" class="level2">
+<h2 class="anchored" data-anchor-id="classical-inference">Classical inference</h2>
+<section id="method-of-moments" class="level3">
+<h3 class="anchored" data-anchor-id="method-of-moments">Method of moments</h3>
+</section>
+<section id="maximum-likelihood-estimaton" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-likelihood-estimaton">Maximum likelihood estimaton</h3>
+</section>
+</section>
+<section id="bayesian-inference" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-inference">Bayesian inference</h2>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2
+&amp;\sim
+\text{IG}(a_0,\,b_0)
+\\
+\boldsymbol{\beta}
+\,|\,
+\sigma^2
+&amp;\sim
+\text{N}_2(\bar{\boldsymbol{\beta}}_0,\,)
+\\
+y_t\,|\,y_{t-1},\,\boldsymbol{\beta},\,\sigma^2
+&amp;\sim
+\end{aligned}
+\]</span></p>
+<p>So we want this:</p>
+<p><span class="math display">\[
+p(\boldsymbol{\beta},\,\sigma^2\,|\,y_{0:T})
+=
+\frac
+{p(y_{1:T}\,|\,\boldsymbol{\beta},\,\sigma^2,\,y_0)p(\boldsymbol{\beta},\,\sigma^2)}
+{p(y_{1:T}\,|\,y_0)}
+\]</span></p>
+<p>For simplicity, we’re just going to condition on <span class="math inline">\(y_0\)</span>.</p>
+<p>Also, we do not have to assume stationarity to do this.</p>
+<p>Our prior is conjugate, so we can compute the exact posterior.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>conjugate updates</p>
+</div>
+</div>
+<p>Other priors: normal - IG that isn’t conjugate, whatever else is in West’s book, the prior that enforces stationarity, either with accept-reject or the Heaps stuff, maybe that West Huerta thing idk.</p>
+</section>
+<section id="forecasting" class="level2">
+<h2 class="anchored" data-anchor-id="forecasting">Forecasting</h2>
+<section id="classical" class="level3">
+<h3 class="anchored" data-anchor-id="classical">Classical</h3>
+<p>typically ignores estimation uncertainty from coefficients.</p>
+<p>show a picture comparing</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>sieve bootstrap Buhlmann bernoulli</p>
+</div>
+</div>
+<p>these draws are a discrete approximation.</p>
+<p>point forecast: sample mean or median interval forecast: quantiles, HPD, whatever</p>
+</section>
+<section id="bayes" class="level3">
+<h3 class="anchored" data-anchor-id="bayes">Bayes</h3>
+<p>Probabilistic prediction is automatic, and it’s easier (not easy, but easier) to augment your inferences with more sources of uncertainty: missing data, model uncertainty, etc.</p>
+</section>
+</section>
+<section id="forecast-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="forecast-evaluation">Forecast evaluation</h2>
+<p>marginal distributions</p>
+<p>joint distributions</p>
+<p>conditional (forecast) distributions</p>
+<p>stationarity</p>
+<p>dependence structure</p>
+<p>method of moments (Yule-Walker)</p>
+<p>maximum likelihood (unconditional and conditional)</p>
+<p>emphasize sequential recursions</p>
+<p>bayesian inference</p>
+<p>probabilistic prediction</p>
+<p>parametric bootstrap</p>
+<p>point prediction</p>
+<p>interval prediction</p>
+<p>density prediction</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

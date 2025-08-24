@@ -2,9 +2,19 @@
   {
     "objectID": "syllabus/syllabus.html",
     "href": "syllabus/syllabus.html",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "",
-    "text": "Class meeting: MoWe 11:45 AM - 1:00 PM in Old Chem 201;\nDescription: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nPrerequisite: STA 521; Corequisite: STA 532.",
+    "text": "Class meeting: MoWe 11:45 AM - 1:00 PM in Old Chem 201;\nWhat the course catalog says: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nWhat JZ says: A time series is a sequence of time-ordered random variables where the future depends on the past in some meaningful way. A time series model is the joint probability distribution of these variables. In this course, we will study many of the main methods for specifying this distribution: autoregressive moving average (ARMA) models, vector autoregressions (VARs), dynamic linear models (DLMs), hidden Markov models (HMMs), etc. Throughout, we will focus on sequential inference (recursive estimation when the data are streaming) and probabilistic prediction (point, interval, and density forecasting). Classical and Bayesian approaches to inference will be discussed, but the latter will be emphasized.\nPrerequisite: STA 521; Corequisite: STA 532.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus/syllabus.html#course-description",
+    "href": "syllabus/syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Class meeting: MoWe 11:45 AM - 1:00 PM in Old Chem 201;\nWhat the course catalog says: This is an introductory course in time series analysis with a focus on applications. Two basic approaches, including time domain and frequency domain methods, will be covered. A modern time-frequency analysis approach to study nonstationary time series analysis will also be introduced. The main goal is to guide the students to appreciate the main issues involved in time series analysis and solve practical challenges, particularly those coming from the high-frequency and ultra-long biomedical time series. The primary audience for this course is graduate students in statistics;\nWhat JZ says: A time series is a sequence of time-ordered random variables where the future depends on the past in some meaningful way. A time series model is the joint probability distribution of these variables. In this course, we will study many of the main methods for specifying this distribution: autoregressive moving average (ARMA) models, vector autoregressions (VARs), dynamic linear models (DLMs), hidden Markov models (HMMs), etc. Throughout, we will focus on sequential inference (recursive estimation when the data are streaming) and probabilistic prediction (point, interval, and density forecasting). Classical and Bayesian approaches to inference will be discussed, but the latter will be emphasized.\nPrerequisite: STA 521; Corequisite: STA 532.",
     "crumbs": [
       "Syllabus"
     ]
@@ -12,9 +22,9 @@
   {
     "objectID": "syllabus/syllabus.html#teaching-team",
     "href": "syllabus/syllabus.html#teaching-team",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Teaching team",
-    "text": "Teaching team\n\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\n\nLi, Aihua\nTA\n???\n\n\n\nZito, John\nInstructor\nTue 2:00 PM - 4:00 PM\nor by appointment\nOld Chem 207",
+    "text": "Teaching team\n\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\n\nLi, Aihua\nTA\nTBD\n\n\n\nZito, John\nInstructor\nTue 2:00 PM - 4:00 PM\nor by appointment\nOld Chem 207",
     "crumbs": [
       "Syllabus"
     ]
@@ -22,9 +32,9 @@
   {
     "objectID": "syllabus/syllabus.html#textbooks",
     "href": "syllabus/syllabus.html#textbooks",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Textbooks",
-    "text": "Textbooks\nThe course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:\n\n[SS] Time Series Analysis and Its Applications, 5e by Robert Shumway and David Stoffer (free pdf);\n[Skä] Bayesian Filtering and Smoothing, 1e by Simo Särkkä (free pdf);\n[WH] Bayesian Forecasting and Dynamic Models, 2e by Mike West and Jeff Harrison (free pdf);\n[PPC] Dynamic Linear Models with R by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli (free pdf);\n[HA] Forecasting: Principles and Practice, 3e by Rob Hyndman and George Athanasopoulos (online edition);\n[PFW] Time Series: Modeling, Computation, and Inference, 2e by Raquel Prado, Marco Ferreira, and Mike West;\n[Ham] Time Series Analysis by James Hamilton;\n[DK] Time Series Analysis by State Space Methods, 2e by James Durbin and Siem Jan Koopman.\n\nI will list readings in the PREPARE column of the course schedule.",
+    "text": "Textbooks\nThe course does not have a designated textbook, and you are not required to purchase anything, but here are several you should know about:\n\n[SS] Time Series Analysis and Its Applications, 5e by Robert Shumway and David Stoffer (free pdf);\n[Skä] Bayesian Filtering and Smoothing, 1e by Simo Särkkä (free pdf);\n[WH] Bayesian Forecasting and Dynamic Models, 2e by Mike West and Jeff Harrison (free pdf);\n[PPC] Dynamic Linear Models with R by Giovanni Petris, Sonia Petrone, and Patrizia Campagnoli (free pdf);\n[HA] Forecasting: Principles and Practice, 3e by Rob Hyndman and George Athanasopoulos (online edition);\n[PFW] Time Series: Modeling, Computation, and Inference, 2e by Raquel Prado, Marco Ferreira, and Mike West;\n[Ham] Time Series Analysis by James Hamilton;\n[DK] Time Series Analysis by State Space Methods, 2e by James Durbin and Siem Jan Koopman;\n[BD] Time Series: Theory and Methods by Peter Brockwell and Richard Davis.\n\nI will list readings in the PREPARE column of the course schedule.",
     "crumbs": [
       "Syllabus"
     ]
@@ -32,9 +42,9 @@
   {
     "objectID": "syllabus/syllabus.html#assignments-and-grading",
     "href": "syllabus/syllabus.html#assignments-and-grading",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Assignments and grading",
-    "text": "Assignments and grading\nThe course consists of the following components:\n\nThere will be 5 - 6 problems sets due roughly every two weeks;\nThere will be two in-class, pencil-and-paper exams. The only resource you are allowed is both sides of one 8.5” x 11” sheet of notes prepared by you;\nThe course will conclude with a final project where each student writes a report that applies or extends ideas from the course. Full details about the project will be announced later in the semester.\n\nThese components will be weighted like this:\n\n\n\n\nCategory\nPercentage\n\n\n\n\nProblem Sets\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nProject\n25%\n\n\n\n\nYour final letter grade will be determined based on the usual thresholds, which will never move upward but may move downward in your favor:\n\n\n\n\nLetter Grade\nFinal Course Grade\n\n\n\n\nA+\n&gt;= 97\n\n\nA\n93 - 96.99\n\n\nA-\n90 - 92.99\n\n\nB+\n87 - 89.99\n\n\nB\n83 - 86.99\n\n\nB-\n80 - 82.99\n\n\nC+\n77 - 79.99\n\n\nC\n73 - 76.99\n\n\nC-\n70 - 72.99\n\n\nD+\n67 - 69.99\n\n\nD\n63 - 66.99\n\n\nD-\n60 - 62.99\n\n\nF\n&lt; 60",
+    "text": "Assignments and grading\nThere are four course components, weighted as follows:\n\n\n\n\nCategory\nPercentage\n\n\n\n\nProblem Sets\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nProject\n25%\n\n\n\n\nYour final letter grade will be determined based on the usual thresholds, which will never move upward but may move downward in your favor:\n\n\n\n\nLetter Grade\nFinal Course Grade\n\n\n\n\nA+\n&gt;= 97\n\n\nA\n93 - 96.99\n\n\nA-\n90 - 92.99\n\n\nB+\n87 - 89.99\n\n\nB\n83 - 86.99\n\n\nB-\n80 - 82.99\n\n\nC+\n77 - 79.99\n\n\nC\n73 - 76.99\n\n\nC-\n70 - 72.99\n\n\nD+\n67 - 69.99\n\n\nD\n63 - 66.99\n\n\nD-\n60 - 62.99\n\n\nF\n&lt; 60\n\n\n\n\nHere are some details about the course assignments:\n\nProblem sets: there will be six in total, with one due roughly every two weeks;\nExams: there will be two written, in-class exams. The only resource you are allowed is both sides of one 8.5” x 11” sheet of notes prepared by you. The exam dates are…\n\nWednesday October 8 11:45 AM - 12:00 PM in Old Chem 201;\nMonday November 24 11:45 AM - 12:00 PM in Old Chem 201;\n\nFinal project: to end the semester, each student will write a final report that applies or extends ideas from the course. This is due at 9AM on Wednesday December 10. Full details about the project will be announced after the first exam.",
     "crumbs": [
       "Syllabus"
     ]
@@ -42,9 +52,9 @@
   {
     "objectID": "syllabus/syllabus.html#communication",
     "href": "syllabus/syllabus.html#communication",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Communication",
-    "text": "Communication",
+    "text": "Communication\nIf you wish to ask content-related questions in writing, please do not do so via e-mail. Instead, please use the course discussion forum Ed Discussion. That way all members of the teaching team can see your question, and all students can benefit from the ensuing discussion. You are also encouraged to answer one another’s questions.\nIf you have questions about personal matters that may not be appropriate for the public course forum (e.g. illness, accommodations, etc), then please e-mail the instructor directly (john.zito@duke.edu).\n\n\n\n\n\n\nNote\n\n\n\nYou can ask questions anonymously on Ed. The teaching team will still know your identity, but your peers will not.",
     "crumbs": [
       "Syllabus"
     ]
@@ -52,7 +62,7 @@
   {
     "objectID": "syllabus/syllabus.html#late-work-and-extensions",
     "href": "syllabus/syllabus.html#late-work-and-extensions",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Late work and extensions",
     "text": "Late work and extensions\nNo late work will be accepted unless you request an extension in advance by e-mailing the instructor directly (john.zito@duke.edu). All reasonable requests will be entertained, but extensions will not be long.",
     "crumbs": [
@@ -60,21 +70,11 @@
     ]
   },
   {
-    "objectID": "syllabus/syllabus.html#regrade-requests",
-    "href": "syllabus/syllabus.html#regrade-requests",
-    "title": "Course overview",
-    "section": "Regrade requests",
-    "text": "Regrade requests",
-    "crumbs": [
-      "Syllabus"
-    ]
-  },
-  {
     "objectID": "syllabus/syllabus.html#attendance",
     "href": "syllabus/syllabus.html#attendance",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Attendance",
-    "text": "Attendance",
+    "text": "Attendance\nLive your life. Attendance is not strictly required for any of the class meetings. The responsibility lies with us to make class meetings sufficiently engaging and informative that you choose to attend.",
     "crumbs": [
       "Syllabus"
     ]
@@ -82,9 +82,9 @@
   {
     "objectID": "syllabus/syllabus.html#collaboration",
     "href": "syllabus/syllabus.html#collaboration",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Collaboration",
-    "text": "Collaboration",
+    "text": "Collaboration\nYou are enthusiastically encouraged to work together and help one another on labs and problem sets. I would much rather you consult your peers than some daft language model. What I ask is that you acknowledge your collaborators. So, at the end of each problem in your write-up, leave a comment like “Ursula, Ignatius and I worked together on this problem,” or “Ethel explained to me how to do part b.” You are not being judged based on your acknowledgements, and there is no penalty for getting “too much” help from others. If you omit acknowledgements, I will assume you did your work solo. If your classmates tell a different story, I will have questions. But otherwise, so long as you are thorough and honest, there will be no problems.\nHaving said all of that, you should not be crassly handing your solutions to others for them to brainlessly copy. This is plagiarism, and all involved will earn a zero on the assignment and be referred to the conduct office, both sharers and recipients alike. The write-up you submit must be your own work.",
     "crumbs": [
       "Syllabus"
     ]
@@ -92,9 +92,19 @@
   {
     "objectID": "syllabus/syllabus.html#use-of-outside-resources-including-ai",
     "href": "syllabus/syllabus.html#use-of-outside-resources-including-ai",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Use of outside resources, including AI",
-    "text": "Use of outside resources, including AI",
+    "text": "Use of outside resources, including AI\nThere are at least two reasons you might seek outside resources:\n\n✅ Extra practice or alternative instruction: Go crazy. Knock yourself out. Have a ball. The internet includes many good (and horrible) resources for learning this material, so if you find something that really resonates with you, have at it;\n❌ Doing the problems for you: If you find a solution online, or ask a language model to generate one, and you copy it down and submit it as your own work, that is plagiarism. If we detect it, you will earn a zero for that part of your write-up.\n\n“Using ChatGPT to complete assignments is like bringing a forklift into the weight room; you will never improve your cognitive fitness that way.” Furthermore, 50% of your final course grade is determined by your performance on old school, no-tech exams. As such, if you outsource all of your thinking to an AI, you will probably fail both exams. To avoid this, I suggest you refrain from using language models to do the problems for you.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus/syllabus.html#regrade-requests",
+    "href": "syllabus/syllabus.html#regrade-requests",
+    "title": "Syllabus",
+    "section": "Regrade requests",
+    "text": "Regrade requests\nIf you receive a graded assignment back, and you believe that some part of it was graded incorrectly, you may dispute the grade by submitting a regrade request in Gradescope. JZ is the sole reviewer of these. Note the following:\n\nYou have one week after you receive a grade to submit a regrade request;\nYou should submit separate regrade requests for each question you wish to dispute, not a single catch-all request;\nRequests will be considered if there was an error in the grade calculation or if a correct answer was mistakenly marked as incorrect;\nRequests to dispute the number of points deducted for an incorrect response will not be considered.\n\n\n\n\n\n\n\nWarning\n\n\n\nA regrade request can result in your grade going up, staying the same, or going down if we determine that, in fact, the original grader was too lenient.",
     "crumbs": [
       "Syllabus"
     ]
@@ -102,9 +112,9 @@
   {
     "objectID": "syllabus/syllabus.html#duke-community-standard",
     "href": "syllabus/syllabus.html#duke-community-standard",
-    "title": "Course overview",
+    "title": "Syllabus",
     "section": "Duke Community Standard",
-    "text": "Duke Community Standard",
+    "text": "Duke Community Standard\nDuke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, respect, and accountability. Members of this community commit to reflect upon and uphold these principles in all academic and non-academic endeavors, and to protect and promote a culture of integrity.\nDuke University has high expectations for students’ scholarship and conduct. In accepting admission, students indicate their willingness to subscribe to and be governed by the rules and regulations of the university, which flow from the Duke Community Standard (DCS).\nRegardless of course delivery format, it is the responsibility of all students to understand and follow all Duke policies, including but not limited to the academic integrity policy (e.g., completing one’s own work, following proper citation of sources, adhering to guidance around group work projects, and more). Ignoring these requirements is a violation of the DCS.\nStudents can direct any questions or concerns regarding academic integrity to the Office of Student Conduct and Community Standards at conduct@duke.edu and can access the DCS guide at https://dukecommunitystandard.students.duke.edu/.",
     "crumbs": [
       "Syllabus"
     ]
@@ -114,21 +124,28 @@
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\nTo be posted\nWelcome!\n\n\n\n\n\nWed, Aug 27\nTo be posted\nARMA\n\n\n\n\n2\nMon, Sep 1\nTo be posted\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\nTo be posted\nARMA\n\n\n\n\n3\nMon, Sep 8\nTo be posted\nARMA\n\n\nPSET 0 @ 11AM\n\n\n\nWed, Sep 10\nTo be posted\nARMA\n\n\n\n\n4\nMon, Sep 15\nTo be posted\nARMA\n\n\n\n\n\nWed, Sep 17\nTo be posted\nARMA\n\n\n\n\n5\nMon, Sep 22\nTo be posted\nARMA\n\nPSET 1 @ 11AM\n\n\n\nWed, Sep 24\nTo be posted\nARMA\n\n\n\n\n6\nMon, Sep 29\nTo be posted\nVAR\n\n\n\n\n\nWed, Oct 1\nTo be posted\nVAR\n\n\n\n\n7\nMon, Oct 6\nTo be posted\nVAR\n\nPSET 2 @ 11AM\n\n\n\nWed, Oct 8\nTo be posted\n📝 Midterm\n\n\n\n\n\n8\nMon, Oct 13\nTo be posted\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\nTo be posted\nDLM\n\n\n\n\n9\nMon, Oct 20\nTo be posted\nDLM\n\n\n\n\n\nWed, Oct 22\nTo be posted\nDLM\n\n\n\n\n10\nMon, Oct 27\nTo be posted\nDLM\n\nPSET 3 @ 11AM\n\n\n\nWed, Oct 29\nTo be posted\nDLM\n\n\n\n\n11\nMon, Nov 3\nTo be posted\nHMMs\n\n\n\n\n\nWed, Nov 5\nTo be posted\nHMMs\n\n\n\n\n12\nMon, Nov 10\nTo be posted\nNonlinear\n\nPSET 4 @ 11AM\n\n\n\nWed, Nov 12\nTo be posted\nNonlinear\n\n\n\n\n13\nMon, Nov 17\nTo be posted\nModern\n\n\n\n\n\nWed, Nov 19\nTo be posted\nModern\n\n\n\n\n14\nMon, Nov 24\nTo be posted\nModern\n\nPSET 5 @ 11AM\n\n\n\nWed, Nov 26\nTo be posted\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n17\nSun, Dec 14\nTo be posted\n📝 Final (9AM - 12PM)"
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\n\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\n\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) inference\n\n\n\n\n\nWed, Sep 10\n\n🧑‍🏫 AR(1) forecasting\n\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nFri, Sep 19\n\n\n\nPSET 1 @ 5PM\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
   },
   {
-    "objectID": "problems/bank/review/linear-combos.html",
-    "href": "problems/bank/review/linear-combos.html",
+    "objectID": "problems/bank/review/online-least-squares.html",
+    "href": "problems/bank/review/online-least-squares.html",
     "title": "STA 542 Fall 2025",
     "section": "",
-    "text": "Use whatever method you prefer to prove that linear combinations of independent normals are normal. That is, if \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) are independent and \\(a_i\\in\\mathbb{R}\\) are constant, then prove that\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]"
+    "text": "An important consideration in time series analysis is sequential or online inference. In this environment, our data are not available to us all at once in a batch. Instead, the observations are streaming; they are arriving one-after-another in real-time, and we want to come up with a scheme that allows us to recursively update our inferences as new information arrives. Let’s explore this in the context of least squares regression.\n\n\n\n\n\n\nOLS review\n\n\n\nConsider the usual setting where we observe iid pairs \\(y_i\\in\\mathbb{R}\\) and \\(\\mathbf{x}_i\\in\\mathbb{R}^p\\) from the linear model:\n\\[\ny_i= \\mathbf{x}_i^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\beta}+\\varepsilon_i,\\quad \\varepsilon_i\\overset{\\text{iid}}{\\sim}\\text{N}(0,\\,\\sigma^2).\n\\] Given \\(n\\) observations, we can form the matrices\n\\[\n\\mathbf{y}_n\n=\n\\underbrace{\n\\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n\\quad\n\\mathbf{X}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\mathbf{x}_1^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\mathbf{x}_2^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\vdots \\\\\n\\mathbf{x}_n^{\\scriptscriptstyle\\mathsf{T}}\n\\end{bmatrix}\n}_{n\\times p}\n\\quad\n\\boldsymbol{\\varepsilon}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\varepsilon_1 \\\\\n\\varepsilon_2 \\\\\n\\vdots \\\\\n\\varepsilon_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n,\n\\] and we can rewrite the model in matrix form:\n\\[\n\\mathbf{y}_n=\\mathbf{X}_n\\boldsymbol{\\beta}+\\boldsymbol{\\varepsilon}_n,\\quad \\boldsymbol{\\varepsilon}_n\\sim\\text{N}_n(\\mathbf{0},\\,\\sigma^2\\mathbf{I}_n).\n\\] The ordinary least squares (OLS) estimator of the regression coefficients is \\(\\hat{\\boldsymbol{\\beta}}_n=(\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_n)^{-1}\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_n.\\)\n\n\nHopefully that was all review, and it describes how to do batch or offline inference for the linear model. We are assuming that all of our data are available in a single batch, and we only need to compute the estimate once. But in our class, we will often care about streaming or online inference: efficiently computing the sequence of estimates \\(\\hat{\\boldsymbol{\\beta}}_1\\), \\(\\hat{\\boldsymbol{\\beta}}_2\\), \\(\\hat{\\boldsymbol{\\beta}}_3\\), … as the pairs \\((\\mathbf{x}_1,\\,y_1)\\), \\((\\mathbf{x}_2,\\,y_2)\\), \\((\\mathbf{x}_3,\\,y_3)\\), … arrive one-after-another in real-time.\n\nSo, imagine we have observed \\(n-1\\) pairs, and we have computed the estimate \\(\\hat{\\boldsymbol{\\beta}}_{n-1}=(\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_{n-1})^{-1}\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_{n-1}.\\) Then, a new observation \\((\\mathbf{x}_n,\\,y_n)\\) arrives. How can we efficiently update our estimate of \\(\\boldsymbol{\\beta}\\) to incorporate this new information? Of course, we could just add new rows to \\(\\mathbf{X}_{n-1}\\) and \\(\\mathbf{y}_{n-1}\\) and recompute the inverse, but that is super inefficient and we can do better. Instead, derive a recursion \\(h\\) that takes the old estimate and the new data and produces the new estimate:\n\n\\[\n\\hat{\\boldsymbol{\\beta}}_n\n=\nh(\\hat{\\boldsymbol{\\beta}}_{n-1},\\,\\mathbf{x}_n,\\,y_n).\n\\]\n\nWrite a for loop in R that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used lm. Do this for the mtcars dataset and the regression mpg ~ wt.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe Sherman–Morrison formula is a great tool! For invertible \\(\\mathbf{A}\\in\\mathbb{R}^{p\\times p}\\) and \\(\\mathbf{v}\\in\\mathbb{R}^p\\), we have\n\\[\n(\\mathbf{A}+\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}})^{-1}\n=\n\\mathbf{A}^{-1}\n-\n\\frac{\n\\mathbf{A}^{-1}\n\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n}{\n1\n+\n\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n\\mathbf{v}\n}\n.\n\\]"
+  },
+  {
+    "objectID": "problems/bank/review/prediction-interval.html",
+    "href": "problems/bank/review/prediction-interval.html",
+    "title": "STA 542 Fall 2025",
+    "section": "",
+    "text": "Consider these data\n\\[\nX_1,\\,X_2,\\,...,\\,X_n\\overset{\\text{iid}}{\\sim}\\text{N}(\\theta,\\,1)\n\\]\nand the estimator \\(\\hat{\\theta}_n=\\sum\\limits_{i=1}^nX_i/n\\).\n\nDerive an exact \\(100\\times (1-\\alpha)\\%\\) classical confidence interval for the unknown mean \\(\\theta\\). That is, find a random interval \\((L_n,\\,U_n)\\) satisfying:\n\n\\[\nP\\left(L_n&lt;\\theta&lt;U_n\\right)=1-\\alpha.\n\\]\n\nDerive an exact \\(100\\times (1-\\alpha)\\%\\) classical prediction interval for a new observation \\(X_{n+1}\\). That is, find a random interval \\((L_n',\\,U_n')\\) satisfying\n\n\\[\nP\\left(L_n'&lt;X_{n+1}&lt;U_n'\\right)=1-\\alpha.\n\\]\n\nComment on the difference between the two intervals."
   },
   {
     "objectID": "problems/bank/review/mvnormal.html",
     "href": "problems/bank/review/mvnormal.html",
     "title": "STA 542 Fall 2025",
     "section": "",
-    "text": "Slicing-and-dicing the multivariate normal distribution is a very important skill in time series analysis, so let’s make sure we can do that. A random vector \\(\\mathbf{x}=\\begin{bmatrix}x_1&x_2&\\cdots&x_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) has the multivariate normal distribution with mean vector \\(E(\\mathbf{x})=\\boldsymbol{\\mu}=\\begin{bmatrix}\\mu_1&\\mu_2&\\cdots&\\mu_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) and covarianfe matirx \\(\\text{cov}(\\mathbf{x})=\\boldsymbol{\\Sigma}\\in\\mathbb{R}^{n\\times n}\\) if its density is\n\\[\nf(\\mathbf{x})\n=\n\\frac{1}\n{\n(2\\pi)^{\\frac{n}{2}}\n|\\boldsymbol{\\Sigma}|^{1/2}\n}\n\\exp\n\\left(\n-\\frac{1}{2}\n(\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n,\n\\quad\n\\mathbf{x}\n\\in\n\\mathbb{R}^n.\n\\]\nWe denote this \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\).\n\nLet \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\), and fix constants \\(\\mathbf{A}\\in\\mathbb{R}^{m\\times n}\\) and \\(\\mathbf{c}\\in\\mathbb{R}^m\\). Show that\n\n\\[\n\\mathbf{y}\n=\n\\mathbf{A}\n\\mathbf{x}\n+\n\\mathbf{c}\n\\sim\n\\text{N}_m\n\\left(\n\\mathbf{A}\n\\boldsymbol{\\mu}\n+\n\\mathbf{c}\n,\\,\n\\mathbf{A}\n\\boldsymbol{\\Sigma}\n\\mathbf{A}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n.\n\\]\n\nConsider the joint distribution \\(p(\\mathbf{x},\\,\\mathbf{y})=p(\\mathbf{y}\\,|\\,\\mathbf{x})p(\\mathbf{x})\\) written hierarchically as \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\) and \\(\\mathbf{y}\\,|\\,\\mathbf{x}\\sim\\text{N}_m(\\mathbf{H}\\mathbf{x}+\\mathbf{u},\\,\\mathbf{R})\\). Use the result in part a to show that the joint distribution implied by this hierarchy is\n\n\\[\n\\begin{bmatrix}\n\\mathbf{x}\n\\\\\n\\mathbf{y}\n\\end{bmatrix}\n\\sim\n\\text{N}_{n+m}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}\n\\\\\n\\mathbf{H}\\boldsymbol{\\mu}+\\mathbf{u}\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}\n&\n\\boldsymbol{\\Sigma}\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}}\n\\\\\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n&\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}} + \\mathbf{R}\n\\end{bmatrix}\n\\right)\n.\n\\]\n\nUse the result in part a to show that the linear combination of independent normals is normal. That is, if \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) are independent and \\(a_i\\in\\mathbb{R}\\) are constant, then prove that\n\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]\n\n\n\n\n\n\nHint\n\n\n\n\n\nJacobian"
+    "text": "Slicing-and-dicing the multivariate normal distribution is a very important skill in time series analysis, so let’s make sure we can do that. A random vector \\(\\mathbf{x}=\\begin{bmatrix}x_1&x_2&\\cdots&x_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) has the multivariate normal distribution with mean vector \\(E(\\mathbf{x})=\\boldsymbol{\\mu}=\\begin{bmatrix}\\mu_1&\\mu_2&\\cdots&\\mu_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) and covariance matrix \\(\\text{cov}(\\mathbf{x})=\\boldsymbol{\\Sigma}\\in\\mathbb{R}^{n\\times n}\\) if its density is\n\\[\nf(\\mathbf{x})\n=\n\\frac{1}\n{\n(2\\pi)^{\\frac{n}{2}}\n|\\boldsymbol{\\Sigma}|^{1/2}\n}\n\\exp\n\\left(\n-\\frac{1}{2}\n(\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n,\n\\quad\n\\mathbf{x}\n\\in\n\\mathbb{R}^n.\n\\]\nWe denote this \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\). If \\(n=1\\), then the distribution collapses to the univariate normal. WHAT ELSE\n\nLet \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\), and fix constants \\(\\mathbf{A}\\in\\mathbb{R}^{m\\times n}\\) and \\(\\mathbf{c}\\in\\mathbb{R}^m\\). Show that\n\n\\[\n\\mathbf{y}\n=\n\\mathbf{A}\n\\mathbf{x}\n+\n\\mathbf{c}\n\\sim\n\\text{N}_m\n\\left(\n\\mathbf{A}\n\\boldsymbol{\\mu}\n+\n\\mathbf{c}\n,\\,\n\\mathbf{A}\n\\boldsymbol{\\Sigma}\n\\mathbf{A}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n.\n\\]\n\nConsider the joint distribution \\(p(\\mathbf{x},\\,\\mathbf{y})=p(\\mathbf{y}\\,|\\,\\mathbf{x})p(\\mathbf{x})\\) written hierarchically as \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\) and \\(\\mathbf{y}\\,|\\,\\mathbf{x}\\sim\\text{N}_m(\\mathbf{H}\\mathbf{x}+\\mathbf{u},\\,\\mathbf{R})\\). Use the result in part a to show that the joint distribution implied by this hierarchy is\n\n\\[\n\\begin{bmatrix}\n\\mathbf{x}\n\\\\\n\\mathbf{y}\n\\end{bmatrix}\n\\sim\n\\text{N}_{n+m}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}\n\\\\\n\\mathbf{H}\\boldsymbol{\\mu}+\\mathbf{u}\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}\n&\n\\boldsymbol{\\Sigma}\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}}\n\\\\\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n&\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}} + \\mathbf{R}\n\\end{bmatrix}\n\\right)\n.\n\\]\n\nUse the result in part a to show that the linear combination of independent normals is normal. That is, if \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) are independent and \\(a_i\\in\\mathbb{R}\\) are constant, then prove that\n\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]\n\n\n\n\n\n\nHint\n\n\n\n\n\nJacobian"
   },
   {
     "objectID": "problems/bank/review/matrix-eq.html",
@@ -140,16 +157,72 @@
   {
     "objectID": "lecture-notes/ar-1.html",
     "href": "lecture-notes/ar-1.html",
-    "title": "ar-1",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
     "section": "",
-    "text": "\\[\n\\begin{aligned}\ny_t&=\\beta_0+\\beta_1y_{t-1}+\\varepsilon_t,\\quad \\varepsilon_t\\overset{\\text{iid}}{\\sim}\\text{N}(0,\\,\\sigma^2)\\\\\ny_0&\\sim\\text{N}(\\mu_0,\\,\\gamma_0)\n\\end{aligned}\n\\]\n\\(y_0\\) independent of the errors. I don’t like the notation for the initial condition variance.\nmarginal distributions joint distributions conditional (forecast) distributions stationarity dependence structure method of moments (Yule-Walker) maximum likelihood (unconditional and conditional) emphasize sequential recursions bayesian inference probabilistic prediction parametric bootstrap point prediction interval prediction density prediction"
+    "text": "A model is a probability distribution over a sequence..\nIn the spirit of Larry Wasserman’s All of Statistics and All of Nonparametric Statistics, this note introduces “All of Time Series Analysis” for the simplest time series model: the autoregression of order 1, or AR(1) for short. Topics include:\nOnce you’re comfortable with all that, everything else in the course is in some sense just a theme and variations on these main ideas."
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#what-is-a-time-series-model",
+    "href": "lecture-notes/ar-1.html#what-is-a-time-series-model",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "What is a time series model?",
+    "text": "What is a time series model?"
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#the-simplest-time-series-model",
+    "href": "lecture-notes/ar-1.html#the-simplest-time-series-model",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "The simplest time series model",
+    "text": "The simplest time series model\nIn truth, the “simplest” time series model is the one where there is no dependence at all: \\(y_t\\overset{\\text{iid}}{\\sim}F\\). But in that case, why bother with STA 542? Things get interesting when there is dependence, and in particular the kind of dependence where you think the past can help to predict the future. The simplest model that captures this basic idea is the autoregression of order 1, or AR(1) for short:\n\\[\n\\begin{aligned}\ny_t&=\\beta_0+\\beta_1y_{t-1}+\\varepsilon_t,\\quad \\varepsilon_t\\overset{\\text{iid}}{\\sim}\\text{N}(0,\\,\\sigma^2)\\\\\ny_0&\\sim\\text{N}(\\mu_0,\\,\\gamma_0).\n\\end{aligned}\n\\]\nThis takes the form of a simple linear regression where \\(y_t\\) is the response and its first lagged value \\(y_{t-1}\\) is the predictor, hence the name\n\\(y_0\\) independent of the errors.\nI don’t like the notation for the initial condition variance."
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#what-is-the-joint-distribution",
+    "href": "lecture-notes/ar-1.html#what-is-the-joint-distribution",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "What is the joint distribution?",
+    "text": "What is the joint distribution?\n\\(y_t\\,|\\,y_{t-1}\\sim\\text{N}(\\beta_0+\\beta_1y_{t-1},\\,\\sigma^2)\\)\n\\[\np(y_{0:T}) = p(y_0)\\prod_{t=1}^Tp(y_t\\,|\\,y_{t-1})\n\\]\nto understand the joint distribution\n\\[\n\\begin{aligned}\ny_0\n&=\ny_0\n\\\\\ny_1\n&=\n\\beta_0+\\beta_1y_0+\\varepsilon_1\n\\\\\ny_2\n&=\n\\beta_0+\\beta_1\n\\\\\ny_3\n&=\n\\\\\n&\\vdots\n\\\\\ny_t\n&=\n\\end{aligned}\n\\]\nsummarized\n\\[\n\\begin{bmatrix}\ny_0\\\\\ny_1\\\\\ny_2\\\\\ny_3\\\\\n\\vdots \\\\\ny_T\n\\end{bmatrix}\n=\n\\begin{bmatrix}\nbloop\n\\end{bmatrix}\n+\n\\begin{bmatrix}\n1 & 0 & 0 & 0 & \\cdots & 0\n\\end{bmatrix}\n\\begin{bmatrix}\ny_0\\\\\n\\varepsilon_1\\\\\n\\varepsilon_2\\\\\n\\varepsilon_3\\\\\n\\vdots \\\\\n\\varepsilon_T\n\\end{bmatrix}\n\\]\nSo \\(\\sim\\text{N}_{T+1}()\\) and \\(\\mathbf{y}\\) is a linear transformation of BLAH, so it is also normal, with mean and covariance. What are these?"
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#stationarity",
+    "href": "lecture-notes/ar-1.html#stationarity",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "Stationarity",
+    "text": "Stationarity\nMost interesting time series are not stationary. This comes down to us as an historical artifact because certain kinds of (classical) statistical theory require it as an assumption in order to prove theorems, but it’s never true in practice.\nweird concept. dependent but not too dependent. necessary for stable prediction and inference, but do we really care? Probably false in practice, but so what. I just want a model that generates good and useful predictions.\nImportant historically and theoretically, and it simplifies the model tremendously."
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#classical-inference",
+    "href": "lecture-notes/ar-1.html#classical-inference",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "Classical inference",
+    "text": "Classical inference\n\nMethod of moments\n\n\nMaximum likelihood estimaton"
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#bayesian-inference",
+    "href": "lecture-notes/ar-1.html#bayesian-inference",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "Bayesian inference",
+    "text": "Bayesian inference\n\\[\n\\begin{aligned}\n\\sigma^2\n&\\sim\n\\text{IG}(a_0,\\,b_0)\n\\\\\n\\boldsymbol{\\beta}\n\\,|\\,\n\\sigma^2\n&\\sim\n\\text{N}_2(\\bar{\\boldsymbol{\\beta}}_0,\\,)\n\\\\\ny_t\\,|\\,y_{t-1},\\,\\boldsymbol{\\beta},\\,\\sigma^2\n&\\sim\n\\end{aligned}\n\\]\nSo we want this:\n\\[\np(\\boldsymbol{\\beta},\\,\\sigma^2\\,|\\,y_{0:T})\n=\n\\frac\n{p(y_{1:T}\\,|\\,\\boldsymbol{\\beta},\\,\\sigma^2,\\,y_0)p(\\boldsymbol{\\beta},\\,\\sigma^2)}\n{p(y_{1:T}\\,|\\,y_0)}\n\\]\nFor simplicity, we’re just going to condition on \\(y_0\\).\nAlso, we do not have to assume stationarity to do this.\nOur prior is conjugate, so we can compute the exact posterior.\n\n\n\n\n\n\nTip\n\n\n\nconjugate updates\n\n\nOther priors: normal - IG that isn’t conjugate, whatever else is in West’s book, the prior that enforces stationarity, either with accept-reject or the Heaps stuff, maybe that West Huerta thing idk."
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#forecasting",
+    "href": "lecture-notes/ar-1.html#forecasting",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "Forecasting",
+    "text": "Forecasting\n\nClassical\ntypically ignores estimation uncertainty from coefficients.\nshow a picture comparing\n\n\n\n\n\n\nTip\n\n\n\nsieve bootstrap Buhlmann bernoulli\n\n\nthese draws are a discrete approximation.\npoint forecast: sample mean or median interval forecast: quantiles, HPD, whatever\n\n\nBayes\nProbabilistic prediction is automatic, and it’s easier (not easy, but easier) to augment your inferences with more sources of uncertainty: missing data, model uncertainty, etc."
+  },
+  {
+    "objectID": "lecture-notes/ar-1.html#forecast-evaluation",
+    "href": "lecture-notes/ar-1.html#forecast-evaluation",
+    "title": "Everything You Always Wanted to Know About the AR(1) But Were Afraid to Ask",
+    "section": "Forecast evaluation",
+    "text": "Forecast evaluation\nmarginal distributions\njoint distributions\nconditional (forecast) distributions\nstationarity\ndependence structure\nmethod of moments (Yule-Walker)\nmaximum likelihood (unconditional and conditional)\nemphasize sequential recursions\nbayesian inference\nprobabilistic prediction\nparametric bootstrap\npoint prediction\ninterval prediction\ndensity prediction"
   },
   {
     "objectID": "problems/bank/review/mle.html",
     "href": "problems/bank/review/mle.html",
     "title": "STA 542 Fall 2025",
     "section": "",
-    "text": "Here is a cdf indexed by a parameter \\(\\theta&gt;0\\):\n\\[\nF(x;\\,\\theta)\n=\n1 - \\frac{1}{(1+x)^\\theta},\\quad x\\geq 0.\n\\]\n\nDescribe an algorithm that will simulate (pseudo)random numbers from this distribution;\nLet \\(x_1,\\,x_2,\\,...,\\,x_n\\overset{\\text{iid}}{\\sim}F(x;\\,\\theta)\\) and derive the maximum likelihood estimator \\(\\hat{\\theta}_n^{(\\text{MLE})}\\) for the parameter \\(\\theta\\);\nDerive the exact sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\);\nImplement the parametric bootstrap to simulate the sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\), and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is a schematic of how the parametric bootstrap works. We start with some ground truth parameter value \\(\\theta_0&gt;0\\), and then implement this:\n\\[\n\\begin{matrix}\n\\text{0. True distribution} &&& F_{\\theta_0} && \\\\\n&&& \\downarrow && \\\\\n\\text{1. Original data} &&& x_{1:n} && \\\\\n&&& \\downarrow && \\\\\n\\text{2. Estimate} &&& \\hat{\\theta}_n && \\\\\n&&& \\downarrow && \\\\\n\\text{3. Plug-in} &&& F_{\\hat{\\theta}_n} && \\\\\n&\\swarrow &\\swarrow& \\cdots &\\searrow&\\searrow \\\\\n\\text{4. Synthetic data}&x_{1:m}^{(1)} &x_{1:m}^{(2)}& \\cdots &x_{1:m}^{(k-1)}&x_{1:m}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{5. Bootstrap estimates}&\\hat{\\theta}_m^{(1)} &\\hat{\\theta}_m^{(2)}& \\cdots &\\hat{\\theta}_m^{(k-1)}&\\hat{\\theta}_m^{(k)} \\\\\n\\end{matrix}\n\\]\nIf you implemented this correctly, and if the original sample size \\(n\\) is “large enough,” then a histogram of the \\(k\\) estimates \\(\\hat{\\theta}_m^{(1)}\\), \\(\\hat{\\theta}_m^{(2)}\\), …, \\(\\hat{\\theta}_m^{(k)}\\) ought to resemble the exact density you derived in part c. The reason this is the parametric bootstrap is because we are simulating the synthetic datasets from the “plug-in” member of our chosen parametric family \\(F_{\\hat{\\theta}_n}\\). If instead we simulated from the empirical distribution \\(\\hat{F}_n(x)=\\sum_{i=1}^nI(X_i\\leq x)/n\\), then that would just be the ordinary, nonparametric bootstrap.\nDon’t you just love statistics?!"
+    "text": "Here is a cdf indexed by a parameter \\(\\theta&gt;0\\):\n\\[\nF(x;\\,\\theta)\n=\n1 - \\frac{1}{(1+x)^\\theta},\\quad x\\geq 0.\n\\]\n\nDescribe an algorithm that will simulate (pseudo)random numbers from this distribution;\nLet \\(x_1,\\,x_2,\\,...,\\,x_n\\overset{\\text{iid}}{\\sim}F(x;\\,\\theta)\\) and derive the maximum likelihood estimator \\(\\hat{\\theta}_n^{(\\text{MLE})}\\) for the parameter \\(\\theta\\);\nDerive the exact sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\);\nImplement the bootstrap to simulate the sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\), and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is a schematic of how the bootstrap works. We start with some ground truth parameter value \\(\\theta_0&gt;0\\), and then implement this:\n\\[\n\\begin{matrix}\n\\text{0. True distribution} &&& F_{\\theta_0} && \\\\\n&&& \\downarrow && \\\\\n\\text{1. Original data} &&& x_{1:n} && \\\\\n&&& \\downarrow && \\\\\n\\text{2. Estimate} &&& \\hat{\\theta}_n && \\\\\n&&& \\downarrow && \\\\\n\\text{3. Plug-in} &&& F_{\\hat{\\theta}_n} && \\\\\n&\\swarrow &\\swarrow& \\cdots &\\searrow&\\searrow \\\\\n\\text{4. Synthetic data}&x_{1:m}^{(1)} &x_{1:m}^{(2)}& \\cdots &x_{1:m}^{(k-1)}&x_{1:m}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{5. Bootstrap estimates}&\\hat{\\theta}_m^{(1)} &\\hat{\\theta}_m^{(2)}& \\cdots &\\hat{\\theta}_m^{(k-1)}&\\hat{\\theta}_m^{(k)} \\\\\n\\end{matrix}\n\\]\nIf you implemented this correctly, and if the original sample size \\(n\\) is “large enough,” then a histogram of the \\(k\\) estimates \\(\\hat{\\theta}_m^{(1)}\\), \\(\\hat{\\theta}_m^{(2)}\\), …, \\(\\hat{\\theta}_m^{(k)}\\) ought to resemble the exact density you derived in part c. The reason this is the parametric bootstrap is because we are simulating the synthetic datasets from the “plug-in” member of our chosen parametric family \\(F_{\\hat{\\theta}_n}\\). If instead we simulated from the empirical distribution \\(\\hat{F}_n(x)=\\sum_{i=1}^nI(X_i\\leq x)/n\\), then that would just be the ordinary, nonparametric bootstrap.\nDon’t you just love statistics?!"
   },
   {
     "objectID": "problems/bank/review/bayes.html",
@@ -159,18 +232,18 @@
     "text": "Recall the parametric family from the previous part:\n\\[\nF(x;\\,\\theta)\n=\n1 - \\frac{1}{(1+x)^\\theta},\\quad x\\geq 0.\n\\]\nConsider the Bayesian model\n\\[\n\\begin{aligned}\n\\theta &\\sim \\text{Gamma}(a_0,\\,b_0) \\\\\nx_i\\,|\\, \\theta &\\overset{\\text{iid}}{\\sim }F(x;\\,\\theta).\n\\end{aligned}\n\\]\n\nDerive the posterior distribution \\(p(\\theta\\,|\\,x_{1:n})\\);\nShow that the posterior mean \\(E(\\theta\\,|\\,x_{1:n})\\) can be written as a convex combination of the prior mean and the MLE;\nDerive the posterior predictive distribution \\(p(x_{n+1}\\,|\\,x_{1:n})\\)."
   },
   {
-    "objectID": "problems/bank/review/online-least-squares.html",
-    "href": "problems/bank/review/online-least-squares.html",
+    "objectID": "problems/bank/review/linear-combos.html",
+    "href": "problems/bank/review/linear-combos.html",
     "title": "STA 542 Fall 2025",
     "section": "",
-    "text": "An important consideration in time series analysis is sequential or online inference. In this environment, our data are not available to us all at once in a batch. Instead, the observations are streaming; they are arriving one-after-another in real-time, and we want to come up with a scheme that allows us to recursively update our inferences as new information arrives. Let’s explore this in the context of least squares regression.\n\n\n\n\n\n\nOLS review\n\n\n\nConsider the usual setting where we observe iid pairs \\(y_i\\in\\mathbb{R}\\) and \\(\\mathbf{x}_i\\in\\mathbb{R}^p\\) from the linear model:\n\\[\ny_i= \\mathbf{x}_i^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\beta}+\\varepsilon_i,\\quad \\varepsilon_i\\overset{\\text{iid}}{\\sim}\\text{N}(0,\\,\\sigma^2).\n\\] Given \\(n\\) observations, we can form the matrices\n\\[\n\\mathbf{y}_n\n=\n\\underbrace{\n\\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n\\quad\n\\mathbf{X}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\mathbf{x}_1^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\mathbf{x}_2^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\vdots \\\\\n\\mathbf{x}_n^{\\scriptscriptstyle\\mathsf{T}}\n\\end{bmatrix}\n}_{n\\times p}\n\\quad\n\\boldsymbol{\\varepsilon}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\varepsilon_1 \\\\\n\\varepsilon_2 \\\\\n\\vdots \\\\\n\\varepsilon_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n,\n\\] and we can rewrite the model in matrix form:\n\\[\n\\mathbf{y}_n=\\mathbf{X}_n\\boldsymbol{\\beta}+\\boldsymbol{\\varepsilon}_n,\\quad \\boldsymbol{\\varepsilon}_n\\sim\\text{N}_n(\\mathbf{0},\\,\\sigma^2\\mathbf{I}_n).\n\\] The ordinary least squares (OLS) estimator of the regression coefficients is \\(\\hat{\\boldsymbol{\\beta}}_n=(\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_n)^{-1}\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_n.\\)\n\n\nHopefully that was all review, and it describes how to do batch or offline inference for the linear model. We are assuming that all of our data are available in a single batch, and we only need to compute the estimate once. But in our class, we will often care about streaming or online inference: efficiently computing the sequence of estimates \\(\\hat{\\boldsymbol{\\beta}}_1\\), \\(\\hat{\\boldsymbol{\\beta}}_2\\), \\(\\hat{\\boldsymbol{\\beta}}_3\\), … as the pairs \\((\\mathbf{x}_1,\\,y_1)\\), \\((\\mathbf{x}_2,\\,y_2)\\), \\((\\mathbf{x}_3,\\,y_3)\\), … arrive one-after-another in real-time.\n\nSo, imagine we have observed \\(n-1\\) pairs, and we have computed the estimate \\(\\hat{\\boldsymbol{\\beta}}_{n-1}=(\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_{n-1})^{-1}\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_{n-1}.\\) Then, a new observation \\((\\mathbf{x}_n,\\,y_n)\\) arrives. How can we efficiently update our estimate of \\(\\boldsymbol{\\beta}\\) to incorporate this new information? Of course, we could just add new rows to \\(\\mathbf{X}_{n-1}\\) and \\(\\mathbf{y}_{n-1}\\) and recompute the inverse, but that is super inefficient and we can do better. Instead, derive a recursion \\(h\\) that takes the old estimate and the new data and produces the new estimate:\n\n\\[\n\\hat{\\boldsymbol{\\beta}}_n\n=\nh(\\hat{\\boldsymbol{\\beta}}_{n-1},\\,\\mathbf{x}_n,\\,y_n)\n\\]\n\nWrite a for loop in R that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used lm. Do this for the mtcars dataset and the regression mpg ~ wt.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe Sherman–Morrison formula is a great tool! For invertible \\(\\mathbf{A}\\in\\mathbb{R}^{p\\times p}\\) and \\(\\mathbf{v}\\in\\mathbb{R}^p\\), we have\n\\[\n(\\mathbf{A}+\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}})^{-1}\n=\n\\mathbf{A}^{-1}\n-\n\\frac{\n\\mathbf{A}^{-1}\n\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n}{\n1\n+\n\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n\\mathbf{v}\n}\n.\n\\]"
+    "text": "Use whatever method you prefer to prove that linear combinations of independent normals are normal. That is, if \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) are independent and \\(a_i\\in\\mathbb{R}\\) are constant, then prove that\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]"
   },
   {
     "objectID": "problems/pset-0.html",
     "href": "problems/pset-0.html",
     "title": "Problem Set 0",
     "section": "",
-    "text": "Slicing-and-dicing the multivariate normal distribution is a very important skill in time series analysis, so let’s make sure we can do that. A random vector \\(\\mathbf{x}=\\begin{bmatrix}x_1&x_2&\\cdots&x_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) has the multivariate normal distribution with mean vector \\(E(\\mathbf{x})=\\boldsymbol{\\mu}=\\begin{bmatrix}\\mu_1&\\mu_2&\\cdots&\\mu_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) and covarianfe matirx \\(\\text{cov}(\\mathbf{x})=\\boldsymbol{\\Sigma}\\in\\mathbb{R}^{n\\times n}\\) if its density is\n\\[\nf(\\mathbf{x})\n=\n\\frac{1}\n{\n(2\\pi)^{\\frac{n}{2}}\n|\\boldsymbol{\\Sigma}|^{1/2}\n}\n\\exp\n\\left(\n-\\frac{1}{2}\n(\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n,\n\\quad\n\\mathbf{x}\n\\in\n\\mathbb{R}^n.\n\\]\nWe denote this \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\).\n\nLet \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\), and fix constants \\(\\mathbf{A}\\in\\mathbb{R}^{m\\times n}\\) and \\(\\mathbf{c}\\in\\mathbb{R}^m\\). Show that\n\n\\[\n\\mathbf{y}\n=\n\\mathbf{A}\n\\mathbf{x}\n+\n\\mathbf{c}\n\\sim\n\\text{N}_m\n\\left(\n\\mathbf{A}\n\\boldsymbol{\\mu}\n+\n\\mathbf{c}\n,\\,\n\\mathbf{A}\n\\boldsymbol{\\Sigma}\n\\mathbf{A}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n.\n\\]\n\nConsider the joint distribution \\(p(\\mathbf{x},\\,\\mathbf{y})=p(\\mathbf{y}\\,|\\,\\mathbf{x})p(\\mathbf{x})\\) written hierarchically as \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\) and \\(\\mathbf{y}\\,|\\,\\mathbf{x}\\sim\\text{N}_m(\\mathbf{H}\\mathbf{x}+\\mathbf{u},\\,\\mathbf{R})\\). Use the result in part a to show that the joint distribution implied by this hierarchy is\n\n\\[\n\\begin{bmatrix}\n\\mathbf{x}\n\\\\\n\\mathbf{y}\n\\end{bmatrix}\n\\sim\n\\text{N}_{n+m}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}\n\\\\\n\\mathbf{H}\\boldsymbol{\\mu}+\\mathbf{u}\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}\n&\n\\boldsymbol{\\Sigma}\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}}\n\\\\\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n&\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}} + \\mathbf{R}\n\\end{bmatrix}\n\\right)\n.\n\\]\n\nUse the result in part a to show that the linear combination of independent normals is normal. That is, if \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) are independent and \\(a_i\\in\\mathbb{R}\\) are constant, then prove that\n\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]\n\n\n\n\n\n\nHint\n\n\n\n\n\nJacobian",
+    "text": "MvNormal 1\nMvNormal 2\nConfidence versus prediction\nMLE\nBayes\n?\nRecursive OLS",
     "crumbs": [
       "Problem Sets",
       "Problem Set 0"
@@ -180,8 +253,8 @@
     "objectID": "problems/pset-0.html#problem-x",
     "href": "problems/pset-0.html#problem-x",
     "title": "Problem Set 0",
-    "section": "",
-    "text": "Slicing-and-dicing the multivariate normal distribution is a very important skill in time series analysis, so let’s make sure we can do that. A random vector \\(\\mathbf{x}=\\begin{bmatrix}x_1&x_2&\\cdots&x_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) has the multivariate normal distribution with mean vector \\(E(\\mathbf{x})=\\boldsymbol{\\mu}=\\begin{bmatrix}\\mu_1&\\mu_2&\\cdots&\\mu_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) and covarianfe matirx \\(\\text{cov}(\\mathbf{x})=\\boldsymbol{\\Sigma}\\in\\mathbb{R}^{n\\times n}\\) if its density is\n\\[\nf(\\mathbf{x})\n=\n\\frac{1}\n{\n(2\\pi)^{\\frac{n}{2}}\n|\\boldsymbol{\\Sigma}|^{1/2}\n}\n\\exp\n\\left(\n-\\frac{1}{2}\n(\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n,\n\\quad\n\\mathbf{x}\n\\in\n\\mathbb{R}^n.\n\\]\nWe denote this \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\).\n\nLet \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\), and fix constants \\(\\mathbf{A}\\in\\mathbb{R}^{m\\times n}\\) and \\(\\mathbf{c}\\in\\mathbb{R}^m\\). Show that\n\n\\[\n\\mathbf{y}\n=\n\\mathbf{A}\n\\mathbf{x}\n+\n\\mathbf{c}\n\\sim\n\\text{N}_m\n\\left(\n\\mathbf{A}\n\\boldsymbol{\\mu}\n+\n\\mathbf{c}\n,\\,\n\\mathbf{A}\n\\boldsymbol{\\Sigma}\n\\mathbf{A}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n.\n\\]\n\nConsider the joint distribution \\(p(\\mathbf{x},\\,\\mathbf{y})=p(\\mathbf{y}\\,|\\,\\mathbf{x})p(\\mathbf{x})\\) written hierarchically as \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\) and \\(\\mathbf{y}\\,|\\,\\mathbf{x}\\sim\\text{N}_m(\\mathbf{H}\\mathbf{x}+\\mathbf{u},\\,\\mathbf{R})\\). Use the result in part a to show that the joint distribution implied by this hierarchy is\n\n\\[\n\\begin{bmatrix}\n\\mathbf{x}\n\\\\\n\\mathbf{y}\n\\end{bmatrix}\n\\sim\n\\text{N}_{n+m}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}\n\\\\\n\\mathbf{H}\\boldsymbol{\\mu}+\\mathbf{u}\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}\n&\n\\boldsymbol{\\Sigma}\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}}\n\\\\\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n&\n\\mathbf{H}\n\\boldsymbol{\\Sigma}\n\\mathbf{H}^{\\scriptscriptstyle\\mathsf{T}} + \\mathbf{R}\n\\end{bmatrix}\n\\right)\n.\n\\]\n\nUse the result in part a to show that the linear combination of independent normals is normal. That is, if \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) are independent and \\(a_i\\in\\mathbb{R}\\) are constant, then prove that\n\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]\n\n\n\n\n\n\nHint\n\n\n\n\n\nJacobian",
+    "section": "Problem X",
+    "text": "Problem X\nConsider these data\n\\[\nX_1,\\,X_2,\\,...,\\,X_n\\overset{\\text{iid}}{\\sim}\\text{N}(\\theta,\\,1)\n\\]\nand the estimator \\(\\hat{\\theta}_n=\\sum\\limits_{i=1}^nX_i/n\\).\n\nDerive an exact \\(100\\times (1-\\alpha)\\%\\) classical confidence interval for the unknown mean \\(\\theta\\). That is, find a random interval \\((L_n,\\,U_n)\\) satisfying:\n\n\\[\nP\\left(L_n&lt;\\theta&lt;U_n\\right)=1-\\alpha.\n\\]\n\nDerive an exact \\(100\\times (1-\\alpha)\\%\\) classical prediction interval for a new observation \\(X_{n+1}\\). That is, find a random interval \\((L_n',\\,U_n')\\) satisfying\n\n\\[\nP\\left(L_n'&lt;X_{n+1}&lt;U_n'\\right)=1-\\alpha.\n\\]\n\nComment on the difference between the two intervals.",
     "crumbs": [
       "Problem Sets",
       "Problem Set 0"
@@ -192,7 +265,7 @@
     "href": "problems/pset-0.html#problem-x-1",
     "title": "Problem Set 0",
     "section": "Problem X",
-    "text": "Problem X\nHere is a cdf indexed by a parameter \\(\\theta&gt;0\\):\n\\[\nF(x;\\,\\theta)\n=\n1 - \\frac{1}{(1+x)^\\theta},\\quad x\\geq 0.\n\\]\n\nDescribe an algorithm that will simulate (pseudo)random numbers from this distribution;\nLet \\(x_1,\\,x_2,\\,...,\\,x_n\\overset{\\text{iid}}{\\sim}F(x;\\,\\theta)\\) and derive the maximum likelihood estimator \\(\\hat{\\theta}_n^{(\\text{MLE})}\\) for the parameter \\(\\theta\\);\nDerive the exact sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\);\nImplement the parametric bootstrap to simulate the sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\), and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is a schematic of how the parametric bootstrap works. We start with some ground truth parameter value \\(\\theta_0&gt;0\\), and then implement this:\n\\[\n\\begin{matrix}\n\\text{0. True distribution} &&& F_{\\theta_0} && \\\\\n&&& \\downarrow && \\\\\n\\text{1. Original data} &&& x_{1:n} && \\\\\n&&& \\downarrow && \\\\\n\\text{2. Estimate} &&& \\hat{\\theta}_n && \\\\\n&&& \\downarrow && \\\\\n\\text{3. Plug-in} &&& F_{\\hat{\\theta}_n} && \\\\\n&\\swarrow &\\swarrow& \\cdots &\\searrow&\\searrow \\\\\n\\text{4. Synthetic data}&x_{1:m}^{(1)} &x_{1:m}^{(2)}& \\cdots &x_{1:m}^{(k-1)}&x_{1:m}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{5. Bootstrap estimates}&\\hat{\\theta}_m^{(1)} &\\hat{\\theta}_m^{(2)}& \\cdots &\\hat{\\theta}_m^{(k-1)}&\\hat{\\theta}_m^{(k)} \\\\\n\\end{matrix}\n\\]\nIf you implemented this correctly, and if the original sample size \\(n\\) is “large enough,” then a histogram of the \\(k\\) estimates \\(\\hat{\\theta}_m^{(1)}\\), \\(\\hat{\\theta}_m^{(2)}\\), …, \\(\\hat{\\theta}_m^{(k)}\\) ought to resemble the exact density you derived in part c. The reason this is the parametric bootstrap is because we are simulating the synthetic datasets from the “plug-in” member of our chosen parametric family \\(F_{\\hat{\\theta}_n}\\). If instead we simulated from the empirical distribution \\(\\hat{F}_n(x)=\\sum_{i=1}^nI(X_i\\leq x)/n\\), then that would just be the ordinary, nonparametric bootstrap.\nDon’t you just love statistics?!",
+    "text": "Problem X\nHere is a cdf indexed by a parameter \\(\\theta&gt;0\\):\n\\[\nF(x;\\,\\theta)\n=\n1 - \\frac{1}{(1+x)^\\theta},\\quad x\\geq 0.\n\\]\n\nDescribe an algorithm that will simulate (pseudo)random numbers from this distribution;\nLet \\(x_1,\\,x_2,\\,...,\\,x_n\\overset{\\text{iid}}{\\sim}F(x;\\,\\theta)\\) and derive the maximum likelihood estimator \\(\\hat{\\theta}_n^{(\\text{MLE})}\\) for the parameter \\(\\theta\\);\nDerive the exact sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\);\nImplement the bootstrap to simulate the sampling distribution of \\(\\hat{\\theta}_n^{(\\text{MLE})}\\), and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nHere is a schematic of how the bootstrap works. We start with some ground truth parameter value \\(\\theta_0&gt;0\\), and then implement this:\n\\[\n\\begin{matrix}\n\\text{0. True distribution} &&& F_{\\theta_0} && \\\\\n&&& \\downarrow && \\\\\n\\text{1. Original data} &&& x_{1:n} && \\\\\n&&& \\downarrow && \\\\\n\\text{2. Estimate} &&& \\hat{\\theta}_n && \\\\\n&&& \\downarrow && \\\\\n\\text{3. Plug-in} &&& F_{\\hat{\\theta}_n} && \\\\\n&\\swarrow &\\swarrow& \\cdots &\\searrow&\\searrow \\\\\n\\text{4. Synthetic data}&x_{1:m}^{(1)} &x_{1:m}^{(2)}& \\cdots &x_{1:m}^{(k-1)}&x_{1:m}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{5. Bootstrap estimates}&\\hat{\\theta}_m^{(1)} &\\hat{\\theta}_m^{(2)}& \\cdots &\\hat{\\theta}_m^{(k-1)}&\\hat{\\theta}_m^{(k)} \\\\\n\\end{matrix}\n\\]\nIf you implemented this correctly, and if the original sample size \\(n\\) is “large enough,” then a histogram of the \\(k\\) estimates \\(\\hat{\\theta}_m^{(1)}\\), \\(\\hat{\\theta}_m^{(2)}\\), …, \\(\\hat{\\theta}_m^{(k)}\\) ought to resemble the exact density you derived in part c. The reason this is the parametric bootstrap is because we are simulating the synthetic datasets from the “plug-in” member of our chosen parametric family \\(F_{\\hat{\\theta}_n}\\). If instead we simulated from the empirical distribution \\(\\hat{F}_n(x)=\\sum_{i=1}^nI(X_i\\leq x)/n\\), then that would just be the ordinary, nonparametric bootstrap.\nDon’t you just love statistics?!",
     "crumbs": [
       "Problem Sets",
       "Problem Set 0"
@@ -214,73 +287,59 @@
     "href": "problems/pset-0.html#problem-x-3",
     "title": "Problem Set 0",
     "section": "Problem X",
-    "text": "Problem X\nAn important consideration in time series analysis is sequential or online inference. In this environment, our data are not available to us all at once in a batch. Instead, the observations are streaming; they are arriving one-after-another in real-time, and we want to come up with a scheme that allows us to recursively update our inferences as new information arrives. Let’s explore this in the context of least squares regression.\n\n\n\n\n\n\nOLS review\n\n\n\nConsider the usual setting where we observe iid pairs \\(y_i\\in\\mathbb{R}\\) and \\(\\mathbf{x}_i\\in\\mathbb{R}^p\\) from the linear model:\n\\[\ny_i= \\mathbf{x}_i^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\beta}+\\varepsilon_i,\\quad \\varepsilon_i\\overset{\\text{iid}}{\\sim}\\text{N}(0,\\,\\sigma^2).\n\\] Given \\(n\\) observations, we can form the matrices\n\\[\n\\mathbf{y}_n\n=\n\\underbrace{\n\\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n\\quad\n\\mathbf{X}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\mathbf{x}_1^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\mathbf{x}_2^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\vdots \\\\\n\\mathbf{x}_n^{\\scriptscriptstyle\\mathsf{T}}\n\\end{bmatrix}\n}_{n\\times p}\n\\quad\n\\boldsymbol{\\varepsilon}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\varepsilon_1 \\\\\n\\varepsilon_2 \\\\\n\\vdots \\\\\n\\varepsilon_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n,\n\\] and we can rewrite the model in matrix form:\n\\[\n\\mathbf{y}_n=\\mathbf{X}_n\\boldsymbol{\\beta}+\\boldsymbol{\\varepsilon}_n,\\quad \\boldsymbol{\\varepsilon}_n\\sim\\text{N}_n(\\mathbf{0},\\,\\sigma^2\\mathbf{I}_n).\n\\] The ordinary least squares (OLS) estimator of the regression coefficients is \\(\\hat{\\boldsymbol{\\beta}}_n=(\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_n)^{-1}\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_n.\\)\n\n\nHopefully that was all review, and it describes how to do batch or offline inference for the linear model. We are assuming that all of our data are available in a single batch, and we only need to compute the estimate once. But in our class, we will often care about streaming or online inference: efficiently computing the sequence of estimates \\(\\hat{\\boldsymbol{\\beta}}_1\\), \\(\\hat{\\boldsymbol{\\beta}}_2\\), \\(\\hat{\\boldsymbol{\\beta}}_3\\), … as the pairs \\((\\mathbf{x}_1,\\,y_1)\\), \\((\\mathbf{x}_2,\\,y_2)\\), \\((\\mathbf{x}_3,\\,y_3)\\), … arrive one-after-another in real-time.\n\nSo, imagine we have observed \\(n-1\\) pairs, and we have computed the estimate \\(\\hat{\\boldsymbol{\\beta}}_{n-1}=(\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_{n-1})^{-1}\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_{n-1}.\\) Then, a new observation \\((\\mathbf{x}_n,\\,y_n)\\) arrives. How can we efficiently update our estimate of \\(\\boldsymbol{\\beta}\\) to incorporate this new information? Of course, we could just add new rows to \\(\\mathbf{X}_{n-1}\\) and \\(\\mathbf{y}_{n-1}\\) and recompute the inverse, but that is super inefficient and we can do better. Instead, derive a recursion \\(h\\) that takes the old estimate and the new data and produces the new estimate:\n\n\\[\n\\hat{\\boldsymbol{\\beta}}_n\n=\nh(\\hat{\\boldsymbol{\\beta}}_{n-1},\\,\\mathbf{x}_n,\\,y_n)\n\\]\n\nWrite a for loop in R that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used lm. Do this for the mtcars dataset and the regression mpg ~ wt.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe Sherman–Morrison formula is a great tool! For invertible \\(\\mathbf{A}\\in\\mathbb{R}^{p\\times p}\\) and \\(\\mathbf{v}\\in\\mathbb{R}^p\\), we have\n\\[\n(\\mathbf{A}+\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}})^{-1}\n=\n\\mathbf{A}^{-1}\n-\n\\frac{\n\\mathbf{A}^{-1}\n\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n}{\n1\n+\n\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n\\mathbf{v}\n}\n.\n\\]",
+    "text": "Problem X\nAn important consideration in time series analysis is sequential or online inference. In this environment, our data are not available to us all at once in a batch. Instead, the observations are streaming; they are arriving one-after-another in real-time, and we want to come up with a scheme that allows us to recursively update our inferences as new information arrives. Let’s explore this in the context of least squares regression.\n\n\n\n\n\n\nOLS review\n\n\n\nConsider the usual setting where we observe iid pairs \\(y_i\\in\\mathbb{R}\\) and \\(\\mathbf{x}_i\\in\\mathbb{R}^p\\) from the linear model:\n\\[\ny_i= \\mathbf{x}_i^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\beta}+\\varepsilon_i,\\quad \\varepsilon_i\\overset{\\text{iid}}{\\sim}\\text{N}(0,\\,\\sigma^2).\n\\] Given \\(n\\) observations, we can form the matrices\n\\[\n\\mathbf{y}_n\n=\n\\underbrace{\n\\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n\\quad\n\\mathbf{X}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\mathbf{x}_1^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\mathbf{x}_2^{\\scriptscriptstyle\\mathsf{T}} \\\\\n\\vdots \\\\\n\\mathbf{x}_n^{\\scriptscriptstyle\\mathsf{T}}\n\\end{bmatrix}\n}_{n\\times p}\n\\quad\n\\boldsymbol{\\varepsilon}_n\n=\n\\underbrace{\n\\begin{bmatrix}\n\\varepsilon_1 \\\\\n\\varepsilon_2 \\\\\n\\vdots \\\\\n\\varepsilon_n\n\\end{bmatrix}\n}\n_{n\\times 1}\n,\n\\] and we can rewrite the model in matrix form:\n\\[\n\\mathbf{y}_n=\\mathbf{X}_n\\boldsymbol{\\beta}+\\boldsymbol{\\varepsilon}_n,\\quad \\boldsymbol{\\varepsilon}_n\\sim\\text{N}_n(\\mathbf{0},\\,\\sigma^2\\mathbf{I}_n).\n\\] The ordinary least squares (OLS) estimator of the regression coefficients is \\(\\hat{\\boldsymbol{\\beta}}_n=(\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_n)^{-1}\\mathbf{X}_n^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_n.\\)\n\n\nHopefully that was all review, and it describes how to do batch or offline inference for the linear model. We are assuming that all of our data are available in a single batch, and we only need to compute the estimate once. But in our class, we will often care about streaming or online inference: efficiently computing the sequence of estimates \\(\\hat{\\boldsymbol{\\beta}}_1\\), \\(\\hat{\\boldsymbol{\\beta}}_2\\), \\(\\hat{\\boldsymbol{\\beta}}_3\\), … as the pairs \\((\\mathbf{x}_1,\\,y_1)\\), \\((\\mathbf{x}_2,\\,y_2)\\), \\((\\mathbf{x}_3,\\,y_3)\\), … arrive one-after-another in real-time.\n\nSo, imagine we have observed \\(n-1\\) pairs, and we have computed the estimate \\(\\hat{\\boldsymbol{\\beta}}_{n-1}=(\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{X}_{n-1})^{-1}\\mathbf{X}_{n-1}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{y}_{n-1}.\\) Then, a new observation \\((\\mathbf{x}_n,\\,y_n)\\) arrives. How can we efficiently update our estimate of \\(\\boldsymbol{\\beta}\\) to incorporate this new information? Of course, we could just add new rows to \\(\\mathbf{X}_{n-1}\\) and \\(\\mathbf{y}_{n-1}\\) and recompute the inverse, but that is super inefficient and we can do better. Instead, derive a recursion \\(h\\) that takes the old estimate and the new data and produces the new estimate:\n\n\\[\n\\hat{\\boldsymbol{\\beta}}_n\n=\nh(\\hat{\\boldsymbol{\\beta}}_{n-1},\\,\\mathbf{x}_n,\\,y_n).\n\\]\n\nWrite a for loop in R that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used lm. Do this for the mtcars dataset and the regression mpg ~ wt.\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe Sherman–Morrison formula is a great tool! For invertible \\(\\mathbf{A}\\in\\mathbb{R}^{p\\times p}\\) and \\(\\mathbf{v}\\in\\mathbb{R}^p\\), we have\n\\[\n(\\mathbf{A}+\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}})^{-1}\n=\n\\mathbf{A}^{-1}\n-\n\\frac{\n\\mathbf{A}^{-1}\n\\mathbf{v}\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n}{\n1\n+\n\\mathbf{v}^{\\scriptscriptstyle\\mathsf{T}}\n\\mathbf{A}^{-1}\n\\mathbf{v}\n}\n.\n\\]",
     "crumbs": [
       "Problem Sets",
       "Problem Set 0"
     ]
   },
   {
-    "objectID": "syllabus/syllabus_policies.html",
-    "href": "syllabus/syllabus_policies.html",
-    "title": "Policies",
-    "section": "",
-    "text": "If you wish to ask content-related questions in writing, please do not do so via e-mail. Instead, please use the course discussion forum Ed Discussion. That way all members of the teaching team can see your question, and all students can benefit from the ensuing discussion. You are also encouraged to answer one another’s questions.\nIf you have questions about personal matters that may not be appropriate for the public course forum (e.g. illness, accommodations, etc), then please e-mail the instructor directly (john.zito@duke.edu).\n\n\n\n\n\n\nNote\n\n\n\nYou can ask questions anonymously on Ed. The teaching team will still know your identity, but your peers will not."
+    "objectID": "slides/welcome_2025_08_25.html#fan-chart-demo",
+    "href": "slides/welcome_2025_08_25.html#fan-chart-demo",
+    "title": "Welcome to STA 542!",
+    "section": "Fan chart demo",
+    "text": "Fan chart demo"
   },
   {
-    "objectID": "syllabus/syllabus_policies.html#communication",
-    "href": "syllabus/syllabus_policies.html#communication",
-    "title": "Policies",
-    "section": "",
-    "text": "If you wish to ask content-related questions in writing, please do not do so via e-mail. Instead, please use the course discussion forum Ed Discussion. That way all members of the teaching team can see your question, and all students can benefit from the ensuing discussion. You are also encouraged to answer one another’s questions.\nIf you have questions about personal matters that may not be appropriate for the public course forum (e.g. illness, accommodations, etc), then please e-mail the instructor directly (john.zito@duke.edu).\n\n\n\n\n\n\nNote\n\n\n\nYou can ask questions anonymously on Ed. The teaching team will still know your identity, but your peers will not."
+    "objectID": "slides/welcome_2025_08_25.html#point-forecast",
+    "href": "slides/welcome_2025_08_25.html#point-forecast",
+    "title": "Welcome to STA 542!",
+    "section": "Point forecast",
+    "text": "Point forecast"
   },
   {
-    "objectID": "syllabus/syllabus_policies.html#late-work-and-extensions",
-    "href": "syllabus/syllabus_policies.html#late-work-and-extensions",
-    "title": "Policies",
-    "section": "Late work and extensions",
-    "text": "Late work and extensions\nNo late work will be accepted unless you request an extension in advance by e-mailing the instructor directly (john.zito@duke.edu). All reasonable requests will be entertained, but extensions will not be long."
+    "objectID": "slides/welcome_2025_08_25.html#forecast-interval",
+    "href": "slides/welcome_2025_08_25.html#forecast-interval",
+    "title": "Welcome to STA 542!",
+    "section": "Forecast interval",
+    "text": "Forecast interval"
   },
   {
-    "objectID": "syllabus/syllabus_policies.html#regrade-requests",
-    "href": "syllabus/syllabus_policies.html#regrade-requests",
-    "title": "Policies",
-    "section": "Regrade requests",
-    "text": "Regrade requests\nIf you receive a graded assignment back, and you believe that some part of it was graded incorrectly, you may dispute the grade by submitting a regrade request in Gradescope. Note the following:\n\nYou have one week after you receive a grade to submit a regrade request;\nYou should submit separate regrade requests for each question you wish to dispute, not a single catch-all request;\nRequests will be considered if there was an error in the grade calculation or if a correct answer was mistakenly marked as incorrect;\nRequests to dispute the number of points deducted for an incorrect response will not be considered;\nRegrade requests are not a mechanism for asking for clarification on feedback. Those questions should be brought to office hours;\nNo grades will be changed after the final exam has been administered on Saturday May 3;\n\n\n\n\n\n\n\nWarning\n\n\n\nA regrade request can result in your grade going up, staying the same, or going down if we determine that, in fact, the original grader was too lenient."
+    "objectID": "slides/welcome_2025_08_25.html#forecast-density",
+    "href": "slides/welcome_2025_08_25.html#forecast-density",
+    "title": "Welcome to STA 542!",
+    "section": "Forecast density",
+    "text": "Forecast density"
   },
   {
-    "objectID": "syllabus/syllabus_policies.html#attendance",
-    "href": "syllabus/syllabus_policies.html#attendance",
-    "title": "Policies",
-    "section": "Attendance",
-    "text": "Attendance\nLive your life. Attendance is not strictly required for any of the class meetings. The responsibility lies with us to make class meetings sufficiently engaging and informative that you choose to attend. Having said that, success in this class and regular attendance are probably highly positively correlated. Furthermore, while lab attendance is not required, regular attendance is most likely the path of least resistance to earning full credit for the lab component of your final grade. The labs are designed so that they can be completed in one sitting more or less, and they are due at midnight the same day. So show up to lab, bang it out, and move on with your life."
+    "objectID": "slides/welcome_2025_08_25.html#then-the-data-finally-arrive",
+    "href": "slides/welcome_2025_08_25.html#then-the-data-finally-arrive",
+    "title": "Welcome to STA 542!",
+    "section": "Then the data finally arrive",
+    "text": "Then the data finally arrive\nSo…how’d we do?"
   },
   {
-    "objectID": "syllabus/syllabus_policies.html#accommodations",
-    "href": "syllabus/syllabus_policies.html#accommodations",
-    "title": "Policies",
-    "section": "Accommodations",
-    "text": "Accommodations\nIf you need accommodations for this class, you will need to register with the Student Disability Access Office (SDAO) and provide them with documentation related to your needs. SDAO will work with you to determine what accommodations are appropriate for your situation. Please note that accommodations are not retroactive and disability accommodations cannot be provided until a Faculty Accommodation Letter has been given to me. Please contact SDAO for more information: sdao@duke.edu or access.duke.edu."
+    "objectID": "slides/welcome_2025_08_25.html#the-main-themes-of-the-course",
+    "href": "slides/welcome_2025_08_25.html#the-main-themes-of-the-course",
+    "title": "Welcome to STA 542!",
+    "section": "The main themes of the course",
+    "text": "The main themes of the course\nWe will focus on the following:\n\n\nIf you understand how to manipulate the multivariate normal, much (most?) of time series analysis is immediately accessible;\nInference should be sequential. We want recursive estimation techniques to handle data that are streaming in real-time;\nPredictions should be probabilistic. We want point, interval, and density forecasts that incorporate many sources of uncertainty;\n\n\n\nAnd there is a secret fourth theme:\n\n\nA Bayesian approach is an excellent way of achieving the goals of sequential inference and probabilistic prediction."
   },
   {
-    "objectID": "syllabus/syllabus_policies.html#collaboration",
-    "href": "syllabus/syllabus_policies.html#collaboration",
-    "title": "Policies",
-    "section": "Collaboration",
-    "text": "Collaboration\nYou are encouraged to discuss and collaborate on problem sets and labs, but all submitted work must be entirely your own. You should not be sharing your solutions or copying other people’s work. This will be treated as plagiarism, and both the sharer and the recipient(s) will be penalized equally."
-  },
-  {
-    "objectID": "syllabus/syllabus_policies.html#use-of-outside-resources-including-ai",
-    "href": "syllabus/syllabus_policies.html#use-of-outside-resources-including-ai",
-    "title": "Policies",
-    "section": "Use of outside resources, including AI",
-    "text": "Use of outside resources, including AI\nIt basically comes down to this:\n\nDo your own math and write your own words, but write code however you want (as long as you cite your sources).\n\nYou are expected to produce all mathematical reasoning, arguments, and calculations yourself, and your write-ups should be original to you. You should not use ChatGPT or anything like it to solve math problems or write words for you. When it comes to code, you are free to use any outside resources (StackOverflow, ChatGPT, etc) to help you complete coding tasks as long as you cite where you obtained any code you directly use (or use as inspiration). Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism.\n\n\n\n\n\n\nCiting an LLM like ChatGPT\n\n\n\nHere are some general guidelines for citing AI-generated content. In this class, if you use something like ChatGPT to help you, you need to cite that by providing a direct link to the conversation you had with the bot, like this: https://chatgpt.com/share/677c4060-1d58-8008-8e47-5caa5556a825. You can generate such a link here:"
-  },
-  {
-    "objectID": "syllabus/syllabus_policies.html#duke-community-standard",
-    "href": "syllabus/syllabus_policies.html#duke-community-standard",
-    "title": "Policies",
-    "section": "Duke Community Standard",
-    "text": "Duke Community Standard\nAs a student in this course, you have agreed to uphold the Duke Community Standard and the practices specific to this course.\n\n\nAny violations in academic honesty standards as outlined in the Duke Community Standard and those specific to this course will automatically results in a zero for the relevant portion or the entire assignment, and will be reported to the Office of Student Conduct & Community Standards for further action. Furthermore:\n\nIf a conduct violation results in a zero on a lab or problem set, that zero will not be dropped;\nIf a conduct violation results in a zero on an midterm, that zero will not be replaced with your final exam score;\nIf we discover that students are sharing and copying assignment solutions, all students involved will be penalized equally, the sharer the same as the recipients."
+    "objectID": "slides/welcome_2025_08_25.html#bookmark-the-course-page",
+    "href": "slides/welcome_2025_08_25.html#bookmark-the-course-page",
+    "title": "Welcome to STA 542!",
+    "section": "Bookmark the course page!",
+    "text": "Bookmark the course page!\n\n\n\n\n    \n\nhttps://sta542-f25.github.io/"
   }
 ]

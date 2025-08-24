@@ -2,23 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sta542-f25.github.io/syllabus/syllabus.html</loc>
-    <lastmod>2025-08-22T14:26:35.796Z</lastmod>
+    <lastmod>2025-08-23T18:20:54.252Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/index.html</loc>
-    <lastmod>2025-08-22T07:57:34.701Z</lastmod>
+    <lastmod>2025-08-23T17:09:57.238Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/problems/pset-1.html</loc>
     <lastmod>2025-08-04T02:26:13.864Z</lastmod>
   </url>
   <url>
-    <loc>https://sta542-f25.github.io/problems/bank/review/linear-combos.html</loc>
-    <lastmod>2025-08-22T07:46:29.564Z</lastmod>
+    <loc>https://sta542-f25.github.io/problems/bank/review/online-least-squares.html</loc>
+    <lastmod>2025-08-24T03:12:23.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta542-f25.github.io/problems/bank/review/prediction-interval.html</loc>
+    <lastmod>2025-08-23T19:31:23.379Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/problems/bank/review/mvnormal.html</loc>
-    <lastmod>2025-08-22T12:58:26.918Z</lastmod>
+    <lastmod>2025-08-23T11:27:23.523Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/problems/bank/review/matrix-eq.html</loc>
@@ -26,26 +30,30 @@
   </url>
   <url>
     <loc>https://sta542-f25.github.io/lecture-notes/ar-1.html</loc>
-    <lastmod>2025-08-21T03:50:02.882Z</lastmod>
+    <lastmod>2025-08-23T13:52:45.283Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/problems/bank/review/mle.html</loc>
-    <lastmod>2025-08-22T07:36:15.522Z</lastmod>
+    <lastmod>2025-08-23T19:05:31.913Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/problems/bank/review/bayes.html</loc>
     <lastmod>2025-08-22T07:43:23.507Z</lastmod>
   </url>
   <url>
-    <loc>https://sta542-f25.github.io/problems/bank/review/online-least-squares.html</loc>
-    <lastmod>2025-08-22T06:30:21.408Z</lastmod>
+    <loc>https://sta542-f25.github.io/problems/bank/review/linear-combos.html</loc>
+    <lastmod>2025-08-22T07:46:29.564Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sta542-f25.github.io/problems/bank/state-space/smith-miller.html</loc>
+    <lastmod>2025-08-22T23:38:13.859Z</lastmod>
   </url>
   <url>
     <loc>https://sta542-f25.github.io/problems/pset-0.html</loc>
-    <lastmod>2025-08-22T12:59:16.038Z</lastmod>
+    <lastmod>2025-08-23T18:49:31.894Z</lastmod>
   </url>
   <url>
-    <loc>https://sta542-f25.github.io/syllabus/syllabus_policies.html</loc>
-    <lastmod>2025-07-23T20:00:27.968Z</lastmod>
+    <loc>https://sta542-f25.github.io/slides/welcome_2025_08_25.html</loc>
+    <lastmod>2025-08-23T04:28:22.383Z</lastmod>
   </url>
 </urlset>
