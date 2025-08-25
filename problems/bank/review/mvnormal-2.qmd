@@ -1,0 +1,45 @@
+Recall that if $\mathbf{x}$ and $\mathbf{y}$ are jointly distributed according to 
+
+$$
+\begin{bmatrix}
+\mathbf{x} \\ 
+\mathbf{y}
+\end{bmatrix}
+\sim
+\text{N}_{n+m}
+\left(
+\begin{bmatrix}
+\boldsymbol{\mu}_x \\ 
+\boldsymbol{\mu}_y
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\boldsymbol{\Sigma}_x & \boldsymbol{\Sigma}_{xy}\\ 
+\boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}} & \boldsymbol{\Sigma}_y
+\end{bmatrix}
+\right),
+$$
+
+then the conditional distribution is
+
+$$
+\mathbf{y} \,|\,\mathbf{x}
+\sim
+\text{N}_m
+\left(
+\boldsymbol{\mu}_y + \boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\Sigma}_x^{-1}(\mathbf{x}-\boldsymbol{\mu}_x)
+,\,
+\boldsymbol{\Sigma}_y - \boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}_x^{-1}
+\boldsymbol{\Sigma}_{xy}
+\right).
+$$
+
+We will use this fact often, but proving it is really nasty. I'm not going to make you do it. This problem set is unreasonable enough already. Instead, I want you to [read the proof](https://statproofbook.github.io/P/mvn-cond) very carefully. If you're like me, there is some step in the derivation that will make you say "what just happened?" Drill down on that. Pick a section of the proof where you get confused, or where a technique is being used that you are unfamiliar with. Study that part carefully until you understand it, and then in your problem set write-up, explain it to me like I'm an idiot (shouldn't be too difficult). Use pictures, numerical examples, specialize to the bivariate case, whatever you need to do.
+
+::: callout-note
+## Don't be a silly goose.
+We are grading this part of the problem set for completion, but give it a good faith effort so that you actually, like, learn something.
+:::
+
+

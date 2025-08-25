@@ -1,32 +1,40 @@
 ---
 title: "Problem Set 0"
-subtitle: Due Monday September 8 at 11AM
+subtitle: Due Friday September 5 at 5PM
 editor: 
   mode: source
 ---
 
-- MvNormal 1
-- MvNormal 2
-- Confidence versus prediction
-- MLE
-- Bayes
-- ?
-- Recursive OLS
+## Problem 1
 
-## Problem X
+{{< include bank/review/mvnormal-1.qmd >}}
+
+## Problem 2
+
+{{< include bank/review/mvnormal-2.qmd >}}
+
+## Problem 3
 
 {{< include bank/review/prediction-interval.qmd >}}
 
-## Problem X
+## Problem 4
 
 {{< include bank/review/mle.qmd >}}
 
-## Problem X
+## Problem 5
 
 {{< include bank/review/bayes.qmd >}}
 
-## Problem X
+## Problem 6
 
 {{< include bank/review/online-least-squares.qmd >}}
 
+## Submission
+
+You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.
+
+::: callout-warning
+## Code
+If a problem asked you to code something up, we want to see the code in the submission, not just the output.
+:::
 

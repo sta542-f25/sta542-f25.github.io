@@ -4,7 +4,7 @@ $$
 X_1,\,X_2,\,...,\,X_n\overset{\text{iid}}{\sim}\text{N}(\theta,\,1)
 $$
 
-and the estimator $\hat{\theta}_n=\sum\limits_{i=1}^nX_i/n$.
+and the usual estimator $\hat{\theta}_n=\sum\limits_{i=1}^nX_i/n$.
 
 a. Derive an exact $100\times (1-\alpha)\%$ classical confidence interval for the unknown mean $\theta$. That is, find a random interval $(L_n,\,U_n)$ satisfying:
 

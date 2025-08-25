@@ -1,12 +1,4 @@
-Recall the parametric family from the previous part:
-
-$$
-F(x;\,\theta)
-=
-1 - \frac{1}{(1+x)^\theta},\quad x\geq 0.
-$$
-
-Consider the Bayesian model
+Recall the parametric family from the previous part, and consider the Bayesian model
 
 $$
 \begin{aligned}

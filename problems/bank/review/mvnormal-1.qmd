@@ -1,28 +1,4 @@
-Slicing-and-dicing the **multivariate normal distribution** is a very important skill in time series analysis, so let's make sure we can do that. A random vector $\mathbf{x}=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ has the multivariate normal distribution with mean vector $E(\mathbf{x})=\boldsymbol{\mu}=\begin{bmatrix}\mu_1&\mu_2&\cdots&\mu_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ and covariance matrix $\text{cov}(\mathbf{x})=\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}$ if its density is
-
-$$
-f(\mathbf{x})
-=
-\frac{1}
-{
-(2\pi)^{\frac{n}{2}}
-|\boldsymbol{\Sigma}|^{1/2}
-}
-\exp
-\left(
--\frac{1}{2}
-(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}
-\boldsymbol{\Sigma}^{-1}
-(\mathbf{x}-\boldsymbol{\mu})
-\right)
-,
-\quad
-\mathbf{x}
-\in
-\mathbb{R}^n.
-$$
-
-We denote this $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$. If $n=1$, then the distribution collapses to the univariate normal. WHAT ELSE
+Slicing-and-dicing the **multivariate normal distribution** is a very important skill in time series analysis, so let's make sure we can do that.
 
 a. Let $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$, and fix constants $\mathbf{A}\in\mathbb{R}^{m\times n}$ and $\mathbf{c}\in\mathbb{R}^m$. Show that 
 
@@ -93,6 +69,10 @@ $$
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Jacobian
+There are many ways to do part a. One that you might try is the multivariate **change-of-variables** formula. Let $\mathbf{x}\in\mathbb{R}^n$ be a random vector with density $f_{\mathbf{x}}$, and let $g:\mathbb{R}^n\to\mathbb{R}^n$ be an invertible transformation whose partial derivatives all exist and are continuous. Then the density of the new random variable $\mathbf{y}=g(\mathbf{x})$ is 
 
+$$
+f_{\mathbf{y}}(\mathbf{y}) = f_{\mathbf{x}}(g^{-1}(\mathbf{y}))\,|\det\mathrm{J}_{g^{-1}}(\mathbf{y})|.
+$$
+$\mathrm{J}_{g^{-1}}$ is an $n\times n$ **Jacobian matrix** which encodes the partial derivatives of the inverse transformation. This may seem like a massive pain in the ass, but how hard could the Jacobian of a linear transformation possibly be? Spoiler: not. 
 :::

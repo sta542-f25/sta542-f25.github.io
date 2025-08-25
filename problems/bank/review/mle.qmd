@@ -9,7 +9,7 @@ $$
 a. Describe an algorithm that will simulate (pseudo)random numbers from this distribution;
 b. Let $x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}F(x;\,\theta)$ and derive the maximum likelihood estimator $\hat{\theta}_n^{(\text{MLE})}$ for the parameter $\theta$;
 c. Derive the *exact* sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$;
-d. Implement the bootstrap to simulate the sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from part a.
+d. Implement the bootstrap to simulate the sampling distribution of $\hat{\theta}_n^{(\text{MLE})}$, and compare the bootstrap distribution to the exact one you derived in part c. In order to do this, you will probably need your algorithm from part a.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
@@ -22,11 +22,11 @@ $$
 &&& \downarrow && \\
 \text{1. Original data} &&& x_{1:n} && \\
 &&& \downarrow && \\
-\text{2. Empirical distribution} &&& \hat{F}_{n}(x) && \\
+\text{2. Empirical distribution} &&& \hat{F}_{n} && \\
 &\swarrow &\swarrow& \cdots &\searrow&\searrow \\
-\text{3. Synthetic data}&x_{1:m}^{(1)} &x_{1:m}^{(2)}& \cdots &x_{1:m}^{(k-1)}&x_{1:m}^{(k)} \\
+\text{3. Synthetic data}&\tilde{x}_{1:n}^{(1)} &\tilde{x}_{1:n}^{(2)}& \cdots &\tilde{x}_{1:n}^{(k-1)}&\tilde{x}_{1:n}^{(k)} \\
 &\downarrow &\downarrow& \cdots &\downarrow&\downarrow \\
-\text{4. Bootstrap estimates}&\hat{\theta}_m^{(1)} &\hat{\theta}_m^{(2)}& \cdots &\hat{\theta}_m^{(k-1)}&\hat{\theta}_m^{(k)} \\
+\text{4. Bootstrap estimates}&\hat{\theta}_n^{(1)} &\hat{\theta}_n^{(2)}& \cdots &\hat{\theta}_n^{(k-1)}&\hat{\theta}_n^{(k)} \\
 \end{matrix}
 $$
 
