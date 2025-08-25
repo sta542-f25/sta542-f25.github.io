@@ -367,6 +367,8 @@ We denote this $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})
 
 If $n=1$, then we meet an old friend:
 
+. . .
+
 ::::: {.columns}
 ::: {.column width="50%"}
 $$
