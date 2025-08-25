@@ -172,9 +172,9 @@ mtext(expression(y["t+1"]), side = 1, at = y, line = 2, cex = 3, col = "red")
 We will focus on the following:
 
 ::: incremental
-1. If you understand how to manipulate the multivariate normal, much of time series analysis is immediately accessible;
 1. Inference should be [sequential]{style="color:red;"}. We want recursive estimation techniques to handle data that are *streaming* in real-time;
 1. Predictions should be [probabilistic]{style="color:red;"}. We want point, interval, and density forecasts that incorporate many sources of uncertainty;
+1. If you understand how to manipulate the multivariate normal, much of time series analysis is immediately accessible;
 :::
 
 . . .
@@ -756,8 +756,8 @@ Fix some objects:
 
 ::: incremental 
 - Random $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$
-- Constant $\mathbf{A}\in\mathbb{R}^{m\times n}$ constant;
-- Constant $\mathbf{c}\in\mathbb{R}^m$ constant.
+- Constant $\mathbf{A}\in\mathbb{R}^{m\times n}$;
+- Constant $\mathbf{c}\in\mathbb{R}^m$.
 :::
 
 . . .
@@ -790,7 +790,7 @@ $$
 
 Prove it on Problem Set 0!
 
-## A useful special case
+## A useful special case (Problem Set 0!)
 
 ::: callout-tip
 ## Linear combinations of independent normals are normal
