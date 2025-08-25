@@ -7,3 +7,5 @@ editor:
 
 
 derive AR(1) covariance kernel (not assuming stationarity)
+
+do generative and joint simulations many times and verify that you get the same sample moments.
