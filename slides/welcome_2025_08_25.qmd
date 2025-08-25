@@ -5,13 +5,13 @@ format: revealjs
 auto-stretch: false
 ---
 
-# What is a time series?
+# What are we studying?
 
 Web traffic
 Server load
-Finance
+Finance (many equity prices)
 Ngrams
-Macro
+Macro (unemployment)
 Neuro
 Music
 digital personal health (steps)
@@ -22,25 +22,157 @@ energy demand
 housing
 inventory
 
-## Fan chart demo
+# Course themes
 
+## The whole course in one picture?
+
+![](images/fan-charts.gif){fig-align="center"}
 
 ## Point forecast
 
+Your single-number best guess at tomorrow's observation:
+
+```{r}
+#| echo: false
+
+library(LaplacesDemon)
+set.seed(8675309)
+m = c(-.5, .5)
+p = c(0.25, 0.75)
+s = c(0.3, 0.3)
+draws = rnormm(5000, p, m, s)
+L = quantile(draws, 0.1)
+mix.med = quantile(draws, 0.5)
+U = quantile(draws, 0.9)
+y = rnormm(2, p, m, s)[2] + 0.2
+
+curve(dnormm(x, p, m, s), from = -2, to = 2, n = 1000,
+      bty = "n", 
+     xaxt = "n",
+     yaxt = "n", 
+     xaxs = "i",
+     yaxs = "i",
+     ylab = "", 
+     xlab = "", 
+     xlim = c(-2, 2),
+     ylim = c(-0.1, 1.1), 
+     col = "white",
+     lwd = 3)
+abline(h = 0, lwd = 3)
+points(mix.med, 0, pch = 19, cex = 2)
+#polygon(x = c(L, U, U, L),
+#        y = c(0, 0, 100, 100),
+#        col = rgb(0, 0, 1, 0.1),
+#        border = NA)
+#text(-0.2, 0.9, expression(I["t+1 | t"]), cex = 3)
+#text(1.3, 0.4, expression(f["t+1 | t"]), cex = 3)
+#points(y, 0, pch = 19, cex = 3, col = "red")
+mtext(expression(hat(y)["t+1 | t"]), side = 1, at = mix.med, line = 2, cex = 3)
+#mtext(expression(y["t+1"]), side = 1, at = y, line = 2, cex = 3, col = "red")
+```
+
 ## Forecast interval
+
+A range of likely values for tomorrow's observation:
+
+```{r}
+#| echo: false
+
+curve(dnormm(x, p, m, s), from = -2, to = 2, n = 1000,
+      bty = "n", 
+     xaxt = "n",
+     yaxt = "n", 
+     xaxs = "i",
+     yaxs = "i",
+     ylab = "", 
+     xlab = "", 
+     xlim = c(-2, 2),
+     ylim = c(-0.1, 1.1), 
+     col = "white",
+     lwd = 3)
+abline(h = 0, lwd = 3)
+points(mix.med, 0, pch = 19, cex = 2)
+polygon(x = c(L, U, U, L),
+        y = c(0, 0, 100, 100),
+        col = rgb(0, 0, 1, 0.1),
+        border = NA)
+text(-0.2, 0.9, expression(I["t+1 | t"]), cex = 3)
+#text(1.3, 0.4, expression(f["t+1 | t"]), cex = 3)
+#points(y, 0, pch = 19, cex = 3, col = "red")
+mtext(expression(hat(y)["t+1 | t"]), side = 1, at = mix.med, line = 2, cex = 3)
+#mtext(expression(y["t+1"]), side = 1, at = y, line = 2, cex = 3, col = "red")
+```
 
 ## Forecast density 
 
-## Then the data finally arrive
+Full distribution capturing uncertainty about tomorrow:
+
+```{r}
+#| echo: false
+
+curve(dnormm(x, p, m, s), from = -2, to = 2, n = 1000,
+      bty = "n", 
+     xaxt = "n",
+     yaxt = "n", 
+     xaxs = "i",
+     yaxs = "i",
+     ylab = "", 
+     xlab = "", 
+     xlim = c(-2, 2),
+     ylim = c(-0.1, 1.1), 
+     col = "blue",
+     lwd = 3)
+abline(h = 0, lwd = 3)
+points(mix.med, 0, pch = 19, cex = 2)
+polygon(x = c(L, U, U, L),
+        y = c(0, 0, 100, 100),
+        col = rgb(0, 0, 1, 0.1),
+        border = NA)
+text(-0.2, 0.9, expression(I["t+1 | t"]), cex = 3)
+text(1.3, 0.4, expression(f["t+1 | t"]), cex = 3)
+#points(y, 0, pch = 19, cex = 3, col = "red")
+mtext(expression(hat(y)["t+1 | t"]), side = 1, at = mix.med, line = 2, cex = 3)
+#mtext(expression(y["t+1"]), side = 1, at = y, line = 2, cex = 3, col = "red")
+```
+
+## And then tomorrow finally comes
 
 So...how'd we do?
+
+```{r}
+#| echo: false
+
+curve(dnormm(x, p, m, s), from = -2, to = 2, n = 1000,
+      bty = "n", 
+     xaxt = "n",
+     yaxt = "n", 
+     xaxs = "i",
+     yaxs = "i",
+     ylab = "", 
+     xlab = "", 
+     xlim = c(-2, 2),
+     ylim = c(-0.1, 1.1), 
+     col = "blue",
+     lwd = 3)
+abline(h = 0, lwd = 3)
+points(mix.med, 0, pch = 19, cex = 2)
+polygon(x = c(L, U, U, L),
+        y = c(0, 0, 100, 100),
+        col = rgb(0, 0, 1, 0.1),
+        border = NA)
+text(-0.2, 0.9, expression(I["t+1 | t"]), cex = 3)
+text(1.3, 0.4, expression(f["t+1 | t"]), cex = 3)
+points(y, 0, pch = 19, cex = 3, col = "red")
+mtext(expression(hat(y)["t+1 | t"]), side = 1, at = mix.med, line = 2, cex = 3)
+mtext(expression(y["t+1"]), side = 1, at = y, line = 2, cex = 3, col = "red")
+```
 
 ## The main themes of the course
 
 We will focus on the following:
 
 ::: incremental
-1. If you understand how to manipulate the multivariate normal, much (most?) of time series analysis is immediately accessible;
+1. If you understand how to manipulate the multivariate normal, much of time series analysis is immediately accessible;
 1. Inference should be [sequential]{style="color:red;"}. We want recursive estimation techniques to handle data that are *streaming* in real-time;
 1. Predictions should be [probabilistic]{style="color:red;"}. We want point, interval, and density forecasts that incorporate many sources of uncertainty;
 :::
@@ -66,3 +198,633 @@ And there is a secret fourth theme:
 <https://sta542-f25.github.io/>
 :::
 :::::
+
+## Final grade breakdown
+
+Your final course grade will be calculated as follows:
+
+| Category       | Percentage |
+|----------------|------------|
+| Problem Sets   | 25%        |
+| Exam 1         | 25%        |
+| Exam 2         | 25%        |
+| Final Project  | 25%        |
+
+::: callout-note
+The final letter grade will be based on the usual thresholds, and there might be a curve.
+:::
+
+## Course components
+
+::: incremental 
+- [**Problem sets**]{style="color:blue;"}: 6 in total; one due about every 2 weeks;
+- [**Exams**]{style="color:blue;"}: in-class, with only an 8.5" x 11" note sheet:
+
+    - Wednesday October 8 11:45 AM - 12:00 PM;
+    - Monday November 24 11:45 AM - 12:00 PM;
+    
+- [**Final project**]{style="color:blue;"}: no clue, honestly. Talk to me in October.
+:::
+
+
+## Late policy
+
+No late work will be accepted unless you request an extension in advance by e-mailing JZ. All reasonable requests will be entertained, but extensions will not be long.
+
+## Attendance
+
+Not required. Live your life.
+
+## Communication
+
+If you wish to ask questions in writing...
+
+-   **Post on Ed**: about general course policies and content;
+
+-   **Email JZ directly**: personal matters.
+
+You should not really be emailing Aihua directly for any reason.
+
+## Collaboration
+
+You are *enthusiastically encouraged* to work together on the problem sets. You will learn a lot from each other! Two policies:
+
+- ✅ Acknowledge your collaborators: "Aloysius, Cybill, and I worked together on this problem;"
+- ❌ Do not outright share or copy solutions. All submitted work must be your own.
+
+Violation of the second policy is plagiarism. Sharers and recipients alike are referred to the conduct office and receive zeros.
+
+## Use of outside resources, including AI
+
+> [Using ChatGPT to complete assignments is like bringing a forklift into the weight room; you will never improve your cognitive fitness that way.](https://www.newyorker.com/culture/the-weekend-essay/why-ai-isnt-going-to-make-art)
+
+- If you find a problem solution online (or prompt an LLM to generate one) and submit it as your own work, that will obviously be considered plagiarism;
+- Otherwise, all outside resources are fair game for you to study and get extra practice;
+- If you outsource all of your *thinking* to a language model, you will probably fail both exams. Good luck!
+
+## What background do you need? {.scrollable}
+
+I assume you have a working knowledge of...
+
+::: incremental
+- matrix algebra;
+- OLS regression;
+- probability and math stat at the level of Casella & Berger;
+- Bayesian statistics at the level of STA 602;
+- The `R` programming language.
+:::
+
+. . .
+
+[Problem Set 0](https://sta542-f25.github.io/problems/pset-0.html) gives you a workout in all of the above.
+
+# So, let's get into it
+
+## Time series {.medium}
+
+- A [**time series**]{style="color:blue;"} is a set of measurements collected over time;
+
+- We model these data as a sequence of [**dependent**]{style="color:blue;"} random variables:
+
+$$
+y_{0:T} = \{y_0,\,y_1,\,y_2,\,...,\,y_T\}.
+$$
+
+- A [**time series model**]{style="color:blue;"} is "just" their joint probability distribution:
+
+$$
+p(y_{1:T}) = p(y_0)\prod_{t=1}^Tp(y_t\,|\,y_{0:t-1}).
+$$
+
+. . .
+
+::: callout-tip
+## Stay grounded.
+
+Like much wisdom, that last bullet is simultaneously vacuous and profound. It tells you everything and it tells you nothing all at once. But don't let this basic fact get lost in the sea of details.
+
+:::
+
+# A useful joint distribution: the multivariate normal
+
+## Definition {.medium}
+
+A random vector $\mathbf{x}=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n$ has the [**multivariate normal distribution**]{style="color:blue;"} with mean vector $\boldsymbol{\mu}\in\mathbb{R}^n$ and covariance matrix $\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}$ if its density is
+
+. . .
+
+$$
+p(\mathbf{x})
+=
+\frac
+{
+\exp
+\left(
+-\frac{1}{2}
+(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right)
+}
+{
+(2\pi)^{\frac{n}{2}}
+|\boldsymbol{\Sigma}|^{1/2}
+}
+,
+\quad
+\mathbf{x}
+\in
+\mathbb{R}^n.
+$$
+
+. . .
+
+We denote this $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$.
+
+. . .
+
+::: callout-warning 
+## Plenty of linear algebra coming your way!
+- Transpose $(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}$;
+- Inverse $\boldsymbol{\Sigma}^{-1}$;
+- Matrix multiplication $(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu})$;
+- Determinant $|\boldsymbol{\Sigma}|$;
+- $\boldsymbol{\Sigma}$ is a symmetric and [**positive definite**]{style="color:brown;"} matrix.
+:::
+
+## Univariate 
+
+If $n=1$, then we meet an old friend:
+
+::::: {.columns}
+::: {.column width="50%"}
+$$
+p(x)=\frac{\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}{\sqrt{2\pi\sigma^2}}.
+$$
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-asp: 0.75
+par(mar = c(4, 0.5, 0.5, 0.5))
+curve(dnorm(x), from = -3.5, to = 3.5, n = 1000,
+      lwd = 5, col = "blue", bty = "n",
+      xaxt = "n", yaxt = "n", ylab = "", xlab = "",
+      xaxs = "i", yaxs = "i", 
+      ylim = c(-0.1, 0.45))
+abline(h = 0)
+axis(1, at = c(-1, 0, 1),
+     labels = c(expression(mu-sigma),
+                expression(mu),
+                expression(mu+sigma)),
+     cex.axis = 3, line = 0, pos = 0, padj = 2)
+segments(-1, 0, -1, 100, lty = 2, lwd = 2)
+segments(1, 0, 1, 100, lty = 2, lwd = 2)
+```
+:::
+:::::
+
+. . .
+
+So $\mathbf{x} = [x]\sim\text{N}_1([\mu],\,[\sigma^2])$ is just $x\sim\text{N}(\mu,\,\sigma^2)$.
+
+
+## Bivariate 
+
+![](images/binormal.gif){fig-align="center"}
+
+## Moments {.small}
+
+First: 
+
+$$
+\boldsymbol{\mu}
+=
+E(\mathbf{x})
+=
+\begin{bmatrix}
+\mu_1
+&
+\mu_2
+&
+\cdots 
+&
+\mu_n
+\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}
+=
+\begin{bmatrix}
+E(x_1)
+&
+E(x_2)
+&
+\cdots 
+&
+E(x_n)
+\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}
+.
+$$
+
+. . .
+
+Second:
+
+$$
+\begin{aligned}
+\boldsymbol{\Sigma}
+=
+\text{cov}(\mathbf{x})
+&=
+\begin{bmatrix}
+\sigma^2_1 & \sigma_{1,2} & \cdots & \sigma_{1,n}\\
+\sigma_{1,2} & \sigma_{2}^2 & \cdots & \sigma_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+\sigma_{1,n} & \sigma_{2,n} & \cdots & \sigma_{n}^2\\
+\end{bmatrix}
+\\
+&=
+\begin{bmatrix}
+\text{var}(x_1) & \text{cov}(x_1,\,x_2) & \cdots & \text{cov}(x_1,\,x_n)\\
+\text{cov}(x_2,\,x_1) & \text{var}(x_2) & \cdots & \text{cov}(x_2,\,x_n)\\
+\vdots & \vdots & \ddots & \vdots\\
+\text{cov}(x_n,\,x_1) & \text{cov}(x_n,\,x_2) & \cdots & \text{var}(x_n)\\
+\end{bmatrix}
+.
+\end{aligned}
+$$
+
+## Oh my aching eigen
+
+. . .
+
+::: callout-tip
+## Eigenvectors and eigenvalues
+
+There are $n$ orthogonal vectors $\mathbf{v}_i\in\mathbb{R}^n$ and values $\lambda_i>0$ satisfying:
+
+$$
+\boldsymbol{\Sigma}\mathbf{v}_i=\lambda_i\mathbf{v}_i.
+$$
+[**Positive definite**]{style="color:red;"} means all the eigenvalues are real and strictly postive.
+
+:::
+
+. . .
+
+::: callout-note
+## Eigendecomposition (AKA spectral decomposition)
+A useful way to rewrite $\boldsymbol{\Sigma}$:
+$$
+\begin{aligned}
+\boldsymbol{\Sigma}
+&=
+\begin{bmatrix}
+\mathbf{v}_1 & \mathbf{v}_2 & \cdots & \mathbf{v}_n
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 & & &\mathbf{0}\\
+ & \lambda_2 & & \\
+  & & \ddots& \\
+  \mathbf{0}  & & & \lambda_n\\
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{v}_1^{\scriptscriptstyle\mathsf{T}} \\ \mathbf{v}_2^{\scriptscriptstyle\mathsf{T}} \\ \vdots \\ \mathbf{v}_n^{\scriptscriptstyle\mathsf{T}}
+\end{bmatrix}
+=
+\mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^{\scriptscriptstyle\mathsf{T}}.
+\end{aligned}
+$$
+
+We often set $||\mathbf{v}_i||_2=1$, and so the $n\times n$ matrix $\mathbf{Q}$ is [orthogonal]{style="color:red;"}: $\mathbf{Q}\mathbf{Q}^{\scriptscriptstyle\mathsf{T}}=\mathbf{Q}^{\scriptscriptstyle\mathsf{T}}\mathbf{Q}=\mathbf{I}_n$.
+:::
+
+## Who cares? {.medium}
+
+The eigenvectors of $\boldsymbol{\Sigma}$ point along the axes of the elliptical density contours. These are the *directions* of the [**principal components**]{style="color:red;"}!
+
+```{r}
+#| echo: false
+#| fig-asp: 1
+#| fig-width: 6
+#| fig-align: center
+fxy = function(x, y, mu, Sig, sd1, sd2, rho) {
+  
+  if(missing(mu)) mu=c(0,0)
+  
+  if(!missing(Sig)) {
+    sd1 = sqrt(Sig[1,1])
+    sd2 = sqrt(Sig[2,2])
+    if(Sig[1,2] != Sig[2,1]) {
+      print("Covariance matrix is not symmetric... Returning .")
+      return(NULL)
+    }
+    rho = Sig[1,2]/(sd1*sd2)
+  }
+  else if(missing(rho) || missing(sd1) || missing(sd2)) {
+    sd1 = sd2 = 1
+    rho = 0
+  }
+  
+  Q = (x-mu[1])^2/sd1^2 + (y-mu[2])^2/sd2^2 -
+    2*rho*(x-mu[1])*(y-mu[2])/(sd1*sd2)
+  
+  1/(2*pi*sd1*sd2*sqrt(1-rho^2))*exp(-Q/(2*(1-rho^2)))
+}
+
+
+## Calls persp() with preferred arguments
+persp.plot = function(x, y, z, main="Bivariate Normal Density",
+                      theta=30, phi=25, r=50, d=.1, expand=0.5, ltheta=90, lphi=180,
+                      shade=0.5, ticktype="simple", nticks=5, col="lightgreen", zlab="", ...) {
+  
+  persp(x, y, z, main=main,
+        theta=theta, phi=phi, r=r, d=d, expand=expand, ltheta=ltheta,
+        lphi=lphi, shade=shade, ticktype=ticktype, nticks=nticks,
+        col=col, zlab=zlab, ...)
+}
+
+
+## Creates covariance matrix from sd.x, sd.y, and rho
+calc.Sig = function(sd.x, sd.y, rho) {
+  
+  sig.xy = rho*sd.x*sd.y
+  matrix(c(sd.x^2, sig.xy, sig.xy, sd.y^2), nrow=2)
+}
+
+
+## Returns bivariate normal density for specified x-y grid
+dmvnorm = function(x, y, mu, Sig) {
+  
+  if(missing(mu)) mu = c(0,0)
+  if(missing(Sig)) Sig = diag(2)
+  
+  outer(x, y, fxy, mu, Sig)
+}
+
+
+## This is only the kernel of the bivariate Normal density
+## x is a 2x1 vector
+f = function(x, y, mu=c(0,0), sd.x=1, sd.y=1, rho=0) {
+  
+  #t(X-mu)%*%solve(Sig)%*%(X-mu)
+  mu.x = mu[1]
+  mu.y = mu[2]
+  A = (x-mu.x)^2/sd.x^2 + (y-mu.y)^2/sd.y^2
+  B = 2*rho/(sd.x*sd.y)*(x-mu.x)*(y-mu.y)
+  return((A-B)/(1-rho^2))
+}
+
+
+### End: Function definitions ###
+
+
+
+### Create perspective and contour plots
+
+## The value of N affects the density of lines and hence the darkness.
+## Unfortunately, small values of N result in a rough plot, while large values
+## result in a dark plot.  This is also dependent on the size of the X window
+## (a large window size will appear lighter than a smaller window size for a
+## fixed N).  If 'border=NA' is set, these lines don't appear.
+N = 100
+x = y = seq(-3.2,3.2,le=N)  # create x-y grid of size NxN
+mu = c(0,0)
+p.seq = c(.8, .9, .95, .99)
+cont.lev = qchisq(p.seq, 2)
+cont.lab = c("80%", "90%", "95%", "99%")
+rho = 0.7
+
+par(cex.lab=2)
+par(cex.axis=1.75)
+par(las=1)
+par(mar = c(4, 4, 4, 4))
+z = outer(x, y, f, mu, 1, 1, rho)
+contour(x, y, z, levels=cont.lev, cex.axis=1.4, labels=cont.lab,
+        xlab="x", ylab="y", cex.lab=1.5)
+abline(v=0, h=0, lty=3, col="darkgrey")
+eigs = eigen(cbind(c(1, rho), c(rho, 1)))$vectors
+arrows(0, 0, eigs[1, 1], eigs[2, 1], col = "red", lwd = 2)
+arrows(0, 0, eigs[1, 2], eigs[2, 2], col = "red", lwd = 2)
+```
+
+## Review: joint distributions 
+
+. . .
+
+The marginal distribution:
+
+$$
+p(\mathbf{y}) = \int p(\mathbf{x},\,\mathbf{y})\,\text{d}\mathbf{x}.
+$$
+
+. . .
+
+The conditional distribution:
+
+$$
+p(\mathbf{y}\,|\,\mathbf{x})
+=
+\frac{p(\mathbf{x},\,\mathbf{y})}{p(\mathbf{x})}
+=
+\frac{p(\mathbf{x}\,|\,\mathbf{y})p(\mathbf{y})}{p(\mathbf{x})}
+.
+$$
+
+## Marginals and conditionals 
+
+If you apply those formulas to this
+
+$$
+\begin{bmatrix}
+\mathbf{x} \\ 
+\mathbf{y}
+\end{bmatrix}
+\sim
+\text{N}_{n+m}
+\left(
+\begin{bmatrix}
+\boldsymbol{\mu}_x \\ 
+\boldsymbol{\mu}_y
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\boldsymbol{\Sigma}_x & \boldsymbol{\Sigma}_{xy}\\ 
+\boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}} & \boldsymbol{\Sigma}_y
+\end{bmatrix}
+\right),
+$$
+
+. . .
+
+then you get this:
+
+$$
+\begin{aligned}
+\mathbf{x} &\sim  \text{N}_n(\boldsymbol{\mu}_x,\,\boldsymbol{\Sigma}_x)\\
+\mathbf{y} &\sim  \text{N}_m(\boldsymbol{\mu}_y,\,\boldsymbol{\Sigma}_y)\\
+\mathbf{x} \,|\,\mathbf{y}
+&\sim
+\text{N}_n
+\left(
+\boldsymbol{\mu}_x + \boldsymbol{\Sigma}_{xy}\boldsymbol{\Sigma}_y^{-1}(\mathbf{y}-\boldsymbol{\mu}_y)
+,\,
+\boldsymbol{\Sigma}_x - \boldsymbol{\Sigma}_{xy}
+\boldsymbol{\Sigma}_y^{-1}
+\boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}
+\right)
+\\
+\mathbf{y} \,|\,\mathbf{x}
+&\sim
+\text{N}_m
+\left(
+\boldsymbol{\mu}_y + \boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\Sigma}_x^{-1}(\mathbf{x}-\boldsymbol{\mu}_x)
+,\,
+\boldsymbol{\Sigma}_y - \boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}_x^{-1}
+\boldsymbol{\Sigma}_{xy}
+\right).
+\end{aligned}
+$$
+
+. . .
+
+So the individual components are all normal: $x_i\sim\text{N}(\mu_i,\,\sigma^2_i)$.
+
+## Those ugly conditional formulas are not new {.medium .scrollable}
+
+Consider the bivariate case:
+
+$$
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+\sim\text{N}_2
+\left(
+\begin{bmatrix}
+\mu_x \\
+\mu_y
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\sigma_x^2
+&
+\rho\sigma_x\sigma_y
+\\
+\rho\sigma_x\sigma_y
+&
+\sigma^2_y
+\end{bmatrix}
+\right).
+$$
+
+. . .
+
+Then the formula collapses to:
+
+$$
+y\,|\,
+x
+\sim
+\text{N}
+\left(
+\underbrace{\left(\mu_y-\rho\frac{\sigma_y}{\sigma_x}\mu_x\right)}_{\beta_0}
++
+\underbrace{\rho\frac{\sigma_y}{\sigma_x}}_{\beta_1}
+x
+,\,
+\underbrace{(1-\rho)^2
+\sigma^2_y}_{\sigma^2}
+\right).
+$$
+
+. . .
+
+In other words:
+
+$$
+y = \beta_0+\beta_1x + \varepsilon,\quad \varepsilon\sim\text{N}(0,\,\sigma^2).
+$$
+
+. . .
+
+Welcome back to regression 101!
+
+## Affine transformations
+
+Fix some objects:
+
+::: incremental 
+- Random $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$
+- Constant $\mathbf{A}\in\mathbb{R}^{m\times n}$ constant;
+- Constant $\mathbf{c}\in\mathbb{R}^m$ constant.
+:::
+
+. . .
+
+Then 
+
+$$
+\mathbf{y}
+=
+\mathbf{A}
+\mathbf{x}
++
+\mathbf{c}
+\sim
+\text{N}_m
+\left(
+\mathbf{A}
+\boldsymbol{\mu}
++
+\mathbf{c}
+,\,
+\mathbf{A}
+\boldsymbol{\Sigma}
+\mathbf{A}^{\scriptscriptstyle\mathsf{T}}
+\right)
+.
+$$
+
+. . .
+
+Prove it on Problem Set 0!
+
+## A useful special case
+
+::: callout-tip
+## Linear combinations of independent normals are normal
+If $x_i\overset{\text{indep}}{\sim}\text{N}(\mu_i,\,\sigma^2)$ and $a_i\in\mathbb{R}$ are constant, then 
+
+$$
+\sum\limits_{i=1}^na_ix_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
+$$
+:::
+
+. . .
+
+The result on the previous slide is way more general, and the linear combination is still normal even if the $X_i$ are *dependent*, but the formula for the variance is less nice.
+
+## Independence
+
+::: incremental
+- If random variables are independent, then they are uncorrelated (their covariance is zero). The reverse is false in general!
+
+- So writing $x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)$ is the same as saying
+:::
+
+. . .
+
+$$
+\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots \\
+x_n
+\end{bmatrix}
+\sim\text{N}_n\left(\mathbf{0},\,\sigma^2\mathbf{I}_n\right).
+$$
+
+. . .
+
+- $\mathbf{I}_n$ is the $n\times n$ identity matrix: ones on the diagonal, zeros off.
