@@ -289,7 +289,7 @@ I assume you have a working knowledge of...
 
 [Problem Set 0](https://sta542-f25.github.io/problems/pset-0.html) gives you a workout in all of the above.
 
-# So, let's get into it
+# So, let's get into it.
 
 ## Time series {.medium}
 
@@ -298,13 +298,13 @@ I assume you have a working knowledge of...
 - We model these data as a sequence of [**dependent**]{style="color:blue;"} random variables:
 
 $$
-y_{0:T} = \{y_0,\,y_1,\,y_2,\,...,\,y_T\}.
+\mathbf{y}_{0:T} = \{\mathbf{y}_0,\,\mathbf{y}_1,\,\mathbf{y}_2,\,...,\,\mathbf{y}_T\}.
 $$
 
 - A [**time series model**]{style="color:blue;"} is "just" their joint probability distribution:
 
 $$
-p(y_{1:T}) = p(y_0)\prod_{t=1}^Tp(y_t\,|\,y_{0:t-1}).
+p(\mathbf{y}_{1:T}) = p(\mathbf{y}_0)\prod_{t=1}^Tp(\mathbf{y}_t\,|\,\mathbf{y}_{0:t-1}).
 $$
 
 . . .
