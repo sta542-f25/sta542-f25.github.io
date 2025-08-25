@@ -5,3 +5,5 @@ editor:
   mode: source
 ---
 
+
+derive AR(1) covariance kernel (not assuming stationarity)
