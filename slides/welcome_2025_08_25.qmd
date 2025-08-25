@@ -34,9 +34,82 @@ auto-stretch: false
 
 <iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1LL3k&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
 
-## Example: 
+## Example: EEG
+
+## Example: NEED TO PICK BETTER ONES
 
 <iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=AI&year_start=1800&year_end=2022&corpus=en&smoothing=3" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+
+## Example: sheet music
+
+```{r}
+#| echo: false
+#| fig-align: center
+library(gm)
+
+pitches <- c("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
+octaves <- 1:7
+all_pitches <- c("A0", "A#0", "B0", 
+                 paste(rep(pitches, length(octaves)), 
+                       sort(rep(octaves, length(pitches))), 
+                       sep = ""), 
+                 "C8")
+
+set.seed(12)
+notes <- sample(all_pitches, 8, replace = FALSE)
+
+example <- Music() +
+  Meter(4, 4) + 
+  Line(pitches = notes)
+gm::show(example, to = "score")
+```
+
+
+```{r}
+#| echo: false
+#| fig-width: 8
+
+# Convert scientific pitch notation to frequency in Hz
+note_to_freq <- function(notes) {
+  # Mapping of note names to semitone offsets from C
+  semitone_map <- c(
+    "C" = 0, "C#" = 1, "Db" = 1, "D" = 2, "D#" = 3, "Eb" = 3,
+    "E" = 4, "F" = 5, "F#" = 6, "Gb" = 6, "G" = 7, "G#" = 8,
+    "Ab" = 8, "A" = 9, "A#" = 10, "Bb" = 10, "B" = 11
+  )
+  
+  freqs <- numeric(length(notes))
+  for (i in seq_along(notes)) {
+    # Extract letter+accidental and octave
+    m <- regexpr("^[A-Ga-g][#b]?", notes[i], perl = TRUE)
+    note_name <- toupper(regmatches(notes[i], m))
+    octave <- as.numeric(sub(note_name, "", notes[i], fixed = TRUE))
+    
+    # Semitones from A4
+    semitones_from_A4 <- (octave - 4) * 12 + (semitone_map[note_name] - semitone_map["A"])
+    
+    # Frequency formula
+    freqs[i] <- 440 * 2^(semitones_from_A4 / 12)
+  }
+  
+  freqs
+}
+
+freqs <- note_to_freq(notes)
+
+# Create a time vector — each note lasts 1 beat
+time_per_note <- 1
+time_points <- seq(0, length(notes) * time_per_note, by = time_per_note)
+par(mar = c(5, 5, 0.1, 0.1))
+# Step plot of the frequencies
+plot(1:9, c(freqs, tail(freqs, 1)), type = "s",
+     xlab = "Beat", ylab = "Frequency (Hz)", lwd = 2,
+     cex.lab = 2)
+
+# Optional: grid for clarity
+grid()
+```
+
 
 # You get the idea.
 
