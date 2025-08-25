@@ -55,7 +55,7 @@ website:
       - href: syllabus/syllabus.qmd
         text: Syllabus
       #- section: "Background"
-      - section: "Lecture notes"
+      #- section: "Lecture notes"
       #  contents:
       #    - href: lecture-notes/ar-1.qmd
       #      text: All about the AR(1)
