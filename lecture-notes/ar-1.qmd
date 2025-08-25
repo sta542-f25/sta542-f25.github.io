@@ -16,15 +16,28 @@ In the spirit of Larry Wasserman's [*All of Statistics*](https://doi.org/10.1007
 
 Once you're comfortable with all that, everything else in the course is in some sense just a theme and variations on these main ideas.
 
+
+
+## What is a time series model?
+
+
+
+In some sense, all we are doing is manipulating joint distributions: computing their marginals, conditionals, means, and covariances. If you can do that, you can "do" time series. Of course, TA has its own special features 
+
+But dont lose te forest for the trees
+
+
+If you can manipulate joint distributions, then you can do time series analysis is a generic sense. Of course, TS will pose their own special problems that require new techniques, but don't lost the forest for the trees. 
+
+
 ::: callout-note
 ## A quick word on notation
 Two things you have to get used to:
 
 - We will not use uppercase $Y_t$ versus lowercase $y_t$ to distinguish random variables versus fixed realizations. Everything will just be $y_t$, and context will make clear if something functions as a random variable or a constant;
-- The symbol $p$ will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same sentence. So $p(x)$ is the density of the random variable $x$, and $p(y,\,z)$ is the joint density of the random pair $(y,\,z)$, and $p(\boldsymbol{\beta}\,|\,\sigma^2)$ is the conditional density of...you get the idea.
+- The symbol $p$ will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same sentence. So $p(x)$ is the density of the random variable $x$, and $p(y,\,z)$ is the joint density of the random pair $(y,\,z)$, and $p(\boldsymbol{\beta}\,|\,\sigma^2)$ is the conditional density of...you get the idea. CHANGE THIS TO REFER TO THE EQUATION
+- Also the $y_{i:j}$ notation
 :::
-
-## What is a time series model?
 
 ## The simplest time series model
 
