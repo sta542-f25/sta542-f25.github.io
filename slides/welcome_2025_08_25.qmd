@@ -36,11 +36,13 @@ auto-stretch: false
 
 ## Example: EEG
 
+![](images/eeg-data.png){fig-align="center"}
+
 ## Example: NEED TO PICK BETTER ONES
 
 <iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=AI&year_start=1800&year_end=2022&corpus=en&smoothing=3" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
 
-## Example: NEED TO PICK BETTER ONES
+## Example: personal health
 
 ![](images/berlind-step-count.png){fig-align="center"}
 
@@ -282,6 +284,18 @@ And there is a secret fourth theme:
 ::: incremental
 4. A Bayesian approach is an *excellent* way of achieving the goals of sequential inference and probabilistic prediction.
 :::
+
+## Topics may include
+
+Classical and Bayesian approaches to...
+
+- ARMA models;
+- Vector autoregressions (VARs);
+- Dynamic linear models (DLMs);
+- Hidden Markov Models (HMMs);
+- Probabilistic forecast evaluation;
+- Nonlinear non-Gaussian state-space models;
+- Particle filtering.
 
 # Syllabus highlights
 
@@ -930,3 +944,6 @@ $$
 . . .
 
 - $\mathbf{I}_n$ is the $n\times n$ identity matrix: ones on the diagonal, zeros off.
+
+
+# Now, off to the board!
