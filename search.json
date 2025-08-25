@@ -124,7 +124,14 @@
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\n\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\n\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) inference\n\n\n\n\n\nWed, Sep 10\n\n🧑‍🏫 AR(1) forecasting\n\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nFri, Sep 19\n\n\n\nPSET 1 @ 5PM\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\n\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\n\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\n\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) inference\n\n\n\n\n\nWed, Sep 10\n\n🧑‍🏫 AR(1) forecasting\n\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nFri, Sep 19\n\n\n\nPSET 1 @ 5PM\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
+  },
+  {
+    "objectID": "problems/pset-1.html",
+    "href": "problems/pset-1.html",
+    "title": "Problem Set 1",
+    "section": "",
+    "text": "derive AR(1) covariance kernel (not assuming stationarity)\ndo generative and joint simulations many times and verify that you get the same sample moments."
   },
   {
     "objectID": "problems/bank/review/mvnormal-1.html",
@@ -338,7 +345,63 @@
     "href": "slides/welcome_2025_08_25.html#teaching-team",
     "title": "Welcome to STA 542!",
     "section": "Teaching team",
-    "text": "Teaching team\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\nLi, Aihua\nTA\nTBD\n\n\n\nZito, John\nInstructor\nTBD"
+    "text": "Teaching team\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\nLi, Aihua\nTA\nTBD\n\n\n\nZito, John\nInstructor\nTuesday?"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-unemployment",
+    "href": "slides/welcome_2025_08_25.html#example-unemployment",
+    "title": "Welcome to STA 542!",
+    "section": "Example: unemployment",
+    "text": "Example: unemployment"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-mortgage-rates",
+    "href": "slides/welcome_2025_08_25.html#example-mortgage-rates",
+    "title": "Welcome to STA 542!",
+    "section": "Example: mortgage rates",
+    "text": "Example: mortgage rates"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-case-shiller-home-price-index",
+    "href": "slides/welcome_2025_08_25.html#example-case-shiller-home-price-index",
+    "title": "Welcome to STA 542!",
+    "section": "Example: Case-Shiller home price index",
+    "text": "Example: Case-Shiller home price index"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-imf-global-energy-price-index",
+    "href": "slides/welcome_2025_08_25.html#example-imf-global-energy-price-index",
+    "title": "Welcome to STA 542!",
+    "section": "Example: IMF global energy price index",
+    "text": "Example: IMF global energy price index"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-eeg",
+    "href": "slides/welcome_2025_08_25.html#example-eeg",
+    "title": "Welcome to STA 542!",
+    "section": "Example: EEG",
+    "text": "Example: EEG"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-need-to-pick-better-ones",
+    "href": "slides/welcome_2025_08_25.html#example-need-to-pick-better-ones",
+    "title": "Welcome to STA 542!",
+    "section": "Example: NEED TO PICK BETTER ONES",
+    "text": "Example: NEED TO PICK BETTER ONES"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-personal-health",
+    "href": "slides/welcome_2025_08_25.html#example-personal-health",
+    "title": "Welcome to STA 542!",
+    "section": "Example: personal health",
+    "text": "Example: personal health"
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#example-sheet-music",
+    "href": "slides/welcome_2025_08_25.html#example-sheet-music",
+    "title": "Welcome to STA 542!",
+    "section": "Example: sheet music",
+    "text": "Example: sheet music"
   },
   {
     "objectID": "slides/welcome_2025_08_25.html#the-whole-course-in-one-picture",
@@ -381,6 +444,13 @@
     "title": "Welcome to STA 542!",
     "section": "The main themes of the course",
     "text": "The main themes of the course\nWe will focus on the following:\n\n\nInference should be sequential. We want recursive estimation techniques to handle data that are streaming in real-time;\nPredictions should be probabilistic. We want point, interval, and density forecasts that incorporate many sources of uncertainty;\nIf you understand how to manipulate the multivariate normal, much of time series analysis is immediately accessible;\n\n\n\nAnd there is a secret fourth theme:\n\n\nA Bayesian approach is an excellent way of achieving the goals of sequential inference and probabilistic prediction."
+  },
+  {
+    "objectID": "slides/welcome_2025_08_25.html#topics-may-include",
+    "href": "slides/welcome_2025_08_25.html#topics-may-include",
+    "title": "Welcome to STA 542!",
+    "section": "Topics may include",
+    "text": "Topics may include\nClassical and Bayesian approaches to…\n\nARMA models;\nVector autoregressions (VARs);\nDynamic linear models (DLMs);\nHidden Markov Models (HMMs);\nProbabilistic forecast evaluation;\nNonlinear non-Gaussian state-space models;\nParticle filtering."
   },
   {
     "objectID": "slides/welcome_2025_08_25.html#bookmark-the-course-page",
@@ -450,7 +520,7 @@
     "href": "slides/welcome_2025_08_25.html#time-series",
     "title": "Welcome to STA 542!",
     "section": "Time series",
-    "text": "Time series\n\nA time series is a set of measurements collected over time;\nWe model these data as a sequence of dependent random variables:\n\n\\[\ny_{0:T} = \\{y_0,\\,y_1,\\,y_2,\\,...,\\,y_T\\}.\n\\]\n\nA time series model is “just” their joint probability distribution:\n\n\\[\np(y_{1:T}) = p(y_0)\\prod_{t=1}^Tp(y_t\\,|\\,y_{0:t-1}).\n\\]\n\n\n\n\n\n\n\nStay grounded.\n\n\nLike much wisdom, that last bullet is simultaneously vacuous and profound. It tells you everything and it tells you nothing all at once. But don’t let this basic fact get lost in the sea of details."
+    "text": "Time series\n\nA time series is a set of measurements collected over time;\nWe model these data as a sequence of dependent random variables:\n\n\\[\n\\mathbf{y}_{0:T} = \\{\\mathbf{y}_0,\\,\\mathbf{y}_1,\\,\\mathbf{y}_2,\\,...,\\,\\mathbf{y}_T\\}.\n\\]\n\nA time series model is “just” their joint probability distribution:\n\n\\[\np(\\mathbf{y}_{1:T}) = p(\\mathbf{y}_0)\\prod_{t=1}^Tp(\\mathbf{y}_t\\,|\\,\\mathbf{y}_{0:t-1}).\n\\]\n\n\n\n\n\n\n\nStay grounded.\n\n\nLike much wisdom, that last bullet is simultaneously vacuous and profound. It tells you everything and it tells you nothing all at once. But don’t let this basic fact get lost in the sea of details."
   },
   {
     "objectID": "slides/welcome_2025_08_25.html#definition",
@@ -464,14 +534,14 @@
     "href": "slides/welcome_2025_08_25.html#univariate",
     "title": "Welcome to STA 542!",
     "section": "Univariate",
-    "text": "Univariate\nIf \\(n=1\\), then we meet an old friend:\n\n\n\\[\np(x)=\\frac{\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}{\\sqrt{2\\pi\\sigma^2}}.\n\\]\n\n\n\n\n\n\n\n\n\n\n\nSo \\(\\mathbf{x} = [x]\\sim\\text{N}_1([\\mu],\\,[\\sigma^2])\\) is just \\(x\\sim\\text{N}(\\mu,\\,\\sigma^2)\\)."
+    "text": "Univariate\nIf \\(n=1\\), then we meet an old friend:\n\n\n\n\\[\np(x)=\\frac{\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}{\\sqrt{2\\pi\\sigma^2}}.\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nSo \\(\\mathbf{x} = [x]\\sim\\text{N}_1([\\mu],\\,[\\sigma^2])\\) is just \\(x\\sim\\text{N}(\\mu,\\,\\sigma^2)\\)."
   },
   {
     "objectID": "slides/welcome_2025_08_25.html#bivariate",
     "href": "slides/welcome_2025_08_25.html#bivariate",
     "title": "Welcome to STA 542!",
     "section": "Bivariate",
-    "text": "Bivariate"
+    "text": "Bivariate\nElliptical contours!"
   },
   {
     "objectID": "slides/welcome_2025_08_25.html#moments",
