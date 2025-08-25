@@ -12,32 +12,37 @@ auto-stretch: false
 +===========================+===============+===============+========================+
 | ![](images/al.jpg){.circ} | Li, Aihua     | TA            | TBD                    |
 +---------------------------+---------------+---------------+------------------------+
-| ![](images/jz.jpg){.circ} | Zito, John    | Instructor    | TBD                    |
+| ![](images/jz.jpg){.circ} | Zito, John    | Instructor    | Tuesday?               |
 +---------------------------+---------------+---------------+------------------------+
 : {tbl-colwidths="[20,20,25,35]"}
 
 # Time series are everywhere
 
-## Example: ???
+## Example: unemployment
 
-Web traffic
-Server load
-Finance (many equity prices)
-Ngrams
-Macro (unemployment)
-Neuro
-Music
-digital personal health (steps)
-motion capture 
-climate
-audio signal shit
-energy demand
-housing
-inventory
+<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1L254&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
+
+## Example: mortgage rates
+
+<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1LJ4Z&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
+
+## Example: Case-Shiller home price index
+
+<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1L3wp&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
+
+## Example: IMF global energy price index
+
+<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1LL3k&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
+
+## Example: 
+
+<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=AI&year_start=1800&year_end=2022&corpus=en&smoothing=3" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+
+# You get the idea.
 
 # Course themes
 
-With only 23 lectures, we will go deep on a fairly narrow set of issues in time series analysis.
+With only 23 lectures, we will go deep on a fairly narrow set of issues in time series analysis. Hopefully you will leave the course with a strong foundation to study *the rest* of time series analysis, should you so choose.
 
 ## The whole course in one picture?
 
