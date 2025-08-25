@@ -16,7 +16,9 @@ auto-stretch: false
 +---------------------------+---------------+---------------+------------------------+
 : {tbl-colwidths="[20,20,25,35]"}
 
-# What are we studying?
+# Time series are everywhere
+
+## Example: ???
 
 Web traffic
 Server load
@@ -34,6 +36,8 @@ housing
 inventory
 
 # Course themes
+
+With only 23 lectures, we will go deep on a fairly narrow set of issues in time series analysis.
 
 ## The whole course in one picture?
 
