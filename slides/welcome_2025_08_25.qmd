@@ -40,6 +40,10 @@ auto-stretch: false
 
 <iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=AI&year_start=1800&year_end=2022&corpus=en&smoothing=3" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
 
+## Example: NEED TO PICK BETTER ONES
+
+![](images/berlind-step-count.png){fig-align="center"}
+
 ## Example: sheet music
 
 ```{r}
@@ -64,6 +68,7 @@ example <- Music() +
 gm::show(example, to = "score")
 ```
 
+. . .
 
 ```{r}
 #| echo: false
@@ -486,6 +491,8 @@ So $\mathbf{x} = [x]\sim\text{N}_1([\mu],\,[\sigma^2])$ is just $x\sim\text{N}(\
 
 
 ## Bivariate 
+
+Elliptical contours!
 
 ![](images/binormal.gif){fig-align="center"}
 
