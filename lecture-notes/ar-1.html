@@ -142,18 +142,14 @@ window.Quarto = {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Lecture notes</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -226,6 +222,11 @@ window.Quarto = {
 <li>forecast evaluation.</li>
 </ul>
 <p>Once you’re comfortable with all that, everything else in the course is in some sense just a theme and variations on these main ideas.</p>
+<section id="what-is-a-time-series-model" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-time-series-model">What is a time series model?</h2>
+<p>In some sense, all we are doing is manipulating joint distributions: computing their marginals, conditionals, means, and covariances. If you can do that, you can “do” time series. Of course, TA has its own special features</p>
+<p>But dont lose te forest for the trees</p>
+<p>If you can manipulate joint distributions, then you can do time series analysis is a generic sense. Of course, TS will pose their own special problems that require new techniques, but don’t lost the forest for the trees.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -239,12 +240,11 @@ A quick word on notation
 <p>Two things you have to get used to:</p>
 <ul>
 <li>We will not use uppercase <span class="math inline">\(Y_t\)</span> versus lowercase <span class="math inline">\(y_t\)</span> to distinguish random variables versus fixed realizations. Everything will just be <span class="math inline">\(y_t\)</span>, and context will make clear if something functions as a random variable or a constant;</li>
-<li>The symbol <span class="math inline">\(p\)</span> will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same sentence. So <span class="math inline">\(p(x)\)</span> is the density of the random variable <span class="math inline">\(x\)</span>, and <span class="math inline">\(p(y,\,z)\)</span> is the joint density of the random pair <span class="math inline">\((y,\,z)\)</span>, and <span class="math inline">\(p(\boldsymbol{\beta}\,|\,\sigma^2)\)</span> is the conditional density of…you get the idea.</li>
+<li>The symbol <span class="math inline">\(p\)</span> will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same sentence. So <span class="math inline">\(p(x)\)</span> is the density of the random variable <span class="math inline">\(x\)</span>, and <span class="math inline">\(p(y,\,z)\)</span> is the joint density of the random pair <span class="math inline">\((y,\,z)\)</span>, and <span class="math inline">\(p(\boldsymbol{\beta}\,|\,\sigma^2)\)</span> is the conditional density of…you get the idea. CHANGE THIS TO REFER TO THE EQUATION</li>
+<li>Also the <span class="math inline">\(y_{i:j}\)</span> notation</li>
 </ul>
 </div>
 </div>
-<section id="what-is-a-time-series-model" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-time-series-model">What is a time series model?</h2>
 </section>
 <section id="the-simplest-time-series-model" class="level2">
 <h2 class="anchored" data-anchor-id="the-simplest-time-series-model">The simplest time series model</h2>

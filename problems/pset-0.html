@@ -98,7 +98,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="Problem Set 0 – STA 542 Fall 2025">
-<meta property="og:description" content="Due Monday September 8 at 11AM">
+<meta property="og:description" content="Due Friday September 5 at 5PM">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -143,18 +143,14 @@ window.Quarto = {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Lecture notes</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link active">
@@ -173,10 +169,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-x" id="toc-problem-x" class="nav-link active" data-scroll-target="#problem-x">Problem X</a></li>
-  <li><a href="#problem-x-1" id="toc-problem-x-1" class="nav-link" data-scroll-target="#problem-x-1">Problem X</a></li>
-  <li><a href="#problem-x-2" id="toc-problem-x-2" class="nav-link" data-scroll-target="#problem-x-2">Problem X</a></li>
-  <li><a href="#problem-x-3" id="toc-problem-x-3" class="nav-link" data-scroll-target="#problem-x-3">Problem X</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 </nav>
     </div>
@@ -186,7 +185,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../problems/pset-0.html">Problem Sets</a></li><li class="breadcrumb-item"><a href="../problems/pset-0.html">Problem Set 0</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Problem Set 0</h1>
-<p class="subtitle lead">Due Monday September 8 at 11AM</p>
+<p class="subtitle lead">Due Friday September 5 at 5PM</p>
 </div>
 
 
@@ -203,22 +202,149 @@ window.Quarto = {
 </header>
 
 
-<ul>
-<li>MvNormal 1</li>
-<li>MvNormal 2</li>
-<li>Confidence versus prediction</li>
-<li>MLE</li>
-<li>Bayes</li>
-<li>?</li>
-<li>Recursive OLS</li>
-</ul>
-<section id="problem-x" class="level2">
-<h2 class="anchored" data-anchor-id="problem-x">Problem X</h2>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Slicing-and-dicing the <strong>multivariate normal distribution</strong> is a very important skill in time series analysis, so let’s make sure we can do that.</p>
+<ol type="a">
+<li>Let <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span>, and fix constants <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span> and <span class="math inline">\(\mathbf{c}\in\mathbb{R}^m\)</span>. Show that</li>
+</ol>
+<p><span class="math display">\[
+\mathbf{y}
+=
+\mathbf{A}
+\mathbf{x}
++
+\mathbf{c}
+\sim
+\text{N}_m
+\left(
+\mathbf{A}
+\boldsymbol{\mu}
++
+\mathbf{c}
+,\,
+\mathbf{A}
+\boldsymbol{\Sigma}
+\mathbf{A}^{\scriptscriptstyle\mathsf{T}}
+\right)
+.
+\]</span></p>
+<ol start="2" type="a">
+<li>Consider the joint distribution <span class="math inline">\(p(\mathbf{x},\,\mathbf{y})=p(\mathbf{y}\,|\,\mathbf{x})p(\mathbf{x})\)</span> written hierarchically as <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span> and <span class="math inline">\(\mathbf{y}\,|\,\mathbf{x}\sim\text{N}_m(\mathbf{H}\mathbf{x}+\mathbf{u},\,\mathbf{R})\)</span>. Use the result in part a to show that the joint distribution implied by this hierarchy is</li>
+</ol>
+<p><span class="math display">\[
+\begin{bmatrix}
+\mathbf{x}
+\\
+\mathbf{y}
+\end{bmatrix}
+\sim
+\text{N}_{n+m}
+\left(
+\begin{bmatrix}
+\boldsymbol{\mu}
+\\
+\mathbf{H}\boldsymbol{\mu}+\mathbf{u}
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\boldsymbol{\Sigma}
+&amp;
+\boldsymbol{\Sigma}\mathbf{H}^{\scriptscriptstyle\mathsf{T}}
+\\
+\mathbf{H}
+\boldsymbol{\Sigma}
+&amp;
+\mathbf{H}
+\boldsymbol{\Sigma}
+\mathbf{H}^{\scriptscriptstyle\mathsf{T}} + \mathbf{R}
+\end{bmatrix}
+\right)
+.
+\]</span></p>
+<ol start="3" type="a">
+<li>Use the result in part a to show that the linear combination of independent normals is normal. That is, if <span class="math inline">\(x_i\sim\text{N}(\mu_i,\,\sigma^2_i)\)</span> are independent and <span class="math inline">\(a_i\in\mathbb{R}\)</span> are constant, then prove that</li>
+</ol>
+<p><span class="math display">\[
+\sum\limits_{i=1}^na_ix_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are many ways to do part a. One that you might try is the multivariate <strong>change-of-variables</strong> formula. Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> be a random vector with density <span class="math inline">\(f_{\mathbf{x}}\)</span>, and let <span class="math inline">\(g:\mathbb{R}^n\to\mathbb{R}^n\)</span> be an invertible transformation whose partial derivatives all exist and are continuous. Then the density of the new random variable <span class="math inline">\(\mathbf{y}=g(\mathbf{x})\)</span> is</p>
+<p><span class="math display">\[
+f_{\mathbf{y}}(\mathbf{y}) = f_{\mathbf{x}}(g^{-1}(\mathbf{y}))\,|\det\mathrm{J}_{g^{-1}}(\mathbf{y})|.
+\]</span> <span class="math inline">\(\mathrm{J}_{g^{-1}}\)</span> is an <span class="math inline">\(n\times n\)</span> <strong>Jacobian matrix</strong> which encodes the partial derivatives of the inverse transformation. This may seem like a massive pain in the ass, but how hard could the Jacobian of a linear transformation possibly be? Spoiler: not.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Recall that if <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> are jointly distributed according to</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+\mathbf{x} \\
+\mathbf{y}
+\end{bmatrix}
+\sim
+\text{N}_{n+m}
+\left(
+\begin{bmatrix}
+\boldsymbol{\mu}_x \\
+\boldsymbol{\mu}_y
+\end{bmatrix}
+,\,
+\begin{bmatrix}
+\boldsymbol{\Sigma}_x &amp; \boldsymbol{\Sigma}_{xy}\\
+\boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}} &amp; \boldsymbol{\Sigma}_y
+\end{bmatrix}
+\right),
+\]</span></p>
+<p>then the conditional distribution is</p>
+<p><span class="math display">\[
+\mathbf{y} \,|\,\mathbf{x}
+\sim
+\text{N}_m
+\left(
+\boldsymbol{\mu}_y + \boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\Sigma}_x^{-1}(\mathbf{x}-\boldsymbol{\mu}_x)
+,\,
+\boldsymbol{\Sigma}_y - \boldsymbol{\Sigma}_{xy}^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}_x^{-1}
+\boldsymbol{\Sigma}_{xy}
+\right).
+\]</span></p>
+<p>We will use this fact often, but proving it is really nasty. I’m not going to make you do it. This problem set is unreasonable enough already. Instead, I want you to <a href="https://statproofbook.github.io/P/mvn-cond">read the proof</a> very carefully. If you’re like me, there is some step in the derivation that will make you say “what just happened?” Drill down on that. Pick a section of the proof where you get confused, or where a technique is being used that you are unfamiliar with. Study that part carefully until you understand it, and then in your problem set write-up, explain it to me like I’m an idiot (shouldn’t be too difficult). Use pictures, numerical examples, specialize to the bivariate case, whatever you need to do.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Don’t be a silly goose.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We are grading this part of the problem set for completion, but give it a good faith effort so that you actually, like, learn something.</p>
+</div>
+</div>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
 <p>Consider these data</p>
 <p><span class="math display">\[
 X_1,\,X_2,\,...,\,X_n\overset{\text{iid}}{\sim}\text{N}(\theta,\,1)
 \]</span></p>
-<p>and the estimator <span class="math inline">\(\hat{\theta}_n=\sum\limits_{i=1}^nX_i/n\)</span>.</p>
+<p>and the usual estimator <span class="math inline">\(\hat{\theta}_n=\sum\limits_{i=1}^nX_i/n\)</span>.</p>
 <ol type="a">
 <li>Derive an exact <span class="math inline">\(100\times (1-\alpha)\%\)</span> classical confidence interval for the unknown mean <span class="math inline">\(\theta\)</span>. That is, find a random interval <span class="math inline">\((L_n,\,U_n)\)</span> satisfying:</li>
 </ol>
@@ -235,8 +361,8 @@ P\left(L_n'&lt;X_{n+1}&lt;U_n'\right)=1-\alpha.
 <li>Comment on the difference between the two intervals.</li>
 </ol>
 </section>
-<section id="problem-x-1" class="level2">
-<h2 class="anchored" data-anchor-id="problem-x-1">Problem X</h2>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
 <p>Here is a cdf indexed by a parameter <span class="math inline">\(\theta&gt;0\)</span>:</p>
 <p><span class="math display">\[
 F(x;\,\theta)
@@ -247,10 +373,10 @@ F(x;\,\theta)
 <li>Describe an algorithm that will simulate (pseudo)random numbers from this distribution;</li>
 <li>Let <span class="math inline">\(x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}F(x;\,\theta)\)</span> and derive the maximum likelihood estimator <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span> for the parameter <span class="math inline">\(\theta\)</span>;</li>
 <li>Derive the <em>exact</em> sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>;</li>
-<li>Implement the bootstrap to simulate the sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.</li>
+<li>Implement the bootstrap to simulate the sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>, and compare the bootstrap distribution to the exact one you derived in part c.&nbsp;In order to do this, you will probably need your algorithm from part a.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -259,7 +385,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Here is a schematic of how the bootstrap works. We start with some ground truth parameter value <span class="math inline">\(\theta_0&gt;0\)</span>, and then implement this:</p>
 <p><span class="math display">\[
@@ -268,30 +394,21 @@ Hint
 &amp;&amp;&amp; \downarrow &amp;&amp; \\
 \text{1. Original data} &amp;&amp;&amp; x_{1:n} &amp;&amp; \\
 &amp;&amp;&amp; \downarrow &amp;&amp; \\
-\text{2. Estimate} &amp;&amp;&amp; \hat{\theta}_n &amp;&amp; \\
-&amp;&amp;&amp; \downarrow &amp;&amp; \\
-\text{3. Plug-in} &amp;&amp;&amp; F_{\hat{\theta}_n} &amp;&amp; \\
+\text{2. Empirical distribution} &amp;&amp;&amp; \hat{F}_{n} &amp;&amp; \\
 &amp;\swarrow &amp;\swarrow&amp; \cdots &amp;\searrow&amp;\searrow \\
-\text{4. Synthetic data}&amp;x_{1:m}^{(1)} &amp;x_{1:m}^{(2)}&amp; \cdots &amp;x_{1:m}^{(k-1)}&amp;x_{1:m}^{(k)} \\
+\text{3. Synthetic data}&amp;\tilde{x}_{1:n}^{(1)} &amp;\tilde{x}_{1:n}^{(2)}&amp; \cdots &amp;\tilde{x}_{1:n}^{(k-1)}&amp;\tilde{x}_{1:n}^{(k)} \\
 &amp;\downarrow &amp;\downarrow&amp; \cdots &amp;\downarrow&amp;\downarrow \\
-\text{5. Bootstrap estimates}&amp;\hat{\theta}_m^{(1)} &amp;\hat{\theta}_m^{(2)}&amp; \cdots &amp;\hat{\theta}_m^{(k-1)}&amp;\hat{\theta}_m^{(k)} \\
+\text{4. Bootstrap estimates}&amp;\hat{\theta}_n^{(1)} &amp;\hat{\theta}_n^{(2)}&amp; \cdots &amp;\hat{\theta}_n^{(k-1)}&amp;\hat{\theta}_n^{(k)} \\
 \end{matrix}
 \]</span></p>
-<p>If you implemented this correctly, and if the original sample size <span class="math inline">\(n\)</span> is “large enough,” then a histogram of the <span class="math inline">\(k\)</span> estimates <span class="math inline">\(\hat{\theta}_m^{(1)}\)</span>, <span class="math inline">\(\hat{\theta}_m^{(2)}\)</span>, …, <span class="math inline">\(\hat{\theta}_m^{(k)}\)</span> ought to resemble the exact density you derived in part c.&nbsp;The reason this is the <em>parametric</em> bootstrap is because we are simulating the synthetic datasets from the “plug-in” member of our chosen parametric family <span class="math inline">\(F_{\hat{\theta}_n}\)</span>. If instead we simulated from the empirical distribution <span class="math inline">\(\hat{F}_n(x)=\sum_{i=1}^nI(X_i\leq x)/n\)</span>, then that would just be the ordinary, nonparametric bootstrap.</p>
-<p>Don’t you just love statistics?!</p>
+<p>If you implemented this correctly, and if the original sample size <span class="math inline">\(n\)</span> is “large enough,” then a histogram of the <span class="math inline">\(k\)</span> estimates <span class="math inline">\(\hat{\theta}_m^{(1)}\)</span>, <span class="math inline">\(\hat{\theta}_m^{(2)}\)</span>, …, <span class="math inline">\(\hat{\theta}_m^{(k)}\)</span> ought to resemble the exact density you derived in part c.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="problem-x-2" class="level2">
-<h2 class="anchored" data-anchor-id="problem-x-2">Problem X</h2>
-<p>Recall the parametric family from the previous part:</p>
-<p><span class="math display">\[
-F(x;\,\theta)
-=
-1 - \frac{1}{(1+x)^\theta},\quad x\geq 0.
-\]</span></p>
-<p>Consider the Bayesian model</p>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p>Recall the parametric family from the previous part, and consider the Bayesian model</p>
 <p><span class="math display">\[
 \begin{aligned}
 \theta &amp;\sim \text{Gamma}(a_0,\,b_0) \\
@@ -304,8 +421,8 @@ x_i\,|\, \theta &amp;\overset{\text{iid}}{\sim }F(x;\,\theta).
 <li>Derive the posterior predictive distribution <span class="math inline">\(p(x_{n+1}\,|\,x_{1:n})\)</span>.</li>
 </ol>
 </section>
-<section id="problem-x-3" class="level2">
-<h2 class="anchored" data-anchor-id="problem-x-3">Problem X</h2>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
 <p>An important consideration in time series analysis is <em>sequential</em> or <em>online</em> inference. In this environment, our data are not available to us all at once in a batch. Instead, the observations are <em>streaming</em>; they are arriving one-after-another in real-time, and we want to come up with a scheme that allows us to recursively update our inferences as new information arrives. Let’s explore this in the context of least squares regression.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -365,18 +482,12 @@ _{n\times 1}
 </div>
 <p>Hopefully that was all review, and it describes how to do <strong>batch</strong> or <strong>offline</strong> inference for the linear model. We are assuming that all of our data are available in a single batch, and we only need to compute the estimate once. But in our class, we will often care about <strong>streaming</strong> or <strong>online</strong> inference: efficiently computing the <em>sequence</em> of estimates <span class="math inline">\(\hat{\boldsymbol{\beta}}_1\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}_2\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}_3\)</span>, … as the pairs <span class="math inline">\((\mathbf{x}_1,\,y_1)\)</span>, <span class="math inline">\((\mathbf{x}_2,\,y_2)\)</span>, <span class="math inline">\((\mathbf{x}_3,\,y_3)\)</span>, … arrive one-after-another in real-time.</p>
 <ol type="a">
-<li>So, imagine we have observed <span class="math inline">\(n-1\)</span> pairs, and we have computed the estimate <span class="math inline">\(\hat{\boldsymbol{\beta}}_{n-1}=(\mathbf{X}_{n-1}^{\scriptscriptstyle\mathsf{T}}\mathbf{X}_{n-1})^{-1}\mathbf{X}_{n-1}^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_{n-1}.\)</span> Then, a new observation <span class="math inline">\((\mathbf{x}_n,\,y_n)\)</span> arrives. How can we efficiently update our estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span> to incorporate this new information? Of course, we could just add new rows to <span class="math inline">\(\mathbf{X}_{n-1}\)</span> and <span class="math inline">\(\mathbf{y}_{n-1}\)</span> and recompute the inverse, but that is super inefficient and we can do better. Instead, derive a recursion <span class="math inline">\(h\)</span> that takes the old estimate and the new data and produces the new estimate:</li>
-</ol>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}_n
-=
-h(\hat{\boldsymbol{\beta}}_{n-1},\,\mathbf{x}_n,\,y_n).
-\]</span></p>
-<ol start="2" type="a">
-<li>Write a <code>for</code> loop in <code>R</code> that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used <code>lm</code>. Do this for the <code>mtcars</code> dataset and the regression <code>mpg ~ wt</code>.</li>
+<li><p>So, imagine we have observed <span class="math inline">\(n-1\)</span> pairs, and we have computed the estimate <span class="math inline">\(\hat{\boldsymbol{\beta}}_{n-1}=(\mathbf{X}_{n-1}^{\scriptscriptstyle\mathsf{T}}\mathbf{X}_{n-1})^{-1}\mathbf{X}_{n-1}^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_{n-1}.\)</span> Then, a new observation <span class="math inline">\((\mathbf{x}_n,\,y_n)\)</span> arrives. How can we efficiently update our estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span> to incorporate this new information? In other words, how can we quickly compute <span class="math inline">\(\hat{\boldsymbol{\beta}}_{n}\)</span> given only <span class="math inline">\(\hat{\boldsymbol{\beta}}_{n-1}\)</span> and the new <span class="math inline">\((\mathbf{x}_n,\,y_n)\)</span>? Of course, we could always just add new rows to <span class="math inline">\(\mathbf{X}_{n-1}\)</span> and <span class="math inline">\(\mathbf{y}_{n-1}\)</span> and recompute the whole estimate from scratch, but that is super inefficient and we can do better. To that end, show that the new estimate is related to the old estimate and the new data by the following recursion: <span class="math inline">\(\hat{\boldsymbol{\beta}}_n=\hat{\boldsymbol{\beta}}_{n-1}+\mathbf{k}_n(y_n-\mathbf{x}_n^{\scriptscriptstyle\mathsf{T}}\hat{\boldsymbol{\beta}}_{n-1})\)</span>. What is <span class="math inline">\(\mathbf{k}_n\)</span>?</p></li>
+<li><p>Interpret the recursion you derived in part a. Isn’t <span class="math inline">\((y_n-\mathbf{x}_n^{\scriptscriptstyle\mathsf{T}}\hat{\boldsymbol{\beta}}_{n-1})\)</span> a residual? What is this <span class="math inline">\(\mathbf{k}_n\)</span> thing doing? What would it mean if we had <span class="math inline">\(\hat{\boldsymbol{\beta}}_n=\hat{\boldsymbol{\beta}}_{n-1}\)</span>?</p></li>
+<li><p>Write a <code>for</code> loop in <code>R</code> that uses your recursion to process a dataset one observation at a time, and verify that at the end of the loop, you get the same estimates that you would have gotten if you had just used <code>lm</code>. Do this for the <code>mtcars</code> dataset and the regression <code>mpg ~ wt</code>.</p></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -385,7 +496,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The <strong>Sherman–Morrison formula</strong> is a great tool! For invertible <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{p\times p}\)</span> and <span class="math inline">\(\mathbf{v}\in\mathbb{R}^p\)</span>, we have</p>
 <p><span class="math display">\[
@@ -407,6 +518,23 @@ Hint
 .
 \]</span></p>
 </div>
+</div>
+</div>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If a problem asked you to code something up, we want to see the code in the submission, not just the output.</p>
 </div>
 </div>
 

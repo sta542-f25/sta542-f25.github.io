@@ -142,18 +142,14 @@ window.Quarto = {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Lecture notes</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -186,7 +182,7 @@ F(x;\,\theta)
 <li>Describe an algorithm that will simulate (pseudo)random numbers from this distribution;</li>
 <li>Let <span class="math inline">\(x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}F(x;\,\theta)\)</span> and derive the maximum likelihood estimator <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span> for the parameter <span class="math inline">\(\theta\)</span>;</li>
 <li>Derive the <em>exact</em> sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>;</li>
-<li>Implement the bootstrap to simulate the sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>, and compare the simulated distribution to the exact one you derived in the previous part. In order to do this, you will probably need your algorithm from the first part.</li>
+<li>Implement the bootstrap to simulate the sampling distribution of <span class="math inline">\(\hat{\theta}_n^{(\text{MLE})}\)</span>, and compare the bootstrap distribution to the exact one you derived in part c.&nbsp;In order to do this, you will probably need your algorithm from part a.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -207,17 +203,14 @@ Hint
 &amp;&amp;&amp; \downarrow &amp;&amp; \\
 \text{1. Original data} &amp;&amp;&amp; x_{1:n} &amp;&amp; \\
 &amp;&amp;&amp; \downarrow &amp;&amp; \\
-\text{2. Estimate} &amp;&amp;&amp; \hat{\theta}_n &amp;&amp; \\
-&amp;&amp;&amp; \downarrow &amp;&amp; \\
-\text{3. Plug-in} &amp;&amp;&amp; F_{\hat{\theta}_n} &amp;&amp; \\
+\text{2. Empirical distribution} &amp;&amp;&amp; \hat{F}_{n} &amp;&amp; \\
 &amp;\swarrow &amp;\swarrow&amp; \cdots &amp;\searrow&amp;\searrow \\
-\text{4. Synthetic data}&amp;x_{1:m}^{(1)} &amp;x_{1:m}^{(2)}&amp; \cdots &amp;x_{1:m}^{(k-1)}&amp;x_{1:m}^{(k)} \\
+\text{3. Synthetic data}&amp;\tilde{x}_{1:n}^{(1)} &amp;\tilde{x}_{1:n}^{(2)}&amp; \cdots &amp;\tilde{x}_{1:n}^{(k-1)}&amp;\tilde{x}_{1:n}^{(k)} \\
 &amp;\downarrow &amp;\downarrow&amp; \cdots &amp;\downarrow&amp;\downarrow \\
-\text{5. Bootstrap estimates}&amp;\hat{\theta}_m^{(1)} &amp;\hat{\theta}_m^{(2)}&amp; \cdots &amp;\hat{\theta}_m^{(k-1)}&amp;\hat{\theta}_m^{(k)} \\
+\text{4. Bootstrap estimates}&amp;\hat{\theta}_n^{(1)} &amp;\hat{\theta}_n^{(2)}&amp; \cdots &amp;\hat{\theta}_n^{(k-1)}&amp;\hat{\theta}_n^{(k)} \\
 \end{matrix}
 \]</span></p>
-<p>If you implemented this correctly, and if the original sample size <span class="math inline">\(n\)</span> is “large enough,” then a histogram of the <span class="math inline">\(k\)</span> estimates <span class="math inline">\(\hat{\theta}_m^{(1)}\)</span>, <span class="math inline">\(\hat{\theta}_m^{(2)}\)</span>, …, <span class="math inline">\(\hat{\theta}_m^{(k)}\)</span> ought to resemble the exact density you derived in part c.&nbsp;The reason this is the <em>parametric</em> bootstrap is because we are simulating the synthetic datasets from the “plug-in” member of our chosen parametric family <span class="math inline">\(F_{\hat{\theta}_n}\)</span>. If instead we simulated from the empirical distribution <span class="math inline">\(\hat{F}_n(x)=\sum_{i=1}^nI(X_i\leq x)/n\)</span>, then that would just be the ordinary, nonparametric bootstrap.</p>
-<p>Don’t you just love statistics?!</p>
+<p>If you implemented this correctly, and if the original sample size <span class="math inline">\(n\)</span> is “large enough,” then a histogram of the <span class="math inline">\(k\)</span> estimates <span class="math inline">\(\hat{\theta}_m^{(1)}\)</span>, <span class="math inline">\(\hat{\theta}_m^{(2)}\)</span>, …, <span class="math inline">\(\hat{\theta}_m^{(k)}\)</span> ought to resemble the exact density you derived in part c.</p>
 </div>
 </div>
 </div>

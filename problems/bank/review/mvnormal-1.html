@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>mvnormal – STA 542 Fall 2025</title>
+<title>mvnormal-1 – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,18 +142,14 @@ window.Quarto = {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Lecture notes</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
@@ -176,29 +172,7 @@ window.Quarto = {
 
 
 
-<p>Slicing-and-dicing the <strong>multivariate normal distribution</strong> is a very important skill in time series analysis, so let’s make sure we can do that. A random vector <span class="math inline">\(\mathbf{x}=\begin{bmatrix}x_1&amp;x_2&amp;\cdots&amp;x_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n\)</span> has the multivariate normal distribution with mean vector <span class="math inline">\(E(\mathbf{x})=\boldsymbol{\mu}=\begin{bmatrix}\mu_1&amp;\mu_2&amp;\cdots&amp;\mu_n\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^n\)</span> and covariance matrix <span class="math inline">\(\text{cov}(\mathbf{x})=\boldsymbol{\Sigma}\in\mathbb{R}^{n\times n}\)</span> if its density is</p>
-<p><span class="math display">\[
-f(\mathbf{x})
-=
-\frac{1}
-{
-(2\pi)^{\frac{n}{2}}
-|\boldsymbol{\Sigma}|^{1/2}
-}
-\exp
-\left(
--\frac{1}{2}
-(\mathbf{x} - \boldsymbol{\mu})^{\scriptscriptstyle\mathsf{T}}
-\boldsymbol{\Sigma}^{-1}
-(\mathbf{x}-\boldsymbol{\mu})
-\right)
-,
-\quad
-\mathbf{x}
-\in
-\mathbb{R}^n.
-\]</span></p>
-<p>We denote this <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span>. If <span class="math inline">\(n=1\)</span>, then the distribution collapses to the univariate normal. WHAT ELSE</p>
+<p>Slicing-and-dicing the <strong>multivariate normal distribution</strong> is a very important skill in time series analysis, so let’s make sure we can do that.</p>
 <ol type="a">
 <li>Let <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span>, and fix constants <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span> and <span class="math inline">\(\mathbf{c}\in\mathbb{R}^m\)</span>. Show that</li>
 </ol>
@@ -274,7 +248,10 @@ Hint
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Jacobian</p>
+<p>There are many ways to do part a. One that you might try is the multivariate <strong>change-of-variables</strong> formula. Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> be a random vector with density <span class="math inline">\(f_{\mathbf{x}}\)</span>, and let <span class="math inline">\(g:\mathbb{R}^n\to\mathbb{R}^n\)</span> be an invertible transformation whose partial derivatives all exist and are continuous. Then the density of the new random variable <span class="math inline">\(\mathbf{y}=g(\mathbf{x})\)</span> is</p>
+<p><span class="math display">\[
+f_{\mathbf{y}}(\mathbf{y}) = f_{\mathbf{x}}(g^{-1}(\mathbf{y}))\,|\det\mathrm{J}_{g^{-1}}(\mathbf{y})|.
+\]</span> <span class="math inline">\(\mathrm{J}_{g^{-1}}\)</span> is an <span class="math inline">\(n\times n\)</span> <strong>Jacobian matrix</strong> which encodes the partial derivatives of the inverse transformation. This may seem like a massive pain in the ass, but how hard could the Jacobian of a linear transformation possibly be? Spoiler: not.</p>
 </div>
 </div>
 </div>
