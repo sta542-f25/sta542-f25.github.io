@@ -33,8 +33,8 @@ editor:
 
 You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.
 
-::: callout-warning
-## Code
-If a problem asked you to code something up, we want to see the code in the submission, not just the output.
-:::
+Do not forget to include the following:
+
+- For each problem, please [acknowledge your collaborators](https://sta542-f25.github.io/syllabus/syllabus.html#collaboration);
+- If a problem required you to code something, please include both the code and the output.
 
