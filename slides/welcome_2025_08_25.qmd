@@ -275,7 +275,7 @@ We will focus on the following:
 ::: incremental
 1. Inference should be [sequential]{style="color:red;"}. We want recursive estimation techniques to handle data that are *streaming* in real-time;
 1. Predictions should be [probabilistic]{style="color:red;"}. We want point, interval, and density forecasts that incorporate many sources of uncertainty;
-1. If you understand how to manipulate the multivariate normal, much of time series analysis is immediately accessible;
+1. If you can manipulate joint distributions, you can *do* time series analysis. Too many TS textbooks quickly lose sight of this;
 :::
 
 . . .
