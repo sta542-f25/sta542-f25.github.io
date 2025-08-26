@@ -288,8 +288,6 @@ And there is a secret fourth theme:
 
 ## Topics may include
 
-Classical and Bayesian approaches to...
-
 - ARMA models;
 - Vector autoregressions (VARs);
 - Dynamic linear models (DLMs);
