@@ -1,11 +1,16 @@
 ---
 title: "Problem Set 1"
-subtitle: Due Monday September 22 at 11AM
+subtitle: Due Friday September 19 at 5PM
 editor: 
   mode: source
 ---
 
+Do some basic AR(2) derivations
 
 derive AR(1) covariance kernel (not assuming stationarity)
 
-do generative and joint simulations many times and verify that you get the same sample moments.
+do recursive and joint simulations many times and verify that you get the same sample moments.
+
+Bayesian AR(1) with a different prior.
+
+simulation to explore sampling properties when it's a unit root or explosive or whatever.
