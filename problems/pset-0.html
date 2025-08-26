@@ -230,7 +230,7 @@ window.Quarto = {
 .
 \]</span></p>
 <ol start="2" type="a">
-<li>Consider the joint distribution <span class="math inline">\(p(\mathbf{x},\,\mathbf{y})=p(\mathbf{y}\,|\,\mathbf{x})p(\mathbf{x})\)</span> written hierarchically as <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span> and <span class="math inline">\(\mathbf{y}\,|\,\mathbf{x}\sim\text{N}_m(\mathbf{H}\mathbf{x}+\mathbf{u},\,\mathbf{R})\)</span>. Use the result in part a to show that the joint distribution implied by this hierarchy is</li>
+<li>Consider the joint distribution <span class="math inline">\(p(\mathbf{x},\,\mathbf{y})=p(\mathbf{y}\,|\,\mathbf{x})p(\mathbf{x})\)</span> written hierarchically as <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span> and <span class="math inline">\(\mathbf{y}\,|\,\mathbf{x}\sim\text{N}_m(\mathbf{A}\mathbf{x}+\mathbf{c},\,\mathbf{R})\)</span>. Use the result in part a to show that the joint distribution implied by this hierarchy is</li>
 </ol>
 <p><span class="math display">\[
 \begin{bmatrix}
@@ -244,20 +244,20 @@ window.Quarto = {
 \begin{bmatrix}
 \boldsymbol{\mu}
 \\
-\mathbf{H}\boldsymbol{\mu}+\mathbf{u}
+\mathbf{A}\boldsymbol{\mu}+\mathbf{c}
 \end{bmatrix}
 ,\,
 \begin{bmatrix}
 \boldsymbol{\Sigma}
 &amp;
-\boldsymbol{\Sigma}\mathbf{H}^{\scriptscriptstyle\mathsf{T}}
+\boldsymbol{\Sigma}\mathbf{A}^{\scriptscriptstyle\mathsf{T}}
 \\
-\mathbf{H}
+\mathbf{A}
 \boldsymbol{\Sigma}
 &amp;
-\mathbf{H}
+\mathbf{A}
 \boldsymbol{\Sigma}
-\mathbf{H}^{\scriptscriptstyle\mathsf{T}} + \mathbf{R}
+\mathbf{A}^{\scriptscriptstyle\mathsf{T}} + \mathbf{R}
 \end{bmatrix}
 \right)
 .
@@ -524,19 +524,11 @@ Hint
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
 <p>You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If a problem asked you to code something up, we want to see the code in the submission, not just the output.</p>
-</div>
-</div>
+<p>Do not forget to include the following:</p>
+<ul>
+<li>For each problem, please <a href="https://sta542-f25.github.io/syllabus/syllabus.html#collaboration">acknowledge your collaborators</a>;</li>
+<li>If a problem required you to code something, please include both the code and the output.</li>
+</ul>
 
 
 </section>
