@@ -1,0 +1,22 @@
+---
+title: "What is the joint distribution of an AR(1)?"
+subtitle: "Lecture 1"
+format: revealjs
+auto-stretch: false
+---
+
+## Time series {.medium}
+
+- A [**time series**]{style="color:blue;"} is a set of measurements collected over time;
+
+- We model these data as a sequence of [**dependent**]{style="color:blue;"} random variables:
+
+$$
+\By_{0:T} = \{\By_0,\,\By_1,\,\By_2,\,...,\,\By_T\}.
+$$
+
+- A [**time series model**]{style="color:blue;"} is "just" their joint probability distribution:
+
+$$
+p(\By_{1:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
+$$
