@@ -20,3 +20,387 @@ $$
 $$
 p(\By_{1:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
 $$
+
+## Course themes
+
+We will focus on a small set of themes, but go deep on them: 
+
+::: incremental
+1. Inference should be [sequential]{style="color:red;"}. We want recursive estimation techniques to handle data that are *streaming* in real-time;
+1. Predictions should be [probabilistic]{style="color:red;"}. We want point, interval, and density forecasts that incorporate many sources of uncertainty;
+1. If you can manipulate joint distributions, you can *do* time series analysis. This is obscured in too many TS texts;
+:::
+
+. . .
+
+And there is a secret fourth theme:
+
+::: incremental
+4. A Bayesian approach is an *excellent* way of achieving the goals of sequential inference and probabilistic prediction.
+:::
+
+## The simplest non-trivial time series model
+
+The autoregression of order 1, or AR(1):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&\sim
+\text{N}(\mu_0\com ?),
+\end{aligned}
+$$
+. . .
+
+That's the recursive form. It implies a joint distribution written marginal-conditional style:
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{0:T})
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{0:t-1})
+\\
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{t-1}).
+\end{aligned}
+$$
+
+## Putting the "auto" in autoregression
+
+"Just" regression. 
+
+## The game plan for the next few lectures {.medium}
+
+Do "All of Time Series Analysis" for this simple model:
+
+::: incremental
+- what is the joint distribution and what is its structure (marginals, conditionals, moments);
+- stationarity;
+- classical inference;
+- Bayesian inference;
+- (emphasizing recursive estimation in both cases);
+- probabilistic forecasting from both inferential perspectives;
+- evaluating probabilistic forecasts.
+:::
+
+. . .
+
+The rest of the course is in some sense theme and variations.
+
+## Get organized and notice the pattern
+
+$$
+\begin{aligned}
+y_0
+&=
+&
+y_0
+\\
+y_1
+&=
+\beta_0
+&+\,
+\beta_1y_0
+&+\,
+{\color{white}\beta_{\color{white}1}}\varepsilon_1
+\\
+y_2
+&=
+\beta_0+\beta_0\beta_1
+&+\,
+\beta_1^2y_0
+&+\,
+\beta_1\varepsilon_1
++
+{\color{white}\beta_{\color{white}1}}\varepsilon_2
+\\
+y_3
+&=
+\beta_0+\beta_0\beta_1+\beta_0\beta_1^2
+&+\,
+\beta_1^3y_0
+&+\,
+\beta_1^2\varepsilon_1
++
+\beta_1\varepsilon_2
++
+\varepsilon_3
+\\
+&\vdots
+\\
+y_t
+&=
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
+&+\,
+\beta_1^ty_0
+&+\,
+\sum\limits_{i=0}^{t-1}\beta_1^i\varepsilon_{t-i}
+\\
+&\vdots
+\end{aligned}
+$$
+
+## The matrix equation {.small}
+
+Writing the linear system as a matrix equation, you get:
+
+. . .
+
+$$
+\begin{aligned}
+\underbrace{
+\begin{bmatrix}
+y_0
+\\
+y_1
+\\
+y_2
+\\
+y_3
+\\
+\vdots
+\\
+y_T
+\end{bmatrix}
+}_{\By}
+&=
+\underbrace{
+\beta_0
+\begin{bmatrix}
+0
+\\
+1
+\\
+1+\beta_1
+\\
+1+\beta_1+\beta_1^2
+\\
+\vdots
+\\
+\sum\limits_{i=0}^{T-1}\beta_1^i
+\end{bmatrix}
+}_{\Bc}
++
+\underbrace{
+\begin{bmatrix}
+1 & 0 & 0 & 0 & \cdots & 0 \\
+\beta_1 & 1 & 0 & 0 & \cdots & 0 \\
+\beta_1^2 & \beta_1 & 1 & 0 & \cdots & 0 \\
+\beta_1^3 & \beta_1^2 & \beta_1 & 1 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+\beta_1^T & \beta_1^{T-1} & \beta_1^{T-2} & \beta_1^{T-3} & \cdots & 1 \\
+\end{bmatrix}
+}_{\BA}
+\underbrace{
+\begin{bmatrix}
+y_0
+\\
+\varepsilon_1
+\\
+\varepsilon_2
+\\
+\varepsilon_3
+\\
+\vdots
+\\
+\varepsilon_T
+\end{bmatrix}
+}_{\Be}
+.
+\end{aligned}
+$$
+
+. . .
+
+By assumption, 
+
+$$
+\Be
+\sim 
+\text{N}_{T+1}
+\left(
+\Bm=
+\begin{bmatrix}
+\mu_0
+\\
+\Bzero
+\end{bmatrix}
+\com
+\BS
+=
+\begin{bmatrix}
+?? 
+& 
+\Bzero^\tr\\
+\Bzero & \sigma^2\BI_T
+\end{bmatrix}
+\right)
+.
+$$
+
+. . .
+
+So by linearity, 
+
+$$
+\By
+\sim 
+\text{N}_{T+1}
+\left(
+\Bmu=\Bc+\BA\Bm
+\com
+\BSigma 
+=
+\BA\BS\BA^\tr
+\right)
+.
+$$
+
+## What's the mean?
+
+We didn't need independence or normality of $\varepsilon_t$ for this
+
+## What's the variance?
+
+We used independence of $\varepsilon_t$ but not normality.
+
+## What's the covariance?
+
+## Summary {.small}
+
+If
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&\sim
+\text{N}(\mu_0\com ?),
+\end{aligned}
+$$
+
+then 
+
+$$
+\begin{bmatrix}
+y_0 & y_1 & \cdots & y_T
+\end{bmatrix}^\tr
+\sim\text{N}_{T+1}\left(\Bmu\com \BSigma\right),
+$$
+
+with 
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^t\mu_0
+\\
+\var(y_t)
+&=
+\\
+\cov(y_t\com y_s)
+&=
+.
+\end{aligned}
+$$
+
+## How does this behave? {.medium}
+
+Some special cases:
+
+- [**iid**]{style="color:blue;"}: set $\beta_1=0$ (and $\mu_0=\beta_0$; $??=\sigma^2$), and
+
+$$
+y_t\iid\text{N}(\beta_0\com\sigma^2).
+$$
+
+- [**random walk with drift**]{style="color:blue;"}: set $\beta_1=1$, and 
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+\beta_0t+\mu_0
+\\
+\var(y_t)
+&=
+\sigma^2t+??.
+\end{aligned}
+$$
+
+- [**funky**]{style="color:blue;"}: set $\beta_1=-1$, and 
+
+$$
+fefrf
+$$
+
+# Graphical interlude
+
+## Assume $\beta_1\neq 1$ 
+
+$|\beta_1|\neq 1$ 
+
+Then finite geometric sum tells us that 
+
+## Definition of stationarity
+
+consequence: the marginals are all the same (so, time-invariant)
+
+## No matter where you zoom in, the 
+
+## Chat about stationarity
+
+Hopefully your first thought is ""
+
+Interesting in its own right as pure math 
+
+MCMC
+
+Stationary is like "dependent but not too dependent" you can redo classical iid statistical theory without too much pain
+
+(For a Bayesian, you don't necessarily care about this)
+
+
+## Specialize
+
+## Autocovariance of a stationary process
+
+## Plot pictures of examples
+
+## The sample autocov function
+
+chat about the notion of a "replicate"
+
+
