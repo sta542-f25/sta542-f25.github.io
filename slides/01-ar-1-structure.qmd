@@ -39,7 +39,7 @@ And there is a secret fourth theme:
 4. A Bayesian approach is an *excellent* way of achieving the goals of sequential inference and probabilistic prediction.
 :::
 
-## The simplest non-trivial time series model
+## The simplest non-trivial time series model {.medium}
 
 The autoregression of order 1, or AR(1):
 
@@ -63,6 +63,7 @@ y_0
 \text{N}(\mu_0\com ?),
 \end{aligned}
 $$
+
 . . .
 
 That's the recursive form. It implies a joint distribution written marginal-conditional style:
@@ -105,6 +106,80 @@ Do "All of Time Series Analysis" for this simple model:
 . . .
 
 The rest of the course is in some sense theme and variations.
+
+## Last time: substitution fest {.scrollable}
+
+. . .
+
+$t=0$:
+
+$$
+y_0=y_0
+$$
+
+. . .
+
+$t=1$:
+
+$$
+y_1=\beta_0+\beta_1y_0+\varepsilon_1
+$$
+
+. . .
+
+$t=2$:
+
+$$
+\begin{aligned}
+y_2
+&=
+\beta_0
++
+\beta_1
+y_1
++
+\varepsilon_2
+\\
+&=
+\beta_0
++
+\beta_1
+(\beta_0+\beta_1y_0+\varepsilon_1)
++
+\varepsilon_2
+\\
+&=
+\beta_0+\beta_0\beta_1+\beta_1^2y_0+\beta_1\varepsilon_1+\varepsilon_2.
+\end{aligned}
+$$
+
+. . .
+
+$t=3$:
+
+$$
+\begin{aligned}
+y_3
+&=
+\beta_0
++
+\beta_1
+y_2
++
+\varepsilon_3
+\\
+&=
+\beta_0
++
+\beta_1
+(\beta_0+\beta_0\beta_1+\beta_1^2y_0+\beta_1\varepsilon_1+\varepsilon_2)
++
+\varepsilon_3
+\\
+&=
+\beta_0+\beta_0\beta_1+\beta_0\beta_1^2+\beta_1^3y_0+\beta_1^2\varepsilon_1+\beta_1\varepsilon_2+\varepsilon_3.
+\end{aligned}
+$$
 
 ## Get organized and notice the pattern
 
@@ -159,7 +234,7 @@ y_t
 \end{aligned}
 $$
 
-## The matrix equation {.small}
+## The matrix equation {.small .scrollable}
 
 Writing the linear system as a matrix equation, you get:
 
@@ -275,19 +350,127 @@ $$
 .
 $$
 
-## What's the mean?
+## What's the mean? {.small}
 
-We didn't need independence or normality of $\varepsilon_t$ for this
+. . .
 
-## What's the variance?
+Recall that 
 
-We used independence of $\varepsilon_t$ but not normality.
+$$
+E\left(
+\sum\limits_{i=1}^na_iX_i
+\right)
+=
+\sum\limits_{i=1}^na_iE(X_i).
+$$
+
+. . .
+
+So:
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+E
+\left(
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^ty_0
++
+\sum\limits_{i=0}^{t-1}\beta_1^i\varepsilon_{t-i}
+\right)
+\\
+&=
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^t
+E
+\left(
+y_0
+\right)
++
+\sum\limits_{i=0}^{t-1}\beta_1^i
+E
+\left(
+\varepsilon_{t-i}
+\right)
+\\
+&=
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^t
+\mu_0.
+\end{aligned}
+$$
+
+. . .
+
+We only used $E(\varepsilon_t)=0$. Didn't need independence or normality.
+
+## What's the variance? {.small}
+
+. . .
+
+Recall that for independent random variables, 
+
+$$
+\var\left(
+\sum\limits_{i=1}^na_iX_i
+\right)
+=
+\sum\limits_{i=1}^na_i^2\var(X_i).
+$$
+
+. . .
+
+So: 
+
+$$
+\begin{aligned}
+\var(y_t)
+&=
+\var
+\left(
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^ty_0
++
+\sum\limits_{i=0}^{t-1}\beta_1^i\varepsilon_{t-i}
+\right)
+\\
+&=
+\beta_1^{2t}
+\var
+\left(
+y_0
+\right)
++
+\sum\limits_{i=0}^{t-1}\beta_1^{2i}
+\var
+\left(
+\varepsilon_{t-i}
+\right)
+\\
+&=
+\beta_1^{2t}??
++
+\sigma^2
+\sum\limits_{i=0}^{t-1}\beta_1^{2i}.
+\end{aligned}
+$$
+
+. . .
+
+We used time-invariance and independence of $\varepsilon_t$ but not normality.
 
 ## What's the covariance?
 
 ## Summary {.small}
 
-If
+. . .
+
+Recursive form: 
 
 $$
 \begin{aligned}
@@ -304,20 +487,24 @@ y_{t-1}
 \\
 y_0
 &\sim
-\text{N}(\mu_0\com ?),
+\text{N}(\mu_0\com ?).
 \end{aligned}
 $$
 
-then 
+. . .
+
+Joint distribution:
 
 $$
 \begin{bmatrix}
 y_0 & y_1 & \cdots & y_T
 \end{bmatrix}^\tr
-\sim\text{N}_{T+1}\left(\Bmu\com \BSigma\right),
+\sim\text{N}_{T+1}\left(\Bmu\com \BSigma\right).
 $$
 
-with 
+. . .
+
+Moments:
 
 $$
 \begin{aligned}
@@ -329,6 +516,9 @@ E(y_t)
 \\
 \var(y_t)
 &=
+\sigma^2
+\sum\limits_{i=0}^{t-1}\beta_1^{2i}+
+\beta_1^{2t}??
 \\
 \cov(y_t\com y_s)
 &=
@@ -336,17 +526,23 @@ E(y_t)
 \end{aligned}
 $$
 
-## How does this behave? {.medium}
+# How does this behave? 
 
-Some special cases:
+## Some special cases {.medium}
 
 - [**iid**]{style="color:blue;"}: set $\beta_1=0$ (and $\mu_0=\beta_0$; $??=\sigma^2$), and
+
+. . .
 
 $$
 y_t\iid\text{N}(\beta_0\com\sigma^2).
 $$
 
-- [**random walk with drift**]{style="color:blue;"}: set $\beta_1=1$, and 
+. . .
+
+- [**random walk with drift**]{style="color:blue;"}: set $\beta_1=1$, and
+
+. . .
 
 $$
 \begin{aligned}
@@ -360,7 +556,11 @@ E(y_t)
 \end{aligned}
 $$
 
+. . .
+
 - [**funky**]{style="color:blue;"}: set $\beta_1=-1$, and 
+
+. . .
 
 $$
 fefrf
@@ -378,8 +578,6 @@ Then finite geometric sum tells us that
 
 consequence: the marginals are all the same (so, time-invariant)
 
-## No matter where you zoom in, the 
-
 ## Chat about stationarity
 
 Hopefully your first thought is ""
@@ -393,14 +591,138 @@ Stationary is like "dependent but not too dependent" you can redo classical iid 
 (For a Bayesian, you don't necessarily care about this)
 
 
-## Specialize
+## Stationary AR(1) {.small}
+
+If $-1<\beta_1<1$, $\mu_0=\beta_0/(1-\beta_1)$, and $???=\sigma^2/(1-\beta_1^2)$, then the AR(1) is strictly stationary with the following:
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+\frac{\beta_0}{1-\beta_1}
+\\
+\var(y_t)
+&=
+\frac{\sigma^2}{1-\beta_1^2}
+\\
+\cov(y_t\com y_s)
+&=
+\beta_1^{|t-s|}\var(y_t)
+=
+\beta_1^{|t-s|}\frac{\sigma^2}{1-\beta_1^2}.
+\end{aligned}
+$$
+
+The common marginal shared by all $y_t$ is called the stationary distribution:
+
+$$
+y_t\sim\text{N}\left(\frac{\beta_0}{1-\beta_1}\com \frac{\sigma^2}{1-\beta_1^2}\right).
+$$
+
+So "did: dependent but identically distributed."
 
 ## Autocovariance of a stationary process
 
+$$
+\gamma(h)=\cov(y_t\com y_{t+h})
+$$
+
+For the AR(1)
+
 ## Plot pictures of examples
 
-## The sample autocov function
+# Let's start thinking about inference
 
-chat about the notion of a "replicate"
+## Plug-in estimators for the moments {.medium}
+
+If your AR(1) is stationary, then given data, expected values like
+
+. . .
+
+$$
+\begin{aligned}
+\mu
+&=
+E(y_t)\\
+\gamma(h)
+&=
+E[(y_{t+h}-\mu)(y_t-\mu)],
+\end{aligned}
+$$
+
+. . .
+
+can be estimated with simple sample averages
+
+. . .
+
+$$
+\begin{aligned}
+\hat{\mu}_T
+&=
+\frac{1}{T}\sum\limits_{t=1}^Ty_t
+\\
+\hat{\gamma}_T(h)
+&=
+\frac{1}{T}\sum\limits_{t=1}^{T-h}(y_{t+h}-\hat{\mu}_T)(y_t-\hat{\mu}_T).
+\end{aligned}
+$$
+
+. . .
+
+The last is the **sample autocovariance function**.
+
+## Recall some facts about the stationary AR(1)
+
+Here's what we've got:
+
+. . .
+
+$$
+\begin{aligned}
+\gamma(1)&=\beta_1\gamma(0) &&\implies\beta_1=\frac{\gamma(1)}{\gamma(0)}\\
+\mu&=\frac{\beta_0}{1-\beta_1}&&\implies\beta_0=(1-\beta_1)\mu\\
+\gamma(0)&=\frac{\sigma^2}{1-\beta_1^2}&&\implies \sigma^2=(1-\beta_1^2)\gamma(0).
+\end{aligned}
+$$
+
+. . .
+
+So...any ideas how to estimate these?
+
+## The (baby) Yule-Walker equation(s)
+
+Method of moments estimators for the AR(1) parameters:
+
+$$
+\begin{aligned}
+\hat{\beta}_1&=\frac{\hat{\gamma}_T(1)}{\hat{\gamma}_T(0)}
+\\
+\hat{\beta}_0&=(1-\hat{\beta}_1)\hat{\mu}_T\\
+\hat{\sigma^2}_T&=(1-\hat{\beta}_1^2)\hat{\gamma}_T(0).
+\end{aligned}
+$$
+
+## Asymptotics
+
+Don't need normality of the errors for this. You can even relax independence.
+
+## Simulation
+
+Things get weird near the boundary of the stationary region
 
 
+## A word about assumptions {.scrollable}
+
+::: incremental
+- Normality was not essential, but stationarity absolutely was:
+
+    - there is no such thing as $\gamma(h)$ without it;
+    - the estimating equations for method-of-moments make no sense if the process isn't stationary;
+    
+- But interesting "real-world" data probably are not stationary, and so it would be nice to have estimation techniques that don't completely break down without it. 
+:::
+
+<div class="vspace"></div>
+
+![](images/bayes.gif){fig-align="center"}
