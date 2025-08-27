@@ -14,3 +14,5 @@ do recursive and joint simulations many times and verify that you get the same s
 Bayesian AR(1) with a different prior.
 
 simulation to explore sampling properties when it's a unit root or explosive or whatever.
+
+given the joint, what is the recursion?
