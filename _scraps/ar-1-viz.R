@@ -27,10 +27,9 @@ ar_1_sd <- function(t, b1, s, s0){
   sqrt(ar_1_var(t, b1, s, s0))
 }
 
-
 b0 = 0
 b1 = -1
-s = 0.5
+s = 1
 m0 = 0
 s0 = 1
 
@@ -48,8 +47,6 @@ plot(range, middle, type = "l",
      ylab = expression(y[t]),
      ylim = c(-10, 10), bty = "n",
      col = "white")
-axis(1, pos = 0)
-axis(2, pos = 0)
 
 for(a in alpha){
   
@@ -64,7 +61,13 @@ for(a in alpha){
     )
 }
 
-lines(range, simulate_ar_1(max(range) + 1, b0, b1, s, m0, s0), col = "red", lwd = 2)
+inc = 20
+axis(1, pos = 0, at = seq(0, max(range), by = inc), 
+     labels = c(NA, seq(inc, max(range), by = inc)))
+axis(2, pos = 0)
+
+lines(range, simulate_ar_1(max(range) + 1, b0, b1, s, m0, s0), col = "black", lwd = 2)
+
 
 
 #lines(range, middle - sds)
