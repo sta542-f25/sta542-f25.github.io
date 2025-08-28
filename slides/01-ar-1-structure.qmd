@@ -60,7 +60,7 @@ y_{t-1}
 \\
 y_0
 &\sim
-\text{N}(\mu_0\com ?),
+\text{N}(\mu_0\com \initvar),
 \end{aligned}
 $$
 
@@ -85,9 +85,26 @@ p(y_t\given y_{t-1}).
 \end{aligned}
 $$
 
-## Putting the "auto" in autoregression
+## Putting the "regression" in autoregression
 
-"Just" regression. 
+In some sense the AR(1) this is "just" a simple linear regression
+
+$$
+y_t
+=
+\beta_0
++
+\beta_1
+x_t
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2),
+$$
+
+where we took the predictor to be $x_t=y_{t-1}$.
+
+This perspective obscures the dependence structure, but will be useful for likelihood-based inference next week.
 
 ## The game plan for the next few lectures {.medium}
 
@@ -323,7 +340,7 @@ $$
 \BS
 =
 \begin{bmatrix}
-?? 
+\initvar 
 & 
 \Bzero^\tr\\
 \Bzero & \sigma^2\BI_T
@@ -453,7 +470,7 @@ y_0
 \right)
 \\
 &=
-\beta_1^{2t}??
+\beta_1^{2t}\initvar
 +
 \sigma^2
 \sum\limits_{i=0}^{t-1}\beta_1^{2i}.
@@ -466,7 +483,20 @@ We used time-invariance and independence of $\varepsilon_t$ but not normality.
 
 ## What's the covariance?
 
-## Summary {.small}
+Here you go:
+
+$$
+\cov(y_t\com y_s)
+=
+\begin{cases}
+\beta_1^{s-t}\var(y_t) & t\leq s\\
+\beta_1^{t-s}\var(y_s) & s < t.
+\end{cases}
+$$
+
+Derivation deferred to Problem Set 1.
+
+## Summary {.small .scrollable}
 
 . . .
 
@@ -487,7 +517,7 @@ y_{t-1}
 \\
 y_0
 &\sim
-\text{N}(\mu_0\com ?).
+\text{N}(\mu_0\com \initvar).
 \end{aligned}
 $$
 
@@ -518,19 +548,23 @@ E(y_t)
 &=
 \sigma^2
 \sum\limits_{i=0}^{t-1}\beta_1^{2i}+
-\beta_1^{2t}??
+\beta_1^{2t}\initvar
 \\
 \cov(y_t\com y_s)
 &=
+\begin{cases}
+\beta_1^{s-t}\var(y_t) & t\leq s\\
+\beta_1^{t-s}\var(y_s) & s < t.
+\end{cases}
 .
 \end{aligned}
 $$
 
 # How does this behave? 
 
-## Some special cases {.medium}
+## Some special cases {.small}
 
-- [**iid**]{style="color:blue;"}: set $\beta_1=0$ (and $\mu_0=\beta_0$; $??=\sigma^2$), and
+- [**iid**]{style="color:blue;"}: set $\beta_1=0$ (and $\mu_0=\beta_0$; $\initvar=\sigma^2$), and
 
 . . .
 
@@ -552,7 +586,7 @@ E(y_t)
 \\
 \var(y_t)
 &=
-\sigma^2t+??.
+\sigma^2t+\initvar.
 \end{aligned}
 $$
 
@@ -563,37 +597,55 @@ $$
 . . .
 
 $$
-fefrf
+\begin{aligned}
+E(y_t)
+&=
+\beta_0\frac{1 - (-1)^t}{2}+(-1)^t\mu_0
+\\
+\var(y_t)
+&=
+\sigma^2t+\initvar.
+\end{aligned}
 $$
 
 # Graphical interlude
 
 ## Assume $\beta_1\neq 1$ 
 
-$|\beta_1|\neq 1$ 
+Finite geometric sum formula gives:
 
-Then finite geometric sum tells us that 
+$$
+\begin{aligned}
+E(y_t)
+&=
+\beta_0\frac{1-\beta_1^t}{1-\beta_1}
++
+\beta_1^t\mu_0
+\\
+\var(y_t)
+&=
+\sigma^2
+\frac{1-\beta_1^{2t}}{1-\beta_1^2}+
+\beta_1^{2t}\initvar.
+\end{aligned}
+$$
 
-## Definition of stationarity
+What happens as $t\to\infty$?
 
-consequence: the marginals are all the same (so, time-invariant)
 
-## Chat about stationarity
+## Stationarity
 
-Hopefully your first thought is ""
+A joint distribution is **(strictly) stationary** if it is "shift invariant":
 
-Interesting in its own right as pure math 
+$$
+\{y_{t_1}\com y_{t_2}\com ...\com y_{t_n}\}\overset{d}{=}\{y_{t_1+h}\com y_{t_2+h}\com ...\com y_{t_n+h}\}.
+$$
 
-MCMC
-
-Stationary is like "dependent but not too dependent" you can redo classical iid statistical theory without too much pain
-
-(For a Bayesian, you don't necessarily care about this)
-
+The Gaussian AR(1) with $|\beta_1|<1$ has this property.
 
 ## Stationary AR(1) {.small}
 
-If $-1<\beta_1<1$, $\mu_0=\beta_0/(1-\beta_1)$, and $???=\sigma^2/(1-\beta_1^2)$, then the AR(1) is strictly stationary with the following:
+If $-1<\beta_1<1$, $\mu_0=\beta_0/(1-\beta_1)$, and $\initvar=\sigma^2/(1-\beta_1^2)$, then the AR(1) is strictly stationary with the following:
 
 $$
 \begin{aligned}
@@ -621,15 +673,201 @@ $$
 
 So "did: dependent but identically distributed."
 
+## Chat about stationarity
+
+::: incremental
+- Hopefully your first thought upon encountering this concept is "real data won't be stationary." True!
+- So why care about this?
+
+    - Cute from a pure math point of view;
+    - If you simulate distributions with Markov chain Monte Carlo (MCMC), you bow down at the altar of stationarity;
+    - Stationarity means "dependent but not too dependent." You can redo classical statistical theory replacing "iid" with "stationary," and not much necessarily changes (convergence rates get worse);
+    - (A Bayesian won't necessarily care about that last point.)
+:::
+
 ## Autocovariance of a stationary process
 
+For a stationary process, the covariance kernel satisfies
+
 $$
-\gamma(h)=\cov(y_t\com y_{t+h})
+\cov(y_t\com y_{s})=\cov(y_{t+h}\com y_{s+h})\quad \forall (t\com s\com h).
 $$
 
-For the AR(1)
+So you can define something called the **autocovariance function**:
 
-## Plot pictures of examples
+$$
+\gamma(h)=\cov(y_{t+h}\com y_{t})
+$$
+
+For the AR(1), this is 
+
+$$
+\begin{aligned}
+\gamma(0)&=\sigma^2/(1-\beta_1^2)
+\\
+\gamma(h)&=\beta_1^h\gamma(0).
+\end{aligned}
+$$
+
+## What does the autocov function look like?
+
+```{r}
+#| echo: false
+# Parameters
+beta_1 <- 0      # AR(1) coefficient
+sigma2 <- 1        # Noise variance
+max_lag <- 20      # Number of lags to plot
+
+# Compute theoretical autocovariances
+lags <- 0:max_lag
+gamma_h <- sigma2 / (1 - beta_1^2) * beta_1^lags
+
+# Plot
+plot(lags, gamma_h, type="h", lwd=2,
+     xlab="Lag h", ylab="γ(h)",
+     main="Theoretical autocovariance of stationary AR(1)")
+points(lags, gamma_h, pch=19, col="blue")
+abline(h = 0, lty = 2, col = "darkgrey")
+
+# Add legend using Unicode
+legend_text <- paste0("β1 = ", beta_1, ", σ² = ", sigma2)
+legend("topright", legend=legend_text, bty="n")
+
+
+```
+
+## What does the autocov function look like?
+
+```{r}
+#| echo: false
+# Parameters
+beta_1 <- 0.5      # AR(1) coefficient
+sigma2 <- 1        # Noise variance
+max_lag <- 20      # Number of lags to plot
+
+# Compute theoretical autocovariances
+lags <- 0:max_lag
+gamma_h <- sigma2 / (1 - beta_1^2) * beta_1^lags
+
+# Plot
+plot(lags, gamma_h, type="h", lwd=2,
+     xlab="Lag h", ylab="γ(h)",
+     main="Theoretical autocovariance of stationary AR(1)")
+points(lags, gamma_h, pch=19, col="blue")
+
+# Add legend using Unicode
+legend_text <- paste0("β1 = ", beta_1, ", σ² = ", sigma2)
+legend("topright", legend=legend_text, bty="n")
+
+
+```
+
+## What does the autocov function look like?
+
+```{r}
+#| echo: false
+# Parameters
+beta_1 <- -0.8      # AR(1) coefficient
+sigma2 <- 1        # Noise variance
+max_lag <- 20      # Number of lags to plot
+
+# Compute theoretical autocovariances
+lags <- 0:max_lag
+gamma_h <- sigma2 / (1 - beta_1^2) * beta_1^lags
+
+# Plot
+plot(lags, gamma_h, type="h", lwd=2,
+     xlab="Lag h", ylab="γ(h)",
+     main="Theoretical autocovariance of stationary AR(1)")
+points(lags, gamma_h, pch=19, col="blue")
+abline(h = 0, lty = 2, col = "darkgrey")
+
+# Add legend using Unicode
+legend_text <- paste0("β1 = ", beta_1, ", σ² = ", sigma2)
+legend("topright", legend=legend_text, bty="n")
+
+
+```
+
+## What does the autocov function look like?
+
+```{r}
+#| echo: false
+# Parameters
+beta_1 <- 0.9      # AR(1) coefficient
+sigma2 <- 1        # Noise variance
+max_lag <- 20      # Number of lags to plot
+
+# Compute theoretical autocovariances
+lags <- 0:max_lag
+gamma_h <- sigma2 / (1 - beta_1^2) * beta_1^lags
+
+# Plot
+plot(lags, gamma_h, type="h", lwd=2,
+     xlab="Lag h", ylab="γ(h)",
+     main="Theoretical autocovariance of stationary AR(1)")
+points(lags, gamma_h, pch=19, col="blue")
+abline(h = 0, lty = 2, col = "darkgrey")
+
+# Add legend using Unicode
+legend_text <- paste0("β1 = ", beta_1, ", σ² = ", sigma2)
+legend("topright", legend=legend_text, bty="n")
+
+
+```
+
+## What does the autocov function look like?
+
+```{r}
+#| echo: false
+# Parameters
+beta_1 <- 0.99      # AR(1) coefficient
+sigma2 <- 1        # Noise variance
+max_lag <- 20      # Number of lags to plot
+
+# Compute theoretical autocovariances
+lags <- 0:max_lag
+gamma_h <- sigma2 / (1 - beta_1^2) * beta_1^lags
+
+# Plot
+plot(lags, gamma_h, type="h", lwd=2,
+     xlab="Lag h", ylab="γ(h)",
+     main="Theoretical autocovariance of stationary AR(1)")
+points(lags, gamma_h, pch=19, col="blue")
+abline(h = 0, lty = 2, col = "darkgrey")
+
+# Add legend using Unicode
+legend_text <- paste0("β1 = ", beta_1, ", σ² = ", sigma2)
+legend("topright", legend=legend_text, bty="n")
+
+```
+
+## What does the autocov function look like?
+
+```{r}
+#| echo: false
+# Parameters
+beta_1 <- 0.999      # AR(1) coefficient
+sigma2 <- 1        # Noise variance
+max_lag <- 20      # Number of lags to plot
+
+# Compute theoretical autocovariances
+lags <- 0:max_lag
+gamma_h <- sigma2 / (1 - beta_1^2) * beta_1^lags
+
+# Plot
+plot(lags, gamma_h, type="h", lwd=2,
+     xlab="Lag h", ylab="γ(h)",
+     main="Theoretical autocovariance of stationary AR(1)")
+points(lags, gamma_h, pch=19, col="blue")
+abline(h = 0, lty = 2, col = "darkgrey")
+
+# Add legend using Unicode
+legend_text <- paste0("β1 = ", beta_1, ", σ² = ", sigma2)
+legend("topright", legend=legend_text, bty="n")
+
+
+```
 
 # Let's start thinking about inference
 
@@ -702,15 +940,6 @@ $$
 \hat{\sigma^2}_T&=(1-\hat{\beta}_1^2)\hat{\gamma}_T(0).
 \end{aligned}
 $$
-
-## Asymptotics
-
-Don't need normality of the errors for this. You can even relax independence.
-
-## Simulation
-
-Things get weird near the boundary of the stationary region
-
 
 ## A word about assumptions {.scrollable}
 
