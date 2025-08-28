@@ -1,0 +1,6 @@
+---
+title: "What do you do likelihood-based inference in the AR(1)?"
+subtitle: "Lecture 2"
+format: revealjs
+auto-stretch: false
+---
