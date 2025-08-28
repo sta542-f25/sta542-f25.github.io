@@ -87,7 +87,7 @@ $$
 
 ## Putting the "regression" in autoregression
 
-In some sense the AR(1) this is "just" a simple linear regression
+In some sense the AR(1) is "just" a simple linear regression
 
 $$
 y_t
@@ -941,6 +941,8 @@ $$
 \end{aligned}
 $$
 
+## Asymptotics
+
 ## A word about assumptions {.scrollable}
 
 ::: incremental
@@ -954,4 +956,4 @@ $$
 
 <div class="vspace"></div>
 
-![](images/bayes.gif){fig-align="center"}
+![Peekaboo](images/bayes.gif){fig-align="center"}
