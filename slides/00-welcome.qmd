@@ -5,16 +5,16 @@ format: revealjs
 auto-stretch: false
 ---
 
-## Teaching team
+## Teaching team {.medium}
 
 +---------------------------+---------------+---------------+------------------------+
 | Mug                       | Name          | Role          | Office Hours           |
 +===========================+===============+===============+========================+
-| ![](images/al.jpg){.circ} | Li, Aihua     | TA            | TBD                    |
+| ![](images/al.jpg){.circ} | Li, Aihua     | TA            | Wed 10:30AM - 12:30PM  |
 +---------------------------+---------------+---------------+------------------------+
-| ![](images/jz.jpg){.circ} | Zito, John    | Instructor    | Tuesday?               |
+| ![](images/jz.jpg){.circ} | Zito, John    | Instructor    | Tue 1PM - 3PM          |
 +---------------------------+---------------+---------------+------------------------+
-: {tbl-colwidths="[20,20,25,35]"}
+: {tbl-colwidths="[18,20,18,44]"}
 
 # Time series are everywhere
 
