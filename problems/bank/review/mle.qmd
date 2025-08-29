@@ -30,5 +30,5 @@ $$
 \end{matrix}
 $$
 
-If you implemented this correctly, and if the original sample size $n$ is "large enough," then a histogram of the $k$ estimates $\hat{\theta}_m^{(1)}$, $\hat{\theta}_m^{(2)}$, ..., $\hat{\theta}_m^{(k)}$ ought to resemble the exact density you derived in part c.
+If you implemented this correctly, and if the original sample size $n$ is "large enough," then a histogram of the $k$ estimates $\hat{\theta}_n^{(1)}$, $\hat{\theta}_n^{(2)}$, ..., $\hat{\theta}_n^{(k)}$ ought to resemble the exact density you derived in part c.
 :::
