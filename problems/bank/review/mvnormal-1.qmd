@@ -69,10 +69,9 @@ $$
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-There are many ways to do part a. One that you might try is the multivariate **change-of-variables** formula. Let $\mathbf{x}\in\mathbb{R}^n$ be a random vector with density $f_{\mathbf{x}}$, and let $g:\mathbb{R}^n\to\mathbb{R}^n$ be an invertible transformation whose partial derivatives all exist and are continuous. Then the density of the new random variable $\mathbf{y}=g(\mathbf{x})$ is 
+JZ changed this hint on 8/30/2025. The original hint mentioned using the change-of-variables formula. That's a fine solution if $\mathbf{A}$ is invertible, but the result holds even if $\mathbf{A}$ is not invertible, and we will often use that version (e.g. part c here). If you used change-of-variables, don't redo it. We'll award full credit if you did it right. But otherwise, consider using the *moment-generating function* of a random vector $\mathbf{x}$:
 
 $$
-f_{\mathbf{y}}(\mathbf{y}) = f_{\mathbf{x}}(g^{-1}(\mathbf{y}))\,|\det\mathrm{J}_{g^{-1}}(\mathbf{y})|.
+M(\mathbf{t})=E\left(e^{\mathbf{t}^{\scriptscriptstyle\mathsf{T}}\mathbf{x}}\right).
 $$
-$\mathrm{J}_{g^{-1}}$ is an $n\times n$ **Jacobian matrix** which encodes the partial derivatives of the inverse transformation. This may seem like a massive pain in the ass, but how hard could the Jacobian of a linear transformation possibly be? Spoiler: not. 
 :::
