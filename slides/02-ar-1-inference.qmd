@@ -4,3 +4,103 @@ subtitle: "Lecture 2"
 format: revealjs
 auto-stretch: false
 ---
+
+# Recap 
+
+## The simplest non-trivial time series model {.medium}
+
+The autoregression of order 1, or AR(1):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&\sim
+\text{N}(\mu_0\com \initvar),
+\end{aligned}
+$$
+
+. . .
+
+That's the recursive form. It implies a joint distribution written marginal-conditional style:
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{0:T})
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{0:t-1})
+\\
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{t-1}).
+\end{aligned}
+$$
+
+## The AR(1) joint distribution
+
+## The special case of $|\beta_1|<1$
+
+## That's an example of stationarity
+
+## Yule Walker 
+
+news flash: it's a correlation!
+
+# Likelihood-based inference 
+
+## Add parameter to notation 
+
+## Initial condition is a pain in the ass
+
+## In practice we just condition on it. 
+
+# Maximum likelihood
+
+## do MLE, recover OLS 
+
+## if the data are streaming, do PSET 0
+
+## Asymptotics, if it's stationary, they're familiar
+
+## If not stationary, still works, but hella weird (Dickey Fuller and all them)
+
+# Bayes
+
+## Just regression, so conjugate stuff applies the same as iid (y, x)
+
+## non-conjugate prior 
+
+## another 
+
+## truncation prior to enforce stationarity 
+
+put stationarity in its proper place: as a modeling assumption you can adopt or not by incorporating it into your prior
+
+## Bayes is inherently recursive 
+
+non-conjugate priors and/or MCMC breaks this, but we can reclaim it with sequential Monte Carlo methods.
+
+One of the great virtues of Bayes is that it is inherently recursive. One of the great vices of MCMC is that it breaks that.
+
+We will reclaim the sequential nature at the end of the semester when we study sequential Monte Carlo (AKA particle filtering).
+
+# real data example of some kind?
+
+
