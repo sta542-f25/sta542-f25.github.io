@@ -6,7 +6,12 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
 <meta name="author" content="John Zito">
@@ -28,8 +33,73 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-7b6df38a5708194238ed4b2ec2004c1d.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3508fad0f0ada62887df893e10d6d3d5.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -131,7 +201,7 @@
 
 $$
 \newcommand{\initvar}{v_0^2}
-
+\newcommand{\cd}{\overset{d}{\to}}
 \newcommand{\var}{\text{var}}
 \newcommand{\cov}{\text{cov}}
 \newcommand{\argmax}[1]{\underset{#1}{\arg\max}}
@@ -242,6 +312,7 @@ $$
 \newcommand{\Bpi}{\boldsymbol{\pi}}
 \newcommand{\Bzero}{\mathbf{0}}
 \newcommand{\Bone}{\mathbf{1}}
+\newcommand{\N}{\text{N}}
 $$
   <div class="reveal">
     <div class="slides">
@@ -272,7 +343,7 @@ John Zito
 <li>A <span style="color:blue;"><strong>time series model</strong></span> is “just” their joint probability distribution:</li>
 </ul>
 <p><span class="math display">\[
-p(\By_{1:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
+p(\By_{0:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
 \]</span></p>
 </section><section id="course-themes" class="slide level2"><h2>Course themes</h2>
 <p>We will focus on a small set of themes, but go deep on them:</p>
@@ -809,8 +880,145 @@ E(y_t)
 \end{aligned}
 \]</span></p>
 </div>
-</section></section><section><section id="graphical-interlude" class="title-slide slide level1 center"><h1>Graphical interlude</h1>
-
+</section><section id="what-does-this-look-like" class="slide level2 scrollable"><h2>What does this look like?</h2>
+<div class="sourceCode" id="cb1" data-engine="r"><pre class="sourceCode numberSource shinylive-r number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>#| '!! shinylive warning !!': |</span>
+<span id="cb1-2"><a></a>#|   shinylive does not work in self-contained HTML documents.</span>
+<span id="cb1-3"><a></a>#|   Please set `embed-resources: false` in your metadata.</span>
+<span id="cb1-4"><a></a>#| standalone: true</span>
+<span id="cb1-5"><a></a>#| viewerHeight: 700</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>library(shiny)</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a>simulate_ar_1 &lt;- function(T, b0, b1, s, m0, s0){</span>
+<span id="cb1-10"><a></a>  y &lt;- numeric(T)</span>
+<span id="cb1-11"><a></a>  y[1] &lt;- rnorm(1, m0, s0)</span>
+<span id="cb1-12"><a></a>  for(t in 2:T){</span>
+<span id="cb1-13"><a></a>    y[t] &lt;- b0 + b1 * y[t - 1] + rnorm(1, 0, s)</span>
+<span id="cb1-14"><a></a>  }</span>
+<span id="cb1-15"><a></a>  return(y)</span>
+<span id="cb1-16"><a></a>}</span>
+<span id="cb1-17"><a></a></span>
+<span id="cb1-18"><a></a>ar_1_mean &lt;- function(t, b0, b1, m0){</span>
+<span id="cb1-19"><a></a>  if(t == 0){</span>
+<span id="cb1-20"><a></a>    return(m0)</span>
+<span id="cb1-21"><a></a>  }else{</span>
+<span id="cb1-22"><a></a>    return(b0 * sum(b1 ^ (0:(t-1))) + m0 * (b1^t)) </span>
+<span id="cb1-23"><a></a>  }</span>
+<span id="cb1-24"><a></a>}</span>
+<span id="cb1-25"><a></a></span>
+<span id="cb1-26"><a></a>ar_1_var &lt;- function(t, b1, s, s0){</span>
+<span id="cb1-27"><a></a>  if(t == 0){</span>
+<span id="cb1-28"><a></a>    return(s0^2)</span>
+<span id="cb1-29"><a></a>  }else{</span>
+<span id="cb1-30"><a></a>    return((s0^2) * (b1^(2*t)) + (s^2) * sum(b1 ^ (2*(0:(t-1)))))</span>
+<span id="cb1-31"><a></a>  }</span>
+<span id="cb1-32"><a></a>}</span>
+<span id="cb1-33"><a></a></span>
+<span id="cb1-34"><a></a>ar_1_sd &lt;- function(t, b1, s, s0){</span>
+<span id="cb1-35"><a></a>  sqrt(ar_1_var(t, b1, s, s0))</span>
+<span id="cb1-36"><a></a>}</span>
+<span id="cb1-37"><a></a></span>
+<span id="cb1-38"><a></a># Define UI for application that draws a histogram</span>
+<span id="cb1-39"><a></a>ui &lt;- fluidPage(</span>
+<span id="cb1-40"><a></a>  </span>
+<span id="cb1-41"><a></a>  # Application title</span>
+<span id="cb1-42"><a></a>  titlePanel("Marginal distributions and sample paths of a Gaussian AR(1)"),</span>
+<span id="cb1-43"><a></a>  </span>
+<span id="cb1-44"><a></a>  # Sidebar with a slider input for number of bins </span>
+<span id="cb1-45"><a></a>  sidebarLayout(</span>
+<span id="cb1-46"><a></a>    sidebarPanel(</span>
+<span id="cb1-47"><a></a>      sliderInput("b0",</span>
+<span id="cb1-48"><a></a>                  "β₀",</span>
+<span id="cb1-49"><a></a>                  min = -5,</span>
+<span id="cb1-50"><a></a>                  max = 5,</span>
+<span id="cb1-51"><a></a>                  value = 0,</span>
+<span id="cb1-52"><a></a>                  step = 0.1),</span>
+<span id="cb1-53"><a></a>      sliderInput("b1",</span>
+<span id="cb1-54"><a></a>                  "β₁",</span>
+<span id="cb1-55"><a></a>                  min = -2,</span>
+<span id="cb1-56"><a></a>                  max = 2,</span>
+<span id="cb1-57"><a></a>                  value = 0,</span>
+<span id="cb1-58"><a></a>                  step = 0.1),</span>
+<span id="cb1-59"><a></a>      sliderInput("s",</span>
+<span id="cb1-60"><a></a>                  "σ",</span>
+<span id="cb1-61"><a></a>                  min = 0,</span>
+<span id="cb1-62"><a></a>                  max = 2,</span>
+<span id="cb1-63"><a></a>                  value = 1, </span>
+<span id="cb1-64"><a></a>                  step = 0.1),</span>
+<span id="cb1-65"><a></a>      sliderInput("m0",</span>
+<span id="cb1-66"><a></a>                  "μ₀",</span>
+<span id="cb1-67"><a></a>                  min = -5,</span>
+<span id="cb1-68"><a></a>                  max = 5,</span>
+<span id="cb1-69"><a></a>                  value = 0,</span>
+<span id="cb1-70"><a></a>                  step = 0.1),</span>
+<span id="cb1-71"><a></a>      sliderInput("T",</span>
+<span id="cb1-72"><a></a>                  "T",</span>
+<span id="cb1-73"><a></a>                  min = 20,</span>
+<span id="cb1-74"><a></a>                  max = 200,</span>
+<span id="cb1-75"><a></a>                  step = 20,</span>
+<span id="cb1-76"><a></a>                  value = 100),</span>
+<span id="cb1-77"><a></a>      actionButton("redo", "New sample path"),</span>
+<span id="cb1-78"><a></a>    ),</span>
+<span id="cb1-79"><a></a>    </span>
+<span id="cb1-80"><a></a>    # Show a plot of the generated distribution</span>
+<span id="cb1-81"><a></a>    mainPanel(</span>
+<span id="cb1-82"><a></a>      plotOutput("distPlot", height = "600px")</span>
+<span id="cb1-83"><a></a>    )</span>
+<span id="cb1-84"><a></a>  )</span>
+<span id="cb1-85"><a></a>)</span>
+<span id="cb1-86"><a></a></span>
+<span id="cb1-87"><a></a># Define server logic required to draw a histogram</span>
+<span id="cb1-88"><a></a>server &lt;- function(input, output) {</span>
+<span id="cb1-89"><a></a>  </span>
+<span id="cb1-90"><a></a>  output$distPlot &lt;- renderPlot({</span>
+<span id="cb1-91"><a></a>    input$redo</span>
+<span id="cb1-92"><a></a>    b0 &lt;- input$b0</span>
+<span id="cb1-93"><a></a>    b1 &lt;- input$b1</span>
+<span id="cb1-94"><a></a>    redo &lt;- input$redo</span>
+<span id="cb1-95"><a></a>    T &lt;- input$T</span>
+<span id="cb1-96"><a></a>    s &lt;- input$s</span>
+<span id="cb1-97"><a></a>    m0 &lt;- input$m0</span>
+<span id="cb1-98"><a></a>    s0 = 1</span>
+<span id="cb1-99"><a></a>    </span>
+<span id="cb1-100"><a></a>    range = 0:T</span>
+<span id="cb1-101"><a></a>    alpha = c(0.01, seq(0.1, 0.9, by = 0.1))</span>
+<span id="cb1-102"><a></a>    </span>
+<span id="cb1-103"><a></a>    middle &lt;- sapply(range, ar_1_mean, b0, b1, m0)</span>
+<span id="cb1-104"><a></a>    sds &lt;- sapply(range, ar_1_sd, b1, s, s0)</span>
+<span id="cb1-105"><a></a>    </span>
+<span id="cb1-106"><a></a>    </span>
+<span id="cb1-107"><a></a>    plot(range, middle, type = "l",</span>
+<span id="cb1-108"><a></a>         xaxt = "n", </span>
+<span id="cb1-109"><a></a>         yaxt = "n",</span>
+<span id="cb1-110"><a></a>         xlab = "t",</span>
+<span id="cb1-111"><a></a>         ylab = expression(y[t]),</span>
+<span id="cb1-112"><a></a>         ylim = c(-20, 20), bty = "n",</span>
+<span id="cb1-113"><a></a>         col = "white")</span>
+<span id="cb1-114"><a></a>    </span>
+<span id="cb1-115"><a></a>    for(a in alpha){</span>
+<span id="cb1-116"><a></a>      </span>
+<span id="cb1-117"><a></a>      U = qnorm(1 - a / 2, mean = middle, sd = sds)</span>
+<span id="cb1-118"><a></a>      L = qnorm(a / 2, mean = middle, sd = sds)</span>
+<span id="cb1-119"><a></a>      </span>
+<span id="cb1-120"><a></a>      polygon(</span>
+<span id="cb1-121"><a></a>        c(range, rev(range)),</span>
+<span id="cb1-122"><a></a>        c(U, rev(L)),</span>
+<span id="cb1-123"><a></a>        col = rgb(1, 0, 0, 0.15),</span>
+<span id="cb1-124"><a></a>        border = NA</span>
+<span id="cb1-125"><a></a>      )</span>
+<span id="cb1-126"><a></a>    }</span>
+<span id="cb1-127"><a></a>    </span>
+<span id="cb1-128"><a></a>    inc = 20</span>
+<span id="cb1-129"><a></a>    axis(1, pos = 0, at = seq(0, max(range), by = inc), </span>
+<span id="cb1-130"><a></a>         labels = c(NA, seq(inc, max(range), by = inc)))</span>
+<span id="cb1-131"><a></a>    axis(2, pos = 0)</span>
+<span id="cb1-132"><a></a>    </span>
+<span id="cb1-133"><a></a>    lines(range, simulate_ar_1(max(range) + 1, b0, b1, s, m0, s0), col = "black", lwd = 2)</span>
+<span id="cb1-134"><a></a>  })</span>
+<span id="cb1-135"><a></a>}</span>
+<span id="cb1-136"><a></a></span>
+<span id="cb1-137"><a></a># Run the application </span>
+<span id="cb1-138"><a></a>shinyApp(ui = ui, server = server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="assume-beta_1neq-1" class="slide level2"><h2>Assume <span class="math inline">\(\beta_1\neq 1\)</span>
 </h2>
 <p>Finite geometric sum formula gives:</p>
@@ -882,7 +1090,7 @@ y_t\sim\text{N}\left(\frac{\beta_0}{1-\beta_1}\com \frac{\sigma^2}{1-\beta_1^2}\
 \]</span></p>
 <p>So you can define something called the <strong>autocovariance function</strong>:</p>
 <p><span class="math display">\[
-\gamma(h)=\cov(y_{t+h}\com y_{t})
+\gamma(h)=\cov(y_{t+h}\com y_{t}).
 \]</span></p>
 <p>For the AR(1), this is</p>
 <p><span class="math display">\[
@@ -996,16 +1204,128 @@ E[(y_{t+h}-\mu)(y_t-\mu)],
 <p>So…any ideas how to estimate these?</p>
 </div>
 </section><section id="the-baby-yule-walker-equations" class="slide level2"><h2>The (baby) Yule-Walker equation(s)</h2>
-<p>Method of moments estimators for the AR(1) parameters:</p>
+<p>Everywhere you see a “population” expected value, plug in the sample version:</p>
+<div class="fragment">
 <p><span class="math display">\[
 \begin{aligned}
 \hat{\beta}_1&amp;=\frac{\hat{\gamma}_T(1)}{\hat{\gamma}_T(0)}
 \\
 \hat{\beta}_0&amp;=(1-\hat{\beta}_1)\hat{\mu}_T\\
-\hat{\sigma^2}_T&amp;=(1-\hat{\beta}_1^2)\hat{\gamma}_T(0).
+\hat{\sigma^2_T}&amp;=(1-\hat{\beta}_1^2)\hat{\gamma}_T(0).
 \end{aligned}
 \]</span></p>
+<p>These are <em>method of moments</em> estimators for the AR(1) parameters.</p>
+</div>
 </section><section id="asymptotics" class="slide level2"><h2>Asymptotics</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Shumway and Stoffer (2025) Property 3.7</strong></p>
+</div>
+<div class="callout-content">
+<p>For a stationary AR(1), the Yuke-Walker estimator has:</p>
+<p><span class="math display">\[
+\sqrt{T}(\hat{\beta}_1-\beta_1)\cd\N\left(0\com\frac{\sigma^2}{\gamma(0)}\right).
+\]</span> And note in this case that <span class="math inline">\(\sigma^2 / \gamma(0)=1-\beta_1^2\)</span>. The result remains true if you plug in the estimator of the asymptotic variance.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Asymptotically valid <span class="math inline">\(100\times(1-\alpha)\%\)</span> confidence interval:</p>
+<p><span class="math display">\[
+\hat{\beta}_1\pm z_{1-\alpha/2}\sqrt{\frac{1-\hat{\beta}_1^2}{T}}.
+\]</span></p>
+</div>
+</section><section id="what-happens-for-beta_1-close-to-pm1" class="slide level2 scrollable"><h2>What happens for <span class="math inline">\(\beta_1\)</span> close to <span class="math inline">\(\pm1\)</span>?</h2>
+<div class="sourceCode" id="cb2" data-engine="r"><pre class="sourceCode numberSource shinylive-r number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>#| '!! shinylive warning !!': |</span>
+<span id="cb2-2"><a></a>#|   shinylive does not work in self-contained HTML documents.</span>
+<span id="cb2-3"><a></a>#|   Please set `embed-resources: false` in your metadata.</span>
+<span id="cb2-4"><a></a>#| standalone: true</span>
+<span id="cb2-5"><a></a>#| viewerHeight: 700</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a># app.R</span>
+<span id="cb2-8"><a></a>library(shiny)</span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a># ---------- Configuration ----------</span>
+<span id="cb2-11"><a></a>SAMPLE_SIZES &lt;- seq(10, 200, by = 20)   # smaller default for speed</span>
+<span id="cb2-12"><a></a>NSIM &lt;- 500                             # number of simulated AR(1) paths per sample size</span>
+<span id="cb2-13"><a></a>Y_LIMITS &lt;- c(-1, 1)</span>
+<span id="cb2-14"><a></a># ------------------------------------</span>
+<span id="cb2-15"><a></a></span>
+<span id="cb2-16"><a></a># Yule-Walker AR(1) estimator</span>
+<span id="cb2-17"><a></a>yule_walker_ar1 &lt;- function(x) {</span>
+<span id="cb2-18"><a></a>  n &lt;- length(x)</span>
+<span id="cb2-19"><a></a>  x &lt;- x - mean(x)  # center</span>
+<span id="cb2-20"><a></a>  gamma0 &lt;- mean(x^2)</span>
+<span id="cb2-21"><a></a>  gamma1 &lt;- mean(x[-1] * x[-n])</span>
+<span id="cb2-22"><a></a>  gamma1 / gamma0</span>
+<span id="cb2-23"><a></a>}</span>
+<span id="cb2-24"><a></a></span>
+<span id="cb2-25"><a></a># Simulate one stationary AR(1) with variance 1</span>
+<span id="cb2-26"><a></a>simulate_ar_1 &lt;- function(T, b0, b1, s, m0, s0){</span>
+<span id="cb2-27"><a></a>  y &lt;- numeric(T)</span>
+<span id="cb2-28"><a></a>  y[1] &lt;- rnorm(1, m0, s0)</span>
+<span id="cb2-29"><a></a>  for(t in 2:T){</span>
+<span id="cb2-30"><a></a>    y[t] &lt;- b0 + b1 * y[t - 1] + rnorm(1, 0, s)</span>
+<span id="cb2-31"><a></a>  }</span>
+<span id="cb2-32"><a></a>  return(y)</span>
+<span id="cb2-33"><a></a>}</span>
+<span id="cb2-34"><a></a></span>
+<span id="cb2-35"><a></a>ui &lt;- fluidPage(</span>
+<span id="cb2-36"><a></a>  titlePanel("Sampling distribution of Yule–Walker AR(1) estimator"),</span>
+<span id="cb2-37"><a></a>  sidebarLayout(</span>
+<span id="cb2-38"><a></a>    sidebarPanel(</span>
+<span id="cb2-39"><a></a>      sliderInput("b1", "True value of β₁:",</span>
+<span id="cb2-40"><a></a>                  min = -0.99, max = 0.99, value = 0.5, step = 0.01)</span>
+<span id="cb2-41"><a></a>    ),</span>
+<span id="cb2-42"><a></a>    mainPanel(</span>
+<span id="cb2-43"><a></a>      plotOutput("boxPlot", height = "600px")</span>
+<span id="cb2-44"><a></a>    )</span>
+<span id="cb2-45"><a></a>  )</span>
+<span id="cb2-46"><a></a>)</span>
+<span id="cb2-47"><a></a></span>
+<span id="cb2-48"><a></a>server &lt;- function(input, output, session) {</span>
+<span id="cb2-49"><a></a>  </span>
+<span id="cb2-50"><a></a>  output$boxPlot &lt;- renderPlot({</span>
+<span id="cb2-51"><a></a>    b0 &lt;- 0</span>
+<span id="cb2-52"><a></a>    b1 &lt;- input$b1</span>
+<span id="cb2-53"><a></a>    s &lt;- 1</span>
+<span id="cb2-54"><a></a>    m0 &lt;- b0 / (1 - b1)</span>
+<span id="cb2-55"><a></a>    s0 &lt;- s / sqrt(1 - b1^2)</span>
+<span id="cb2-56"><a></a>    sizes &lt;- SAMPLE_SIZES</span>
+<span id="cb2-57"><a></a>    nsim &lt;- NSIM</span>
+<span id="cb2-58"><a></a>    </span>
+<span id="cb2-59"><a></a>    # Collect estimates in a list, one element per sample size</span>
+<span id="cb2-60"><a></a>    est_list &lt;- vector("list", length(sizes))</span>
+<span id="cb2-61"><a></a>    </span>
+<span id="cb2-62"><a></a>    for (i in seq_along(sizes)) {</span>
+<span id="cb2-63"><a></a>      n &lt;- sizes[i]</span>
+<span id="cb2-64"><a></a>      phi_hats &lt;- numeric(nsim)</span>
+<span id="cb2-65"><a></a>      for (s in 1:nsim) {</span>
+<span id="cb2-66"><a></a>        x &lt;- simulate_ar_1(n, b0, b1, s, m0, s0)#simulate_ar1(n, phi)</span>
+<span id="cb2-67"><a></a>        phi_hats[s] &lt;- yule_walker_ar1(x)</span>
+<span id="cb2-68"><a></a>      }</span>
+<span id="cb2-69"><a></a>      est_list[[i]] &lt;- phi_hats</span>
+<span id="cb2-70"><a></a>    }</span>
+<span id="cb2-71"><a></a>    </span>
+<span id="cb2-72"><a></a>    # Draw boxplots side by side</span>
+<span id="cb2-73"><a></a>    par()</span>
+<span id="cb2-74"><a></a>    boxplot(est_list,</span>
+<span id="cb2-75"><a></a>            names = sizes,</span>
+<span id="cb2-76"><a></a>            ylim = Y_LIMITS,</span>
+<span id="cb2-77"><a></a>            xlab = "Sample size T",</span>
+<span id="cb2-78"><a></a>            ylab = "Estimate",</span>
+<span id="cb2-79"><a></a>            main = paste("True value: ", b1),</span>
+<span id="cb2-80"><a></a>            col = "lightgray", pch = 19)</span>
+<span id="cb2-81"><a></a>    </span>
+<span id="cb2-82"><a></a>    abline(h = b1, col = "red", lty = 2, lwd = 2)</span>
+<span id="cb2-83"><a></a>  })</span>
+<span id="cb2-84"><a></a>}</span>
+<span id="cb2-85"><a></a></span>
+<span id="cb2-86"><a></a>shinyApp(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="a-word-about-assumptions" class="slide level2 scrollable"><h2>A word about assumptions</h2>
 <div>
 <ul>
@@ -1019,6 +1339,14 @@ E[(y_{t+h}-\mu)(y_t-\mu)],
 <li class="fragment"><p>But interesting “real-world” data probably are not stationary, and so it would be nice to have estimation techniques that don’t completely break down without it.</p></li>
 </ul>
 </div>
+<div class="fragment">
+<p>…what’s that?</p>
+</div>
+<div class="fragment">
+<div class="vspace">
+
+</div>
+<p>Do you hear something?</p>
 <div class="vspace">
 
 </div>
@@ -1028,6 +1356,7 @@ E[(y_{t+h}-\mu)(y_t-\mu)],
 </div>
 
 
+</div>
 </section></section>
 </div>
   <div class="quarto-auto-generated-content" style="display: none;">

@@ -248,10 +248,10 @@ Hint
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There are many ways to do part a. One that you might try is the multivariate <strong>change-of-variables</strong> formula. Let <span class="math inline">\(\mathbf{x}\in\mathbb{R}^n\)</span> be a random vector with density <span class="math inline">\(f_{\mathbf{x}}\)</span>, and let <span class="math inline">\(g:\mathbb{R}^n\to\mathbb{R}^n\)</span> be an invertible transformation whose partial derivatives all exist and are continuous. Then the density of the new random variable <span class="math inline">\(\mathbf{y}=g(\mathbf{x})\)</span> is</p>
+<p>JZ changed this hint on 8/30/2025. The original hint mentioned using the change-of-variables formula. That’s a fine solution if <span class="math inline">\(\mathbf{A}\)</span> is invertible, but the result holds even if <span class="math inline">\(\mathbf{A}\)</span> is not invertible, and we will often use that version (e.g.&nbsp;part c here). If you used change-of-variables, don’t redo it. We’ll award full credit if you did it right. But otherwise, consider using the <em>moment-generating function</em> of a random vector <span class="math inline">\(\mathbf{x}\)</span>:</p>
 <p><span class="math display">\[
-f_{\mathbf{y}}(\mathbf{y}) = f_{\mathbf{x}}(g^{-1}(\mathbf{y}))\,|\det\mathrm{J}_{g^{-1}}(\mathbf{y})|.
-\]</span> <span class="math inline">\(\mathrm{J}_{g^{-1}}\)</span> is an <span class="math inline">\(n\times n\)</span> <strong>Jacobian matrix</strong> which encodes the partial derivatives of the inverse transformation. This may seem like a massive pain in the ass, but how hard could the Jacobian of a linear transformation possibly be? Spoiler: not.</p>
+M(\mathbf{t})=E\left(e^{\mathbf{t}^{\scriptscriptstyle\mathsf{T}}\mathbf{x}}\right).
+\]</span></p>
 </div>
 </div>
 </div>

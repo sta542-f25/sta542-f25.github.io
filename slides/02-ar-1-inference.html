@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-7b6df38a5708194238ed4b2ec2004c1d.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3508fad0f0ada62887df893e10d6d3d5.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -131,7 +131,7 @@
 
 $$
 \newcommand{\initvar}{v_0^2}
-
+\newcommand{\cd}{\overset{d}{\to}}
 \newcommand{\var}{\text{var}}
 \newcommand{\cov}{\text{cov}}
 \newcommand{\argmax}[1]{\underset{#1}{\arg\max}}
@@ -242,6 +242,7 @@ $$
 \newcommand{\Bpi}{\boldsymbol{\pi}}
 \newcommand{\Bzero}{\mathbf{0}}
 \newcommand{\Bone}{\mathbf{1}}
+\newcommand{\N}{\text{N}}
 $$
   <div class="reveal">
     <div class="slides">
@@ -262,8 +263,124 @@ John Zito
 </div>
 
 </section>
-<section class="slide level2">
+<section>
+<section id="recap" class="title-slide slide level1 center">
+<h1>Recap</h1>
 
+</section>
+<section id="the-simplest-non-trivial-time-series-model" class="slide level2 medium">
+<h2>The simplest non-trivial time series model</h2>
+<p>The autoregression of order 1, or AR(1):</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&amp;\sim
+\text{N}(\mu_0\com \initvar),
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>That’s the recursive form. It implies a joint distribution written marginal-conditional style:</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+p(y_{0:T})
+&amp;=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{0:t-1})
+\\
+&amp;=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{t-1}).
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="the-ar1-joint-distribution" class="slide level2">
+<h2>The AR(1) joint distribution</h2>
+</section>
+<section id="the-special-case-of-beta_11" class="slide level2">
+<h2>The special case of <span class="math inline">\(|\beta_1|&lt;1\)</span></h2>
+</section>
+<section id="thats-an-example-of-stationarity" class="slide level2">
+<h2>That’s an example of stationarity</h2>
+</section>
+<section id="yule-walker" class="slide level2">
+<h2>Yule Walker</h2>
+<p>news flash: it’s a correlation!</p>
+</section></section>
+<section>
+<section id="likelihood-based-inference" class="title-slide slide level1 center">
+<h1>Likelihood-based inference</h1>
+
+</section>
+<section id="add-parameter-to-notation" class="slide level2">
+<h2>Add parameter to notation</h2>
+</section>
+<section id="initial-condition-is-a-pain-in-the-ass" class="slide level2">
+<h2>Initial condition is a pain in the ass</h2>
+</section>
+<section id="in-practice-we-just-condition-on-it." class="slide level2">
+<h2>In practice we just condition on it.</h2>
+</section></section>
+<section>
+<section id="maximum-likelihood" class="title-slide slide level1 center">
+<h1>Maximum likelihood</h1>
+
+</section>
+<section id="do-mle-recover-ols" class="slide level2">
+<h2>do MLE, recover OLS</h2>
+</section>
+<section id="if-the-data-are-streaming-do-pset-0" class="slide level2">
+<h2>if the data are streaming, do PSET 0</h2>
+</section>
+<section id="asymptotics-if-its-stationary-theyre-familiar" class="slide level2">
+<h2>Asymptotics, if it’s stationary, they’re familiar</h2>
+</section>
+<section id="if-not-stationary-still-works-but-hella-weird-dickey-fuller-and-all-them" class="slide level2">
+<h2>If not stationary, still works, but hella weird (Dickey Fuller and all them)</h2>
+</section></section>
+<section>
+<section id="bayes" class="title-slide slide level1 center">
+<h1>Bayes</h1>
+
+</section>
+<section id="just-regression-so-conjugate-stuff-applies-the-same-as-iid-y-x" class="slide level2">
+<h2>Just regression, so conjugate stuff applies the same as iid (y, x)</h2>
+</section>
+<section id="non-conjugate-prior" class="slide level2">
+<h2>non-conjugate prior</h2>
+</section>
+<section id="another" class="slide level2">
+<h2>another</h2>
+</section>
+<section id="truncation-prior-to-enforce-stationarity" class="slide level2">
+<h2>truncation prior to enforce stationarity</h2>
+<p>put stationarity in its proper place: as a modeling assumption you can adopt or not by incorporating it into your prior</p>
+</section>
+<section id="bayes-is-inherently-recursive" class="slide level2">
+<h2>Bayes is inherently recursive</h2>
+<p>non-conjugate priors and/or MCMC breaks this, but we can reclaim it with sequential Monte Carlo methods.</p>
+<p>One of the great virtues of Bayes is that it is inherently recursive. One of the great vices of MCMC is that it breaks that.</p>
+<p>We will reclaim the sequential nature at the end of the semester when we study sequential Monte Carlo (AKA particle filtering).</p>
+</section></section>
+<section id="real-data-example-of-some-kind" class="title-slide slide level1 center">
+<h1>real data example of some kind?</h1>
 
 
 </section>
