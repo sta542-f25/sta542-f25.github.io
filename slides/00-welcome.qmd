@@ -80,7 +80,7 @@ Any ethical complaints about this one?
 
 # Course themes
 
-## Let's take a second look at this {.medium}
+## Let's take a second look at this {.small}
 
 ![](images/fan-charts.gif){fig-align="center" width="80%"}
 
@@ -482,9 +482,7 @@ segments(1, 0, 1, 100, lty = 2, lwd = 2)
 So $\mathbf{x} = [x]\sim\text{N}_1([\mu],\,[\sigma^2])$ is just $x\sim\text{N}(\mu,\,\sigma^2)$.
 
 
-## Bivariate {.medium}
-
-Elliptical contours!
+## Bivariate: elliptical contours! {.small}
 
 ![](images/binormal.gif){fig-align="center"}
 
