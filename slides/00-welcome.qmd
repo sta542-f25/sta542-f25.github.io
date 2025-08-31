@@ -16,118 +16,75 @@ auto-stretch: false
 +---------------------------+---------------+---------------+------------------------+
 : {tbl-colwidths="[18,20,18,44]"}
 
-# Time series are everywhere
 
-## Example: unemployment
-
-<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1L254&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
-
-## Example: mortgage rates
-
-<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1LJ4Z&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
-
-## Example: Case-Shiller home price index
-
-<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1L3wp&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
-
-## Example: IMF global energy price index
-
-<iframe src="https://fred.stlouisfed.org/graph/graph-landing.php?g=1LL3k&width=670&height=475" scrolling="no" frameborder="0" style="overflow:hidden; width:670px; height:525px;" allowTransparency="true" loading="lazy"></iframe>
-
-## Example: EEG
-
-![](images/eeg-data.png){fig-align="center"}
-
-## Example: word mentions
-
-<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=string,recession,Watergate&year_start=1800&year_end=2022&corpus=en&smoothing=0" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
-
-
-## Example: personal health
-
-![](images/berlind-step-count.png){fig-align="center"}
-
-## Example: sheet music
-
-```{r}
-#| echo: false
-#| fig-align: center
-library(gm)
-
-pitches <- c("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
-octaves <- 1:7
-all_pitches <- c("A0", "A#0", "B0", 
-                 paste(rep(pitches, length(octaves)), 
-                       sort(rep(octaves, length(pitches))), 
-                       sep = ""), 
-                 "C8")
-
-set.seed(12)
-notes <- sample(all_pitches, 8, replace = FALSE)
-
-example <- Music() +
-  Meter(4, 4) + 
-  Line(pitches = notes)
-gm::show(example, to = "score")
-```
+## Motivation {.large-ish}
 
 . . .
 
-```{r}
-#| echo: false
-#| fig-width: 8
+::: callout-important
+## Controversial statement
 
-# Convert scientific pitch notation to frequency in Hz
-note_to_freq <- function(notes) {
-  # Mapping of note names to semitone offsets from C
-  semitone_map <- c(
-    "C" = 0, "C#" = 1, "Db" = 1, "D" = 2, "D#" = 3, "Eb" = 3,
-    "E" = 4, "F" = 5, "F#" = 6, "Gb" = 6, "G" = 7, "G#" = 8,
-    "Ab" = 8, "A" = 9, "A#" = 10, "Bb" = 10, "B" = 11
-  )
-  
-  freqs <- numeric(length(notes))
-  for (i in seq_along(notes)) {
-    # Extract letter+accidental and octave
-    m <- regexpr("^[A-Ga-g][#b]?", notes[i], perl = TRUE)
-    note_name <- toupper(regmatches(notes[i], m))
-    octave <- as.numeric(sub(note_name, "", notes[i], fixed = TRUE))
-    
-    # Semitones from A4
-    semitones_from_A4 <- (octave - 4) * 12 + (semitone_map[note_name] - semitone_map["A"])
-    
-    # Frequency formula
-    freqs[i] <- 440 * 2^(semitones_from_A4 / 12)
-  }
-  
-  freqs
-}
+Statistics is about quantifying uncertainty to help make decisions.
+:::
 
-freqs <- note_to_freq(notes)
+. . .
 
-# Create a time vector — each note lasts 1 beat
-time_per_note <- 1
-time_points <- seq(0, length(notes) * time_per_note, by = time_per_note)
-par(mar = c(5, 5, 0.1, 0.1))
-# Step plot of the frequencies
-plot(1:9, c(freqs, tail(freqs, 1)), type = "s",
-     xlab = "Beat", ylab = "Frequency (Hz)", lwd = 2,
-     cex.lab = 2)
+In modern data science environments, stakeholders are sequentially analyzing high volumes of dependent data and using it to forecast the future in real-time. 
 
-# Optional: grid for clarity
-grid()
-```
+. . .
+
+Let's see that in action.
+
+## Central banking
+
+![](images/fan-charts.gif){fig-align="center"}
+
+## E-commerce and web traffic
+
+`amazon.com` is never "offline."
+
+![](images/amazon.gif){fig-align="center"}
+
+## Extreme weather forecasting
+
+![](images/hurricane.gif){fig-align="center" width="80%"}
+
+## Monitoring disease case counts
+
+![](images/covid.gif){fig-align="center"}
+
+## Monitoring the energy grid
+
+![](images/ercot.webp){fig-align="center" width="80%"}
+
+## Object tracking 
+
+![](images/tracking.gif){fig-align="center"}
+
+Any ethical complaints about this one?
+
+## Autonomous vehicle navigation
+
+![](images/self-driving.gif){fig-align="center"}
+
+
+
+
+
+
 
 
 # You get the idea.
 
 # Course themes
 
-With only 23 lectures, we will go deep on a fairly narrow set of issues in time series analysis. Hopefully you will leave the course with a strong foundation to study *the rest* of time series analysis, should you so choose.
+## Let's take a second look at this
 
-## The whole course in one picture?
+![](images/fan-charts.gif){fig-align="center" width="80%"}
 
-![](images/fan-charts.gif){fig-align="center"}
+. . .
+
+Sequential inference and probabilistic prediction!
 
 ## Point forecast
 
@@ -294,7 +251,8 @@ And there is a secret fourth theme:
 - Hidden Markov Models (HMMs);
 - Probabilistic forecast evaluation;
 - Nonlinear non-Gaussian state-space models;
-- Particle filtering.
+- Sequential Monte Carlo (AKA particle filtering);
+- Forecast combination.
 
 # Syllabus highlights
 
@@ -391,7 +349,7 @@ I assume you have a working knowledge of...
 
 # So, let's get into it.
 
-## Time series {.medium}
+## Time series {.small}
 
 - A [**time series**]{style="color:blue;"} is a set of measurements collected over time;
 
@@ -404,7 +362,7 @@ $$
 - A [**time series model**]{style="color:blue;"} is "just" their joint probability distribution:
 
 $$
-p(\mathbf{y}_{1:T}) = p(\mathbf{y}_0)\prod_{t=1}^Tp(\mathbf{y}_t\,|\,\mathbf{y}_{0:t-1}).
+p(\mathbf{y}_{0:T}) = p(\mathbf{y}_0)\prod_{t=1}^Tp(\mathbf{y}_t\,|\,\mathbf{y}_{0:t-1}).
 $$
 
 . . .
@@ -415,6 +373,25 @@ $$
 Like much wisdom, that last bullet is simultaneously vacuous and profound. It tells you everything and it tells you nothing all at once. But don't let this basic fact get lost in the sea of details.
 
 :::
+
+## Notation to get used to {.small}
+
+- I will not use uppercase $Y_t$ versus lowercase $y_t$ to distinguish random variables and fixed realizations. It's all just $y_t$;
+- A vector $\mathbf{y}\in\RR^n$ is always an $n\times 1$ column. The corresponding row vector is $\By^\tr$;
+- For integers $i<j$, you will see this shorthand all the time:
+
+$$
+y_{i:j}
+=
+\{y_i\com y_{i+1}\com y_{i+2}\com...\com y_{j-2}\com y_{j-1}\com y_{j}\}
+.
+$$
+
+- The symbol "$p$" will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same line: 
+
+$$
+p(\mathbf{y}_{0:T}) = p(\mathbf{y}_0)\prod_{t=1}^Tp(\mathbf{y}_t\,|\,\mathbf{y}_{0:t-1}).
+$$
 
 # A useful joint distribution: the multivariate normal
 
@@ -805,7 +782,7 @@ $$
 
 So the individual components are all normal: $x_i\sim\text{N}(\mu_i,\,\sigma^2_i)$.
 
-## Those ugly conditional formulas are not new {.medium .scrollable}
+## Those ugly conditional formulas are not new {.small .scrollable}
 
 Consider the bivariate case:
 
@@ -870,7 +847,7 @@ Welcome back to regression 101!
 Fix some objects:
 
 ::: incremental 
-- Random $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$
+- Random $\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})$;
 - Constant $\mathbf{A}\in\mathbb{R}^{m\times n}$;
 - Constant $\mathbf{c}\in\mathbb{R}^m$.
 :::
@@ -909,7 +886,7 @@ Prove it on Problem Set 0!
 
 ::: callout-tip
 ## Linear combinations of independent normals are normal
-If $x_i\overset{\text{indep}}{\sim}\text{N}(\mu_i,\,\sigma^2)$ and $a_i\in\mathbb{R}$ are constant, then 
+If $x_i\overset{\text{indep}}{\sim}\text{N}(\mu_i,\,\sigma^2_i)$ and $a_i\in\mathbb{R}$ are constant, then 
 
 $$
 \sum\limits_{i=1}^na_ix_i\sim\text{N}\left(\sum\limits_{i=1}^na_i\mu_i,\, \sum\limits_{i=1}^na_i^2\sigma_i^2\right).
@@ -918,14 +895,18 @@ $$
 
 . . .
 
-The result on the previous slide is way more general, and the linear combination is still normal even if the $X_i$ are *dependent*, but the formula for the variance is less nice.
+::: incremental
+- The result on the previous slide is way more general, and the linear combination is still normal even if the $X_i$ are *dependent*, but the formula for the variance is less nice;
+- The mean formula is right even if the $x_i$ are dependent and non-Gaussian;
+- The variance formula is right even if the $x_i$ are non-Gaussian.
+:::
 
-## Independence
+## Independence {.medium}
 
 ::: incremental
 - If random variables are independent, then they are uncorrelated (their covariance is zero). The reverse is false in general!
 
-- So writing $x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)$ is the same as saying
+- So writing $x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}\text{N}(\mu,\,\sigma^2)$ is the same as saying
 :::
 
 . . .
@@ -937,12 +918,13 @@ x_2\\
 \vdots \\
 x_n
 \end{bmatrix}
-\sim\text{N}_n\left(\mathbf{0},\,\sigma^2\mathbf{I}_n\right).
+\sim\text{N}_n\left(\mu\mathbf{1}_n,\,\sigma^2\mathbf{I}_n\right).
 $$
 
 . . .
 
+- $\mathbf{1}_n$ is the $n\times 1$ vector of all ones;
+
+. . .
+
 - $\mathbf{I}_n$ is the $n\times n$ identity matrix: ones on the diagonal, zeros off.
-
-
-# Now, off to the board!
