@@ -20,7 +20,7 @@ $$
 - A [**time series model**]{style="color:blue;"} is "just" their joint probability distribution:
 
 $$
-p(\By_{1:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
+p(\By_{0:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
 $$
 
 ## Course themes
