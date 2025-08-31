@@ -1209,6 +1209,16 @@ shinyApp(ui, server)
 - But interesting "real-world" data probably are not stationary, and so it would be nice to have estimation techniques that don't completely break down without it. 
 :::
 
+. . .
+
+...what's that?
+
+. . .
+
+<div class="vspace"></div>
+
+Do you hear something?
+
 <div class="vspace"></div>
 
 ![Peekaboo](images/bayes.gif){fig-align="center"}
