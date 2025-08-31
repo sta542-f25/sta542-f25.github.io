@@ -47,7 +47,7 @@ Let's see that in action.
 
 ## Extreme weather forecasting
 
-![](images/hurricane.gif){fig-align="center" width="80%"}
+![](images/hurricane.gif){fig-align="center" width="70%"}
 
 ## Monitoring disease case counts
 
@@ -55,11 +55,13 @@ Let's see that in action.
 
 ## Monitoring the energy grid
 
-![](images/ercot.webp){fig-align="center" width="80%"}
+![](images/ercot.webp){fig-align="center" width="70%"}
 
 ## Object tracking 
 
 ![](images/tracking.gif){fig-align="center"}
+
+. . .
 
 Any ethical complaints about this one?
 
@@ -78,7 +80,7 @@ Any ethical complaints about this one?
 
 # Course themes
 
-## Let's take a second look at this
+## Let's take a second look at this {.medium}
 
 ![](images/fan-charts.gif){fig-align="center" width="80%"}
 
@@ -480,7 +482,7 @@ segments(1, 0, 1, 100, lty = 2, lwd = 2)
 So $\mathbf{x} = [x]\sim\text{N}_1([\mu],\,[\sigma^2])$ is just $x\sim\text{N}(\mu,\,\sigma^2)$.
 
 
-## Bivariate 
+## Bivariate {.medium}
 
 Elliptical contours!
 
@@ -545,7 +547,7 @@ $$
 \end{aligned}
 $$
 
-## Oh my aching eigen
+## Oh my aching eigen {.medium}
 
 . . .
 
@@ -597,7 +599,7 @@ The eigenvectors of $\boldsymbol{\Sigma}$ point along the axes of the elliptical
 ```{r}
 #| echo: false
 #| fig-asp: 1
-#| fig-width: 6
+#| fig-width: 5
 #| fig-align: center
 fxy = function(x, y, mu, Sig, sd1, sd2, rho) {
   
@@ -722,7 +724,7 @@ p(\mathbf{y}\,|\,\mathbf{x})
 .
 $$
 
-## Marginals and conditionals 
+## Marginals and conditionals {.medium}
 
 If you apply those formulas to this
 
@@ -882,7 +884,7 @@ $$
 
 Prove it on Problem Set 0!
 
-## A useful special case (Problem Set 0!)
+## A useful special case (Problem Set 0!) {.medium}
 
 ::: callout-tip
 ## Linear combinations of independent normals are normal
