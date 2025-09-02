@@ -57,6 +57,8 @@ $$
 
 ## The special case of $|\beta_1|<1$
 
+## toeplitz
+
 ## That's an example of stationarity
 
 ## Yule Walker 
