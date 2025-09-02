@@ -1,5 +1,5 @@
 ---
-title: "What do you do likelihood-based inference in the AR(1)?"
+title: "How do you do likelihood-based inference in the AR(1)?"
 subtitle: "Lecture 2"
 format: revealjs
 auto-stretch: false
@@ -53,41 +53,309 @@ p(y_t\given y_{t-1}).
 \end{aligned}
 $$
 
-## The AR(1) joint distribution
+## The AR(1) joint distribution {.medium}
 
-## The special case of $|\beta_1|<1$
+Joint distribution:
 
-## toeplitz
+$$
+\begin{bmatrix}
+y_0 & y_1 & \cdots & y_T
+\end{bmatrix}^\tr
+\sim\text{N}_{T+1}\left(\Bmu\com \BSigma\right).
+$$
 
-## That's an example of stationarity
+. . .
+
+Moments:
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^t\mu_0
+\\
+\var(y_t)
+&=
+\sigma^2
+\sum\limits_{i=0}^{t-1}\beta_1^{2i}+
+\beta_1^{2t}\initvar
+\\
+\cov(y_t\com y_s)
+&=
+\begin{cases}
+\beta_1^{s-t}\var(y_t) & t\leq s\\
+\beta_1^{t-s}\var(y_s) & s < t.
+\end{cases}
+.
+\end{aligned}
+$$
+
+## The special case when $|\beta_1|<1$ {.small}
+
+The mean and variance are *time-invariant*, and the covariance structure is *shift-invariant*:
+
+. . .
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+\frac{\beta_0}{1-\beta_1}
+\\
+\var(y_t)
+&=
+\frac{\sigma^2}{1-\beta_1^2}
+\\
+\gamma(h)
+&=
+\cov(y_{t+h}\com y_t)
+=
+\beta_1^{h}\frac{\sigma^2}{1-\beta_1^2}.
+\end{aligned}
+$$
+
+. . .
+
+The common marginal shared by all $y_t$ is called the [**stationary distribution**]{style="color:blue;"}:
+
+. . .
+
+$$
+y_t\sim\text{N}\left(\frac{\beta_0}{1-\beta_1}\com \frac{\sigma^2}{1-\beta_1^2}\right).
+$$
+
+. . .
+
+So "did: dependent but identically distributed."
+
+##  A neat fact to notice {.medium}
+
+Notice:
+
+$$
+\begin{bmatrix}
+y_0
+\\
+y_1
+\\
+y_2
+\\
+y_3
+\end{bmatrix}
+\sim
+\text{N}_{4}
+\left(
+\frac{\beta_0}{1-\beta_1}\mathbf{1}_{4}
+\com
+\begin{bmatrix}
+\color{red}{\gamma(0)} & \color{blue}{\gamma(1)} & \color{orange}{\gamma(2)} & \color{green}{\gamma(3)} 
+\\
+\color{blue}{\gamma(1)} & \color{red}{\gamma(0)} & \color{blue}{\gamma(1)} & \color{orange}{\gamma(2)}
+\\
+\color{orange}{\gamma(2)} & \color{blue}{\gamma(1)} & \color{red}{\gamma(0)} & \color{blue}{\gamma(1)}
+\\
+\color{green}{\gamma(3)}  & \color{orange}{\gamma(2)} & \color{blue}{\gamma(1)} & \color{red}{\gamma(0)}
+\end{bmatrix}
+\right)
+$$
+
+. . .
+
+The covariance is an example of a *Toeplitz matrix*.
+
+## This is all an example of (strict) stationarity
+
+## Estimating equations
 
 ## Yule Walker 
 
-news flash: it's a correlation!
+## News flash: it's a correlation!
+
+## Asymptotics
+
+## Assumptions
 
 # Likelihood-based inference 
 
-## Add parameter to notation 
+## Let's improve the notation {.medium}
 
-## Initial condition is a pain in the ass
+The autoregression of order 1, or AR(1):
 
-## In practice we just condition on it. 
+. . .
 
-# Maximum likelihood
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&\sim
+\text{N}(\mu_0\com \initvar),
+\end{aligned}
+$$
 
-## do MLE, recover OLS 
+. . .
+
+This implies a joint distribution governed by a finite set of static parameters $\Btheta = \begin{bmatrix}\beta_0&\beta_1&\sigma^2\end{bmatrix}^\tr$:
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{0:T}\given \Btheta)
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com\Btheta).
+\end{aligned}
+$$
+
+. . .
+
+Viewed as a function of $\Btheta$, that's a *likelihood*! 
+
+. . .
+
+Maximize it, or combine with a prior.
+
+## The conditional likelihood
+
+In practice, we usually just condition on the initial value:
+
+$$
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com\Btheta).
+$$
+
+. . .
+
+Doesn't affect results too much, but saves headache.
+
+# Classical inference
+
+## Maximum likelihood estimation
+
+Treating the observed data $y_{0:T}$ as fixed, we want:
+
+$$
+\hat{\Btheta}_T=\argmax{\Btheta}\,p(y_{1:T}\given y_0\com \Btheta).
+$$
+
+To do this, it helps to take the view that the AR(1) is "just" a simple linear regression with $x_t=y_{t-1}$.
 
 ## if the data are streaming, do PSET 0
 
-## Asymptotics, if it's stationary, they're familiar
+## Asymptotics if the truth is stationary
 
-## If not stationary, still works, but hella weird (Dickey Fuller and all them)
+## Asymptotics if the truth is on the edge
 
-# Bayes
+Dickey Fuller and all them
 
-## Just regression, so conjugate stuff applies the same as iid (y, x)
+## Asymptotics if the truth is explosive
 
-## non-conjugate prior 
+## 
+
+Lesson: OLS works under general conditions. 
+
+This is good for the state of human knowledge. 
+
+Do I care 
+
+. . .
+
+Do you know what I do care about?
+
+# Bayesian inference
+
+## Throat clearing
+
+Given a prior distribution $p(\Btheta)=p(\beta_0\com \beta_1\com \sigma^2)$ on the parameters and an observed time series $y_{0:T}$, we seek to access the posterior distribution:
+
+$$
+p(\Btheta\given y_{0:T})
+=
+\frac{p(y_{1:T}\given y_0\com \Btheta)p(\Btheta)}{p(y_{1:T}\given y_0)}
+.
+$$
+
+. . .
+
+As with MLE, everything you know about iid Bayesian regression applies pretty much unmodified.
+
+## Conjugate normal-inverse-gamma prior {.medium}
+
+Bayesian model with a conjugate prior:
+
+$$
+\begin{aligned}
+\sigma^2
+&\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta\given \sigma^2
+&\sim 
+\text{N}_2(\Bm_0\com\sigma^2\BH^{-1}_0)
+\\
+y_t
+\given 
+y_{t-1}
+\com
+\Bbeta\com\sigma^2
+&\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right), && \Bx_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^\tr.
+\end{aligned}
+$$
+
+. . .
+
+The posterior is available in closed-form:
+
+$$
+\begin{aligned}
+\sigma^2\given y_{0:T}
+&\sim
+\text{IG}(a_T\com b_T)
+\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&\sim 
+\text{N}_2(\Bm_T\com\sigma^2\BH^{-1}_T)
+\\
+\\
+\BH_T
+&=
+\BX_T^\tr\BX_T+\BH_0
+\\
+\Bm_T
+&=
+\BH_T^{-1}(\BX_T^\tr\By_T+\BH_0\Bm_0)
+\\
+a_T 
+&= 
+a_0 + T/2
+\\
+b_T
+&=
+b_0
++
+(\By_T^\tr\By_T+\Bm_0^\tr\BH_0\Bm_0-\Bm_T^\tr\BH_T\Bm_T)/2.
+\end{aligned}
+$$
+
+## Non-conjugate normal-inverse-gamma prior
 
 ## another 
 
@@ -95,7 +363,11 @@ news flash: it's a correlation!
 
 put stationarity in its proper place: as a modeling assumption you can adopt or not by incorporating it into your prior
 
+## PFW on prior sensitivity
+
 ## Bayes is inherently recursive 
+
+As new observations stream in, just keep applying Bayes' theorem:
 
 non-conjugate priors and/or MCMC breaks this, but we can reclaim it with sequential Monte Carlo methods.
 
@@ -103,6 +375,34 @@ One of the great virtues of Bayes is that it is inherently recursive. One of the
 
 We will reclaim the sequential nature at the end of the semester when we study sequential Monte Carlo (AKA particle filtering).
 
-# real data example of some kind?
+## MCMC breaks this
+
+## Reality check 
+
+# Some parting thoughts
+
+## This course has a predictive POV
+
+::::: {.columns}
+::: {.column width="38%"}
+![](images/geisser.jpg)
+:::
+
+::: {.column width="45%"}
+![](images/breiman.png)
+:::
+:::::
 
 
+## This course has a predictive POV
+
+::: incremental
+- We will study specific models and how to estimate them, but this is only a means to an end;
+- We don't care about inference per se, and certainly won't go anywhere near hypothesis testing;
+- We use estimated models to generate *probabilistic* predictions;
+- Once the predictions have been generated, we don't necessarily care where they came from;
+- We evaluate them in a largely model-agnostic way, looking at historical performance on real data.
+:::
+
+
+# Next week...forecasting!
