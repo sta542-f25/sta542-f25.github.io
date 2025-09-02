@@ -16,3 +16,11 @@ Bayesian AR(1) with a different prior.
 simulation to explore sampling properties when it's a unit root or explosive or whatever.
 
 given the joint, what is the recursion?
+
+Rewrite the conjugate bayes recursions in an efficient rank-1 style
+
+do a little AR(1) asymptotics?
+
+Baby data analysis
+
+Look at the Pierre Jacob shit
