@@ -3,6 +3,8 @@ title: "How do you do likelihood-based inference in the AR(1)?"
 subtitle: "Lecture 2"
 format: revealjs
 auto-stretch: false
+filters:
+  - shinylive
 ---
 
 # Recap 
@@ -167,15 +169,189 @@ The covariance is an example of a *Toeplitz matrix*.
 
 ## This is all an example of (strict) stationarity
 
+A joint distribution is **(strictly) stationary** if it is "shift invariant":
+
+$$
+\{y_{t_1}\com y_{t_2}\com ...\com y_{t_n}\}\overset{d}{=}\{y_{t_1+h}\com y_{t_2+h}\com ...\com y_{t_n+h}\}.
+$$
+
+The Gaussian AR(1) with $|\beta_1|<1$ has this property.
+
 ## Estimating equations
 
-## Yule Walker 
+If the AR(1) is stationary, then 
 
-## News flash: it's a correlation!
+$$
+\begin{aligned}
+\gamma(1)&=\beta_1\gamma(0) &&\implies\beta_1=\frac{\gamma(1)}{\gamma(0)}\\
+\mu&=\frac{\beta_0}{1-\beta_1}&&\implies\beta_0=(1-\beta_1)\mu\\
+\gamma(0)&=\frac{\sigma^2}{1-\beta_1^2}&&\implies \sigma^2=(1-\beta_1^2)\gamma(0).
+\end{aligned}
+$$
+
+Everywhere you see a "population" expected value, plug in the corresponding sample average.
+
+## Yule-Walker 
+
+Method of moments estimators:
+
+. . .
+
+$$
+\begin{aligned}
+\hat{\beta}_1&=\frac{\hat{\gamma}_T(1)}{\hat{\gamma}_T(0)}
+\\
+\hat{\beta}_0&=(1-\hat{\beta}_1)\hat{\mu}_T\\
+\hat{\sigma^2_T}&=(1-\hat{\beta}_1^2)\hat{\gamma}_T(0).
+\end{aligned}
+$$
+
+. . .
+
+This slide is rank nonsense if the AR(1) isn't stationary.
+
+## News flash: $\beta_1$ is a correlation!
+
+. . .
+
+Note:
+
+. . .
+
+$$
+\begin{aligned}
+\beta_1 = \frac{\gamma(1)}{\gamma(0)}
+&=\frac{\cov(y_{t+1}\com y_t)}{\var(y_t)}
+\\
+&=\frac{\cov(y_{t+1}\com y_t)}{\text{sd}(y_{t+1})\text{sd}(y_t)}
+\\
+&=\text{corr}(y_{t+1}\com y_t).
+\end{aligned}
+$$
+
+. . .
+
+So $-1< \beta_1< 1$ is the lag-1 [**autocorrelation**]{style="color:blue;"}, and $\hat{\beta}_1$ is the sample version.
 
 ## Asymptotics
 
+::: callout-tip
+## Shumway and Stoffer (2025) Property 3.7
+For a stationary AR(1), the Yuke-Walker estimator has:
+
+$$
+\sqrt{T}(\hat{\beta}_1-\beta_1)\cd\N\left(0\com\frac{\sigma^2}{\gamma(0)}\right).
+$$
+And note in this case that $\sigma^2 / \gamma(0)=1-\beta_1^2$. The result remains true if you plug in the estimator of the asymptotic variance.
+:::
+
+. . .
+
+Asymptotically valid $100\times(1-\alpha)\%$ confidence interval:
+
+$$
+\hat{\beta}_1\pm z_{1-\alpha/2}\sqrt{\frac{1-\hat{\beta}_1^2}{T}}.
+$$
+
+## What happens for $\beta_1$ close to $\pm1$? {.scrollable}
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 700
+
+# app.R
+library(shiny)
+
+# ---------- Configuration ----------
+SAMPLE_SIZES <- seq(10, 200, by = 20)   # smaller default for speed
+NSIM <- 500                             # number of simulated AR(1) paths per sample size
+Y_LIMITS <- c(-1, 1)
+# ------------------------------------
+
+# Yule-Walker AR(1) estimator
+yule_walker_ar1 <- function(x) {
+  n <- length(x)
+  x <- x - mean(x)  # center
+  gamma0 <- mean(x^2)
+  gamma1 <- mean(x[-1] * x[-n])
+  gamma1 / gamma0
+}
+
+# Simulate one stationary AR(1) with variance 1
+simulate_ar_1 <- function(T, b0, b1, s, m0, s0){
+  y <- numeric(T)
+  y[1] <- rnorm(1, m0, s0)
+  for(t in 2:T){
+    y[t] <- b0 + b1 * y[t - 1] + rnorm(1, 0, s)
+  }
+  return(y)
+}
+
+ui <- fluidPage(
+  titlePanel("Sampling distribution of Yule–Walker AR(1) estimator"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("b1", "True value of β₁:",
+                  min = -0.99, max = 0.99, value = 0.5, step = 0.01)
+    ),
+    mainPanel(
+      plotOutput("boxPlot", height = "600px")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  
+  output$boxPlot <- renderPlot({
+    b0 <- 0
+    b1 <- input$b1
+    s <- 1
+    m0 <- b0 / (1 - b1)
+    s0 <- s / sqrt(1 - b1^2)
+    sizes <- SAMPLE_SIZES
+    nsim <- NSIM
+    
+    # Collect estimates in a list, one element per sample size
+    est_list <- vector("list", length(sizes))
+    
+    for (i in seq_along(sizes)) {
+      n <- sizes[i]
+      phi_hats <- numeric(nsim)
+      for (s in 1:nsim) {
+        x <- simulate_ar_1(n, b0, b1, s, m0, s0)#simulate_ar1(n, phi)
+        phi_hats[s] <- yule_walker_ar1(x)
+      }
+      est_list[[i]] <- phi_hats
+    }
+    
+    # Draw boxplots side by side
+    par()
+    boxplot(est_list,
+            names = sizes,
+            ylim = Y_LIMITS,
+            xlab = "Sample size T",
+            ylab = "Estimate",
+            main = paste("True value: ", b1),
+            col = "lightgray", pch = 19)
+    
+    abline(h = b1, col = "red", lty = 2, lwd = 2)
+  })
+}
+
+shinyApp(ui, server)
+
+```
+
 ## Assumptions
+
+::: incremental
+- Normality was not essential, but stationarity was crucial;
+
+- What if we flip that? 
+
+    - Firmly assume normality;
+    - Cast stationarity to the wind.
+:::
 
 # Likelihood-based inference 
 
@@ -255,31 +431,327 @@ $$
 
 To do this, it helps to take the view that the AR(1) is "just" a simple linear regression with $x_t=y_{t-1}$.
 
-## if the data are streaming, do PSET 0
+## Maximum likelihood estimation {.medium}
 
-## Asymptotics if the truth is stationary
-
-## Asymptotics if the truth is on the edge
-
-Dickey Fuller and all them
-
-## Asymptotics if the truth is explosive
-
-## 
-
-Lesson: OLS works under general conditions. 
-
-This is good for the state of human knowledge. 
-
-Do I care 
+Since $y_t\given y_{t-1}\com\Btheta\sim\N(\beta_0+\beta_1y_{t-1}\com\sigma^2)$, we have
 
 . . .
 
-Do you know what I do care about?
+$$
+\begin{aligned}
+p(y_{1:T}\given  y_0\com \Btheta)
+&=
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com\Btheta)
+\\
+&=
+\prod_{t=1}^T
+\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2}\frac{(y_t-\beta_0-\beta_1y_{t-1})^2}{\sigma^2}\right)
+\\
+&=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}\sum\limits_{t=1}^T(y_t-\beta_0-\beta_1y_{t-1})^2\right)
+.
+\end{aligned}
+$$
+
+. . .
+
+To compute the MLE, we just treat $y_{0:T}$ as fixed. 
+
+. . .
+
+Where do you think this is headed?
+
+## Stack 'em up {.medium}
+
+Define some things:
+
+. . .
+
+$$
+\begin{aligned}
+\By_T
+&=
+\begin{bmatrix}y_1&y_2 & \cdots & y_T\end{bmatrix}^\tr
+\\
+\BX_T
+&=
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+y_0 & y_1 & \cdots & y_{T-1}
+\end{bmatrix}^\tr
+\\
+\Bbeta
+&=
+\begin{bmatrix}\beta_0&\beta_1\end{bmatrix}^\tr
+.
+\end{aligned}
+$$
+
+. . .
+
+So the log-likelihood is:
+
+$$
+\ln 
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+.
+$$
+
+. . .
+
+Look familiar?
+
+## We're just back to regression 101 {.medium .scrollable}
+
+We have 
+
+$$
+\ln 
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+,
+$$
+
+. . .
+
+and we know that 
+
+$$
+\begin{aligned}
+\hat{\Btheta}_T
+&=\argmax{\Btheta}\,\ln p(y_{1:T}\given y_0\com \Btheta)
+\\
+&=\argmin{\Btheta}\,-\ln p(y_{1:T}\given y_0\com \Btheta).
+\end{aligned}
+$$
+
+. . .
+
+This gives 
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_T
+&=
+\argmin{\Bbeta}
+\,||\By_T-\BX_T\Bbeta||_2^2
+\\
+\hat{\sigma^2_T}
+&=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+$$
+
+## OLS for the AR(1)
+
+. . .
+
+- The maximum (conditional) likelihood estimator in the AR(1) is the same as the ordinary least squares estimator:
+
+. . .
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_T
+&=
+(\BX_T^\tr\BX_T)^{-1}\BX_T^\tr\By_T
+\\
+\hat{\sigma^2_T}
+&=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+$$
+
+. . .
+
+- It doesn't matter that there's time series dependence. Once the data are observed and fixed, everything you know about iid multiple regression applies unmodified.
+
+. . .
+
+- When we graduate to the AR(p) in a few weeks, everything looks identical. $\BX_T$ just has more columns.
+
+## If the data are streaming, apply PSET 0!
+
+*Do not* recompute that matrix inverse every period. 
+
+. . .
+
+
+Instead:
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_t
+&=
+\hat{\Bbeta}_{t-1}
++
+\Bk_t(y_t-\Bx_t^\tr\hat{\Bbeta}_{t-1})
+\\
+\Bk_t
+&=
+\frac{\BP_{t-1}\Bx_t}
+{1+\Bx_t^\tr\BP_{t-1}\Bx_t}
+\\
+\BP_t
+&=
+(\BX_t^\tr\BX_t)^{-1}
+\\
+&=
+(\BX_{t-1}^\tr\BX_{t-1}+\Bx_t\Bx_t^\tr)^{-1}
+\\
+&=
+(\BP_{t-1}+\Bx_t\Bx_t^\tr)^{-1}
+\\
+&=
+\BP_{t-1}
+-
+\Bk_t
+\Bx_t^\tr\BP_{t-1}
+.
+\end{aligned}
+$$
+
+. . .
+
+**Keyword**: rank-1 update!
+
+
+## Quick aside
+
+::: incremental
+- Later in the semester, we will study something called the [Kalman filter]{style="color:red;"};
+- This is the beating heart of time series analysis in my humble opinion;
+- If you invest in understanding the recursive form of OLS and the Bayesian version we will see later today, you are well equipped to understand the Kalman filter;
+- Once you understand the Kalman filter, you can understand anything else in time series analysis; 
+:::
+
+. . .
+
+...the parts worth understanding, anyway.
+
+## Asymptotics if the truth is stationary
+
+::: callout-tip
+## Shumway and Stoffer (2025) Property 3.7
+For a stationary AR(1), the MLE/OLS estimator has:
+
+$$
+\sqrt{T}(\hat{\beta}_1-\beta_1)\cd\N\left(0\com 1-\beta_1^2\right).
+$$
+
+:::
+
+. . .
+
+Same as Yule-Walker!
+
+## Asymptotics if the truth is a random walk
+
+. . .
+
+It's gross.
+
+. . .
+
+:::callout-tip
+## Hamilton (1994) [17.4.28]
+If the true parameters are $\beta_0=0$ and $\beta_1=1$, then MLE/OLS estimator has
+$$
+T(\hat{\beta}_1-1)\cd\frac{\frac{1}{2}[W(1)^2-1]-W(1)\int_0^1W(r)\,\dd r}{\int_0^1 W(r)^2\dd r-\left(\int_0^1 W(r)\,\dd r\right)^2},
+$$
+
+where $W$ is a Wiener process (Brownian motion).
+
+:::
+
+. . .
+
+Suffice it to say...the asymptotic distribution ain't Gaussian. 
+
+. . .
+
+And the convergence rate is worse. 
+
+## Asymptotics if the truth is RW w/ drift
+
+. . .
+
+:::callout-tip
+## Hamilton (1994) [17.4.47]
+If the true parameters are $\beta_0\neq 0$ and $\beta_1=1$, then MLE/OLS estimator has
+$$
+\begin{bmatrix}
+T^{1/2}(\hat{\beta}_0-\beta_0)
+\\
+T^{3/2}(\hat{\beta}_1-1)
+\end{bmatrix}
+\cd
+\N_2
+\left(
+\Bzero
+\com
+\sigma^2
+\begin{bmatrix}
+1 & \beta_0/2\\
+\beta_0/2 & \beta_0^2/3
+\end{bmatrix}^{-1}
+\right)
+.
+$$
+
+Things are Gaussian again!
+
+:::
+
+
+
+## Asymptotics if the truth is explosive 
+
+. . .
+
+:::callout-tip
+## [White (1958 AoMS)](https://doi.org/10.1214/aoms/1177706450)
+If the true parameters are $\beta_0= 0$ and $|\beta_1|>1$ and the errors are normal, then MLE/OLS estimator has
+$$
+\frac{|\beta_1|^T}{\beta_1^2-1}(\hat{\beta}_1-\beta_1)\cd \text{Cauchy}.
+$$
+
+:::
+
+. . .
+
+Alright, enough of this.
+
+## Here's the point
+
+::: incremental
+- The AR(1) has been *very* well studied;
+- OLS "works" no matter the regime;
+- If things are non-stationary, stuff gets weird and inference is more challenging, but not impossible;
+- The math is...interesting. See Hamilton (1994) Chapter 17 if you're dying of curiosity;
+- Does any of this matter for "real-world" data analysis? 
+:::
+
+. . .
+
+Probably not.
+
+. . .
+
+But you know what does matter?
 
 # Bayesian inference
 
-## Throat clearing
+## Recall
 
 Given a prior distribution $p(\Btheta)=p(\beta_0\com \beta_1\com \sigma^2)$ on the parameters and an observed time series $y_{0:T}$, we seek to access the posterior distribution:
 
@@ -294,7 +766,7 @@ $$
 
 As with MLE, everything you know about iid Bayesian regression applies pretty much unmodified.
 
-## Conjugate normal-inverse-gamma prior {.medium}
+## Conjugate normal-inverse-gamma prior {.small}
 
 Bayesian model with a conjugate prior:
 
@@ -355,33 +827,197 @@ b_0
 \end{aligned}
 $$
 
-## Non-conjugate normal-inverse-gamma prior
+## Make it nice on Problem Set 1
 
-## another 
+. . .
 
-## truncation prior to enforce stationarity 
+After $t-1$ periods you have already computed
 
-put stationarity in its proper place: as a modeling assumption you can adopt or not by incorporating it into your prior
+. . .
 
-## PFW on prior sensitivity
+$$
+\begin{aligned}
+\sigma^2\given y_{0:t-1}
+&\sim
+\text{IG}(a_{t-1}\com b_{t-1})
+\\
+\Bbeta\given \sigma^2\com y_{0:t-1}
+&\sim 
+\text{N}_2(\Bm_{t-1}\com\sigma^2\BH^{-1}_{t-1}).
+\end{aligned}
+$$
 
-## Bayes is inherently recursive 
+. . .
 
-As new observations stream in, just keep applying Bayes' theorem:
+Then $y_t$ arrives. What's the most efficient way to update?
 
-non-conjugate priors and/or MCMC breaks this, but we can reclaim it with sequential Monte Carlo methods.
+. . .
 
-One of the great virtues of Bayes is that it is inherently recursive. One of the great vices of MCMC is that it breaks that.
+$$
+\begin{aligned}
+\sigma^2\given y_{0:t}
+&\sim
+\text{IG}(a_{t}\com b_{t})
+\\
+\Bbeta\given \sigma^2\com y_{0:t}
+&\sim 
+\text{N}_2(\Bm_{t}\com\sigma^2\BH^{-1}_{t}).
+\end{aligned}
+$$
 
-We will reclaim the sequential nature at the end of the semester when we study sequential Monte Carlo (AKA particle filtering).
+## Non-conjugate normal-inverse-gamma prior {.medium}
 
-## MCMC breaks this
+Instead of $p(\Bbeta\com\sigma^2)=p(\Bbeta\given\sigma^2)p(\sigma^2)$, use $p(\Bbeta\com\sigma^2)=p(\Bbeta)p(\sigma^2)$:
 
-## Reality check 
+. . .
+
+$$
+\begin{aligned}
+\sigma^2
+&\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta
+&\sim 
+\text{N}_2(\Bm_0\com\BH^{-1}_0)
+\\
+y_t
+\given 
+y_{t-1}
+\com
+\Bbeta\com\sigma^2
+&\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right), && \Bx_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^\tr.
+\end{aligned}
+$$
+
+. . .
+
+The full posterior is intractable, but the *conditional* posteriors are known:
+
+. . .
+
+$$
+\begin{aligned}
+\sigma^2\given \Bbeta\com y_{0:T}
+&\sim\text{IG}(a_T\com b_T)\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&\sim\N_2(\Bm_T\com \BH_T^{-1}).
+\end{aligned}
+$$
+
+. . .
+
+Alternate sampling from them and you get a [**Gibbs sampler**]{style="color:blue;"} targeting $p(\Bbeta\com\sigma^2\given y_{0:T})$.
+
+## Truncation prior to enforce stationarity
+
+- Augment any prior with a *truncation* to enforce stationarity:
+
+. . .
+
+$$
+\begin{aligned}
+\tilde{p}(\Btheta\given y_{0:T})
+&\propto
+p(y_{1:T}\given y_0\com\Btheta)\tilde{p}(\Btheta)
+\\
+&=
+p(y_{1:T}\given y_0\com\Btheta)p(\Btheta)I(|\beta_1|<1)
+\\
+&\propto
+p(\Btheta\given y_{0:T})I(|\beta_1|<1)
+.
+\end{aligned}
+$$
+
+
+. . .
+
+- Keep doing Bayes however you were doing it, but accept/reject draws of $\beta_1$ if they are outside $[-1\com 1]$;
+
+. . .
+
+- This puts the stationarity assumption in its proper place: as something the modeler can choose to adopt or not by incorporating it into their chosen prior.
+
+
+## Asymptotics
+
+We also have theory that says that the posterior distribution concentrates around the "true value" of the AR(1) parameters.
 
 # Some parting thoughts
 
+## Bayesian inference is inherently recursive! {.scrollable}
+
+As new information arrives, the old posterior becomes the new prior, and you just keep applying Bayes' theorem:
+
+. . .
+
+First data point arrives:
+
+$$
+{\color{red}{p(\Btheta\given \By_{0:1})}}\propto p(\By_1\given \By_0\com \Btheta)p(\Btheta)
+$$
+
+. . .
+
+Second data point arrives:
+
+$$
+{\color{blue}{p(\Btheta\given \By_{0:2})}}\propto p(\By_2\given \By_{0:1}\com \Btheta)\color{red}{p(\Btheta\given \By_{0:1})}
+$$
+
+. . .
+
+Third data point arrives:
+
+$$
+{\color{green}{p(\Btheta\given \By_{0:3})}}\propto p(\By_3\given \By_{0:2}\com \Btheta)\color{blue}{p(\Btheta\given \By_{0:2})}
+$$
+
+. . .
+
+Fourth data point arrives:
+
+$$
+p(\Btheta\given \By_{0:4})\propto p(\By_4\given \By_{0:3}\com \Btheta)\color{green}{p(\Btheta\given \By_{0:3})}
+$$
+
+. . .
+
+And on and on ad infinitum. 
+
+::: callout-important
+## Just keep turning the crank!
+
+$$
+\begin{aligned}
+p(\Btheta\given \By_{0:t})\propto p(\By_t\given \By_{0:t-1}\com \Btheta)p(\Btheta\given \By_{0:t-1}).
+\end{aligned}
+$$
+
+:::
+
+
+## MCMC breaks this!
+
+::: incremental 
+- The inherent recursivity of Bayesian inference is most perfectly realized when you have an exponential family model with conjugate priors. As the data stream, you just update sufficient statistics;
+
+- If instead you use Markov chain Monte Carlo (MCMC) to approximate the posterior, that's not recursive;
+
+- As new data arrive, you cannot, strictly speaking, recycle the old MCMC draws. You just have to rerun everything from scratch. Gross!
+:::
+
+. . .
+
+One of our very last topics is sequential Monte Carlo (SMC), an alternative to MCMC that seeks to reclaim the recursive promise of Bayes. 
+
 ## This course has a predictive POV
+
+. . .
 
 ::::: {.columns}
 ::: {.column width="38%"}
