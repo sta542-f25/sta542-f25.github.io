@@ -1,0 +1,8 @@
+---
+title: "How do you compute probabilistic forecasts from the AR(1)?"
+subtitle: "Lecture 3"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
