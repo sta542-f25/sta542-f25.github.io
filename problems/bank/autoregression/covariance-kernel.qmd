@@ -1,0 +1,24 @@
+Recall our good ol' pal the Gaussian AR(1):
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0+\beta_1y_{t-1}+\varepsilon_t, && \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)
+\\
+y_0
+&\sim
+\text{N}(\mu_0,\,v_0^2).
+\end{aligned}
+$$
+
+Without assuming anything about $\beta_1\in\mathbb{R}$, derive the covariance kernel of the joint distribution:
+
+$$
+\gamma(s,\, t) = \text{cov}(y_s,\,y_t),\quad s,\,t\in\mathbb{N}.
+$$
+
+::: {.callout-tip collapse="true"}
+## Hint
+Covariance of linear combination.
+:::

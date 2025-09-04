@@ -76,10 +76,13 @@ format:
   html:
     mainfont: Atkinson Hyperlegible
     highlight-style: a11y-light
+    include-in-header: macros/macros.html
+    theme: [cosmo, style/sta199.scss]
+    
+  revealjs:
+    html-math-method: mathjax
+    include-in-header: macros/macros.html
 
-theme:
-  light: [cosmo, style/sta199.scss]
-#  dark: [cosmo, style/sta199.scss, style/dark.scss]
 linkcolor: "#798b93"
 toc: true
 code-copy: hover

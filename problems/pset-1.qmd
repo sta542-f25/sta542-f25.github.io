@@ -5,22 +5,53 @@ editor:
   mode: source
 ---
 
-Do some basic AR(2) derivations
+- derive non-stationary AR(1) covariance kernel
+- do recursive and joint simulations many times and verify that you get the same sample moments;
+- invert a Toeplitz matrix;
+- Bayesian AR(1) with a funky prior;
+- explore frequentist properties of OLS when shit is non-stationary;
+- Work backwords from the joint to the recursion;
+- efficient bayesian regression recursions when the data are streaming;
+- some aymptotics 
+- forecasting with real data
+- Pierre Jacob?
+- fuck with the prior to make the prior predictive look how you want it to
 
-derive AR(1) covariance kernel (not assuming stationarity)
+1. covariance kernel
+2. here's a process you haven't seen. derive joint. is it stationary?
+3. dependent data asymptotics
+4. simulate 
+5. mle
+6. bayes
+7. forecasting
+8.  real data analysis
+9.  general AR(p) shit
+10. general AR(p) shit
 
-do recursive and joint simulations many times and verify that you get the same sample moments.
+## Problem 1
 
-Bayesian AR(1) with a different prior.
+{{< include bank/autoregression/covariance-kernel.qmd >}}
 
-simulation to explore sampling properties when it's a unit root or explosive or whatever.
+## Problem 2
 
-given the joint, what is the recursion?
+## Problem 3
 
-Rewrite the conjugate bayes recursions in an efficient rank-1 style
+## Problem 4
 
-do a little AR(1) asymptotics?
+## Problem 5
 
-Baby data analysis
+## Problem 6
 
-Look at the Pierre Jacob shit
+{{< include bank/autoregression/streaming-conjugate-bayes.qmd >}}
+
+## Problem 7
+
+## Problem 8
+
+## Problem 9
+
+## Problem 10
+
+## Submission
+
+{{< include bank/_submission.qmd >}}

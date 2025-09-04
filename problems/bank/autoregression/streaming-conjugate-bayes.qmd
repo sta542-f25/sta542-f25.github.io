@@ -1,0 +1,56 @@
+As we saw in lecture, (conditional) likelihood-based inference for the AR(p) proceeds identically to iid multiple regression. Whether it's MLE or Bayes, nothing changes. In particular, imagine you place a conjugate normal-inverse-gamma prior on the model parameters:
+
+$$
+\begin{aligned}
+\sigma^2
+&\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta\given \sigma^2
+&\sim 
+\text{N}_2(\Bm_0\com\sigma^2\BH^{-1}_0)
+\\
+y_t
+\given 
+y_{t-1}
+\com
+\Bbeta\com\sigma^2
+&\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right), && \Bx_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^\tr
+\end{aligned}
+$$
+
+Then you get a normal-inverse-gamma posterior:
+
+$$
+\begin{aligned}
+\sigma^2\given y_{0:T}
+&\sim
+\text{IG}(a_T\com b_T)
+\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&\sim 
+\text{N}_2(\Bm_T\com\sigma^2\BH^{-1}_T)
+\\
+\\
+\BH_T
+&=
+\BX_T^\tr\BX_T+\BH_0
+\\
+\Bm_T
+&=
+\BH_T^{-1}(\BX_T^\tr\By_T+\BH_0\Bm_0)
+\\
+a_T 
+&= 
+a_0 + T/2
+\\
+b_T
+&=
+b_0
++
+(\By_T^\tr\By_T+\Bm_0^\tr\BH_0\Bm_0-\Bm_T^\tr\BH_T\Bm_T)/2.
+\end{aligned}
+$$
