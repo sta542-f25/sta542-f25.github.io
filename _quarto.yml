@@ -76,12 +76,12 @@ format:
   html:
     mainfont: Atkinson Hyperlegible
     highlight-style: a11y-light
-    include-in-header: macros/macros.html
     theme: [cosmo, style/sta199.scss]
+    #include-in-header: macros/macros.html
     
   revealjs:
     html-math-method: mathjax
-    include-in-header: macros/macros.html
+    #include-in-header: macros/macros.html
 
 linkcolor: "#798b93"
 toc: true
