@@ -5,6 +5,16 @@ editor:
   mode: source
 ---
 
+In this class, I expect you to have a working knowledge of:
+
+- matrix algebra;
+- OLS regression;
+- probability and classical inference at the level of Casella & Berger;
+- Bayesian statistics at the level of [STA 602](https://sta602-sp25.github.io);
+- The `R` programming language.
+
+Below is a workout in all of the above.
+
 ## Problem 1
 
 {{< include bank/review/mvnormal-1.qmd >}}
