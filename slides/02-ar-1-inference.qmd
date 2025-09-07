@@ -641,7 +641,7 @@ $$
 ## Asymptotics if the truth is stationary
 
 ::: callout-tip
-## Shumway and Stoffer (2025) Property 3.7
+## Shumway and Stoffer (2025) Property 3.9
 For a stationary AR(1), the MLE/OLS estimator has:
 
 $$
@@ -731,13 +731,16 @@ $$
 
 Alright, enough of this.
 
-## Here's the point
+## Why am I bothering you with this?
+
+
+Here's the point:
 
 ::: incremental
-- The AR(1) has been *very* well studied;
-- OLS "works" no matter the regime;
-- If things are non-stationary, stuff gets weird and inference is more challenging, but not impossible;
-- The math is...interesting. See Hamilton (1994) Chapter 17 if you're dying of curiosity;
+- The AR(1) has been *very* thoroughly studied;
+- Unlike Yule-Walker, OLS "works" no matter the regime. Recall that relaxing the stationarity requirement was one of our motivations for exploring likelihood-based inference to begin with;
+- Non-stationarity can make things weird and complicated, but it's not *so* bad that we can't prove theorems. Inference remains possible;
+- The math is...interesting. See Hamilton (1994) Chapter 17 if you are absolutely dying of curiosity;
 - Does any of this matter for "real-world" data analysis? 
 :::
 
