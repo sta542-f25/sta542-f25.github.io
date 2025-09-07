@@ -1,0 +1,7 @@
+- do recursive and joint simulations many times and verify that you get the same sample moments;
+- invert a Toeplitz matrix;
+- Bayesian AR(1) with a funky prior;
+- explore frequentist properties of OLS when shit is non-stationary;
+- Work backwords from the joint to the recursion;
+- Pierre Jacob?
+- getting it right!
