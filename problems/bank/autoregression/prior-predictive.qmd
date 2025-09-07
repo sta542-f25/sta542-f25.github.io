@@ -1,0 +1,32 @@
+> Models are wrong and parameters don't exist. All that matters is observables.
+
+That statement is the essence of the *predictive* view of inference. In its Bayesian incarnation, this view says that the only objects that truly matter are the *predictive distributions*:
+
+$$
+\begin{aligned}
+p(\mathbf{y}_{1:T})
+&=
+\int
+p(\mathbf{y}_{1:T}\,|\,\boldsymbol{\theta})
+p(\boldsymbol{\theta})
+\,\text{d}\boldsymbol{\theta}
+&&
+(\text{prior predictive})
+\\
+p(\mathbf{y}_{T+1:T+H}\,|\,\mathbf{y}_{1:T})
+&=
+\int
+p(\mathbf{y}_{T+1:T+H}\,|\,\mathbf{y}_{1:T},\,\boldsymbol{\theta})
+p(\boldsymbol{\theta}\,|\,\mathbf{y}_{1:T})
+\,\text{d}\boldsymbol{\theta}.
+&&
+(\text{posterior predictive})
+\end{aligned}
+$$
+
+Models, parameters, likelihoods, priors, even Bayes' theorem -- these are all just a means to the end of specifying and accessing predictive distributions for observable quantities. So, when you write down a model and a prior on the model's parameters, you should tune the prior on parameters to capture your prior beliefs about how the *data* will look before you see them. In other words, the goal of prior elicitation should be accurately eliciting the prior predictive distribution, not the prior on parameters per se. Let's take this seriously in a toy example.
+
+Imagine you are a data scientist at Feta Platforms Inc, and one day your manager Zohn Jito knocks on your office door. Zohn Jito is an irritating fool who knows nothing about statistics, and he is always making ridiculous requests. On this day, 
+
+
+

@@ -1,0 +1,35 @@
+Consider this silly time series process:
+
+$$
+y_t
+=
+\alpha
++
+\varepsilon_t
++
+\theta_1
+\varepsilon_{t-1}
++
+\theta_2
+\varepsilon_{t-2}
+,\quad \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2).
+$$
+
+Derive the joint distribution of $\mathbf{y}=\begin{bmatrix}y_1&y_2&\cdots&y_T\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}$. In particular...
+
+a. What distribution family does the joint distribution belong to? Justify your answer; don't just assert it.
+b. Derive the mean function:
+
+$$
+\mu(t)=E(y_t).
+$$
+
+c. Derive the covariance kernel:
+
+$$
+\gamma(s,\, t) = \text{cov}(y_s,\,y_t),\quad s,\,t\in\mathbb{N}.
+$$
+
+d. Is $y_t$ stationary? Why or why not?
+
+

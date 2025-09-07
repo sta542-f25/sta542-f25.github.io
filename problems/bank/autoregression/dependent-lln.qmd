@@ -1,0 +1,49 @@
+Recall the Yule-Walker estimators for the parameters of a stationary AR(1). They are based on these estimating equations
+
+$$
+\begin{aligned}
+\gamma(1)&=\beta_1\gamma(0) &&\implies\beta_1=\frac{\gamma(1)}{\gamma(0)}\\
+\mu&=\frac{\beta_0}{1-\beta_1}&&\implies\beta_0=(1-\beta_1)\mu\\
+\gamma(0)&=\frac{\sigma^2}{1-\beta_1^2}&&\implies \sigma^2=(1-\beta_1^2)\gamma(0),
+\end{aligned}
+$$
+
+where $\mu=E(y_t)$ is the time-invariant expected value, $\gamma(0)=\text{var}(y_t)$ is the time-invariant variance, and so on. The Yule-Walker approach is an example of method of moments, where we replace all of the "population" expected values with sample averages. In order for this method to work, the sample averages must actually be good estimates of their corresponding expected values. If the data are iid, then we have classical laws of large numbers that guarantee this. But in our case the data are not iid. So how do we know this is going to work?
+
+::: callout-note 
+## Theorem (law of large numbers for dependent data)
+
+Let $y_t$ follow a process with time-invariant mean and shift-invariant covariance:
+
+$$
+\begin{aligned}
+\mu
+&=
+E(y_t)
+&&
+\forall\,t
+\\
+\gamma(h)
+&=
+\text{cov}
+(y_{t+h},\,y_t)
+&&\forall\,t.
+\end{aligned}
+$$
+
+Furthermore, assume that 
+
+$$
+\sum\limits_{h=0}^\infty |\gamma(h)|<\infty.
+$$
+
+Then 
+
+$$
+\bar{y}_T=\frac{1}{T}\sum\limits_{t=1}^Ty_t\overset{\text{prob}}{\to}\mu.
+$$
+
+:::
+
+a. Prove the theorem;
+b. Show that the AR(1) with $|\beta_1|<1$ satisfies the conditions.

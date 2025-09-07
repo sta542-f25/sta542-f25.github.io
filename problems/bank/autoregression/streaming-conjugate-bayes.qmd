@@ -1,24 +1,24 @@
-As we saw in lecture, (conditional) likelihood-based inference for the AR(p) proceeds identically to iid multiple regression. Whether it's MLE or Bayes, nothing changes. In particular, imagine you place a conjugate normal-inverse-gamma prior on the model parameters:
+As we saw in lecture, (conditional) likelihood-based inference for the AR(1) proceeds identically to iid multiple regression. Whether it's MLE or Bayes, nothing changes. In particular, imagine you place a conjugate normal-inverse-gamma prior on the model parameters:
 
 $$
 \begin{aligned}
 \sigma^2
 &\sim
-\text{IG}(a_0\com b_0)
+\text{IG}(a_0,\, b_0)
 \\
-\Bbeta\given \sigma^2
+\boldsymbol{\beta}\,|\, \sigma^2
 &\sim 
-\text{N}_2(\Bm_0\com\sigma^2\BH^{-1}_0)
+\text{N}_2(\mathbf{m}_0,\,\sigma^2\mathbf{H}^{-1}_0)
 \\
 y_t
-\given 
+\,|\, 
 y_{t-1}
-\com
-\Bbeta\com\sigma^2
+,\,
+\boldsymbol{\beta},\,\sigma^2
 &\sim \text{N}
 \left(
-\Bx_t^\tr\Bbeta\com\sigma^2
-\right), && \Bx_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^\tr
+\mathbf{x}_t^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\beta},\,\sigma^2
+\right), && \mathbf{x}_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}.
 \end{aligned}
 $$
 
@@ -26,22 +26,22 @@ Then you get a normal-inverse-gamma posterior:
 
 $$
 \begin{aligned}
-\sigma^2\given y_{0:T}
+\sigma^2\,|\, y_{0:T}
 &\sim
-\text{IG}(a_T\com b_T)
+\text{IG}(a_T,\, b_T)
 \\
-\Bbeta\given \sigma^2\com y_{0:T}
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:T}
 &\sim 
-\text{N}_2(\Bm_T\com\sigma^2\BH^{-1}_T)
+\text{N}_2(\mathbf{m}_T,\,\sigma^2\mathbf{H}^{-1}_T)
 \\
 \\
-\BH_T
+\mathbf{H}_T
 &=
-\BX_T^\tr\BX_T+\BH_0
+\mathbf{X}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{X}_T+\mathbf{H}_0
 \\
-\Bm_T
+\mathbf{m}_T
 &=
-\BH_T^{-1}(\BX_T^\tr\By_T+\BH_0\Bm_0)
+\mathbf{H}_T^{-1}(\mathbf{X}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_T+\mathbf{H}_0\mathbf{m}_0)
 \\
 a_T 
 &= 
@@ -51,6 +51,43 @@ b_T
 &=
 b_0
 +
-(\By_T^\tr\By_T+\Bm_0^\tr\BH_0\Bm_0-\Bm_T^\tr\BH_T\Bm_T)/2.
+(\mathbf{y}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_T+\mathbf{m}_0^{\scriptscriptstyle\mathsf{T}}\mathbf{H}_0\mathbf{m}_0-\mathbf{m}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{H}_T\mathbf{m}_T)/2.
 \end{aligned}
 $$
+
+Those formulas for updating the hyperparameters are great for *batch* inference, but inefficient if the data are streaming. So let's improve them. Imagine we have collected data $y_{0:t-1}$ and characterized the posterior up to that point:
+
+$$
+\begin{aligned}
+\sigma^2\,|\, y_{0:t-1}
+&\sim
+\text{IG}(a_{t-1},\, b_{t-1})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:t-1}
+&\sim 
+\text{N}_2(\mathbf{m}_{t-1},\,\sigma^2\mathbf{H}^{-1}_{t-1}).
+\end{aligned}
+$$
+
+Then a single new observation $y_t$ arrives and you want to characterize the new posterior:
+
+$$
+\begin{aligned}
+\sigma^2\,|\, y_{0:t}
+&\sim
+\text{IG}(a_{t},\, b_{t})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:t}
+&\sim 
+\text{N}_2(\mathbf{m}_{t},\,\sigma^2\mathbf{H}^{-1}_{t}).
+\end{aligned}
+$$
+
+a. Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters *without inverting any matrices*;
+a. `sunspots` is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a `for` loop in `R` that recursively fits an AR(25) to these data one observation at a time. The smart way to implement this is to use your recursion from part a. The dumb way to do it is to re-apply the batch formulas from scratch for each new observation. I want you to do both and time them:
+
+    - on each step of the loop, apply the recursion you derived in part a;
+    - on each step of the loop, *also* apply the batch formulas; 
+    - using one of the methods [here](https://www.r-bloggers.com/2017/05/5-ways-to-measure-running-time-of-r-code/), store the runtime of each update;
+    - At the end of the loop, verify that the posterior hyperparameters conditional on the entire sample are the same for both methods;
+    - At the end of the loop, plot the time series of runtimes for each method. What do you notice?

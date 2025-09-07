@@ -1,0 +1,6 @@
+For as long as the Federal Reserve remains independent and United States government statistics remain reliable 
+
+
+
+
+fred API, base R or hyndman shit or something for forecasting

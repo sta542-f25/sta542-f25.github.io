@@ -18,7 +18,3 @@ $$
 \gamma(s,\, t) = \text{cov}(y_s,\,y_t),\quad s,\,t\in\mathbb{N}.
 $$
 
-::: {.callout-tip collapse="true"}
-## Hint
-Covariance of linear combination.
-:::
