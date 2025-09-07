@@ -6,3 +6,63 @@ auto-stretch: false
 filters:
   - shinylive
 ---
+
+# Recap
+
+## AR(1)
+
+## Joint distribution
+
+## Stationarity 
+
+## Method of moments 
+
+## M(C)LE
+
+## Conjugate Bayes
+
+## Main ideas so far
+
+# Probabilistic forecasting
+
+## Point
+
+## Interval
+
+## Density
+
+## Loss function?
+
+# A classical approach
+
+## It's just the conditional distribution
+
+## Distribution 
+
+## Moments 
+
+## Long run behavior
+
+## Problem: parameters fixed 
+
+## Bootstrap
+
+## Compare intervals
+
+# A Bayesian approach
+
+## Posterior predictive distribution
+
+## One-step-ahead is Student's t
+
+## The rest you can do by simulation
+
+# Application (Inflation?)
+
+## Show them some fucking software?
+
+# Parting thoughts
+
+## Bayes is inherently sequential and inherently probabilistic
+
+# Next time...forecast evaluation!
