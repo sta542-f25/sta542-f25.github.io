@@ -69,9 +69,11 @@ $$
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-JZ changed this hint on 8/30/2025. The original hint mentioned using the change-of-variables formula. That's a fine solution if $\mathbf{A}$ is invertible, but the result holds even if $\mathbf{A}$ is not invertible, and we will often use that version (e.g. part c here). If you used change-of-variables, don't redo it. We'll award full credit if you did it right. But otherwise, consider using the *moment-generating function* of a random vector $\mathbf{x}$:
+JZ changed this hint on 8/30/2025. The original hint mentioned using the change-of-variables formula. That's a fine solution if $\mathbf{A}$ is invertible, but the result holds even if $\mathbf{A}$ is not invertible, and we will often use that version (e.g. part c here). If you used change-of-variables, don't redo it. We'll award full credit if you did it right. But otherwise, consider using the *moment-generating function* (*mgf*) of a random vector $\mathbf{x}$:
 
 $$
 M(\mathbf{t})=E\left(e^{\mathbf{t}^{\scriptscriptstyle\mathsf{T}}\mathbf{x}}\right).
 $$
+
+As in the univariate case, when it exists, the mgf uniquely characterizes the entire distribution of a random vector, just like the density, cdf, or characteristic function do.
 :::

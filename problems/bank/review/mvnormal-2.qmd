@@ -35,7 +35,7 @@ $$
 \right).
 $$
 
-We will use this fact often, but proving it is really nasty. I'm not going to make you do it. This problem set is unreasonable enough already. Instead, I want you to [read the proof](https://statproofbook.github.io/P/mvn-cond) very carefully. If you're like me, there is some step in the derivation that will make you say "what just happened?" Drill down on that. Pick a section of the proof where you get confused, or where a technique is being used that you are unfamiliar with. Study that part carefully until you understand it, and then in your problem set write-up, explain it to me like I'm an idiot (shouldn't be too difficult). Use pictures, numerical examples, specialize to the bivariate case, whatever you need to do.
+We will use this fact often, but proving it is tedious. I'm not going to make you do it. This problem set is unreasonable enough already. Instead, I want you to [read the proof](https://statproofbook.github.io/P/mvn-cond) very carefully. If you're like me, there is some step in the derivation that will make you say "what just happened?" Drill down on that. Pick a section of the proof where you get confused, or where a technique is being used that you are unfamiliar with. Study that part carefully until you understand it, and then in your problem set write-up, explain it to me like I'm an idiot (shouldn't be too difficult). Use pictures, numerical examples, specialize to the bivariate case, whatever you need to do.
 
 ::: callout-note
 ## Don't be a silly goose.
