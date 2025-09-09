@@ -84,7 +84,7 @@ $$
 $$
 
 a. Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters *without inverting any matrices*;
-a. `sunspots` is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a `for` loop in `R` that recursively fits an AR(25) to these data one observation at a time. The smart way to implement this is to use your recursion from part a. The dumb way to do it is to re-apply the batch formulas from scratch for each new observation. I want you to do both and time them:
+a. `c(sunspots)` is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a `for` loop in `R` that recursively fits an AR(25) to these data one observation at a time. The smart way to implement this is to use your recursion from part a. The dumb way to do it is to re-apply the batch formulas from scratch for each new observation. I want you to do both and time them:
 
     - on each step of the loop, apply the recursion you derived in part a;
     - on each step of the loop, *also* apply the batch formulas; 
