@@ -210,7 +210,7 @@ $$
 
 This slide is rank nonsense if the AR(1) isn't stationary.
 
-## News flash: $\beta_1$ is a correlation!
+## News flash: $\beta_1$ is a correlation! {.small}
 
 . . .
 
@@ -222,6 +222,8 @@ $$
 \begin{aligned}
 \beta_1 = \frac{\gamma(1)}{\gamma(0)}
 &=\frac{\cov(y_{t+1}\com y_t)}{\var(y_t)}
+\\
+&=\frac{\cov(y_{t+1}\com y_t)}{\text{sd}(y_{t})\text{sd}(y_t)}
 \\
 &=\frac{\cov(y_{t+1}\com y_t)}{\text{sd}(y_{t+1})\text{sd}(y_t)}
 \\
@@ -252,6 +254,22 @@ Asymptotically valid $100\times(1-\alpha)\%$ confidence interval:
 $$
 \hat{\beta}_1\pm z_{1-\alpha/2}\sqrt{\frac{1-\hat{\beta}_1^2}{T}}.
 $$
+
+## Simulating the sampling distribution
+
+We will do a lot of this today:
+
+$$
+\begin{matrix}
+\text{0. Ground truth} &&& \text{AR(1)} && \\
+&\swarrow &\swarrow& \cdots &\searrow&\searrow \\
+\text{1. Many datasets}&y_{0:T}^{(1)} &y_{0:T}^{(2)}& \cdots &y_{0:T}^{(k-1)}&y_{0:T}^{(k)} \\
+&\downarrow &\downarrow& \cdots &\downarrow&\downarrow \\
+\text{2. Many estimates}&\hat{\beta}_1^{(1)} &\hat{\beta}_1^{(2)}& \cdots &\hat{\beta}_1^{(k-1)}&\hat{\beta}_1^{(k)} \\
+\end{matrix}
+$$
+
+A histogram or boxplot of the $\hat{\beta}_1^{(j)}$ approximates the finite-$T$ sampling distribution of the estimator.
 
 ## What happens for $\beta_1$ close to $\pm1$? {.scrollable}
 
@@ -507,7 +525,7 @@ $$
 
 Look familiar?
 
-## We're just back to regression 101 {.medium .scrollable}
+## We're just back to regression 101 {.small .scrollable}
 
 We have 
 
@@ -579,7 +597,7 @@ $$
 
 - When we graduate to the AR(p) in a few weeks, everything looks identical. $\BX_T$ just has more columns.
 
-## If the data are streaming, apply PSET 0!
+## If the data are streaming, apply PSET 0! {.medium}
 
 *Do not* recompute that matrix inverse every period. 
 
@@ -654,6 +672,67 @@ $$
 
 Same as Yule-Walker!
 
+## Simulation in the stationary case
+
+```{r}
+#| echo: false
+# Function to simulate AR(1) process
+simulate_ar_1 <- function(T, b0, b1, s, m0, s0) {
+  y <- numeric(T)
+  y[1] <- rnorm(1, m0, s0)
+  for (t in 2:T) {
+    y[t] <- b0 + b1 * y[t - 1] + rnorm(1, 0, s)
+  }
+  return(y)
+}
+
+# --- Parameters ---
+set.seed(8675)   
+T     <- 5000    
+b0    <- 0    
+b1    <- 0.5    # 0.5, 0.99, 1, 1.001
+s     <- 1      
+m0    <- 0      
+s0    <- 0      
+R     <- 5000   
+
+# --- Storage ---
+estimates <- matrix(NA, nrow = R, ncol = 2) # columns: intercept, slope
+
+# --- Simulation loop ---
+for (r in 1:R) {
+  y <- simulate_ar_1(T, b0, b1, s, m0, s0)
+  # Create lagged regressor
+  y_lag <- y[-T]
+  y_resp <- y[-1]
+  # OLS regression
+  fit <- lm(y_resp ~ y_lag)
+  estimates[r, ] <- coef(fit)
+}
+
+# --- Results ---
+slope_estimates <- estimates[, 2]
+
+# Histogram of slope estimates
+hist(slope_estimates,
+     breaks = "Scott",
+     main = "Sampling Distribution of OLS Slope Estimates",
+     xlab = "Slope estimate",
+     col = "lightblue",
+     border = "white",
+     freq = FALSE)
+abline(v = b1, col = "red", lwd = 2)
+legend("topright",
+       legend = c(
+         bquote(beta[0] == .(b0)),
+         bquote(beta[1] == .(b1)),
+         bquote(sigma == .(s)),
+         bquote(T == .(T))
+       ),
+       bty = "n")
+
+```
+
 ## Asymptotics if the truth is a random walk
 
 . . .
@@ -680,6 +759,69 @@ Suffice it to say...the asymptotic distribution ain't Gaussian.
 . . .
 
 And the convergence rate is worse. 
+
+## Simulation in the weird RW case
+
+```{r}
+#| echo: false
+# Function to simulate AR(1) process
+simulate_ar_1 <- function(T, b0, b1, s, m0, s0) {
+  y <- numeric(T)
+  y[1] <- rnorm(1, m0, s0)
+  for (t in 2:T) {
+    y[t] <- b0 + b1 * y[t - 1] + rnorm(1, 0, s)
+  }
+  return(y)
+}
+
+# --- Parameters ---
+set.seed(8675)   
+T     <- 5000    
+b0    <- 0    
+b1    <- 1    # 0.5, 0.99, 1, 1.001
+s     <- 1      
+m0    <- 0      
+s0    <- 0      
+R     <- 5000   
+
+# --- Storage ---
+estimates <- matrix(NA, nrow = R, ncol = 2) # columns: intercept, slope
+
+# --- Simulation loop ---
+for (r in 1:R) {
+  y <- simulate_ar_1(T, b0, b1, s, m0, s0)
+  # Create lagged regressor
+  y_lag <- y[-T]
+  y_resp <- y[-1]
+  # OLS regression
+  fit <- lm(y_resp ~ y_lag)
+  estimates[r, ] <- coef(fit)
+}
+
+# --- Results ---
+slope_estimates <- estimates[, 2]
+
+# Histogram of slope estimates
+hist(slope_estimates,
+     breaks = "Scott",
+     main = "Sampling Distribution of OLS Slope Estimates",
+     xlab = "Slope estimate",
+     col = "lightblue",
+     border = "white",
+     freq = FALSE)
+abline(v = b1, col = "red", lwd = 2)
+legend("topright",
+       legend = c(
+         bquote(beta[0] == .(b0)),
+         bquote(beta[1] == .(b1)),
+         bquote(sigma == .(s)),
+         bquote(T == .(T))
+       ),
+       bty = "n")
+
+```
+
+Definitely not Gaussian.
 
 ## Asymptotics if the truth is RW w/ drift
 
@@ -708,11 +850,70 @@ T^{3/2}(\hat{\beta}_1-1)
 .
 $$
 
-Things are Gaussian again!
-
 :::
 
+Things are Gaussian again!
 
+## Simulation in the RW w/ drift case
+
+```{r}
+#| echo: false
+# Function to simulate AR(1) process
+simulate_ar_1 <- function(T, b0, b1, s, m0, s0) {
+  y <- numeric(T)
+  y[1] <- rnorm(1, m0, s0)
+  for (t in 2:T) {
+    y[t] <- b0 + b1 * y[t - 1] + rnorm(1, 0, s)
+  }
+  return(y)
+}
+
+# --- Parameters ---
+set.seed(8675)   
+T     <- 5000    
+b0    <- 1    
+b1    <- 1    # 0.5, 0.99, 1, 1.001
+s     <- 1      
+m0    <- 0      
+s0    <- 0      
+R     <- 5000   
+
+# --- Storage ---
+estimates <- matrix(NA, nrow = R, ncol = 2) # columns: intercept, slope
+
+# --- Simulation loop ---
+for (r in 1:R) {
+  y <- simulate_ar_1(T, b0, b1, s, m0, s0)
+  # Create lagged regressor
+  y_lag <- y[-T]
+  y_resp <- y[-1]
+  # OLS regression
+  fit <- lm(y_resp ~ y_lag)
+  estimates[r, ] <- coef(fit)
+}
+
+# --- Results ---
+slope_estimates <- estimates[, 2]
+
+# Histogram of slope estimates
+hist(slope_estimates,
+     breaks = "Scott",
+     main = "Sampling Distribution of OLS Slope Estimates",
+     xlab = "Slope estimate",
+     col = "lightblue",
+     border = "white",
+     freq = FALSE)
+abline(v = b1, col = "red", lwd = 2)
+legend("topright",
+       legend = c(
+         bquote(beta[0] == .(b0)),
+         bquote(beta[1] == .(b1)),
+         bquote(sigma == .(s)),
+         bquote(T == .(T))
+       ),
+       bty = "n")
+
+```
 
 ## Asymptotics if the truth is explosive 
 
@@ -727,11 +928,70 @@ $$
 
 :::
 
-. . .
 
-Alright, enough of this.
+## Simulation in explosive case
 
-## Why am I bothering you with this?
+```{r}
+#| echo: false
+# Function to simulate AR(1) process
+simulate_ar_1 <- function(T, b0, b1, s, m0, s0) {
+  y <- numeric(T)
+  y[1] <- rnorm(1, m0, s0)
+  for (t in 2:T) {
+    y[t] <- b0 + b1 * y[t - 1] + rnorm(1, 0, s)
+  }
+  return(y)
+}
+
+# --- Parameters ---
+set.seed(8675)   
+T     <- 10000    
+b0    <- 0    
+b1    <- 1.001    # 0.5, 0.99, 1, 1.001
+s     <- 1      
+m0    <- 0      
+s0    <- 0      
+R     <- 1000   
+
+# --- Storage ---
+estimates <- matrix(NA, nrow = R, ncol = 2) # columns: intercept, slope
+
+# --- Simulation loop ---
+for (r in 1:R) {
+  y <- simulate_ar_1(T, b0, b1, s, m0, s0)
+  # Create lagged regressor
+  y_lag <- y[-T]
+  y_resp <- y[-1]
+  # OLS regression
+  fit <- lm(y_resp ~ y_lag)
+  estimates[r, ] <- coef(fit)
+}
+
+# --- Results ---
+slope_estimates <- estimates[, 2]
+
+# Histogram of slope estimates
+hist(slope_estimates,
+     breaks = "Scott",
+     main = "Sampling Distribution of OLS Slope Estimates",
+     xlab = "Slope estimate",
+     col = "lightblue",
+     border = "white",
+     freq = FALSE)
+abline(v = b1, col = "red", lwd = 2)
+legend("topleft",
+       legend = c(
+         bquote(beta[0] == .(b0)),
+         bquote(beta[1] == .(b1)),
+         bquote(sigma == .(s)),
+         bquote(T == .(T))
+       ),
+       bty = "n")
+
+```
+
+
+## Why am I bothering you with all this? {.small}
 
 
 Here's the point:
