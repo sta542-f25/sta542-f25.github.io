@@ -1,6 +1,7 @@
 ---
 title: "Problem Set 1"
 subtitle: Due Friday September 19 at 5PM
+draft: true
 editor: 
   mode: source
 ---
