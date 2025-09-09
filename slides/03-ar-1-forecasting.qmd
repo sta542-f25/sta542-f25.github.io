@@ -916,7 +916,7 @@ $$
 
 In other words, it's awful.
 
-## Probabilistic forecasting via Monte Carlo {.medium}
+## Probabilistic forecasting via Monte Carlo {.small}
 
 Use the simulations $\tilde{y}_{t+h}^{(1:k)}=\left\{\tilde{y}_{t+h}^{(1)}\com \tilde{y}_{t+h}^{(2)}\com ...\com \tilde{y}_{t+h}^{(k)}\right\}$ to construct whatever forecast object you want:
 
@@ -1168,6 +1168,10 @@ $$
 
 . . .
 
+Immediately incorporates both data and parameter uncertainty by construction.
+
+. . .
+
 There's...nothing else to say about this.
 
 ## Probabilistic prediction is a natural byproduct of a Bayesian approach
@@ -1199,7 +1203,7 @@ $$
 
 The retained sample $\tilde{y}^{(1:k)}_{T+1:T+H}$ is drawn from the posterior predictive.
 
-## Same slide as before {.medium}
+## Same slide as before {.small}
 
 Use the simulations $\tilde{y}_{t+h}^{(1:k)}=\left\{\tilde{y}_{t+h}^{(1)}\com \tilde{y}_{t+h}^{(2)}\com ...\com \tilde{y}_{t+h}^{(k)}\right\}$ to construct whatever forecast object you want:
 
