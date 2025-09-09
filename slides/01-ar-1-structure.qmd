@@ -823,7 +823,7 @@ So "did: dependent but identically distributed."
 
     - Cute from a pure math point of view;
     - If you simulate distributions with Markov chain Monte Carlo (MCMC), you bow down at the altar of stationarity;
-    - Stationarity means "dependent but not too dependent." You can redo classical statistical theory replacing "iid" with "stationary," and not much necessarily changes (convergence rates get worse);
+    - Stationarity means "dependent but not too dependent." You can redo classical statistical theory replacing "iid" with "stationary," and you don't necessarily have to change a whole lot;
     - (A Bayesian won't necessarily care about that last point.)
 :::
 
