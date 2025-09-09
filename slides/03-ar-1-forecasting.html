@@ -481,7 +481,7 @@ p(\Btheta\given y_{0:T})
 <div class="fragment">
 <p>Either way, everything you know about inference for iid regression goes through unmodified.</p>
 </div>
-</section><section id="maximum-likelihood" class="slide level2"><h2>Maximum likelihood</h2>
+</section><section id="maximum-likelihood" class="slide level2 medium"><h2>Maximum likelihood</h2>
 <p>It’s just ordinary least squares (OLS):</p>
 <div class="fragment">
 <p><span class="math display">\[
@@ -614,7 +614,6 @@ b_0
 <div class="fragment">
 <p>Make it recursive on Problem Set 1!</p>
 </div>
-</section><section id="main-ideas-so-far" class="slide level2"><h2>Main ideas so far</h2>
 </section></section><section><section id="probabilistic-forecasting" class="title-slide slide level1 center"><h1>Probabilistic forecasting</h1>
 
 </section><section id="a-classic-example" class="slide level2"><h2>A classic example</h2>
@@ -661,9 +660,6 @@ b_0
 </figure>
 </div>
 </div>
-</div>
-<div class="fragment">
-<p>This is what we will talk about this week.</p>
 </div>
 </section><section id="whats-the-point" class="slide level2"><h2>What’s the point?</h2>
 <ul>
@@ -1325,7 +1321,7 @@ p(y_{T+1:T+H}\,|\,y_{0:T},\,\Btheta^{(j)}), &amp;&amp;j = 1\com 2\com ...\com k.
 <div class="fragment">
 <p>Forecast interval:</p>
 <p><span class="math display">\[
-\hat{I}_{t+h|t} = \left[\hat{Q}_{\frac{\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\com \hat{Q}_{\frac{1-\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\right]. \quad (...\text{or hdi})
+\hat{I}_{t+h|t} = \left[\hat{Q}_{\frac{\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\com \hat{Q}_{1-\frac{\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\right]. \quad (...\text{or hdi})
 \]</span></p>
 </div>
 <div class="fragment">
