@@ -496,7 +496,7 @@ This is what we will talk about this week.
     - Model uncertainty;
     - Uncertainty introduced by missing data.
     
-- In the small world of the AR(1), mainly the first two.
+- In the small world of the AR(1), mainly the first two for now.
 :::
 
 
@@ -607,7 +607,7 @@ y_t
 \end{aligned}
 $$
 
-So the conditional distribution has the same structure as the unconditional joint that we have already studied.
+So the conditional distribution has the same structure as the unconditional joint that we have already studied. Just starts in a different spot.
 
 ## Forecast distributions
 
@@ -931,7 +931,7 @@ $$
 Forecast interval:
 
 $$
-\hat{I}_{t+h|t} = \left[\hat{Q}_{\frac{\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\com \hat{Q}_{\frac{1-\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\right]. \quad (...\text{or hdi})
+\hat{I}_{t+h|t} = \left[\hat{Q}_{\frac{\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\com \hat{Q}_{1-\frac{\alpha}{2}}\left(\tilde{y}_{t+h}^{(1:k)}\right)\right]. \quad (...\text{or hdi})
 $$
 
 . . .
@@ -956,9 +956,9 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      sliderInput("true_b0", "True b0 (intercept):", min = -1, max = 1, value = 0.5, step = 0.1),
-      sliderInput("true_b1", "True b1 (AR coefficient):", min = -0.95, max = 0.95, value = 0.7, step = 0.05),
-      sliderInput("true_sigma", "True sigma (innovation sd):", min = 0.1, max = 2, value = 1, step = 0.1),
+      sliderInput("true_b0", "True β₀:", min = -1, max = 1, value = 0.5, step = 0.1),
+      sliderInput("true_b1", "True β₁:", min = -0.95, max = 0.95, value = 0.7, step = 0.05),
+      sliderInput("true_sigma", "True σ:", min = 0.1, max = 2, value = 1, step = 0.1),
       sliderInput("n_obs", "Sample size:", min = 40, max = 500, value = 100, step = 10),
       actionButton("rerun", "Re-run simulation"),
       checkboxInput("show_red", "Show plug-in fan (red)", TRUE),
@@ -1190,10 +1190,10 @@ Simulate the posterior somehow (iid, MCMC, HMC, SMC, whatever), and then for eac
 
 $$
 \begin{aligned}
-\Btheta^{(j)} &\sim p(\boldsymbol{\theta}\,|\,y_{1:T})\\
-y^{(j)}_{T+1:T+H}
+\Btheta^{(j)} &\sim p(\boldsymbol{\theta}\,|\,y_{0:T})\\
+\tilde{y}^{(j)}_{T+1:T+H}
 &\sim 
-\tilde{y}_{T+1:T+H}\,|\,y_{1:T},\,\Btheta^{(j)}), &&j = 1\com 2\com ...\com k.
+p(y_{T+1:T+H}\,|\,y_{0:T},\,\Btheta^{(j)}), &&j = 1\com 2\com ...\com k.
 \end{aligned}
 $$
 
@@ -1410,7 +1410,7 @@ s_{t+1|t}^2
 \end{aligned}
 $$
 
-## Things to notice
+## Things to notice {.medium}
 
 . . .
 
