@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>smith-miller – STA 542 Fall 2025</title>
+<title>prior-predictive – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="smith-miller – STA 542 Fall 2025">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="STA 542 Fall 2025">
+<meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -81,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">smith-miller</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,27 +168,38 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">smith-miller</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<blockquote class="blockquote">
+<p>Models are wrong and parameters don’t exist. All that matters is observables.</p>
+</blockquote>
+<p>That statement is the essence of the <em>predictive</em> view of inference. In its Bayesian incarnation, this view says that the only objects that truly matter are the <em>predictive distributions</em>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\mathbf{y}_{1:T})
+&amp;=
+\int
+p(\mathbf{y}_{1:T}\,|\,\boldsymbol{\theta})
+p(\boldsymbol{\theta})
+\,\text{d}\boldsymbol{\theta}
+&amp;&amp;
+(\text{prior predictive})
+\\
+p(\mathbf{y}_{T+1:T+H}\,|\,\mathbf{y}_{1:T})
+&amp;=
+\int
+p(\mathbf{y}_{T+1:T+H}\,|\,\mathbf{y}_{1:T},\,\boldsymbol{\theta})
+p(\boldsymbol{\theta}\,|\,\mathbf{y}_{1:T})
+\,\text{d}\boldsymbol{\theta}.
+&amp;&amp;
+(\text{posterior predictive})
+\end{aligned}
+\]</span></p>
+<p>Models, parameters, likelihoods, priors, even Bayes’ theorem – these are all just a means to the end of specifying and accessing predictive distributions for observable quantities. So, when you write down a model and a prior on the model’s parameters, you should tune the prior on parameters to capture your prior beliefs about how the <em>data</em> will look before you see them. In other words, the goal of prior elicitation should be accurately eliciting the prior predictive distribution, not the prior on parameters per se. Let’s take this seriously in a toy example.</p>
+<p>Imagine you are a data scientist at Feta Platforms Inc, and one day your manager Zohn Jito knocks on your office door. Zohn Jito is an irritating fool who knows nothing about statistics, and he is always making ridiculous requests. On this day,</p>
 
 
 

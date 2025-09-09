@@ -6,10 +6,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.34">
 <meta name="author" content="John Zito">
 <title>STA 542 Fall 2025 – Welcome to STA 542!</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3508fad0f0ada62887df893e10d6d3d5.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d5becd29f7c8505d93fcf7093747f253.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -244,6 +244,7 @@ $$
 \newcommand{\Bzero}{\mathbf{0}}
 \newcommand{\Bone}{\mathbf{1}}
 \newcommand{\N}{\text{N}}
+\newcommand{\dd}{\text{d}}
 $$
   <div class="reveal">
     <div class="slides">
@@ -355,7 +356,7 @@ John Zito
 
 </section><section><section id="course-themes" class="title-slide slide level1 center"><h1>Course themes</h1>
 
-</section><section id="lets-take-a-second-look-at-this" class="slide level2 medium"><h2>Let’s take a second look at this</h2>
+</section><section id="lets-take-a-second-look-at-this" class="slide level2 small"><h2>Let’s take a second look at this</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure><p><img data-src="images/fan-charts.gif" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
@@ -368,7 +369,7 @@ John Zito
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="00-welcome_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+<figure><p><img data-src="00-welcome_files/figure-html/unnamed-chunk-1-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -378,7 +379,7 @@ John Zito
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="00-welcome_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<figure><p><img data-src="00-welcome_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -388,7 +389,7 @@ John Zito
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="00-welcome_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<figure><p><img data-src="00-welcome_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -398,27 +399,23 @@ John Zito
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="00-welcome_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<figure><p><img data-src="00-welcome_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section><section id="the-main-themes-of-the-course" class="slide level2"><h2>The main themes of the course</h2>
 <p>We will focus on the following:</p>
-<div>
 <ol type="1">
 <li class="fragment">Inference should be <span style="color:red;">sequential</span>. We want recursive estimation techniques to handle data that are <em>streaming</em> in real-time;</li>
 <li class="fragment">Predictions should be <span style="color:red;">probabilistic</span>. We want point, interval, and density forecasts that incorporate many sources of uncertainty;</li>
 <li class="fragment">If you can manipulate joint distributions, you can <em>do</em> time series analysis. Too many TS textbooks quickly lose sight of this;</li>
 </ol>
-</div>
 <div class="fragment">
 <p>And there is a secret fourth theme:</p>
-<div>
 <ol start="4" type="1">
 <li class="fragment">A Bayesian approach is an <em>excellent</em> way of achieving the goals of sequential inference and probabilistic prediction.</li>
 </ol>
-</div>
 </div>
 </section><section id="topics-may-include" class="slide level2"><h2>Topics may include</h2>
 <ul>
@@ -487,7 +484,6 @@ John Zito
 </div>
 </div>
 </section><section id="course-components" class="slide level2"><h2>Course components</h2>
-<div>
 <ul>
 <li class="fragment"><p><span style="color:blue;"><strong>Problem sets</strong></span>: 6 in total; one due about every 2 weeks;</p></li>
 <li class="fragment">
@@ -498,9 +494,7 @@ John Zito
 </ul>
 </li>
 <li class="fragment"><p><span style="color:blue;"><strong>Final project</strong></span>: no clue, honestly. Talk to me in October.</p></li>
-</ul>
-</div>
-</section><section id="late-policy" class="slide level2"><h2>Late policy</h2>
+</ul></section><section id="late-policy" class="slide level2"><h2>Late policy</h2>
 <p>No late work will be accepted unless you request an extension in advance by e-mailing JZ. All reasonable requests will be entertained, but extensions will not be long.</p>
 </section><section id="attendance" class="slide level2"><h2>Attendance</h2>
 <p>Not required. Live your life.</p>
@@ -528,7 +522,6 @@ John Zito
 <li>If you outsource all of your <em>thinking</em> to a language model, you will probably fail both exams. Good luck!</li>
 </ul></section><section id="what-background-do-you-need" class="slide level2 scrollable"><h2>What background do you need?</h2>
 <p>I assume you have a working knowledge of…</p>
-<div>
 <ul>
 <li class="fragment">matrix algebra;</li>
 <li class="fragment">OLS regression;</li>
@@ -536,7 +529,6 @@ John Zito
 <li class="fragment">Bayesian statistics at the level of STA 602;</li>
 <li class="fragment">The <code>R</code> programming language.</li>
 </ul>
-</div>
 <div class="fragment">
 <p><a href="https://sta542-f25.github.io/problems/pset-0.html">Problem Set 0</a> gives you a workout in all of the above.</p>
 </div>
@@ -655,7 +647,7 @@ p(x)=\frac{\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}{\sqrt{2\pi\s
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="00-welcome_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<figure><p><img data-src="00-welcome_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -665,8 +657,7 @@ p(x)=\frac{\exp\left(-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}\right)}{\sqrt{2\pi\s
 <div class="fragment">
 <p>So <span class="math inline">\(\mathbf{x} = [x]\sim\text{N}_1([\mu],\,[\sigma^2])\)</span> is just <span class="math inline">\(x\sim\text{N}(\mu,\,\sigma^2)\)</span>.</p>
 </div>
-</section><section id="bivariate" class="slide level2 medium"><h2>Bivariate</h2>
-<p>Elliptical contours!</p>
+</section><section id="bivariate-elliptical-contours" class="slide level2 small"><h2>Bivariate: elliptical contours!</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure><p><img data-src="images/binormal.gif" class="quarto-figure quarto-figure-center"></p>
 </figure>
@@ -784,7 +775,7 @@ E(x_n)
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="00-welcome_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<figure><p><img data-src="00-welcome_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
@@ -915,13 +906,11 @@ y = \beta_0+\beta_1x + \varepsilon,\quad \varepsilon\sim\text{N}(0,\,\sigma^2).
 </div>
 </section><section id="affine-transformations" class="slide level2"><h2>Affine transformations</h2>
 <p>Fix some objects:</p>
-<div>
 <ul>
 <li class="fragment">Random <span class="math inline">\(\mathbf{x}\sim\text{N}_n(\boldsymbol{\mu},\,\boldsymbol{\Sigma})\)</span>;</li>
 <li class="fragment">Constant <span class="math inline">\(\mathbf{A}\in\mathbb{R}^{m\times n}\)</span>;</li>
 <li class="fragment">Constant <span class="math inline">\(\mathbf{c}\in\mathbb{R}^m\)</span>.</li>
 </ul>
-</div>
 <div class="fragment">
 <p>Then</p>
 <p><span class="math display">\[
@@ -967,21 +956,17 @@ y = \beta_0+\beta_1x + \varepsilon,\quad \varepsilon\sim\text{N}(0,\,\sigma^2).
 </div>
 </div>
 <div class="fragment">
-<div>
 <ul>
 <li class="fragment">The result on the previous slide is way more general, and the linear combination is still normal even if the <span class="math inline">\(X_i\)</span> are <em>dependent</em>, but the formula for the variance is less nice;</li>
 <li class="fragment">The mean formula is right even if the <span class="math inline">\(x_i\)</span> are dependent and non-Gaussian;</li>
 <li class="fragment">The variance formula is right even if the <span class="math inline">\(x_i\)</span> are non-Gaussian.</li>
 </ul>
 </div>
-</div>
 </section><section id="independence" class="slide level2 medium"><h2>Independence</h2>
-<div>
 <ul>
 <li class="fragment"><p>If random variables are independent, then they are uncorrelated (their covariance is zero). The reverse is false in general!</p></li>
 <li class="fragment"><p>So writing <span class="math inline">\(x_1,\,x_2,\,...,\,x_n\overset{\text{iid}}{\sim}\text{N}(\mu,\,\sigma^2)\)</span> is the same as saying</p></li>
 </ul>
-</div>
 <div class="fragment">
 <p><span class="math display">\[
 \begin{bmatrix}
@@ -1207,226 +1192,173 @@ x_n
           RevealZoom
         ]
       });
-    </script><script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/sta542-f25\.github\.io\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/sta542-f25\.github\.io\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
 
 
 </body></html>

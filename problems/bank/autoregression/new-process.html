@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>smith-miller – STA 542 Fall 2025</title>
+<title>new-process – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="smith-miller – STA 542 Fall 2025">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="STA 542 Fall 2025">
+<meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -81,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">smith-miller</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,27 +168,43 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">smith-miller</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<p>Consider this silly time series process:</p>
+<p><span class="math display">\[
+y_t
+=
+\alpha
++
+\varepsilon_t
++
+\theta_1
+\varepsilon_{t-1}
++
+\theta_2
+\varepsilon_{t-2}
+,\quad \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2).
+\]</span></p>
+<p>Derive the joint distribution of <span class="math inline">\(\mathbf{y}=\begin{bmatrix}y_1&amp;y_2&amp;\cdots&amp;y_T\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\)</span>. In particular…</p>
+<ol type="a">
+<li>What distribution family does the joint distribution belong to? Justify your answer; don’t just assert it.</li>
+<li>Derive the mean function:</li>
+</ol>
+<p><span class="math display">\[
+\mu(t)=E(y_t).
+\]</span></p>
+<ol start="3" type="a">
+<li>Derive the covariance kernel:</li>
+</ol>
+<p><span class="math display">\[
+\gamma(s,\, t) = \text{cov}(y_s,\,y_t),\quad s,\,t\in\mathbb{N}.
+\]</span></p>
+<ol start="4" type="a">
+<li>Is <span class="math inline">\(y_t\)</span> stationary? Why or why not?</li>
+</ol>
 
 
 

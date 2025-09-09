@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>smith-miller – STA 542 Fall 2025</title>
+<title>streaming-conjugate-bayes – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="smith-miller – STA 542 Fall 2025">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="STA 542 Fall 2025">
+<meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -81,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">smith-miller</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -138,27 +168,99 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">smith-miller</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<p>As we saw in lecture, (conditional) likelihood-based inference for the AR(1) proceeds identically to iid multiple regression. Whether it’s MLE or Bayes, nothing changes. In particular, imagine you place a conjugate normal-inverse-gamma prior on the model parameters:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2
+&amp;\sim
+\text{IG}(a_0,\, b_0)
+\\
+\boldsymbol{\beta}\,|\, \sigma^2
+&amp;\sim
+\text{N}_2(\mathbf{m}_0,\,\sigma^2\mathbf{H}^{-1}_0)
+\\
+y_t
+\,|\,
+y_{t-1}
+,\,
+\boldsymbol{\beta},\,\sigma^2
+&amp;\sim \text{N}
+\left(
+\mathbf{x}_t^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\beta},\,\sigma^2
+\right), &amp;&amp; \mathbf{x}_t=\begin{bmatrix}1 &amp; y_{t-1}\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}.
+\end{aligned}
+\]</span></p>
+<p>Then you get a normal-inverse-gamma posterior:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\,|\, y_{0:T}
+&amp;\sim
+\text{IG}(a_T,\, b_T)
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:T}
+&amp;\sim
+\text{N}_2(\mathbf{m}_T,\,\sigma^2\mathbf{H}^{-1}_T)
+\\
+\\
+\mathbf{H}_T
+&amp;=
+\mathbf{X}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{X}_T+\mathbf{H}_0
+\\
+\mathbf{m}_T
+&amp;=
+\mathbf{H}_T^{-1}(\mathbf{X}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_T+\mathbf{H}_0\mathbf{m}_0)
+\\
+a_T
+&amp;=
+a_0 + T/2
+\\
+b_T
+&amp;=
+b_0
++
+(\mathbf{y}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_T+\mathbf{m}_0^{\scriptscriptstyle\mathsf{T}}\mathbf{H}_0\mathbf{m}_0-\mathbf{m}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{H}_T\mathbf{m}_T)/2.
+\end{aligned}
+\]</span></p>
+<p>Those formulas for updating the hyperparameters are great for <em>batch</em> inference, but inefficient if the data are streaming. So let’s improve them. Imagine we have collected data <span class="math inline">\(y_{0:t-1}\)</span> and characterized the posterior up to that point:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\,|\, y_{0:t-1}
+&amp;\sim
+\text{IG}(a_{t-1},\, b_{t-1})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:t-1}
+&amp;\sim
+\text{N}_2(\mathbf{m}_{t-1},\,\sigma^2\mathbf{H}^{-1}_{t-1}).
+\end{aligned}
+\]</span></p>
+<p>Then a single new observation <span class="math inline">\(y_t\)</span> arrives and you want to characterize the new posterior:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\,|\, y_{0:t}
+&amp;\sim
+\text{IG}(a_{t},\, b_{t})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:t}
+&amp;\sim
+\text{N}_2(\mathbf{m}_{t},\,\sigma^2\mathbf{H}^{-1}_{t}).
+\end{aligned}
+\]</span></p>
+<ol type="a">
+<li><p>Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters <em>without inverting any matrices</em>;</p></li>
+<li><p><code>sunspots</code> is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a <code>for</code> loop in <code>R</code> that recursively fits an AR(25) to these data one observation at a time. The smart way to implement this is to use your recursion from part a. The dumb way to do it is to re-apply the batch formulas from scratch for each new observation. I want you to do both and time them:</p>
+<ul>
+<li>on each step of the loop, apply the recursion you derived in part a;</li>
+<li>on each step of the loop, <em>also</em> apply the batch formulas;</li>
+<li>using one of the methods <a href="https://www.r-bloggers.com/2017/05/5-ways-to-measure-running-time-of-r-code/">here</a>, store the runtime of each update;</li>
+<li>At the end of the loop, verify that the posterior hyperparameters conditional on the entire sample are the same for both methods;</li>
+<li>At the end of the loop, plot the time series of runtimes for each method. What do you notice?</li>
+</ul></li>
+</ol>
 
 
 

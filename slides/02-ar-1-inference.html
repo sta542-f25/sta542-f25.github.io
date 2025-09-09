@@ -6,17 +6,22 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.42">
-
-  <meta name="author" content="John Zito">
-  <title>STA 542 Fall 2025 – What do you do likelihood-based inference in the AR(1)?</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta name="shinylive:serviceworker_dir" content="..">
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
+<meta name="author" content="John Zito">
+<title>STA 542 Fall 2025 – How do you do likelihood-based inference in the AR(1)?</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -28,15 +33,81 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-3508fad0f0ada62887df893e10d6d3d5.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d5becd29f7c8505d93fcf7093747f253.css">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -123,7 +194,7 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="What do you do likelihood-based inference in the AR(1)? – STA 542 Fall 2025">
+<meta property="og:title" content="How do you do likelihood-based inference in the AR(1)? – STA 542 Fall 2025">
 <meta property="og:description" content="Lecture 2">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
@@ -243,12 +314,12 @@ $$
 \newcommand{\Bzero}{\mathbf{0}}
 \newcommand{\Bone}{\mathbf{1}}
 \newcommand{\N}{\text{N}}
+\newcommand{\dd}{\text{d}}
 $$
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">What do you do likelihood-based inference in the AR(1)?</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">How do you do likelihood-based inference in the AR(1)?</h1>
   <p class="subtitle">Lecture 2</p>
 
 <div class="quarto-title-authors">
@@ -262,14 +333,9 @@ John Zito
     </div>
 </div>
 
-</section>
-<section>
-<section id="recap" class="title-slide slide level1 center">
-<h1>Recap</h1>
+</section><section><section id="recap" class="title-slide slide level1 center"><h1>Recap</h1>
 
-</section>
-<section id="the-simplest-non-trivial-time-series-model" class="slide level2 medium">
-<h2>The simplest non-trivial time series model</h2>
+</section><section id="the-simplest-non-trivial-time-series-model" class="slide level2 medium"><h2>The simplest non-trivial time series model</h2>
 <p>The autoregression of order 1, or AR(1):</p>
 <div class="fragment">
 <p><span class="math display">\[
@@ -310,105 +376,944 @@ p(y_t\given y_{t-1}).
 \end{aligned}
 \]</span></p>
 </div>
-</section>
-<section id="the-ar1-joint-distribution" class="slide level2">
-<h2>The AR(1) joint distribution</h2>
-</section>
-<section id="the-special-case-of-beta_11" class="slide level2">
-<h2>The special case of <span class="math inline">\(|\beta_1|&lt;1\)</span></h2>
-</section>
-<section id="thats-an-example-of-stationarity" class="slide level2">
-<h2>That’s an example of stationarity</h2>
-</section>
-<section id="yule-walker" class="slide level2">
-<h2>Yule Walker</h2>
-<p>news flash: it’s a correlation!</p>
-</section></section>
-<section>
-<section id="likelihood-based-inference" class="title-slide slide level1 center">
-<h1>Likelihood-based inference</h1>
+</section><section id="the-ar1-joint-distribution" class="slide level2 medium"><h2>The AR(1) joint distribution</h2>
+<p>Joint distribution:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+y_0 &amp; y_1 &amp; \cdots &amp; y_T
+\end{bmatrix}^\tr
+\sim\text{N}_{T+1}\left(\Bmu\com \BSigma\right).
+\]</span></p>
+<div class="fragment">
+<p>Moments:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(y_t)
+&amp;=
+\beta_0\sum\limits_{i=0}^{t-1}\beta_1^i
++
+\beta_1^t\mu_0
+\\
+\var(y_t)
+&amp;=
+\sigma^2
+\sum\limits_{i=0}^{t-1}\beta_1^{2i}+
+\beta_1^{2t}\initvar
+\\
+\cov(y_t\com y_s)
+&amp;=
+\begin{cases}
+\beta_1^{s-t}\var(y_t) &amp; t\leq s\\
+\beta_1^{t-s}\var(y_s) &amp; s &lt; t.
+\end{cases}
+.
+\end{aligned}
+\]</span></p>
+</div>
+</section><section id="the-special-case-when-beta_11" class="slide level2 small"><h2>The special case when <span class="math inline">\(|\beta_1|&lt;1\)</span>
+</h2>
+<p>The mean and variance are <em>time-invariant</em>, and the covariance structure is <em>shift-invariant</em>:</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+E(y_t)
+&amp;=
+\frac{\beta_0}{1-\beta_1}
+\\
+\var(y_t)
+&amp;=
+\frac{\sigma^2}{1-\beta_1^2}
+\\
+\gamma(h)
+&amp;=
+\cov(y_{t+h}\com y_t)
+=
+\beta_1^{h}\frac{\sigma^2}{1-\beta_1^2}.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The common marginal shared by all <span class="math inline">\(y_t\)</span> is called the <span style="color:blue;"><strong>stationary distribution</strong></span>:</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+y_t\sim\text{N}\left(\frac{\beta_0}{1-\beta_1}\com \frac{\sigma^2}{1-\beta_1^2}\right).
+\]</span></p>
+</div>
+<div class="fragment">
+<p>So “did: dependent but identically distributed.”</p>
+</div>
+</section><section id="a-neat-fact-to-notice" class="slide level2 medium"><h2>A neat fact to notice</h2>
+<p>Notice:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+y_0
+\\
+y_1
+\\
+y_2
+\\
+y_3
+\end{bmatrix}
+\sim
+\text{N}_{4}
+\left(
+\frac{\beta_0}{1-\beta_1}\mathbf{1}_{4}
+\com
+\begin{bmatrix}
+\color{red}{\gamma(0)} &amp; \color{blue}{\gamma(1)} &amp; \color{orange}{\gamma(2)} &amp; \color{green}{\gamma(3)}
+\\
+\color{blue}{\gamma(1)} &amp; \color{red}{\gamma(0)} &amp; \color{blue}{\gamma(1)} &amp; \color{orange}{\gamma(2)}
+\\
+\color{orange}{\gamma(2)} &amp; \color{blue}{\gamma(1)} &amp; \color{red}{\gamma(0)} &amp; \color{blue}{\gamma(1)}
+\\
+\color{green}{\gamma(3)}  &amp; \color{orange}{\gamma(2)} &amp; \color{blue}{\gamma(1)} &amp; \color{red}{\gamma(0)}
+\end{bmatrix}
+\right)
+\]</span></p>
+<div class="fragment">
+<p>The covariance is an example of a <em>Toeplitz matrix</em>.</p>
+</div>
+</section><section id="this-is-all-an-example-of-strict-stationarity" class="slide level2"><h2>This is all an example of (strict) stationarity</h2>
+<p>A joint distribution is <strong>(strictly) stationary</strong> if it is “shift invariant”:</p>
+<p><span class="math display">\[
+\{y_{t_1}\com y_{t_2}\com ...\com y_{t_n}\}\overset{d}{=}\{y_{t_1+h}\com y_{t_2+h}\com ...\com y_{t_n+h}\}.
+\]</span></p>
+<p>The Gaussian AR(1) with <span class="math inline">\(|\beta_1|&lt;1\)</span> has this property.</p>
+</section><section id="estimating-equations" class="slide level2"><h2>Estimating equations</h2>
+<p>If the AR(1) is stationary, then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\gamma(1)&amp;=\beta_1\gamma(0) &amp;&amp;\implies\beta_1=\frac{\gamma(1)}{\gamma(0)}\\
+\mu&amp;=\frac{\beta_0}{1-\beta_1}&amp;&amp;\implies\beta_0=(1-\beta_1)\mu\\
+\gamma(0)&amp;=\frac{\sigma^2}{1-\beta_1^2}&amp;&amp;\implies \sigma^2=(1-\beta_1^2)\gamma(0).
+\end{aligned}
+\]</span></p>
+<p>Everywhere you see a “population” expected value, plug in the corresponding sample average.</p>
+</section><section id="yule-walker" class="slide level2"><h2>Yule-Walker</h2>
+<p>Method of moments estimators:</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\beta}_1&amp;=\frac{\hat{\gamma}_T(1)}{\hat{\gamma}_T(0)}
+\\
+\hat{\beta}_0&amp;=(1-\hat{\beta}_1)\hat{\mu}_T\\
+\hat{\sigma^2_T}&amp;=(1-\hat{\beta}_1^2)\hat{\gamma}_T(0).
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>This slide is rank nonsense if the AR(1) isn’t stationary.</p>
+</div>
+</section><section id="news-flash-beta_1-is-a-correlation" class="slide level2 small"><h2>News flash: <span class="math inline">\(\beta_1\)</span> is a correlation!</h2>
+<div class="fragment">
+<p>Note:</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\beta_1 = \frac{\gamma(1)}{\gamma(0)}
+&amp;=\frac{\cov(y_{t+1}\com y_t)}{\var(y_t)}
+\\
+&amp;=\frac{\cov(y_{t+1}\com y_t)}{\text{sd}(y_{t})\text{sd}(y_t)}
+\\
+&amp;=\frac{\cov(y_{t+1}\com y_t)}{\text{sd}(y_{t+1})\text{sd}(y_t)}
+\\
+&amp;=\text{corr}(y_{t+1}\com y_t).
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>So <span class="math inline">\(-1&lt; \beta_1&lt; 1\)</span> is the lag-1 <span style="color:blue;"><strong>autocorrelation</strong></span>, and <span class="math inline">\(\hat{\beta}_1\)</span> is the sample version.</p>
+</div>
+</section><section id="asymptotics" class="slide level2"><h2>Asymptotics</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Shumway and Stoffer (2025) Property 3.7</strong></p>
+</div>
+<div class="callout-content">
+<p>For a stationary AR(1), the Yuke-Walker estimator has:</p>
+<p><span class="math display">\[
+\sqrt{T}(\hat{\beta}_1-\beta_1)\cd\N\left(0\com\frac{\sigma^2}{\gamma(0)}\right).
+\]</span> And note in this case that <span class="math inline">\(\sigma^2 / \gamma(0)=1-\beta_1^2\)</span>. The result remains true if you plug in the estimator of the asymptotic variance.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Asymptotically valid <span class="math inline">\(100\times(1-\alpha)\%\)</span> confidence interval:</p>
+<p><span class="math display">\[
+\hat{\beta}_1\pm z_{1-\alpha/2}\sqrt{\frac{1-\hat{\beta}_1^2}{T}}.
+\]</span></p>
+</div>
+</section><section id="simulating-the-sampling-distribution" class="slide level2"><h2>Simulating the sampling distribution</h2>
+<p>We will do a lot of this today:</p>
+<p><span class="math display">\[
+\begin{matrix}
+\text{0. Ground truth} &amp;&amp;&amp; \text{AR(1)} &amp;&amp; \\
+&amp;\swarrow &amp;\swarrow&amp; \cdots &amp;\searrow&amp;\searrow \\
+\text{1. Many datasets}&amp;y_{0:T}^{(1)} &amp;y_{0:T}^{(2)}&amp; \cdots &amp;y_{0:T}^{(k-1)}&amp;y_{0:T}^{(k)} \\
+&amp;\downarrow &amp;\downarrow&amp; \cdots &amp;\downarrow&amp;\downarrow \\
+\text{2. Many estimates}&amp;\hat{\beta}_1^{(1)} &amp;\hat{\beta}_1^{(2)}&amp; \cdots &amp;\hat{\beta}_1^{(k-1)}&amp;\hat{\beta}_1^{(k)} \\
+\end{matrix}
+\]</span></p>
+<p>A histogram or boxplot of the <span class="math inline">\(\hat{\beta}_1^{(j)}\)</span> approximates the finite-<span class="math inline">\(T\)</span> sampling distribution of the estimator.</p>
+</section><section id="what-happens-for-beta_1-close-to-pm1" class="slide level2 scrollable"><h2>What happens for <span class="math inline">\(\beta_1\)</span> close to <span class="math inline">\(\pm1\)</span>?</h2>
+<div class="sourceCode" id="cb1" data-engine="r"><pre class="sourceCode numberSource shinylive-r number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>#| '!! shinylive warning !!': |</span>
+<span id="cb1-2"><a></a>#|   shinylive does not work in self-contained HTML documents.</span>
+<span id="cb1-3"><a></a>#|   Please set `embed-resources: false` in your metadata.</span>
+<span id="cb1-4"><a></a>#| standalone: true</span>
+<span id="cb1-5"><a></a>#| viewerHeight: 700</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a># app.R</span>
+<span id="cb1-8"><a></a>library(shiny)</span>
+<span id="cb1-9"><a></a></span>
+<span id="cb1-10"><a></a># ---------- Configuration ----------</span>
+<span id="cb1-11"><a></a>SAMPLE_SIZES &lt;- seq(10, 200, by = 20)   # smaller default for speed</span>
+<span id="cb1-12"><a></a>NSIM &lt;- 500                             # number of simulated AR(1) paths per sample size</span>
+<span id="cb1-13"><a></a>Y_LIMITS &lt;- c(-1, 1)</span>
+<span id="cb1-14"><a></a># ------------------------------------</span>
+<span id="cb1-15"><a></a></span>
+<span id="cb1-16"><a></a># Yule-Walker AR(1) estimator</span>
+<span id="cb1-17"><a></a>yule_walker_ar1 &lt;- function(x) {</span>
+<span id="cb1-18"><a></a>  n &lt;- length(x)</span>
+<span id="cb1-19"><a></a>  x &lt;- x - mean(x)  # center</span>
+<span id="cb1-20"><a></a>  gamma0 &lt;- mean(x^2)</span>
+<span id="cb1-21"><a></a>  gamma1 &lt;- mean(x[-1] * x[-n])</span>
+<span id="cb1-22"><a></a>  gamma1 / gamma0</span>
+<span id="cb1-23"><a></a>}</span>
+<span id="cb1-24"><a></a></span>
+<span id="cb1-25"><a></a># Simulate one stationary AR(1) with variance 1</span>
+<span id="cb1-26"><a></a>simulate_ar_1 &lt;- function(T, b0, b1, s, m0, s0){</span>
+<span id="cb1-27"><a></a>  y &lt;- numeric(T)</span>
+<span id="cb1-28"><a></a>  y[1] &lt;- rnorm(1, m0, s0)</span>
+<span id="cb1-29"><a></a>  for(t in 2:T){</span>
+<span id="cb1-30"><a></a>    y[t] &lt;- b0 + b1 * y[t - 1] + rnorm(1, 0, s)</span>
+<span id="cb1-31"><a></a>  }</span>
+<span id="cb1-32"><a></a>  return(y)</span>
+<span id="cb1-33"><a></a>}</span>
+<span id="cb1-34"><a></a></span>
+<span id="cb1-35"><a></a>ui &lt;- fluidPage(</span>
+<span id="cb1-36"><a></a>  titlePanel("Sampling distribution of Yule–Walker AR(1) estimator"),</span>
+<span id="cb1-37"><a></a>  sidebarLayout(</span>
+<span id="cb1-38"><a></a>    sidebarPanel(</span>
+<span id="cb1-39"><a></a>      sliderInput("b1", "True value of β₁:",</span>
+<span id="cb1-40"><a></a>                  min = -0.99, max = 0.99, value = 0.5, step = 0.01)</span>
+<span id="cb1-41"><a></a>    ),</span>
+<span id="cb1-42"><a></a>    mainPanel(</span>
+<span id="cb1-43"><a></a>      plotOutput("boxPlot", height = "600px")</span>
+<span id="cb1-44"><a></a>    )</span>
+<span id="cb1-45"><a></a>  )</span>
+<span id="cb1-46"><a></a>)</span>
+<span id="cb1-47"><a></a></span>
+<span id="cb1-48"><a></a>server &lt;- function(input, output, session) {</span>
+<span id="cb1-49"><a></a>  </span>
+<span id="cb1-50"><a></a>  output$boxPlot &lt;- renderPlot({</span>
+<span id="cb1-51"><a></a>    b0 &lt;- 0</span>
+<span id="cb1-52"><a></a>    b1 &lt;- input$b1</span>
+<span id="cb1-53"><a></a>    s &lt;- 1</span>
+<span id="cb1-54"><a></a>    m0 &lt;- b0 / (1 - b1)</span>
+<span id="cb1-55"><a></a>    s0 &lt;- s / sqrt(1 - b1^2)</span>
+<span id="cb1-56"><a></a>    sizes &lt;- SAMPLE_SIZES</span>
+<span id="cb1-57"><a></a>    nsim &lt;- NSIM</span>
+<span id="cb1-58"><a></a>    </span>
+<span id="cb1-59"><a></a>    # Collect estimates in a list, one element per sample size</span>
+<span id="cb1-60"><a></a>    est_list &lt;- vector("list", length(sizes))</span>
+<span id="cb1-61"><a></a>    </span>
+<span id="cb1-62"><a></a>    for (i in seq_along(sizes)) {</span>
+<span id="cb1-63"><a></a>      n &lt;- sizes[i]</span>
+<span id="cb1-64"><a></a>      phi_hats &lt;- numeric(nsim)</span>
+<span id="cb1-65"><a></a>      for (s in 1:nsim) {</span>
+<span id="cb1-66"><a></a>        x &lt;- simulate_ar_1(n, b0, b1, s, m0, s0)#simulate_ar1(n, phi)</span>
+<span id="cb1-67"><a></a>        phi_hats[s] &lt;- yule_walker_ar1(x)</span>
+<span id="cb1-68"><a></a>      }</span>
+<span id="cb1-69"><a></a>      est_list[[i]] &lt;- phi_hats</span>
+<span id="cb1-70"><a></a>    }</span>
+<span id="cb1-71"><a></a>    </span>
+<span id="cb1-72"><a></a>    # Draw boxplots side by side</span>
+<span id="cb1-73"><a></a>    par()</span>
+<span id="cb1-74"><a></a>    boxplot(est_list,</span>
+<span id="cb1-75"><a></a>            names = sizes,</span>
+<span id="cb1-76"><a></a>            ylim = Y_LIMITS,</span>
+<span id="cb1-77"><a></a>            xlab = "Sample size T",</span>
+<span id="cb1-78"><a></a>            ylab = "Estimate",</span>
+<span id="cb1-79"><a></a>            main = paste("True value: ", b1),</span>
+<span id="cb1-80"><a></a>            col = "lightgray", pch = 19)</span>
+<span id="cb1-81"><a></a>    </span>
+<span id="cb1-82"><a></a>    abline(h = b1, col = "red", lty = 2, lwd = 2)</span>
+<span id="cb1-83"><a></a>  })</span>
+<span id="cb1-84"><a></a>}</span>
+<span id="cb1-85"><a></a></span>
+<span id="cb1-86"><a></a>shinyApp(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="assumptions" class="slide level2"><h2>Assumptions</h2>
+<ul>
+<li class="fragment"><p>Normality was not essential, but stationarity was crucial;</p></li>
+<li class="fragment">
+<p>What if we flip that?</p>
+<ul>
+<li class="fragment">Firmly assume normality;</li>
+<li class="fragment">Cast stationarity to the wind.</li>
+</ul>
+</li>
+</ul></section></section><section><section id="likelihood-based-inference" class="title-slide slide level1 center"><h1>Likelihood-based inference</h1>
+
+</section><section id="lets-improve-the-notation" class="slide level2 medium"><h2>Let’s improve the notation</h2>
+<p>The autoregression of order 1, or AR(1):</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&amp;\sim
+\text{N}(\mu_0\com \initvar),
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>This implies a joint distribution governed by a finite set of static parameters <span class="math inline">\(\Btheta = \begin{bmatrix}\beta_0&amp;\beta_1&amp;\sigma^2\end{bmatrix}^\tr\)</span>:</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+p(y_{0:T}\given \Btheta)
+&amp;=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com\Btheta).
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Viewed as a function of <span class="math inline">\(\Btheta\)</span>, that’s a <em>likelihood</em>!</p>
+</div>
+<div class="fragment">
+<p>Maximize it, or combine with a prior.</p>
+</div>
+</section><section id="the-conditional-likelihood" class="slide level2"><h2>The conditional likelihood</h2>
+<p>In practice, we usually just condition on the initial value:</p>
+<p><span class="math display">\[
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com\Btheta).
+\]</span></p>
+<div class="fragment">
+<p>Doesn’t affect results too much, but saves headache.</p>
+</div>
+</section></section><section><section id="classical-inference" class="title-slide slide level1 center"><h1>Classical inference</h1>
+
+</section><section id="maximum-likelihood-estimation" class="slide level2"><h2>Maximum likelihood estimation</h2>
+<p>Treating the observed data <span class="math inline">\(y_{0:T}\)</span> as fixed, we want:</p>
+<p><span class="math display">\[
+\hat{\Btheta}_T=\argmax{\Btheta}\,p(y_{1:T}\given y_0\com \Btheta).
+\]</span></p>
+<p>To do this, it helps to take the view that the AR(1) is “just” a simple linear regression with <span class="math inline">\(x_t=y_{t-1}\)</span>.</p>
+</section><section id="maximum-likelihood-estimation-1" class="slide level2 medium"><h2>Maximum likelihood estimation</h2>
+<p>Since <span class="math inline">\(y_t\given y_{t-1}\com\Btheta\sim\N(\beta_0+\beta_1y_{t-1}\com\sigma^2)\)</span>, we have</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+p(y_{1:T}\given  y_0\com \Btheta)
+&amp;=
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com\Btheta)
+\\
+&amp;=
+\prod_{t=1}^T
+\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2}\frac{(y_t-\beta_0-\beta_1y_{t-1})^2}{\sigma^2}\right)
+\\
+&amp;=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}\sum\limits_{t=1}^T(y_t-\beta_0-\beta_1y_{t-1})^2\right)
+.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>To compute the MLE, we just treat <span class="math inline">\(y_{0:T}\)</span> as fixed.</p>
+</div>
+<div class="fragment">
+<p>Where do you think this is headed?</p>
+</div>
+</section><section id="stack-em-up" class="slide level2 medium"><h2>Stack ’em up</h2>
+<p>Define some things:</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\By_T
+&amp;=
+\begin{bmatrix}y_1&amp;y_2 &amp; \cdots &amp; y_T\end{bmatrix}^\tr
+\\
+\BX_T
+&amp;=
+\begin{bmatrix}
+1 &amp; 1 &amp; \cdots &amp; 1 \\
+y_0 &amp; y_1 &amp; \cdots &amp; y_{T-1}
+\end{bmatrix}^\tr
+\\
+\Bbeta
+&amp;=
+\begin{bmatrix}\beta_0&amp;\beta_1\end{bmatrix}^\tr
+.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>So the log-likelihood is:</p>
+<p><span class="math display">\[
+\ln
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Look familiar?</p>
+</div>
+</section><section id="were-just-back-to-regression-101" class="slide level2 small scrollable"><h2>We’re just back to regression 101</h2>
+<p>We have</p>
+<p><span class="math display">\[
+\ln
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+,
+\]</span></p>
+<div class="fragment">
+<p>and we know that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\Btheta}_T
+&amp;=\argmax{\Btheta}\,\ln p(y_{1:T}\given y_0\com \Btheta)
+\\
+&amp;=\argmin{\Btheta}\,-\ln p(y_{1:T}\given y_0\com \Btheta).
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>This gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\Bbeta}_T
+&amp;=
+\argmin{\Bbeta}
+\,||\By_T-\BX_T\Bbeta||_2^2
+\\
+\hat{\sigma^2_T}
+&amp;=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+\]</span></p>
+</div>
+</section><section id="ols-for-the-ar1" class="slide level2"><h2>OLS for the AR(1)</h2>
+<div class="fragment">
+<ul>
+<li>The maximum (conditional) likelihood estimator in the AR(1) is the same as the ordinary least squares estimator:</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\Bbeta}_T
+&amp;=
+(\BX_T^\tr\BX_T)^{-1}\BX_T^\tr\By_T
+\\
+\hat{\sigma^2_T}
+&amp;=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>It doesn’t matter that there’s time series dependence. Once the data are observed and fixed, everything you know about iid multiple regression applies unmodified.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>When we graduate to the AR(p) in a few weeks, everything looks identical. <span class="math inline">\(\BX_T\)</span> just has more columns.</li>
+</ul>
+</div>
+</section><section id="if-the-data-are-streaming-apply-pset-0" class="slide level2 medium"><h2>If the data are streaming, apply PSET 0!</h2>
+<p><em>Do not</em> recompute that matrix inverse every period.</p>
+<div class="fragment">
+<p>Instead:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\Bbeta}_t
+&amp;=
+\hat{\Bbeta}_{t-1}
++
+\Bk_t(y_t-\Bx_t^\tr\hat{\Bbeta}_{t-1})
+\\
+\Bk_t
+&amp;=
+\frac{\BP_{t-1}\Bx_t}
+{1+\Bx_t^\tr\BP_{t-1}\Bx_t}
+\\
+\BP_t
+&amp;=
+(\BX_t^\tr\BX_t)^{-1}
+\\
+&amp;=
+(\BX_{t-1}^\tr\BX_{t-1}+\Bx_t\Bx_t^\tr)^{-1}
+\\
+&amp;=
+(\BP_{t-1}+\Bx_t\Bx_t^\tr)^{-1}
+\\
+&amp;=
+\BP_{t-1}
+-
+\Bk_t
+\Bx_t^\tr\BP_{t-1}
+.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Keyword</strong>: rank-1 update!</p>
+</div>
+</section><section id="quick-aside" class="slide level2"><h2>Quick aside</h2>
+<ul>
+<li class="fragment">Later in the semester, we will study something called the <span style="color:red;">Kalman filter</span>;</li>
+<li class="fragment">This is the beating heart of time series analysis in my humble opinion;</li>
+<li class="fragment">If you invest in understanding the recursive form of OLS and the Bayesian version we will see later today, you are well equipped to understand the Kalman filter;</li>
+<li class="fragment">Once you understand the Kalman filter, you can understand anything else in time series analysis;</li>
+</ul>
+<div class="fragment">
+<p>…the parts worth understanding, anyway.</p>
+</div>
+</section><section id="asymptotics-if-the-truth-is-stationary" class="slide level2"><h2>Asymptotics if the truth is stationary</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Shumway and Stoffer (2025) Property 3.9</strong></p>
+</div>
+<div class="callout-content">
+<p>For a stationary AR(1), the MLE/OLS estimator has:</p>
+<p><span class="math display">\[
+\sqrt{T}(\hat{\beta}_1-\beta_1)\cd\N\left(0\com 1-\beta_1^2\right).
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Same as Yule-Walker!</p>
+</div>
+</section><section id="simulation-in-the-stationary-case" class="slide level2"><h2>Simulation in the stationary case</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="02-ar-1-inference_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="asymptotics-if-the-truth-is-a-random-walk" class="slide level2"><h2>Asymptotics if the truth is a random walk</h2>
+<div class="fragment">
+<p>It’s gross.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hamilton (1994) [17.4.28]</strong></p>
+</div>
+<div class="callout-content">
+<p>If the true parameters are <span class="math inline">\(\beta_0=0\)</span> and <span class="math inline">\(\beta_1=1\)</span>, then MLE/OLS estimator has <span class="math display">\[
+T(\hat{\beta}_1-1)\cd\frac{\frac{1}{2}[W(1)^2-1]-W(1)\int_0^1W(r)\,\dd r}{\int_0^1 W(r)^2\dd r-\left(\int_0^1 W(r)\,\dd r\right)^2},
+\]</span></p>
+<p>where <span class="math inline">\(W\)</span> is a Wiener process (Brownian motion).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Suffice it to say…the asymptotic distribution ain’t Gaussian.</p>
+</div>
+<div class="fragment">
+<p>And the convergence rate is worse.</p>
+</div>
+</section><section id="simulation-in-the-weird-rw-case" class="slide level2"><h2>Simulation in the weird RW case</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="02-ar-1-inference_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Definitely not Gaussian.</p>
+</section><section id="asymptotics-if-the-truth-is-rw-w-drift" class="slide level2"><h2>Asymptotics if the truth is RW w/ drift</h2>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Hamilton (1994) [17.4.47]</strong></p>
+</div>
+<div class="callout-content">
+<p>If the true parameters are <span class="math inline">\(\beta_0\neq 0\)</span> and <span class="math inline">\(\beta_1=1\)</span>, then MLE/OLS estimator has <span class="math display">\[
+\begin{bmatrix}
+T^{1/2}(\hat{\beta}_0-\beta_0)
+\\
+T^{3/2}(\hat{\beta}_1-1)
+\end{bmatrix}
+\cd
+\N_2
+\left(
+\Bzero
+\com
+\sigma^2
+\begin{bmatrix}
+1 &amp; \beta_0/2\\
+\beta_0/2 &amp; \beta_0^2/3
+\end{bmatrix}^{-1}
+\right)
+.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Things are Gaussian again!</p>
+</div>
+</section><section id="simulation-in-the-rw-w-drift-case" class="slide level2"><h2>Simulation in the RW w/ drift case</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="02-ar-1-inference_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="asymptotics-if-the-truth-is-explosive" class="slide level2"><h2>Asymptotics if the truth is explosive</h2>
+<div class="fragment">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><a href="https://doi.org/10.1214/aoms/1177706450">White (1958 AoMS)</a></strong></p>
+</div>
+<div class="callout-content">
+<p>If the true parameters are <span class="math inline">\(\beta_0= 0\)</span> and <span class="math inline">\(|\beta_1|&gt;1\)</span> and the errors are normal, then MLE/OLS estimator has <span class="math display">\[
+\frac{|\beta_1|^T}{\beta_1^2-1}(\hat{\beta}_1-\beta_1)\cd \text{Cauchy}.
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="simulation-in-explosive-case" class="slide level2"><h2>Simulation in explosive case</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="02-ar-1-inference_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="why-am-i-bothering-you-with-all-this" class="slide level2 small"><h2>Why am I bothering you with all this?</h2>
+<p>Here’s the point:</p>
+<ul>
+<li class="fragment">The AR(1) has been <em>very</em> thoroughly studied;</li>
+<li class="fragment">Unlike Yule-Walker, OLS “works” no matter the regime. Recall that relaxing the stationarity requirement was one of our motivations for exploring likelihood-based inference to begin with;</li>
+<li class="fragment">Non-stationarity can make things weird and complicated, but it’s not <em>so</em> bad that we can’t prove theorems. Inference remains possible;</li>
+<li class="fragment">The math is…interesting. See Hamilton (1994) Chapter 17 if you are absolutely dying of curiosity;</li>
+<li class="fragment">Does any of this matter for “real-world” data analysis?</li>
+</ul>
+<div class="fragment">
+<p>Probably not.</p>
+</div>
+<div class="fragment">
+<p>But you know what does matter?</p>
+</div>
+</section></section><section><section id="bayesian-inference" class="title-slide slide level1 center"><h1>Bayesian inference</h1>
+
+</section><section id="recall" class="slide level2"><h2>Recall</h2>
+<p>Given a prior distribution <span class="math inline">\(p(\Btheta)=p(\beta_0\com \beta_1\com \sigma^2)\)</span> on the parameters and an observed time series <span class="math inline">\(y_{0:T}\)</span>, we seek to access the posterior distribution:</p>
+<p><span class="math display">\[
+p(\Btheta\given y_{0:T})
+=
+\frac{p(y_{1:T}\given y_0\com \Btheta)p(\Btheta)}{p(y_{1:T}\given y_0)}
+.
+\]</span></p>
+<div class="fragment">
+<p>As with MLE, everything you know about iid Bayesian regression applies pretty much unmodified.</p>
+</div>
+</section><section id="conjugate-normal-inverse-gamma-prior" class="slide level2 small"><h2>Conjugate normal-inverse-gamma prior</h2>
+<p>Bayesian model with a conjugate prior:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2
+&amp;\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta\given \sigma^2
+&amp;\sim
+\text{N}_2(\Bm_0\com\sigma^2\BH^{-1}_0)
+\\
+y_t
+\given
+y_{t-1}
+\com
+\Bbeta\com\sigma^2
+&amp;\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right), &amp;&amp; \Bx_t=\begin{bmatrix}1 &amp; y_{t-1}\end{bmatrix}^\tr.
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>The posterior is available in closed-form:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\given y_{0:T}
+&amp;\sim
+\text{IG}(a_T\com b_T)
+\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&amp;\sim
+\text{N}_2(\Bm_T\com\sigma^2\BH^{-1}_T)
+\\
+\\
+\BH_T
+&amp;=
+\BX_T^\tr\BX_T+\BH_0
+\\
+\Bm_T
+&amp;=
+\BH_T^{-1}(\BX_T^\tr\By_T+\BH_0\Bm_0)
+\\
+a_T
+&amp;=
+a_0 + T/2
+\\
+b_T
+&amp;=
+b_0
++
+(\By_T^\tr\By_T+\Bm_0^\tr\BH_0\Bm_0-\Bm_T^\tr\BH_T\Bm_T)/2.
+\end{aligned}
+\]</span></p>
+</div>
+</section><section id="make-it-nice-on-problem-set-1" class="slide level2"><h2>Make it nice on Problem Set 1</h2>
+<div class="fragment">
+<p>After <span class="math inline">\(t-1\)</span> periods you have already computed</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\given y_{0:t-1}
+&amp;\sim
+\text{IG}(a_{t-1}\com b_{t-1})
+\\
+\Bbeta\given \sigma^2\com y_{0:t-1}
+&amp;\sim
+\text{N}_2(\Bm_{t-1}\com\sigma^2\BH^{-1}_{t-1}).
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Then <span class="math inline">\(y_t\)</span> arrives. What’s the most efficient way to update?</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\given y_{0:t}
+&amp;\sim
+\text{IG}(a_{t}\com b_{t})
+\\
+\Bbeta\given \sigma^2\com y_{0:t}
+&amp;\sim
+\text{N}_2(\Bm_{t}\com\sigma^2\BH^{-1}_{t}).
+\end{aligned}
+\]</span></p>
+</div>
+</section><section id="non-conjugate-normal-inverse-gamma-prior" class="slide level2 medium"><h2>Non-conjugate normal-inverse-gamma prior</h2>
+<p>Instead of <span class="math inline">\(p(\Bbeta\com\sigma^2)=p(\Bbeta\given\sigma^2)p(\sigma^2)\)</span>, use <span class="math inline">\(p(\Bbeta\com\sigma^2)=p(\Bbeta)p(\sigma^2)\)</span>:</p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2
+&amp;\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta
+&amp;\sim
+\text{N}_2(\Bm_0\com\BH^{-1}_0)
+\\
+y_t
+\given
+y_{t-1}
+\com
+\Bbeta\com\sigma^2
+&amp;\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right), &amp;&amp; \Bx_t=\begin{bmatrix}1 &amp; y_{t-1}\end{bmatrix}^\tr.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The full posterior is intractable, but the <em>conditional</em> posteriors are known:</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\given \Bbeta\com y_{0:T}
+&amp;\sim\text{IG}(a_T\com b_T)\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&amp;\sim\N_2(\Bm_T\com \BH_T^{-1}).
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Alternate sampling from them and you get a <span style="color:blue;"><strong>Gibbs sampler</strong></span> targeting <span class="math inline">\(p(\Bbeta\com\sigma^2\given y_{0:T})\)</span>.</p>
+</div>
+</section><section id="truncation-prior-to-enforce-stationarity" class="slide level2"><h2>Truncation prior to enforce stationarity</h2>
+<ul>
+<li>Augment any prior with a <em>truncation</em> to enforce stationarity:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{p}(\Btheta\given y_{0:T})
+&amp;\propto
+p(y_{1:T}\given y_0\com\Btheta)\tilde{p}(\Btheta)
+\\
+&amp;=
+p(y_{1:T}\given y_0\com\Btheta)p(\Btheta)I(|\beta_1|&lt;1)
+\\
+&amp;\propto
+p(\Btheta\given y_{0:T})I(|\beta_1|&lt;1)
+.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>Keep doing Bayes however you were doing it, but accept/reject draws of <span class="math inline">\(\beta_1\)</span> if they are outside <span class="math inline">\([-1\com 1]\)</span>;</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>This puts the stationarity assumption in its proper place: as something the modeler can choose to adopt or not by incorporating it into their chosen prior.</li>
+</ul>
+</div>
+</section><section id="asymptotics-1" class="slide level2"><h2>Asymptotics</h2>
+<p>We also have theory that says that the posterior distribution concentrates around the “true value” of the AR(1) parameters.</p>
+</section></section><section><section id="some-parting-thoughts" class="title-slide slide level1 center"><h1>Some parting thoughts</h1>
+
+</section><section id="bayesian-inference-is-inherently-recursive" class="slide level2 scrollable"><h2>Bayesian inference is inherently recursive!</h2>
+<p>As new information arrives, the old posterior becomes the new prior, and you just keep applying Bayes’ theorem:</p>
+<div class="fragment">
+<p>First data point arrives:</p>
+<p><span class="math display">\[
+{\color{red}{p(\Btheta\given \By_{0:1})}}\propto p(\By_1\given \By_0\com \Btheta)p(\Btheta)
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Second data point arrives:</p>
+<p><span class="math display">\[
+{\color{blue}{p(\Btheta\given \By_{0:2})}}\propto p(\By_2\given \By_{0:1}\com \Btheta)\color{red}{p(\Btheta\given \By_{0:1})}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Third data point arrives:</p>
+<p><span class="math display">\[
+{\color{green}{p(\Btheta\given \By_{0:3})}}\propto p(\By_3\given \By_{0:2}\com \Btheta)\color{blue}{p(\Btheta\given \By_{0:2})}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Fourth data point arrives:</p>
+<p><span class="math display">\[
+p(\Btheta\given \By_{0:4})\propto p(\By_4\given \By_{0:3}\com \Btheta)\color{green}{p(\Btheta\given \By_{0:3})}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>And on and on ad infinitum.</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Just keep turning the crank!</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+\begin{aligned}
+p(\Btheta\given \By_{0:t})\propto p(\By_t\given \By_{0:t-1}\com \Btheta)p(\Btheta\given \By_{0:t-1}).
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="mcmc-breaks-this" class="slide level2"><h2>MCMC breaks this!</h2>
+<ul>
+<li class="fragment"><p>The inherent recursivity of Bayesian inference is most perfectly realized when you have an exponential family model with conjugate priors. As the data stream, you just update sufficient statistics;</p></li>
+<li class="fragment"><p>If instead you use Markov chain Monte Carlo (MCMC) to approximate the posterior, that’s not recursive;</p></li>
+<li class="fragment"><p>As new data arrive, you cannot, strictly speaking, recycle the old MCMC draws. You just have to rerun everything from scratch. Gross!</p></li>
+</ul>
+<div class="fragment">
+<p>One of our very last topics is sequential Monte Carlo (SMC), an alternative to MCMC that seeks to reclaim the recursive promise of Bayes.</p>
+</div>
+</section><section id="this-course-has-a-predictive-pov" class="slide level2"><h2>This course has a predictive POV</h2>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:38%;">
+<p><img data-src="images/geisser.jpg"></p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="images/breiman.png"></p>
+</div></div>
+</div>
+</section><section id="this-course-has-a-predictive-pov-1" class="slide level2"><h2>This course has a predictive POV</h2>
+<ul>
+<li class="fragment">We will study specific models and how to estimate them, but this is only a means to an end;</li>
+<li class="fragment">We don’t care about inference per se, and certainly won’t go anywhere near hypothesis testing;</li>
+<li class="fragment">We use estimated models to generate <em>probabilistic</em> predictions;</li>
+<li class="fragment">Once the predictions have been generated, we don’t necessarily care where they came from;</li>
+<li class="fragment">We evaluate them in a largely model-agnostic way, looking at historical performance on real data.</li>
+</ul></section></section><section id="next-weekforecasting" class="title-slide slide level1 center"><h1>Next week…forecasting!</h1>
+
 
 </section>
-<section id="add-parameter-to-notation" class="slide level2">
-<h2>Add parameter to notation</h2>
-</section>
-<section id="initial-condition-is-a-pain-in-the-ass" class="slide level2">
-<h2>Initial condition is a pain in the ass</h2>
-</section>
-<section id="in-practice-we-just-condition-on-it." class="slide level2">
-<h2>In practice we just condition on it.</h2>
-</section></section>
-<section>
-<section id="maximum-likelihood" class="title-slide slide level1 center">
-<h1>Maximum likelihood</h1>
-
-</section>
-<section id="do-mle-recover-ols" class="slide level2">
-<h2>do MLE, recover OLS</h2>
-</section>
-<section id="if-the-data-are-streaming-do-pset-0" class="slide level2">
-<h2>if the data are streaming, do PSET 0</h2>
-</section>
-<section id="asymptotics-if-its-stationary-theyre-familiar" class="slide level2">
-<h2>Asymptotics, if it’s stationary, they’re familiar</h2>
-</section>
-<section id="if-not-stationary-still-works-but-hella-weird-dickey-fuller-and-all-them" class="slide level2">
-<h2>If not stationary, still works, but hella weird (Dickey Fuller and all them)</h2>
-</section></section>
-<section>
-<section id="bayes" class="title-slide slide level1 center">
-<h1>Bayes</h1>
-
-</section>
-<section id="just-regression-so-conjugate-stuff-applies-the-same-as-iid-y-x" class="slide level2">
-<h2>Just regression, so conjugate stuff applies the same as iid (y, x)</h2>
-</section>
-<section id="non-conjugate-prior" class="slide level2">
-<h2>non-conjugate prior</h2>
-</section>
-<section id="another" class="slide level2">
-<h2>another</h2>
-</section>
-<section id="truncation-prior-to-enforce-stationarity" class="slide level2">
-<h2>truncation prior to enforce stationarity</h2>
-<p>put stationarity in its proper place: as a modeling assumption you can adopt or not by incorporating it into your prior</p>
-</section>
-<section id="bayes-is-inherently-recursive" class="slide level2">
-<h2>Bayes is inherently recursive</h2>
-<p>non-conjugate priors and/or MCMC breaks this, but we can reclaim it with sequential Monte Carlo methods.</p>
-<p>One of the great virtues of Bayes is that it is inherently recursive. One of the great vices of MCMC is that it breaks that.</p>
-<p>We will reclaim the sequential nature at the end of the semester when we study sequential Monte Carlo (AKA particle filtering).</p>
-</section></section>
-<section id="real-data-example-of-some-kind" class="title-slide slide level1 center">
-<h1>real data example of some kind?</h1>
-
-
-</section>
-    </div>
+</div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 
 </div>
 </div></div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -600,192 +1505,208 @@ p(y_t\given y_{t-1}).
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
         }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
             }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/sta542-f25\.github\.io\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
             }
           }
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
           });
         }
-      }
-    });
-    </script>
-    
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/sta542-f25\.github\.io\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
 
 </body></html>

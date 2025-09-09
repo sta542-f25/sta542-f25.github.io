@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -29,15 +29,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1fa1d8026083a9bddc52b4aafc7f818e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6a296005b0efd8d491511f7e9e4b8ed1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7e3fde4f3f6223aa5a1e65c779016629.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -66,13 +67,42 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Problem Set 1 – STA 542 Fall 2025">
 <meta property="og:description" content="Due Friday September 19 at 5PM">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -134,8 +164,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem-x" id="toc-problem-x" class="nav-link active" data-scroll-target="#problem-x">Problem X</a></li>
+  <li><a href="#problem-x-1" id="toc-problem-x-1" class="nav-link" data-scroll-target="#problem-x-1">Problem X</a></li>
+  <li><a href="#problem-x-2" id="toc-problem-x-2" class="nav-link" data-scroll-target="#problem-x-2">Problem X</a></li>
+  <li><a href="#problem-x-3" id="toc-problem-x-3" class="nav-link" data-scroll-target="#problem-x-3">Problem X</a></li>
+  <li><a href="#problem-x-4" id="toc-problem-x-4" class="nav-link" data-scroll-target="#problem-x-4">Problem X</a></li>
+  <li><a href="#problem-x-5" id="toc-problem-x-5" class="nav-link" data-scroll-target="#problem-x-5">Problem X</a></li>
+  <li><a href="#problem-x-6" id="toc-problem-x-6" class="nav-link" data-scroll-target="#problem-x-6">Problem X</a></li>
+  <li><a href="#problem-x-7" id="toc-problem-x-7" class="nav-link" data-scroll-target="#problem-x-7">Problem X</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -160,247 +204,506 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Do some basic AR(2) derivations</p>
-<p>derive AR(1) covariance kernel (not assuming stationarity)</p>
-<p>do recursive and joint simulations many times and verify that you get the same sample moments.</p>
-<p>Bayesian AR(1) with a different prior.</p>
-<p>simulation to explore sampling properties when it’s a unit root or explosive or whatever.</p>
-<p>given the joint, what is the recursion?</p>
+<ol type="1">
+<li>covariance kernel</li>
+<li>Here’s a process in recursive form that you have not seen. What is the joint distribution</li>
+<li>dependent data asymptotics</li>
+<li>simulate something with mle</li>
+<li>streaming bayes</li>
+<li>tune prior until prior predictive samples look right</li>
+<li>forecasting</li>
+<li>real data analysis</li>
+</ol>
+<section id="problem-x" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x">Problem X</h2>
+<p>Recall our good ol’ pal the Gaussian AR(1):</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\beta_0+\beta_1y_{t-1}+\varepsilon_t, &amp;&amp; \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2)
+\\
+y_0
+&amp;\sim
+\text{N}(\mu_0,\,v_0^2).
+\end{aligned}
+\]</span></p>
+<p>Without assuming anything about <span class="math inline">\(\beta_1\in\mathbb{R}\)</span>, derive the covariance kernel of the joint distribution:</p>
+<p><span class="math display">\[
+\gamma(s,\, t) = \text{cov}(y_s,\,y_t),\quad s,\,t\in\mathbb{N}.
+\]</span></p>
+</section>
+<section id="problem-x-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-1">Problem X</h2>
+<p>Consider this silly time series process:</p>
+<p><span class="math display">\[
+y_t
+=
+\alpha
++
+\varepsilon_t
++
+\theta_1
+\varepsilon_{t-1}
++
+\theta_2
+\varepsilon_{t-2}
+,\quad \varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2).
+\]</span></p>
+<p>Derive the joint distribution of <span class="math inline">\(\mathbf{y}=\begin{bmatrix}y_1&amp;y_2&amp;\cdots&amp;y_T\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\)</span>. In particular…</p>
+<ol type="a">
+<li>What distribution family does the joint distribution belong to? Justify your answer; don’t just assert it.</li>
+<li>Derive the mean function:</li>
+</ol>
+<p><span class="math display">\[
+\mu(t)=E(y_t).
+\]</span></p>
+<ol start="3" type="a">
+<li>Derive the covariance kernel:</li>
+</ol>
+<p><span class="math display">\[
+\gamma(s,\, t) = \text{cov}(y_s,\,y_t),\quad s,\,t\in\mathbb{N}.
+\]</span></p>
+<ol start="4" type="a">
+<li>Is <span class="math inline">\(y_t\)</span> stationary? Why or why not?</li>
+</ol>
+</section>
+<section id="problem-x-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-2">Problem X</h2>
+<p>Recall the Yule-Walker estimators for the parameters of a stationary AR(1). They are based on these estimating equations</p>
+<p><span class="math display">\[
+\begin{aligned}
+\gamma(1)&amp;=\beta_1\gamma(0) &amp;&amp;\implies\beta_1=\frac{\gamma(1)}{\gamma(0)}\\
+\mu&amp;=\frac{\beta_0}{1-\beta_1}&amp;&amp;\implies\beta_0=(1-\beta_1)\mu\\
+\gamma(0)&amp;=\frac{\sigma^2}{1-\beta_1^2}&amp;&amp;\implies \sigma^2=(1-\beta_1^2)\gamma(0),
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\mu=E(y_t)\)</span> is the time-invariant expected value, <span class="math inline">\(\gamma(0)=\text{var}(y_t)\)</span> is the time-invariant variance, and so on. The Yule-Walker approach is an example of method of moments, where we replace all of the “population” expected values with sample averages. In order for this method to work, the sample averages must actually be good estimates of their corresponding expected values. If the data are iid, then we have classical laws of large numbers that guarantee this. But in our case the data are not iid. So how do we know this is going to work?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theorem (law of large numbers for dependent data)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(y_t\)</span> follow a process with time-invariant mean and shift-invariant covariance:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mu
+&amp;=
+E(y_t)
+&amp;&amp;
+\forall\,t
+\\
+\gamma(h)
+&amp;=
+\text{cov}
+(y_{t+h},\,y_t)
+&amp;&amp;\forall\,t.
+\end{aligned}
+\]</span></p>
+<p>Furthermore, assume that</p>
+<p><span class="math display">\[
+\sum\limits_{h=0}^\infty |\gamma(h)|&lt;\infty.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\bar{y}_T=\frac{1}{T}\sum\limits_{t=1}^Ty_t\overset{\text{prob}}{\to}\mu.
+\]</span></p>
+</div>
+</div>
+<ol type="a">
+<li>Prove the theorem;</li>
+<li>Show that the AR(1) with <span class="math inline">\(|\beta_1|&lt;1\)</span> satisfies the conditions.</li>
+</ol>
+</section>
+<section id="problem-x-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-3">Problem X</h2>
+<p>Something with OLS</p>
+</section>
+<section id="problem-x-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-4">Problem X</h2>
+<blockquote class="blockquote">
+<p>Models are wrong and parameters don’t exist. All that matters is observables.</p>
+</blockquote>
+<p>That statement is the essence of the <em>predictive</em> view of inference. In its Bayesian incarnation, this view says that the only objects that truly matter are the <em>predictive distributions</em>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\mathbf{y}_{1:T})
+&amp;=
+\int
+p(\mathbf{y}_{1:T}\,|\,\boldsymbol{\theta})
+p(\boldsymbol{\theta})
+\,\text{d}\boldsymbol{\theta}
+&amp;&amp;
+(\text{prior predictive})
+\\
+p(\mathbf{y}_{T+1:T+H}\,|\,\mathbf{y}_{1:T})
+&amp;=
+\int
+p(\mathbf{y}_{T+1:T+H}\,|\,\mathbf{y}_{1:T},\,\boldsymbol{\theta})
+p(\boldsymbol{\theta}\,|\,\mathbf{y}_{1:T})
+\,\text{d}\boldsymbol{\theta}.
+&amp;&amp;
+(\text{posterior predictive})
+\end{aligned}
+\]</span></p>
+<p>Models, parameters, likelihoods, priors, even Bayes’ theorem – these are all just a means to the end of specifying and accessing predictive distributions for observable quantities. So, when you write down a model and a prior on the model’s parameters, you should tune the prior on parameters to capture your prior beliefs about how the <em>data</em> will look before you see them. In other words, the goal of prior elicitation should be accurately eliciting the prior predictive distribution, not the prior on parameters per se. Let’s take this seriously in a toy example.</p>
+<p>Imagine you are a data scientist at Feta Platforms Inc, and one day your manager Zohn Jito knocks on your office door. Zohn Jito is an irritating fool who knows nothing about statistics, and he is always making ridiculous requests. On this day,</p>
+</section>
+<section id="problem-x-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-5">Problem X</h2>
+<p>As we saw in lecture, (conditional) likelihood-based inference for the AR(1) proceeds identically to iid multiple regression. Whether it’s MLE or Bayes, nothing changes. In particular, imagine you place a conjugate normal-inverse-gamma prior on the model parameters:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2
+&amp;\sim
+\text{IG}(a_0,\, b_0)
+\\
+\boldsymbol{\beta}\,|\, \sigma^2
+&amp;\sim
+\text{N}_2(\mathbf{m}_0,\,\sigma^2\mathbf{H}^{-1}_0)
+\\
+y_t
+\,|\,
+y_{t-1}
+,\,
+\boldsymbol{\beta},\,\sigma^2
+&amp;\sim \text{N}
+\left(
+\mathbf{x}_t^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\beta},\,\sigma^2
+\right), &amp;&amp; \mathbf{x}_t=\begin{bmatrix}1 &amp; y_{t-1}\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}.
+\end{aligned}
+\]</span></p>
+<p>Then you get a normal-inverse-gamma posterior:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\,|\, y_{0:T}
+&amp;\sim
+\text{IG}(a_T,\, b_T)
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:T}
+&amp;\sim
+\text{N}_2(\mathbf{m}_T,\,\sigma^2\mathbf{H}^{-1}_T)
+\\
+\\
+\mathbf{H}_T
+&amp;=
+\mathbf{X}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{X}_T+\mathbf{H}_0
+\\
+\mathbf{m}_T
+&amp;=
+\mathbf{H}_T^{-1}(\mathbf{X}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_T+\mathbf{H}_0\mathbf{m}_0)
+\\
+a_T
+&amp;=
+a_0 + T/2
+\\
+b_T
+&amp;=
+b_0
++
+(\mathbf{y}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{y}_T+\mathbf{m}_0^{\scriptscriptstyle\mathsf{T}}\mathbf{H}_0\mathbf{m}_0-\mathbf{m}_T^{\scriptscriptstyle\mathsf{T}}\mathbf{H}_T\mathbf{m}_T)/2.
+\end{aligned}
+\]</span></p>
+<p>Those formulas for updating the hyperparameters are great for <em>batch</em> inference, but inefficient if the data are streaming. So let’s improve them. Imagine we have collected data <span class="math inline">\(y_{0:t-1}\)</span> and characterized the posterior up to that point:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\,|\, y_{0:t-1}
+&amp;\sim
+\text{IG}(a_{t-1},\, b_{t-1})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:t-1}
+&amp;\sim
+\text{N}_2(\mathbf{m}_{t-1},\,\sigma^2\mathbf{H}^{-1}_{t-1}).
+\end{aligned}
+\]</span></p>
+<p>Then a single new observation <span class="math inline">\(y_t\)</span> arrives and you want to characterize the new posterior:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sigma^2\,|\, y_{0:t}
+&amp;\sim
+\text{IG}(a_{t},\, b_{t})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{0:t}
+&amp;\sim
+\text{N}_2(\mathbf{m}_{t},\,\sigma^2\mathbf{H}^{-1}_{t}).
+\end{aligned}
+\]</span></p>
+<ol type="a">
+<li><p>Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters <em>without inverting any matrices</em>;</p></li>
+<li><p><code>sunspots</code> is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a <code>for</code> loop in <code>R</code> that recursively fits an AR(25) to these data one observation at a time. The smart way to implement this is to use your recursion from part a. The dumb way to do it is to re-apply the batch formulas from scratch for each new observation. I want you to do both and time them:</p>
+<ul>
+<li>on each step of the loop, apply the recursion you derived in part a;</li>
+<li>on each step of the loop, <em>also</em> apply the batch formulas;</li>
+<li>using one of the methods <a href="https://www.r-bloggers.com/2017/05/5-ways-to-measure-running-time-of-r-code/">here</a>, store the runtime of each update;</li>
+<li>At the end of the loop, verify that the posterior hyperparameters conditional on the entire sample are the same for both methods;</li>
+<li>At the end of the loop, plot the time series of runtimes for each method. What do you notice?</li>
+</ul></li>
+</ol>
+</section>
+<section id="problem-x-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-6">Problem X</h2>
+<p>For as long as the Federal Reserve remains independent and United States government statistics remain reliable</p>
+<p>fred API, base R or hyndman shit or something for forecasting</p>
+</section>
+<section id="problem-x-7" class="level2">
+<h2 class="anchored" data-anchor-id="problem-x-7">Problem X</h2>
+<p>ar(p)</p>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>You are free to compose your solutions for this problem set however you wish (scan or photograph written work, handwriting capture on a tablet device, LaTeX, Quarto, whatever) as long as the final product is a single PDF file. You must upload this to Gradescope and mark the pages associated with each problem.</p>
+<p>Do not forget to include the following:</p>
+<ul>
+<li>For each problem, please <a href="https://sta542-f25.github.io/syllabus/syllabus.html#collaboration">acknowledge your collaborators</a>;</li>
+<li>If a problem required you to code something, please include both the code and the output.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sta542-f25\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sta542-f25\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -408,185 +711,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
