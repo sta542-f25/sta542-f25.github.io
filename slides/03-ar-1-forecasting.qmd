@@ -184,7 +184,7 @@ $$
 
 Either way, everything you know about inference for iid regression goes through unmodified.
 
-## Maximum likelihood
+## Maximum likelihood {.medium}
 
 It's just ordinary least squares (OLS):
 
@@ -330,8 +330,6 @@ $$
 . . .
 
 Make it recursive on Problem Set 1!
-
-## Main ideas so far
 
 
 # Probabilistic forecasting
@@ -479,9 +477,6 @@ mtext(expression(hat(y)["t+1 | t"]), side = 1, at = mix.med, line = 2, cex = 3)
 mtext(expression(y["t+1"]), side = 1, at = y, line = 2, cex = 3, col = "red")
 ```
 
-. . .
-
-This is what we will talk about this week.
 
 ## What's the point?
 

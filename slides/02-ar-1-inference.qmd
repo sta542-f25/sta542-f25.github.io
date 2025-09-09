@@ -569,7 +569,7 @@ $$
 \end{aligned}
 $$
 
-## OLS for the AR(1)
+## OLS for the AR(1) {.medium}
 
 . . .
 
@@ -1264,7 +1264,7 @@ $$
 :::
 
 
-## MCMC breaks this!
+## MCMC breaks this! {.medium}
 
 ::: incremental 
 - The inherent recursivity of Bayesian inference is most perfectly realized when you have an exponential family model with conjugate priors. As the data stream, you just update sufficient statistics;
