@@ -6,3 +6,33 @@ auto-stretch: false
 filters:
   - shinylive
 ---
+
+# Recap
+
+
+# Probabilistic prediction
+
+
+# Forecast evaluation
+
+RMSFE
+RMAFE
+INTERVAL WIDTH
+INTERVAL COVERAGE
+INTERVAL SCORE
+LOG PREDICTIVE SCORE
+CONTINUOUS RANKED PROBABILITY SCORE
+SHARPNESS
+CALIBRATION
+PROBABILITY INTEGRAL TRANSFORM
+
+# Summing up 
+
+summarize the main themes from the first five lectures
+
+# One main idea we haven't touched yet
+
+Model selection/combination
+
+# Next week...AR(p)
+
