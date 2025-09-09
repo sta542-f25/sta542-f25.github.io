@@ -10,13 +10,13 @@ simulate_ar_1 <- function(T, b0, b1, s, m0, s0) {
 
 # --- Parameters ---
 set.seed(8675)   
-T     <- 10000    
+T     <- 5000    
 b0    <- 0    
-b1    <- 1.001    # 0.5, 0.99, 1, 1.001
+b1    <- 0.5    # 0.5, 0.99, 1, 1.001
 s     <- 1      
 m0    <- 0      
 s0    <- 0      
-R     <- 1000   
+R     <- 5000   
 
 # --- Storage ---
 estimates <- matrix(NA, nrow = R, ncol = 2) # columns: intercept, slope
@@ -44,3 +44,11 @@ hist(slope_estimates,
      border = "white",
      freq = FALSE)
 abline(v = b1, col = "red", lwd = 2)
+legend("topright",
+       legend = c(
+         bquote(beta[0] == .(b0)),
+         bquote(beta[1] == .(b1)),
+         bquote(sigma == .(s)),
+         bquote(T == .(T))
+       ),
+       bty = "n")
