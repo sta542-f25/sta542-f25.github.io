@@ -16,37 +16,33 @@ editor:
 7. forecasting
 8.  real data analysis
 
-## Problem X
+## Problem 1
+
+{{< include bank/review/students-t.qmd >}}
+
+## Problem 2
 
 {{< include bank/autoregression/covariance-kernel.qmd >}}
 
-## Problem X
+## Problem 3
 
 {{< include bank/autoregression/new-process.qmd >}}
 
-## Problem X
-
-{{< include bank/autoregression/dependent-lln.qmd >}}
-
-## Problem X
+## Problem 4
 
 Something with OLS
 
-## Problem X
+## Problem 5
 
 {{< include bank/autoregression/prior-predictive.qmd >}}
 
-## Problem X
+## Problem 6
 
 {{< include bank/autoregression/streaming-conjugate-bayes.qmd >}}
 
-## Problem X
+## Problem 7
 
 {{< include bank/autoregression/forecasting-fred.qmd >}}
-
-## Problem X
-
-ar(p)
 
 ## Submission
 
