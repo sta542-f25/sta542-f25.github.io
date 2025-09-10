@@ -428,7 +428,7 @@ $$
 We know
 
 $$
-\frac{\bar{y}_{n}-y_{n+1}}{\sigma\sqrt{1+\frac{1}{n}}}\sim\N(0\com, 1),
+\frac{\bar{y}_{n}-y_{n+1}}{\sigma\sqrt{1+\frac{1}{n}}}\sim\N(0\com 1),
 $$
 
 . . .
