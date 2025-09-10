@@ -1127,6 +1127,8 @@ hist(PIT, breaks = "Scott", freq = FALSE, col = "lightblue", border = "white")
 abline(h = 1)
 ```
 
+Way too many surprises in the right tail (recall waterfall).
+
 ## Bayesian AR(1) on stock price data
 
 ```{r}
