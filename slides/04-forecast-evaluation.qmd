@@ -1238,7 +1238,7 @@ hist(pred_params_ar1_real[,"scale"], breaks = "Scott", freq = FALSE,
 
 ```
 
-## Log predictive score
+## Log predictive score {.medium}
 
 Evaluates if the forecast distribution placed high mass/density on the region where $y_t$ actually showed up: 
 
