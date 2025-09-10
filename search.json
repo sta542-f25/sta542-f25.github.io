@@ -838,6 +838,300 @@
     ]
   },
   {
+    "objectID": "slides/04-forecast-evaluation.html#point-forecast",
+    "href": "slides/04-forecast-evaluation.html#point-forecast",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Point forecast",
+    "text": "Point forecast\nYour single-number best guess at tomorrow’s observation:"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#forecast-interval",
+    "href": "slides/04-forecast-evaluation.html#forecast-interval",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Forecast interval",
+    "text": "Forecast interval\nA range of likely values for tomorrow’s observation:"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#forecast-density",
+    "href": "slides/04-forecast-evaluation.html#forecast-density",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Forecast density",
+    "text": "Forecast density\nFull distribution capturing uncertainty about tomorrow:"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#and-then-tomorrow-finally-comes",
+    "href": "slides/04-forecast-evaluation.html#and-then-tomorrow-finally-comes",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "And then tomorrow finally comes",
+    "text": "And then tomorrow finally comes\nSo…how’d we do?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#whats-the-point",
+    "href": "slides/04-forecast-evaluation.html#whats-the-point",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "What’s the point?",
+    "text": "What’s the point?\n\nWe want intervals and densities to communicate uncertainty about the forecast;\n\nWhat sources of uncertainty?\n\nBasic data uncertainty;\nParameter estimation uncertainty;\nHyperparameter uncertainty;\nModel uncertainty;\nUncertainty introduced by missing data.\n\n\nIn the small world of the AR(1), mainly the first two for now."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#how-do-you-get-full-predictive-distributions",
+    "href": "slides/04-forecast-evaluation.html#how-do-you-get-full-predictive-distributions",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "How do you get full predictive distributions?",
+    "text": "How do you get full predictive distributions?\n\nIn general, use simulation:\n\nClassical approach: bootstrapping;\nBayesian approach: posterior predictive simulation.\n\n\n\nEither way, you get Monte Carlo draws from a forecast distribution:\n\\[\n\\tilde{y}_{t+h}^{(1)}\\com \\tilde{y}_{t+h}^{(2)}\\com ...\\com \\tilde{y}_{t+h}^{(k)}\n\\sim \\hat{F}_{t+h|t}.\n\\]\n\n\nWhat do you do with them?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#probabilistic-forecasting-via-monte-carlo",
+    "href": "slides/04-forecast-evaluation.html#probabilistic-forecasting-via-monte-carlo",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Probabilistic forecasting via Monte Carlo",
+    "text": "Probabilistic forecasting via Monte Carlo\nUse the simulations \\(\\tilde{y}_{t+h}^{(1:k)}=\\left\\{\\tilde{y}_{t+h}^{(1)}\\com \\tilde{y}_{t+h}^{(2)}\\com ...\\com \\tilde{y}_{t+h}^{(k)}\\right\\}\\) to construct whatever forecast object you want:\n\n\\[\n\\hat{y}_{t+h|t}=\\frac{1}{k}\\sum\\limits_{j=1}^k\\tilde{y}_{t+h}^{(j)}. \\quad (\\text{...or median})\n\\]\n\n\nForecast interval:\n\\[\n\\hat{I}_{t+h|t} = \\left[\\hat{Q}_{\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\com \\hat{Q}_{1-\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\right]. \\quad (...\\text{or hdi})\n\\]\n\n\nForecast distribution:\n\\[\n\\hat{f}_{t+h|t}\n=\n\\text{histogram}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right). \\quad (...\\text{or kde})\n\\]"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#well-behaved-case-iid-normal",
+    "href": "slides/04-forecast-evaluation.html#well-behaved-case-iid-normal",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Well-behaved case: iid normal",
+    "text": "Well-behaved case: iid normal\n\nAssume\n\n\n\\[\ny_1\\com y_2\\com ...\\com y_n\\com y_{n+1}\\iid\\N(\\mu\\com\\sigma^2).\n\\]\n\n\nWe know\n\\[\n\\frac{\\bar{y}_{n}-y_{n+1}}{\\sigma\\sqrt{1+\\frac{1}{n}}}\\sim\\N(0\\com, 1),\n\\]\n\n\nand so plugging in sample standard deviation \\(s_n\\) gives\n\\[\n\\frac{\\bar{y}_{n}-y_{n+1}}{s_n\\sqrt{1+\\frac{1}{n}}}\\sim t_{n-1}.\n\\]\n\n\nThe predictive distribution is non-standard Student’s \\(t\\):\n\\[\n\\hat{y}_{n+1}\\sim t\\left(n-1\\com \\bar{y}_n\\com s_n^2\\left(1+\\frac{1}{n}\\right)\\right).\n\\]"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#well-behaved-case-bayes-with-conjugate-prior",
+    "href": "slides/04-forecast-evaluation.html#well-behaved-case-bayes-with-conjugate-prior",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Well-behaved case: Bayes with conjugate prior",
+    "text": "Well-behaved case: Bayes with conjugate prior\nA conjugate normal-inverse-gamma prior begets a conjugate posterior:\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:t}\n&\\sim\n\\text{IG}(a_t\\com b_t)\n\\\\\n\\Bbeta\\given \\sigma^2\\com y_{0:t}\n&\\sim\n\\text{N}_2(\\Bm_t\\com\\sigma^2\\BH^{-1}_t)\n\\\\\ny_{t+1}\\given\\Bbeta\\com \\sigma^2\\com y_{0:t}\n&\\sim \\N(\\Bx_{t+1}^\\tr\\Bbeta\\com\\sigma^2).\n\\end{aligned}\n\\]\n\nThe one-step posterior predictive distribution is non-standard Student’s \\(t\\):\n\\[\n\\begin{aligned}\ny_{t+1}\\given y_{0:t}\n&\\sim\nt(\\nu_{t+1|t}\\com\\bar{y}_{t+1|t}\\com s_{t+1|t}^2)\n\\\\\n\\\\\n\\nu_{t+1|t}\n&=\n2a_t\n\\\\\n\\bar{y}_{t+1|t}\n&=\n\\Bx_{t+1}^\\tr\\Bm_t\n\\\\\ns_{t+1|t}^2\n&=\n\\frac{b_t}{a_t}\n(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\n.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#how-do-you-evaluate-the-forecasts",
+    "href": "slides/04-forecast-evaluation.html#how-do-you-evaluate-the-forecasts",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "How do you evaluate the forecasts?",
+    "text": "How do you evaluate the forecasts?\nYou generate a sequence of one-step-ahead predictions:\n\\[\n\\begin{matrix}\n\\hat{y}_{1|0} & \\hat{y}_{2|1} & \\hat{y}_{3|2} & \\hat{y}_{4|3} & \\hat{y}_{5|4} & \\cdots&\\hat{y}_{t|t-1} & \\cdots\\\\\n\\hat{I}_{1|0} & \\hat{I}_{2|1} & \\hat{I}_{3|2} & \\hat{I}_{4|3} & \\hat{I}_{5|4} & \\cdots&\\hat{I}_{t|t-1} & \\cdots\\\\\n\\hat{f}_{1|0} & \\hat{f}_{2|1} & \\hat{f}_{3|2} & \\hat{f}_{4|3} & \\hat{f}_{5|4} & \\cdots&\\hat{f}_{t|t-1} & \\cdots\n\\end{matrix}\n\\]\n\nBut then the data you were trying to forecast eventually arrive:\n\\[\n\\begin{matrix}\ny_1 & y_2 & y_3 & y_4 & y_5 & \\cdots &y_t & \\cdots\n\\end{matrix}\n\\]\nHow do we score the forecasts and summarize?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#todays-agenda",
+    "href": "slides/04-forecast-evaluation.html#todays-agenda",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Today’s agenda",
+    "text": "Today’s agenda\n\nWe will learn how to evaluate probabilistic predictions;\nWe will illustrate by comparing the performance of the two well-behaved methods:\n\nA. classical predictive distribution from iid normal model;\nB. posterior predictive distribution from Gaussian AR(1) with conjugate prior."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#there-will-be-two-running-examples",
+    "href": "slides/04-forecast-evaluation.html#there-will-be-two-running-examples",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "There will be two running examples",
+    "text": "There will be two running examples\n\n\nSimulated data from AR(1)\n\nMethod A (iid normal) is wrong by construction;\nMethod B is right by construction;\n\n\n\nApple’s daily stock price from 2000 - this week\n\nboth methods are “wrong,” but is one strictly preferred?\n\n\n\n\nOur forecast metrics will tease all of that out."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#dataset-1-simulated",
+    "href": "slides/04-forecast-evaluation.html#dataset-1-simulated",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Dataset 1: simulated",
+    "text": "Dataset 1: simulated"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#forecast-distributions-from-iid-normal-model",
+    "href": "slides/04-forecast-evaluation.html#forecast-distributions-from-iid-normal-model",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Forecast distributions from iid normal model",
+    "text": "Forecast distributions from iid normal model"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#forecast-distributions-from-bayesian-ar1",
+    "href": "slides/04-forecast-evaluation.html#forecast-distributions-from-bayesian-ar1",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Forecast distributions from Bayesian AR(1)",
+    "text": "Forecast distributions from Bayesian AR(1)"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#dataset-2-apple-stock-price",
+    "href": "slides/04-forecast-evaluation.html#dataset-2-apple-stock-price",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Dataset 2: Apple stock price",
+    "text": "Dataset 2: Apple stock price\n\nlibrary(quantmod)\ngetSymbols(\"AAPL\", from = \"2000-01-01\", to = \"2025-09-08\", src = \"yahoo\")\n\n[1] \"AAPL\""
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#forecast-distributions-from-iid-normal-model-1",
+    "href": "slides/04-forecast-evaluation.html#forecast-distributions-from-iid-normal-model-1",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Forecast distributions from iid normal model",
+    "text": "Forecast distributions from iid normal model"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#forecast-distributions-from-bayesian-ar1-1",
+    "href": "slides/04-forecast-evaluation.html#forecast-distributions-from-bayesian-ar1-1",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Forecast distributions from Bayesian AR(1)",
+    "text": "Forecast distributions from Bayesian AR(1)"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#any-ideas",
+    "href": "slides/04-forecast-evaluation.html#any-ideas",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Any ideas?",
+    "text": "Any ideas?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#point-prediction",
+    "href": "slides/04-forecast-evaluation.html#point-prediction",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Point prediction",
+    "text": "Point prediction\nWe want the point prediction that minimizes expected loss:\n\n\\[\n\\hat{y}_{t+1|t}\n\\;=\\;\n\\argmin{\\hat{y}\\in\\mathbb{R}}\n\\; E\\big[\\, L\\big(y_{t+1},\\,\\hat{y}\\big) \\,\\big|\\, y_{0:t} \\big].\n\\]\n\n\nThe expectation is taken with respect to the “true” or “idealized” conditional distribution \\(p(y_{t+1}\\given y_{0:t})\\), which we don’t know.\n\n\nWe approximate it with whatever forecast distribution we’ve generated."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#picking-a-loss-function",
+    "href": "slides/04-forecast-evaluation.html#picking-a-loss-function",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Picking a loss function",
+    "text": "Picking a loss function\n\nWe have nice results for some loss functions:\n\n\n\\[\n\\begin{array}{rcl}\nL(y_{t+1},\\hat{y}) = (y_{t+1} - \\hat{y})^2\n& \\implies &\n\\hat{y}_{t+1|t} = E[\\,y_{t+1}\\mid y_{0:t}\\,] \\\\[1.2em]\nL(y_{t+1},\\hat{y}) = |y_{t+1} - \\hat{y}|\n& \\implies &\n\\hat{y}_{t+1|t} = \\operatorname{median}(y_{t+1}\\mid y_{0:t}).\n\\end{array}\n\\]\n\n\nAnd there are many more where that came from."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#in-practice",
+    "href": "slides/04-forecast-evaluation.html#in-practice",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "In practice",
+    "text": "In practice\nMetrics for scoring the average quality of the point predictions over time:\n\\[\n\\begin{aligned}\n\\text{MSFE}\n&=\n\\frac{1}{T}\n\\sum\\limits_{t=1}^T\n(y_t-\\hat{y}_{t|t-1})^2\n\\\\\n\\text{MAFE}\n&=\n\\frac{1}{T}\n\\sum\\limits_{t=1}^T\n|y_t-\\hat{y}_{t|t-1}|.\n\\end{aligned}\n\\]\nWe want these to be small.\n\n\n\n\n\n\n\nMake sure your loss function and your point prediction play nice\n\n\n\nIf you’re looking at MAFE, use forecast median;\nIf you’re looking at MSFE, use the forecast mean."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#our-simulated-data",
+    "href": "slides/04-forecast-evaluation.html#our-simulated-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Our simulated data",
+    "text": "Our simulated data\nMSE of forecast mean:\n\nmean((y - pred_params_iid_sim[,\"location\"])^2, na.rm = TRUE)\n\n[1] 162.4966\n\nmean((y - pred_params_ar1_sim[,\"location\"])^2, na.rm = TRUE)\n\n[1] 4.162699\n\n\n\nMAE of forecast median (same as mean for these methods):\n\nmean(abs(y - pred_params_iid_sim[,\"location\"]), na.rm = TRUE)\n\n[1] 10.03766\n\nmean(abs(y - pred_params_ar1_sim[,\"location\"]), na.rm = TRUE)\n\n[1] 1.637622"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#our-real-data",
+    "href": "slides/04-forecast-evaluation.html#our-real-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Our real data",
+    "text": "Our real data\nMSE of forecast mean:\n\nmean((stonks - pred_params_iid_real[,\"location\"])^2, na.rm = TRUE)\n\n[1] 4346.895\n\nmean((stonks - pred_params_ar1_real[,\"location\"])^2, na.rm = TRUE)\n\n[1] 2.111325\n\n\n\nMAE of forecast median (same as mean for these methods):\n\nmean(abs(stonks - pred_params_iid_real[,\"location\"]), na.rm = TRUE)\n\n[1] 37.60877\n\nmean(abs(stonks - pred_params_ar1_real[,\"location\"]), na.rm = TRUE)\n\n[1] 0.612237"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#any-ideas-1",
+    "href": "slides/04-forecast-evaluation.html#any-ideas-1",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Any ideas?",
+    "text": "Any ideas?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#interval-width-and-coverage",
+    "href": "slides/04-forecast-evaluation.html#interval-width-and-coverage",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Interval width and coverage",
+    "text": "Interval width and coverage\n\nYou want intervals that are small enough to be informative, but large enough to swallow the truth often, and there’s a trade-off.\n\n\\(\\hat{I}=(-\\infty\\com \\infty)\\) has perfect coverage but teaches you nothing;\nLook at average size and empirical coverage:\n\n\n\\[\n\\begin{aligned}\n\\overline{\\text{Size}}\n&= \\frac{1}{T} \\sum_{t=1}^{T} \\Big( \\hat{I}_{t\\mid t-1}^{\\text{upper}} - \\hat{I}_{t\\mid t-1}^{\\text{lower}} \\Big), \\\\[0.8em]\n\\overline{\\text{Coverage}}\n&= \\frac{1}{T} \\sum_{t=1}^{T} \\mathbf{1}\\Big\\{ y_t \\in \\hat{I}_{t\\mid t-1} \\Big\\}.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#interval-performance-on-simulated-data",
+    "href": "slides/04-forecast-evaluation.html#interval-performance-on-simulated-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Interval performance on simulated data",
+    "text": "Interval performance on simulated data\n\nSize of 90% intervals:\n\nmean(PI_iid_sim[,1], na.rm = TRUE)   \n\n[1] 37.61362\n\nmean(PI_ar1_sim[,1], na.rm = TRUE)   \n\n[1] 6.660308\n\n\n\n\nCoverage of 90% intervals:\n\nmean(PI_iid_sim[,2], na.rm = TRUE)   \n\n[1] 0.8537415\n\nmean(PI_ar1_sim[,2], na.rm = TRUE)   \n\n[1] 0.8991798"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#interval-performance-on-stock-price-data",
+    "href": "slides/04-forecast-evaluation.html#interval-performance-on-stock-price-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Interval performance on stock price data",
+    "text": "Interval performance on stock price data\n\nSize of 90% intervals:\n\nmean(PI_iid_real[,1], na.rm = TRUE)   \n\n[1] 41.01969\n\nmean(PI_ar1_real[,1], na.rm = TRUE)   \n\n[1] 1.03624\n\n\n\n\nCoverage of 90% intervals:\n\nmean(PI_iid_real[,2], na.rm = TRUE)   \n\n[1] 0.2190211\n\nmean(PI_ar1_real[,2], na.rm = TRUE)   \n\n[1] 0.7071395"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#interval-score",
+    "href": "slides/04-forecast-evaluation.html#interval-score",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Interval score",
+    "text": "Interval score\nAverage over time for an holistic metric of interval performance:\n\\[\n\\mathrm{IS}_\\alpha(l,u; y)\n=\n(u - l)\n+\n\\frac{2}{\\alpha}\\,(l - y)\\,\\mathbf{1}(y &lt; l)\n+\n\\frac{2}{\\alpha}\\,(y - u)\\,\\mathbf{1}(y &gt; u).\n\\]\nSynthesizes both size and coverage, but in practice, if you want to understand why the score was good or bad, you have to crack it open and look at the size and coverage components separately anyway."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#any-ideas-2",
+    "href": "slides/04-forecast-evaluation.html#any-ideas-2",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Any ideas?",
+    "text": "Any ideas?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#probability-integral-transform-pit",
+    "href": "slides/04-forecast-evaluation.html#probability-integral-transform-pit",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Probability integral transform (PIT)",
+    "text": "Probability integral transform (PIT)\nLet \\(G_t\\) be the “true” cdf that nature is drawing from to produce \\(y_t\\). By the probability integral transform, we know that:\n\n\\[\nG_1(y_1)\\com G_2(y_2)\\com ...\\com G_t(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nIt would be ideal if \\(\\hat{F}_{t|t-1}=G_t\\). We’re probably not so lucky, but if we’re close, then we should see:\n\n\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nLet’s check!"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#iid-normal-method-on-simulated-data",
+    "href": "slides/04-forecast-evaluation.html#iid-normal-method-on-simulated-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "iid normal method on simulated data",
+    "text": "iid normal method on simulated data"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#bayesian-ar1-on-simulated-data",
+    "href": "slides/04-forecast-evaluation.html#bayesian-ar1-on-simulated-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Bayesian AR(1) on simulated data",
+    "text": "Bayesian AR(1) on simulated data"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#iid-normal-method-on-stock-price-data",
+    "href": "slides/04-forecast-evaluation.html#iid-normal-method-on-stock-price-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "iid normal method on stock price data",
+    "text": "iid normal method on stock price data"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#bayesian-ar1-on-stock-price-data",
+    "href": "slides/04-forecast-evaluation.html#bayesian-ar1-on-stock-price-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Bayesian AR(1) on stock price data",
+    "text": "Bayesian AR(1) on stock price data"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#diagnosing-underover-dispersion",
+    "href": "slides/04-forecast-evaluation.html#diagnosing-underover-dispersion",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Diagnosing under/over-dispersion",
+    "text": "Diagnosing under/over-dispersion"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#summary-calibration",
+    "href": "slides/04-forecast-evaluation.html#summary-calibration",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Summary: calibration",
+    "text": "Summary: calibration\nIf your sequence of forecast distributions is well-calibrated, then the PITs should be approximately uniformly distributed:\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\nCheck it with a histogram, QQ-plot, goodness-of-fit test…\n\n\n\n\n\n\n\n\nThis is necessary but not sufficient!\n\n\nCalibration alone is not enough to distinguish good/better/best forecasts."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#maximize-sharpness-subject-to-calibration",
+    "href": "slides/04-forecast-evaluation.html#maximize-sharpness-subject-to-calibration",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Maximize sharpness subject to calibration",
+    "text": "Maximize sharpness subject to calibration\n\nYou want a forecasting method to be calibrated;\nIf you have many methods to choose from, all of which appear calibrated, select the one that is the sharpest;\n\nSharpness refers to how concentrated the forecast distributions are. Among calibrated distributions, you want the one that is sharpest, most decisive, most concentrated;\nSharpness can be measured by your preferred measure of spread: variance, IQR, etc."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#sharpness-for-the-simulated-data",
+    "href": "slides/04-forecast-evaluation.html#sharpness-for-the-simulated-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Sharpness for the simulated data",
+    "text": "Sharpness for the simulated data\nCompare the scale parameters of the predictive distributions:"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#sharpness-for-the-stock-price-data",
+    "href": "slides/04-forecast-evaluation.html#sharpness-for-the-stock-price-data",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Sharpness for the stock price data",
+    "text": "Sharpness for the stock price data"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#log-predictive-score",
+    "href": "slides/04-forecast-evaluation.html#log-predictive-score",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Log predictive score",
+    "text": "Log predictive score\nEvaluates if the forecast distribution placed high mass/density on the region where \\(y_t\\) actually showed up:\n\\[\n\\overline{\\text{LPS}} = \\frac{1}{T} \\sum_{t=1}^{T} \\ln \\hat{f}_{t|t-1}(y_t).\n\\]\n\nBigger is better;\nRewards both calibration and sharpness;\n\nProper scoring rule: encourages honest probabilistic predictions;\nLocal measure of quality. We will see global measures like the continuous ranked probability score (CRPS) later."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#for-our-examples",
+    "href": "slides/04-forecast-evaluation.html#for-our-examples",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "For our examples",
+    "text": "For our examples\n\nSimulated data:\n\naverage_log_score(y, pred_params_iid_sim)\n\n[1] -3.965963\n\naverage_log_score(y, pred_params_ar1_sim)\n\n[1] -2.132817\n\n\n\n\nReal data:\n\naverage_log_score(stonks, pred_params_iid_real)\n\n[1] -5.609798\n\naverage_log_score(stonks, pred_params_ar1_real)\n\n[1] -1.79456"
+  },
+  {
     "objectID": "slides/00-welcome.html#teaching-team",
     "href": "slides/00-welcome.html#teaching-team",
     "title": "Welcome to STA 542!",
