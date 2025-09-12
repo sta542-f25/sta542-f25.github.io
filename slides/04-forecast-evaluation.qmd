@@ -1276,5 +1276,5 @@ average_log_score(stonks, pred_params_iid_real)
 average_log_score(stonks, pred_params_ar1_real)
 ```
 
-# Next week...AR(p)
+# Next week...AR(p)!
 
