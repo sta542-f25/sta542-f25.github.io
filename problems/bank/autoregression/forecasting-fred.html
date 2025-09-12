@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="STA 542 Fall 2025">
 <meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
@@ -144,8 +173,26 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>For as long as the Federal Reserve remains independent and United States government statistics remain reliable</p>
-<p>fred API, base R or hyndman shit or something for forecasting</p>
+<p><a href="https://fred.stlouisfed.org">FRED</a> is a fabulous source of economic time series data, and this problem encourages you to play around with it. Please do the following:</p>
+<ul>
+<li>Surf around FRED for a while until you find a time series that interests you, then use the <a href="https://cran.r-project.org/web/packages/fredr/index.html"><code>fredr</code></a> package to pull the data into <code>R</code>;</li>
+<li>Using your online recursion from the previous problem, write a loop that sequentially fits a Bayesian AR(1) with conjugate prior to the time series you chose;</li>
+<li>In each step of the loop, compute the PIT value comparing the one-step posterior predictive distribution <span class="math inline">\(p(y_t\,|\,y_{0:t-1})\)</span> to the actual, realized value <span class="math inline">\(y_t\)</span>;</li>
+<li>At the end of the loop, plot a histogram of the PITs. Are the forecasts well-calibrated? If not, what diagnostic information does the histogram convey?</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>extraDistr</code> package provides <a href="https://search.r-project.org/CRAN/refmans/extraDistr/html/LocationScaleT.html">tools</a> for the non-standard Student’s <span class="math inline">\(t\)</span> distribution.</p>
+</div>
+</div>
 
 
 
