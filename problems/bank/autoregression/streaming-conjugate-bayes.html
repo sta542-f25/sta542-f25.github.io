@@ -258,7 +258,7 @@ b_0
 \]</span></p>
 <ol type="a">
 <li>Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters <em>without inverting any matrices</em>;</li>
-<li><code>c(sunspots)</code> is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a <code>for</code> loop in <code>R</code> that uses your recursion to fit an AR(1) to these data one observation at a time. Verify that at the end of the loop, you get the same estimates that you would have gotten if you had applied the batch update to the entire data set all at once.</li>
+<li><code>c(sunspots)</code> is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a <code>for</code> loop in <code>R</code> that uses your recursion to fit an AR(1) to these data one observation at a time. Verify at the end of the loop that you get the same posterior hyperparameters that you would have gotten if you had applied the batch update to the entire data set all at once.</li>
 </ol>
 
 

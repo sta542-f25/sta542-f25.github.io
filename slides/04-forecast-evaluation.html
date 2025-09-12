@@ -333,31 +333,9 @@ John Zito
 </section><section id="point-forecast" class="slide level2"><h2>Point forecast</h2>
 <p>Your single-number best guess at tomorrow’s observation:</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'LaplacesDemon'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:lubridate':
-
-    dst, interval</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:purrr':
-
-    partial</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:extraDistr':
-
-    dbern, dcat, ddirichlet, dgpd, dgpois, dinvchisq, dinvgamma,
-    dlaplace, dpareto, pbern, plaplace, ppareto, qbern, qcat, qlaplace,
-    qpareto, rbern, rcat, rdirichlet, rgpd, rinvchisq, rinvgamma,
-    rlaplace, rpareto</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -367,7 +345,7 @@ Attaching package: 'LaplacesDemon'</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -377,7 +355,7 @@ Attaching package: 'LaplacesDemon'</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -387,7 +365,7 @@ Attaching package: 'LaplacesDemon'</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -565,7 +543,7 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -574,7 +552,7 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -583,15 +561,15 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </section><section id="dataset-2-apple-stock-price" class="slide level2 small"><h2>Dataset 2: Apple stock price</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(quantmod)</span>
-<span id="cb5-2"><a></a><span class="fu">getSymbols</span>(<span class="st">"AAPL"</span>, <span class="at">from =</span> <span class="st">"2000-01-01"</span>, <span class="at">to =</span> <span class="st">"2025-09-08"</span>, <span class="at">src =</span> <span class="st">"yahoo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb1-2"><a></a><span class="fu">getSymbols</span>(<span class="st">"AAPL"</span>, <span class="at">from =</span> <span class="st">"2000-01-01"</span>, <span class="at">to =</span> <span class="st">"2025-09-08"</span>, <span class="at">src =</span> <span class="st">"yahoo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "AAPL"</code></pre>
 </div>
@@ -599,7 +577,7 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -608,7 +586,7 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-11-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -617,7 +595,7 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-12-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -628,7 +606,7 @@ y_1 &amp; y_2 &amp; y_3 &amp; y_4 &amp; y_5 &amp; \cdots &amp;y_t &amp; \cdots
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -707,11 +685,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 </section><section id="our-simulated-data" class="slide level2 medium"><h2>Our simulated data</h2>
 <p>MSE of forecast mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>((y <span class="sc">-</span> pred_params_iid_sim[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">mean</span>((y <span class="sc">-</span> pred_params_iid_sim[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 162.4966</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">mean</span>((y <span class="sc">-</span> pred_params_ar1_sim[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">mean</span>((y <span class="sc">-</span> pred_params_ar1_sim[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.162699</code></pre>
 </div>
@@ -719,11 +697,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="fragment">
 <p>MAE of forecast median (same as mean for these methods):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(y <span class="sc">-</span> pred_params_iid_sim[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(y <span class="sc">-</span> pred_params_iid_sim[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.03766</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(y <span class="sc">-</span> pred_params_ar1_sim[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(y <span class="sc">-</span> pred_params_ar1_sim[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.637622</code></pre>
 </div>
@@ -732,11 +710,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 </section><section id="our-real-data" class="slide level2 medium"><h2>Our real data</h2>
 <p>MSE of forecast mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">mean</span>((stonks <span class="sc">-</span> pred_params_iid_real[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">mean</span>((stonks <span class="sc">-</span> pred_params_iid_real[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4346.895</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">mean</span>((stonks <span class="sc">-</span> pred_params_ar1_real[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">mean</span>((stonks <span class="sc">-</span> pred_params_ar1_real[,<span class="st">"location"</span>])<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.111325</code></pre>
 </div>
@@ -744,11 +722,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="fragment">
 <p>MAE of forecast median (same as mean for these methods):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(stonks <span class="sc">-</span> pred_params_iid_real[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(stonks <span class="sc">-</span> pred_params_iid_real[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 37.60877</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(stonks <span class="sc">-</span> pred_params_ar1_real[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">mean</span>(<span class="fu">abs</span>(stonks <span class="sc">-</span> pred_params_ar1_real[,<span class="st">"location"</span>]), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.612237</code></pre>
 </div>
@@ -760,7 +738,7 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-18-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -786,11 +764,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="fragment">
 <p>Size of 90% intervals:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">mean</span>(PI_iid_sim[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">mean</span>(PI_iid_sim[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 37.61362</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">mean</span>(PI_ar1_sim[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">mean</span>(PI_ar1_sim[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.660308</code></pre>
 </div>
@@ -799,11 +777,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="fragment">
 <p>Coverage of 90% intervals:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">mean</span>(PI_iid_sim[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">mean</span>(PI_iid_sim[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8537415</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">mean</span>(PI_ar1_sim[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">mean</span>(PI_ar1_sim[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8991798</code></pre>
 </div>
@@ -813,11 +791,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="fragment">
 <p>Size of 90% intervals:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">mean</span>(PI_iid_real[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">mean</span>(PI_iid_real[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 41.01969</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">mean</span>(PI_ar1_real[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">mean</span>(PI_ar1_real[,<span class="dv">1</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.03624</code></pre>
 </div>
@@ -826,11 +804,11 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="fragment">
 <p>Coverage of 90% intervals:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">mean</span>(PI_iid_real[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">mean</span>(PI_iid_real[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2190211</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">mean</span>(PI_ar1_real[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">mean</span>(PI_ar1_real[,<span class="dv">2</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7071395</code></pre>
 </div>
@@ -854,7 +832,7 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-25-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -881,7 +859,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-26-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -890,7 +868,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-27-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -899,7 +877,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-28-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -909,7 +887,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-29-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -918,7 +896,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-30-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -958,7 +936,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-31-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -967,7 +945,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-html/unnamed-chunk-32-1.png" width="672"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -987,11 +965,11 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="fragment">
 <p>Simulated data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_iid_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_iid_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -3.965963</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_ar1_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_ar1_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.132817</code></pre>
 </div>
@@ -1000,11 +978,11 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="fragment">
 <p>Real data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_iid_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_iid_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -5.609798</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_ar1_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_ar1_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.79456</code></pre>
 </div>
@@ -1213,6 +1191,41 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
           RevealZoom
         ]
       });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
