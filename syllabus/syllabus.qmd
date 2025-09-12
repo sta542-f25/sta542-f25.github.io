@@ -19,7 +19,7 @@ A time series is a set of measurements collected over time. We model these data 
 +---------------------------+---------------+---------------+------------------------------+
 | Mug                       | Name          | Role          | Office Hours                 |
 +===========================+===============+===============+==============================+
-| ![](images/al.jpg){.circ} | Li, Aihua     | TA            | Wed 10:30 AM - 12:30 PM\     |
+| ![](images/al.jpg){.circ} | Li, Aihua     | TA            | Thu 10:30 AM - 12:30 PM\     |
 |                           |               |               | remote (Zoom link on Canvas) |
 +---------------------------+---------------+---------------+------------------------------+
 | ![](images/jz.jpg){.circ} | Zito, John    | Instructor    | Tue 1:00 PM - 3:00 PM\       |
