@@ -1,6 +1,12 @@
-For as long as the Federal Reserve remains independent and United States government statistics remain reliable 
+[FRED](https://fred.stlouisfed.org) is a fabulous source of economic time series data, and this problem encourages you to play around with it. Please do the following: 
 
+- Surf around FRED for a while until you find a time series that interests you, then use the [`fredr`](https://cran.r-project.org/web/packages/fredr/index.html) package to pull the data into `R`;
+- Using your online recursion from the previous problem, write a loop that sequentially fits a Bayesian AR(1) with conjugate prior to the time series you chose;
+- In each step of the loop, compute the PIT value comparing the one-step posterior predictive distribution $p(y_t\,|\,y_{0:t-1})$ to the actual, realized value $y_t$;
+- At the end of the loop, plot a histogram of the PITs. Are the forecasts well-calibrated? If not, what diagnostic information does the histogram convey?
 
+::: callout-tip
+## Hint
 
-
-fred API, base R or hyndman shit or something for forecasting
+The `extraDistr` package provides [tools](https://search.r-project.org/CRAN/refmans/extraDistr/html/LocationScaleT.html) for the non-standard Student's $t$ distribution.
+:::

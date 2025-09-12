@@ -26,7 +26,12 @@ $$
 
 Models, parameters, likelihoods, priors, even Bayes' theorem -- these are all just a means to the end of specifying and accessing predictive distributions for observable quantities. So, when you write down a model and a prior on the model's parameters, you should tune the prior on parameters to capture your prior beliefs about how the *data* will look before you see them. In other words, the goal of prior elicitation should be accurately eliciting the prior predictive distribution, not the prior on parameters per se. Let's take this seriously in a toy example.
 
-Imagine you are a data scientist at Feta Platforms Inc, and one day your manager Zohn Jito knocks on your office door. Zohn Jito is an irritating fool who knows nothing about statistics, and he is always making ridiculous requests. On this day, 
+Imagine you are a data scientist at Feta Platforms Inc, and one day your manager Zohn Jito knocks on your office door. Zohn Jito is an irritating fool who knows nothing about statistics, and he is always making ridiculous requests. On this day, he asks you to build a model for the log of daily feta sales, and he describes his beliefs about how the data should look:
 
+> The series should look smoother than white noise, but not as smooth as a random walk. Runs of consecutive positive values are expected, but they should not typically last more than 5 – 6 periods. The series should hover around zero, but occasionally wander away and then return.
 
+You decide to build an AR(1) model with normal-inverse-gamma prior (maybe conjugate, maybe not?). Your tasks:  
 
+- choose a prior and set the hyperparameters so that the prior predictive distribution is consistent with Zohn's description;
+- simulate prior predictive sample paths of length 100 and visually check whether they look the way they should;
+- if not, adjust your prior until they do.

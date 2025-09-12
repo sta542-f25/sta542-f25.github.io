@@ -84,10 +84,4 @@ $$
 $$
 
 a. Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters *without inverting any matrices*;
-a. `c(sunspots)` is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a `for` loop in `R` that recursively fits an AR(25) to these data one observation at a time. The smart way to implement this is to use your recursion from part a. The dumb way to do it is to re-apply the batch formulas from scratch for each new observation. I want you to do both and time them:
-
-    - on each step of the loop, apply the recursion you derived in part a;
-    - on each step of the loop, *also* apply the batch formulas; 
-    - using one of the methods [here](https://www.r-bloggers.com/2017/05/5-ways-to-measure-running-time-of-r-code/), store the runtime of each update;
-    - At the end of the loop, verify that the posterior hyperparameters conditional on the entire sample are the same for both methods;
-    - At the end of the loop, plot the time series of runtimes for each method. What do you notice?
+a. `c(sunspots)` is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a `for` loop in `R` that uses your recursion to fit an AR(1) to these data one observation at a time. Verify that at the end of the loop, you get the same estimates that you would have gotten if you had applied the batch update to the entire data set all at once.
