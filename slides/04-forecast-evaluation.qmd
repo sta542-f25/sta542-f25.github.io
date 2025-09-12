@@ -23,6 +23,7 @@ library(scoringRules)
 library(extraDistr)
 library(tidyverse)
 library(ggridges)
+library(LaplacesDemon)
 
 # ==========================================================
 # helper function
@@ -213,7 +214,6 @@ Your single-number best guess at tomorrow's observation:
 ```{r}
 #| echo: false
 
-library(LaplacesDemon)
 set.seed(8675309)
 my_m = c(-.5, .5)
 my_p = c(0.25, 0.75)
