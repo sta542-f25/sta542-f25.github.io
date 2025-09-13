@@ -893,8 +893,6 @@ $$
 $$
 :::
 
-. . .
-
 ::: incremental
 - The result on the previous slide is way more general, and the linear combination is still normal even if the $X_i$ are *dependent*, but the formula for the variance is less nice;
 - The mean formula is right even if the $x_i$ are dependent and non-Gaussian;
