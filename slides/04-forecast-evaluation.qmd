@@ -919,7 +919,7 @@ mtext(expression(hat(y)["t+1 | t"]), side = 1, at = mix.med, line = 2, cex = 3)
 mtext(expression(y["t+1"]), side = 1, at = my_y, line = 2, cex = 3, col = "red")
 ```
 
-## Interval width and coverage
+## Interval width and coverage {.medium}
 
 ::: incremental
 - You want intervals that are small enough to be informative, but large enough to swallow the truth often, and there's a trade-off. 
@@ -1046,7 +1046,83 @@ mtext(expression(y["t+1"]), side = 1, at = my_y, line = 2, cex = 3, col = "red")
 ```
 
 
-## Probability integral transform (PIT) {.medium}
+## Recap: probability integral transform
+
+```{r}
+#| echo: false
+# widen left margin for labels
+par(mar=c(3,6,1,0))
+
+# empty plot
+plot(NA, xlim=c(-3,3), ylim=c(0,1), xlab="", ylab="", axes=FALSE)
+
+# solid horizontal segments at 0 and 1
+segments(-3, 0, 3, 0, lty=1)
+segments(-3, 1, 3, 1, lty=1)
+
+# "0" and "1" in the left-hand margin with mtext
+mtext("0", side=2, at=0, line=1, las=1)
+mtext("1", side=2, at=1, line=1, las=1)
+
+# cdf curve (normal), red
+curve(pnorm(x), from=-3, to=3, add=TRUE, lwd=2, col="red")
+
+# label the curve with text
+text(1.8, 0.8, "F", pos=4, col="red")
+
+# pick a point Y0
+Y0 <- 0.5
+F0 <- pnorm(Y0)
+
+# dashed lines + solid arrowheads
+
+arrows(Y0, 0, Y0, F0, length=0.1, angle=20, code=2, col = "grey")
+
+
+arrows(Y0, F0, -3, F0, length=0.1, angle=20, code=2, col = "grey")
+points(Y0, F0, col = "red", pch = 19)
+
+# labels at the projection points
+mtext("Y", side=1, at=Y0, line=1)
+mtext(expression(U==F(Y)), side=2, at=F0, line=2, las=1)
+
+```
+
+## Probability integral transform (PIT) {.small}
+
+Let $Y\sim F$ be continuous. If you define a new random variable $U=F(Y)$ by plugging $Y$ into *its own* cdf, then you get 
+
+. . .
+
+$$
+U\sim \text{Unif}(0\com 1).
+$$
+
+. . .
+
+Fix $u\in(0\com 1)$. Then 
+
+. . .
+
+$$
+P(U\leq u)=P(F(Y)\leq u)=P(Y\leq F^{-1}(u))=F(F^{-1}(u))=u.
+$$
+
+. . .
+
+That's the cdf of Unif(0, 1).
+
+## Probability integral transform (PIT)
+
+```{r}
+x <- rnorm(10000)
+u <- pnorm(x)
+hist(u, breaks = "Scott", freq = FALSE)
+abline(h = 1, col = "red")
+```
+
+
+## Applying PIT to forecasting {.medium}
 
 Let $G_t$ be the "true" cdf that nature is drawing from to produce $y_t$. By the probability integral transform, we know that:
 
@@ -1171,6 +1247,77 @@ hist(x2, breaks = 30, col = "salmon", main = "Fcasts underdispersed",
 
 ```
 
+## What do the PIT values tell you?
+
+```{r}
+#| echo: false
+# Set up 2x3 panel layout and margins
+par(mfrow = c(2, 3), mar = c(3, 6, 2, 1))  # room on left for 0/1 labels
+
+x <- seq(-4, 4, length.out = 300)
+mu <- 0; sigma <- 1
+
+# points to illustrate PIT mapping
+y_values <- c(-1.7, 0, 1.7)  # left tail, center, right tail
+
+
+# Top row: CDFs
+for (i in 1:3) {
+  y0 <- y_values[i]
+  F0 <- pnorm(y0, mu, sigma)
+  
+  # empty plot for CDF
+  plot(NA, xlim=c(-4,4), ylim=c(0,1), axes=FALSE, xlab="", ylab="")
+  
+  # horizontal lines at 0 and 1
+  segments(-4, 0, 4, 0, lty=1)
+  segments(-4, 1, 4, 1, lty=1)
+  
+  # mtext for 0 and 1
+  mtext("0", side=2, at=0, line=1, las=1)
+  mtext("1", side=2, at=1, line=1, las=1)
+  
+  # CDF curve
+  curve(pnorm(x, mu, sigma), from=-4, to=4, add=TRUE, col="red", lwd=2)
+  
+  # grey arrows from y0 to curve and left to axis
+  segments(y0, 0, y0, F0, col="grey50", lwd=2)       # vertical up from x-axis
+  segments(y0, F0, -4, F0, col="grey50", lwd=2)      # horizontal to y-axis
+}
+  
+# Bottom row: PDFs
+for (i in 1:3) {
+  y0 <- y_values[i]
+  
+  # empty plot for PDF
+  plot(NA, xlim=c(-4,4), ylim=c(0, 0.45), axes=FALSE, xlab="", ylab="")
+  
+  # horizontal x-axis line
+  segments(-4, 0, 4, 0, lty=1)
+  
+  # PDF curve
+  curve(dnorm(x, mu, sigma), from=-4, to=4, add=TRUE, col="blue", lwd=2)
+  
+  # simplified vertical grey line (goes straight up)
+  segments(y0, 0, y0, 0.45, col="grey50", lwd=2)
+  
+  # label y on x-axis
+  mtext("y", side=1, at=y0, line=1)
+}
+
+```
+
+## What do the PIT values tell you? {.medium}
+
+::: incremental
+- If $y$ tends to surprise in the left tail, we'll get too many PITs near 0;
+- If $y$ tends to surprise in the right tail, we'll get too many PITs near 1;
+- If $y$ tends to surprise in the middle, we'll get too many PITs near 0.5;
+- If the forecast distributions tend to be overdispersed (too much mass in the tails), the histogram is hump-shaped;
+- If the forecast distributions tend to be underdispersed (not enough mass in the tails), the histogram is u-shaped.
+:::
+
+
 ## Summary: calibration
 
 If your sequence of forecast distributions is *well-calibrated*, then the PITs should be approximately uniformly distributed:
@@ -1182,6 +1329,10 @@ $$
 . . .
 
 Check it with a histogram, QQ-plot, goodness-of-fit test...
+
+. . .
+
+Deviations from uniformity provide useful diagnostic information.
 
 . . .
 
@@ -1255,6 +1406,52 @@ $$
 - Local measure of quality. We will see global measures like the *continuous ranked probability score* (CRPS) later.
 :::
 
+## LPS rewards both calibration and sharpness
+
+```{r}
+#| echo: false
+par(mfrow = c(1, 3), mar = c(3, 1, 6, 1))  # top margin enlarged
+
+main_size = 2
+
+# common grid
+x <- seq(-6, 6, length.out = 400)
+y_obs <- 1   # generic realization
+dens_ylim <- c(0, 0.5)   # leave headroom for titles
+dens_xlim <- c(-5, 5)
+
+# panel 1: wide, off-center
+mu1 <- -1; sigma1 <- 1.6
+plot(x, dnorm(x, mu1, sigma1), type = "l", col = "blue", lwd = 2,
+     ylim = dens_ylim, xlim = dens_xlim, axes = FALSE, xlab = "",
+     main = "Calibration -\nSharpness -", cex.main = main_size)
+mtext("y", side = 1, at = y_obs, line = 1)
+segments(y_obs, 0, y_obs, dnorm(y_obs, mu1, sigma1), col = "red", lwd = 3)
+abline(h = 0, col = "grey")
+
+# panel 2: wide, centered
+mu2 <- 0.9; sigma2 <- 1.6
+plot(x, dnorm(x, mu2, sigma2), type = "l", col = "blue", lwd = 2,
+     ylim = dens_ylim, xlim = dens_xlim, axes = FALSE, xlab = "",
+     main = "Calibration +\nSharpness -", cex.main = main_size)
+mtext("y", side = 1, at = y_obs, line = 1)
+segments(y_obs, 0, y_obs, dnorm(y_obs, mu2, sigma2), col = "red", lwd = 3)
+abline(h = 0, col = "grey")
+
+# panel 3: narrow, centered
+mu3 <- 0.9; sigma3 <- 0.8
+plot(x, dnorm(x, mu3, sigma3), type = "l", col = "blue", lwd = 2,
+     ylim = dens_ylim, xlim = dens_xlim, axes = FALSE, xlab = "",
+     main = "Calibration +\nSharpness +", cex.main = main_size)
+mtext("y", side = 1, at = y_obs, line = 1)
+segments(y_obs, 0, y_obs, dnorm(y_obs, mu3, sigma3), col = "red", lwd = 3)
+abline(h = 0, col = "grey")
+
+
+```
+
+
+
 ## For our examples {.medium}
 
 . . .
@@ -1275,6 +1472,13 @@ Real data:
 average_log_score(stonks, pred_params_iid_real)
 average_log_score(stonks, pred_params_ar1_real)
 ```
+
+## Authors and papers to know
+
+- Gneiting & Raftery (2007): "[Strictly Proper Scoring Rules, Prediction, and Estimation](https://doi.org/10.1198/016214506000001437)," JASA;
+    - Hard to read, but packed with useful info;
+- Gneiting, Balabdaoui, & Raftery (2007): "[Probabilistic Forecasts, Calibration and Sharpness](https://doi.org/10.1111/j.1467-9868.2007.00587.x)," JRSSB;
+    - "We propose a diagnostic approach to the evaluation of predictive performance that is based on the paradigm of *maximizing the sharpness of the predictive distributions subject to calibration*." Bada bing.
 
 # Next week...AR(p)!
 
