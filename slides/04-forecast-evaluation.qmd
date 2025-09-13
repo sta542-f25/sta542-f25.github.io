@@ -1044,7 +1044,7 @@ mtext(expression(y["t+1"]), side = 1, at = my_y, line = 2, cex = 3, col = "red")
 ```
 
 
-## Recap: probability integral transform
+## Recap: probability integral transform (PIT)
 
 ```{r}
 #| echo: false
@@ -1086,7 +1086,7 @@ mtext(expression(U==F(Y)), side=2, at=F0, line=2, las=1)
 
 ```
 
-## Probability integral transform (PIT) {.small}
+## Recap: probability integral transform (PIT) {.small}
 
 Let $Y\sim F$ be continuous. If you define a new random variable $U=F(Y)$ by plugging $Y$ into *its own* cdf, then you get 
 
@@ -1110,7 +1110,7 @@ $$
 
 That's the cdf of Unif(0, 1).
 
-## Probability integral transform (PIT)
+## Recap: probability integral transform (PIT)
 
 ```{r}
 x <- rnorm(10000)
@@ -1120,7 +1120,7 @@ abline(h = 1, col = "red")
 ```
 
 
-## Applying PIT to forecasting {.medium}
+## What's PIT got to do with it? {.medium}
 
 Let $G_t$ be the "true" cdf that nature is drawing from to produce $y_t$. By the probability integral transform, we know that:
 
