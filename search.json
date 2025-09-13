@@ -593,7 +593,7 @@
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\nslides\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\nslides\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) forecasting\nslides\n\n\n\n\nWed, Sep 10\nGneiting et al (2007 JRSSB)\n🧑‍🏫 Forecast evaluation\nslides\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nFri, Sep 19\n\n\n\n\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\nPSET 1 @ 11:30AM\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\nslides\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\nslides\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) forecasting\nslides\n\n\n\n\nWed, Sep 10\nGneiting et al (2007 JRSSB)\n🧑‍🏫 Forecast evaluation\nslides\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\nPSET 1 @ 11:30AM\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
   },
   {
     "objectID": "problems/pset-1.html",
@@ -1136,11 +1136,32 @@
     "text": "Any ideas?"
   },
   {
+    "objectID": "slides/04-forecast-evaluation.html#recap-probability-integral-transform",
+    "href": "slides/04-forecast-evaluation.html#recap-probability-integral-transform",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Recap: probability integral transform",
+    "text": "Recap: probability integral transform"
+  },
+  {
     "objectID": "slides/04-forecast-evaluation.html#probability-integral-transform-pit",
     "href": "slides/04-forecast-evaluation.html#probability-integral-transform-pit",
     "title": "How do you evaluate probabilistic predictions?",
     "section": "Probability integral transform (PIT)",
-    "text": "Probability integral transform (PIT)\nLet \\(G_t\\) be the “true” cdf that nature is drawing from to produce \\(y_t\\). By the probability integral transform, we know that:\n\n\\[\nG_1(y_1)\\com G_2(y_2)\\com ...\\com G_t(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nIt would be ideal if \\(\\hat{F}_{t|t-1}=G_t\\). We’re probably not so lucky, but if we’re close, then we should see:\n\n\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nLet’s check!"
+    "text": "Probability integral transform (PIT)\nLet \\(Y\\sim F\\) be continuous. If you define a new random variable \\(U=F(Y)\\) by plugging \\(Y\\) into its own cdf, then you get\n\n\\[\nU\\sim \\text{Unif}(0\\com 1).\n\\]\n\n\nFix \\(u\\in(0\\com 1)\\). Then\n\n\n\\[\nP(U\\leq u)=P(F(Y)\\leq u)=P(Y\\leq F^{-1}(u))=F(F^{-1}(u))=u.\n\\]\n\n\nThat’s the cdf of Unif(0, 1)."
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#probability-integral-transform-pit-1",
+    "href": "slides/04-forecast-evaluation.html#probability-integral-transform-pit-1",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Probability integral transform (PIT)",
+    "text": "Probability integral transform (PIT)\n\nx &lt;- rnorm(10000)\nu &lt;- pnorm(x)\nhist(u, breaks = \"Scott\", freq = FALSE)\nabline(h = 1, col = \"red\")"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#applying-pit-to-forecasting",
+    "href": "slides/04-forecast-evaluation.html#applying-pit-to-forecasting",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Applying PIT to forecasting",
+    "text": "Applying PIT to forecasting\nLet \\(G_t\\) be the “true” cdf that nature is drawing from to produce \\(y_t\\). By the probability integral transform, we know that:\n\n\\[\nG_1(y_1)\\com G_2(y_2)\\com ...\\com G_t(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nIt would be ideal if \\(\\hat{F}_{t|t-1}=G_t\\). We’re probably not so lucky, but if we’re close, then we should see:\n\n\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nLet’s check!"
   },
   {
     "objectID": "slides/04-forecast-evaluation.html#iid-normal-method-on-simulated-data",
@@ -1178,11 +1199,25 @@
     "text": "Diagnosing under/over-dispersion"
   },
   {
+    "objectID": "slides/04-forecast-evaluation.html#what-do-the-pit-values-tell-you",
+    "href": "slides/04-forecast-evaluation.html#what-do-the-pit-values-tell-you",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "What do the PIT values tell you?",
+    "text": "What do the PIT values tell you?"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#what-do-the-pit-values-tell-you-1",
+    "href": "slides/04-forecast-evaluation.html#what-do-the-pit-values-tell-you-1",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "What do the PIT values tell you?",
+    "text": "What do the PIT values tell you?\n\nIf \\(y\\) tends to surprise in the left tail, we’ll get too many PITs near 0;\nIf \\(y\\) tends to surprise in the right tail, we’ll get too many PITs near 1;\nIf \\(y\\) tends to surprise in the middle, we’ll get too many PITs near 0.5;\nIf the forecast distributions tend to be overdispersed (too much mass in the tails), the histogram is hump-shaped;\nIf the forecast distributions tend to be underdispersed (not enough mass in the tails), the histogram is u-shaped."
+  },
+  {
     "objectID": "slides/04-forecast-evaluation.html#summary-calibration",
     "href": "slides/04-forecast-evaluation.html#summary-calibration",
     "title": "How do you evaluate probabilistic predictions?",
     "section": "Summary: calibration",
-    "text": "Summary: calibration\nIf your sequence of forecast distributions is well-calibrated, then the PITs should be approximately uniformly distributed:\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\nCheck it with a histogram, QQ-plot, goodness-of-fit test…\n\n\n\n\n\n\n\n\nThis is necessary but not sufficient!\n\n\nCalibration alone is not enough to distinguish good/better/best forecasts."
+    "text": "Summary: calibration\nIf your sequence of forecast distributions is well-calibrated, then the PITs should be approximately uniformly distributed:\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\nCheck it with a histogram, QQ-plot, goodness-of-fit test…\n\n\nDeviations from uniformity provide useful diagnostic information.\n\n\n\n\n\n\n\n\nThis is necessary but not sufficient!\n\n\nCalibration alone is not enough to distinguish good/better/best forecasts."
   },
   {
     "objectID": "slides/04-forecast-evaluation.html#maximize-sharpness-subject-to-calibration",
@@ -1213,11 +1248,25 @@
     "text": "Log predictive score\nEvaluates if the forecast distribution placed high mass/density on the region where \\(y_t\\) actually showed up:\n\\[\n\\overline{\\text{LPS}} = \\frac{1}{T} \\sum_{t=1}^{T} \\ln \\hat{f}_{t|t-1}(y_t).\n\\]\n\nBigger is better;\nRewards both calibration and sharpness;\n\nProper scoring rule: encourages honest probabilistic predictions;\nLocal measure of quality. We will see global measures like the continuous ranked probability score (CRPS) later."
   },
   {
+    "objectID": "slides/04-forecast-evaluation.html#lps-rewards-both-calibration-and-sharpness",
+    "href": "slides/04-forecast-evaluation.html#lps-rewards-both-calibration-and-sharpness",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "LPS rewards both calibration and sharpness",
+    "text": "LPS rewards both calibration and sharpness"
+  },
+  {
     "objectID": "slides/04-forecast-evaluation.html#for-our-examples",
     "href": "slides/04-forecast-evaluation.html#for-our-examples",
     "title": "How do you evaluate probabilistic predictions?",
     "section": "For our examples",
     "text": "For our examples\n\nSimulated data:\n\naverage_log_score(y, pred_params_iid_sim)\n\n[1] -3.965963\n\naverage_log_score(y, pred_params_ar1_sim)\n\n[1] -2.132817\n\n\n\n\nReal data:\n\naverage_log_score(stonks, pred_params_iid_real)\n\n[1] -5.609798\n\naverage_log_score(stonks, pred_params_ar1_real)\n\n[1] -1.79456"
+  },
+  {
+    "objectID": "slides/04-forecast-evaluation.html#authors-and-papers-to-know",
+    "href": "slides/04-forecast-evaluation.html#authors-and-papers-to-know",
+    "title": "How do you evaluate probabilistic predictions?",
+    "section": "Authors and papers to know",
+    "text": "Authors and papers to know\n\nGneiting & Raftery (2007): “Strictly Proper Scoring Rules, Prediction, and Estimation,” JASA;\n\nHard to read, but packed with useful info;\n\n\nGneiting, Balabdaoui, & Raftery (2007): “Probabilistic Forecasts, Calibration and Sharpness,” JRSSB;\n\n“We propose a diagnostic approach to the evaluation of predictive performance that is based on the paradigm of maximizing the sharpness of the predictive distributions subject to calibration.” Bada bing."
   },
   {
     "objectID": "slides/00-welcome.html#teaching-team",

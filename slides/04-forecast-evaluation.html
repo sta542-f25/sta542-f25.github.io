@@ -743,7 +743,7 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 </div>
 </div>
 </div>
-</section><section id="interval-width-and-coverage" class="slide level2"><h2>Interval width and coverage</h2>
+</section><section id="interval-width-and-coverage" class="slide level2 medium"><h2>Interval width and coverage</h2>
 <ul>
 <li class="fragment">You want intervals that are small enough to be informative, but large enough to swallow the truth often, and there’s a trade-off.</li>
 <li class="fragment">
@@ -837,7 +837,47 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 </div>
 </div>
 </div>
-</section><section id="probability-integral-transform-pit" class="slide level2 medium"><h2>Probability integral transform (PIT)</h2>
+</section><section id="recap-probability-integral-transform" class="slide level2"><h2>Recap: probability integral transform</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="probability-integral-transform-pit" class="slide level2 small"><h2>Probability integral transform (PIT)</h2>
+<p>Let <span class="math inline">\(Y\sim F\)</span> be continuous. If you define a new random variable <span class="math inline">\(U=F(Y)\)</span> by plugging <span class="math inline">\(Y\)</span> into <em>its own</em> cdf, then you get</p>
+<div class="fragment">
+<p><span class="math display">\[
+U\sim \text{Unif}(0\com 1).
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Fix <span class="math inline">\(u\in(0\com 1)\)</span>. Then</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+P(U\leq u)=P(F(Y)\leq u)=P(Y\leq F^{-1}(u))=F(F^{-1}(u))=u.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>That’s the cdf of Unif(0, 1).</p>
+</div>
+</section><section id="probability-integral-transform-pit-1" class="slide level2"><h2>Probability integral transform (PIT)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>)</span>
+<span id="cb35-2"><a></a>u <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x)</span>
+<span id="cb35-3"><a></a><span class="fu">hist</span>(u, <span class="at">breaks =</span> <span class="st">"Scott"</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb35-4"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="applying-pit-to-forecasting" class="slide level2 medium"><h2>Applying PIT to forecasting</h2>
 <p>Let <span class="math inline">\(G_t\)</span> be the “true” cdf that nature is drawing from to produce <span class="math inline">\(y_t\)</span>. By the probability integral transform, we know that:</p>
 <div class="fragment">
 <p><span class="math display">\[
@@ -859,7 +899,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -868,7 +908,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -877,7 +917,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -887,7 +927,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -896,18 +936,37 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
-</section><section id="summary-calibration" class="slide level2"><h2>Summary: calibration</h2>
+</section><section id="what-do-the-pit-values-tell-you" class="slide level2"><h2>What do the PIT values tell you?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="what-do-the-pit-values-tell-you-1" class="slide level2 medium"><h2>What do the PIT values tell you?</h2>
+<ul>
+<li class="fragment">If <span class="math inline">\(y\)</span> tends to surprise in the left tail, we’ll get too many PITs near 0;</li>
+<li class="fragment">If <span class="math inline">\(y\)</span> tends to surprise in the right tail, we’ll get too many PITs near 1;</li>
+<li class="fragment">If <span class="math inline">\(y\)</span> tends to surprise in the middle, we’ll get too many PITs near 0.5;</li>
+<li class="fragment">If the forecast distributions tend to be overdispersed (too much mass in the tails), the histogram is hump-shaped;</li>
+<li class="fragment">If the forecast distributions tend to be underdispersed (not enough mass in the tails), the histogram is u-shaped.</li>
+</ul></section><section id="summary-calibration" class="slide level2"><h2>Summary: calibration</h2>
 <p>If your sequence of forecast distributions is <em>well-calibrated</em>, then the PITs should be approximately uniformly distributed:</p>
 <p><span class="math display">\[
 \hat{F}_{1|0}(y_1)\com \hat{F}_{2|1}(y_2)\com ...\com \hat{F}_{t|t-1}(y_t)\com ...\sim\text{Unif}(0\com 1).
 \]</span></p>
 <div class="fragment">
 <p>Check it with a histogram, QQ-plot, goodness-of-fit test…</p>
+</div>
+<div class="fragment">
+<p>Deviations from uniformity provide useful diagnostic information.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -936,7 +995,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -945,7 +1004,7 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -961,15 +1020,24 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <li class="fragment">
 <strong>Proper</strong> scoring rule: encourages honest probabilistic predictions;</li>
 <li class="fragment">Local measure of quality. We will see global measures like the <em>continuous ranked probability score</em> (CRPS) later.</li>
-</ul></section><section id="for-our-examples" class="slide level2 medium"><h2>For our examples</h2>
+</ul></section><section id="lps-rewards-both-calibration-and-sharpness" class="slide level2"><h2>LPS rewards both calibration and sharpness</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="04-forecast-evaluation_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="for-our-examples" class="slide level2 medium"><h2>For our examples</h2>
 <div class="fragment">
 <p>Simulated data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_iid_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_iid_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -3.965963</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_ar1_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">average_log_score</span>(y, pred_params_ar1_sim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.132817</code></pre>
 </div>
@@ -978,17 +1046,29 @@ G_1(y_1)\com G_2(y_2)\com ...\com G_t(y_t)\com ...\sim\text{Unif}(0\com 1).
 <div class="fragment">
 <p>Real data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_iid_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_iid_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -5.609798</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_ar1_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">average_log_score</span>(stonks, pred_params_ar1_real)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.79456</code></pre>
 </div>
 </div>
 </div>
-</section></section><section id="next-weekarp" class="title-slide slide level1 center"><h1>Next week…AR(p)</h1>
+</section><section id="authors-and-papers-to-know" class="slide level2"><h2>Authors and papers to know</h2>
+<ul>
+<li>Gneiting &amp; Raftery (2007): “<a href="https://doi.org/10.1198/016214506000001437">Strictly Proper Scoring Rules, Prediction, and Estimation</a>,” JASA;
+<ul>
+<li>Hard to read, but packed with useful info;</li>
+</ul>
+</li>
+<li>Gneiting, Balabdaoui, &amp; Raftery (2007): “<a href="https://doi.org/10.1111/j.1467-9868.2007.00587.x">Probabilistic Forecasts, Calibration and Sharpness</a>,” JRSSB;
+<ul>
+<li>“We propose a diagnostic approach to the evaluation of predictive performance that is based on the paradigm of <em>maximizing the sharpness of the predictive distributions subject to calibration</em>.” Bada bing.</li>
+</ul>
+</li>
+</ul></section></section><section id="next-weekarp" class="title-slide slide level1 center"><h1>Next week…AR(p)!</h1>
 
 
 </section>
