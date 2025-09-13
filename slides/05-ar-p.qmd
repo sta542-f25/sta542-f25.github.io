@@ -1,0 +1,8 @@
+---
+title: "AR(p)"
+subtitle: "Lecture 5"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---

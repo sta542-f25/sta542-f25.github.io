@@ -1,0 +1,8 @@
+---
+title: "Model selection"
+subtitle: "Lecture 6"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
