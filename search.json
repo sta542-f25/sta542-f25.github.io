@@ -120,256 +120,277 @@
     ]
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#the-simplest-non-trivial-time-series-model",
-    "href": "slides/03-ar-1-forecasting.html#the-simplest-non-trivial-time-series-model",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "The simplest non-trivial time series model",
-    "text": "The simplest non-trivial time series model\nThe autoregression of order 1, or AR(1):\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2)\n\\\\\ny_0\n&\\sim\n\\text{N}(\\mu_0\\com \\initvar),\n\\end{aligned}\n\\]\n\n\nThis implies a joint distribution governed by a finite set of static parameters \\(\\Btheta = \\begin{bmatrix}\\beta_0&\\beta_1&\\sigma^2\\end{bmatrix}^\\tr\\):\n\n\n\\[\n\\begin{aligned}\np(y_{0:T}\\given \\Btheta)\n&=\np(y_0)\n\\prod_{t=1}^T\np(y_t\\given y_{t-1}\\com\\Btheta).\n\\end{aligned}\n\\]\n\n\nViewed as a function of \\(\\Btheta\\), that’s a likelihood!"
+    "objectID": "slides/00-welcome.html#teaching-team",
+    "href": "slides/00-welcome.html#teaching-team",
+    "title": "Welcome to STA 542!",
+    "section": "Teaching team",
+    "text": "Teaching team\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\nLi, Aihua\nTA\nThu 10:30AM - 12:30PM\n\n\n\nZito, John\nInstructor\nTue 1PM - 3PM"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#the-ar1-joint-distribution",
-    "href": "slides/03-ar-1-forecasting.html#the-ar1-joint-distribution",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "The AR(1) joint distribution",
-    "text": "The AR(1) joint distribution\nJoint distribution:\n\\[\n\\begin{bmatrix}\ny_0 & y_1 & \\cdots & y_T\n\\end{bmatrix}^\\tr\n\\sim\\text{N}_{T+1}\\left(\\Bmu\\com \\BSigma\\right).\n\\]\n\nMoments:\n\\[\n\\begin{aligned}\nE(y_t)\n&=\n\\beta_0\\sum\\limits_{i=0}^{t-1}\\beta_1^i\n+\n\\beta_1^t\\mu_0\n\\\\\n\\var(y_t)\n&=\n\\sigma^2\n\\sum\\limits_{i=0}^{t-1}\\beta_1^{2i}+\n\\beta_1^{2t}\\initvar\n\\\\\n\\cov(y_t\\com y_s)\n&=\n\\begin{cases}\n\\beta_1^{s-t}\\var(y_t) & t\\leq s\\\\\n\\beta_1^{t-s}\\var(y_s) & s &lt; t.\n\\end{cases}\n.\n\\end{aligned}\n\\]"
+    "objectID": "slides/00-welcome.html#motivation",
+    "href": "slides/00-welcome.html#motivation",
+    "title": "Welcome to STA 542!",
+    "section": "Motivation",
+    "text": "Motivation\n\n\n\n\n\n\n\nControversial statement\n\n\nStatistics is about quantifying uncertainty to help make decisions.\n\n\n\n\n\nIn modern data science environments, stakeholders are sequentially analyzing high volumes of dependent data and using it to forecast the future in real-time.\n\n\nLet’s see that in action."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#the-special-case-when-beta_11",
-    "href": "slides/03-ar-1-forecasting.html#the-special-case-when-beta_11",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "The special case when \\(|\\beta_1|<1\\)\n",
-    "text": "The special case when \\(|\\beta_1|&lt;1\\)\n\nThe mean and variance are time-invariant, and the covariance structure is shift-invariant:\n\n\\[\n\\begin{aligned}\nE(y_t)\n&=\n\\frac{\\beta_0}{1-\\beta_1}\n\\\\\n\\var(y_t)\n&=\n\\frac{\\sigma^2}{1-\\beta_1^2}\n\\\\\n\\gamma(h)\n&=\n\\cov(y_{t+h}\\com y_t)\n=\n\\beta_1^{h}\\frac{\\sigma^2}{1-\\beta_1^2}.\n\\end{aligned}\n\\]\n\n\nThe common marginal shared by all \\(y_t\\) is called the stationary distribution:\n\n\n\\[\ny_t\\sim\\text{N}\\left(\\frac{\\beta_0}{1-\\beta_1}\\com \\frac{\\sigma^2}{1-\\beta_1^2}\\right).\n\\]\n\n\nSo “did: dependent but identically distributed.”"
+    "objectID": "slides/00-welcome.html#central-banking",
+    "href": "slides/00-welcome.html#central-banking",
+    "title": "Welcome to STA 542!",
+    "section": "Central banking",
+    "text": "Central banking"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#method-of-moments",
-    "href": "slides/03-ar-1-forecasting.html#method-of-moments",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Method of moments",
-    "text": "Method of moments\nThe Yule-Walker estimators are\n\\[\n\\begin{aligned}\n\\hat{\\beta}_1&=\\frac{\\hat{\\gamma}_T(1)}{\\hat{\\gamma}_T(0)}\n\\\\\n\\hat{\\beta}_0&=(1-\\hat{\\beta}_1)\\hat{\\mu}_T\\\\\n\\hat{\\sigma^2_T}&=(1-\\hat{\\beta}_1^2)\\hat{\\gamma}_T(0),\n\\end{aligned}\n\\]\nwhere \\(\\hat{\\mu}_T\\), \\(\\hat{\\gamma}_T(0)\\), and \\(\\hat{\\gamma}_T(1)\\) are simple sample averages.\n\nThese have good statistical properties, but only if the true process is stationary."
+    "objectID": "slides/00-welcome.html#e-commerce-and-web-traffic",
+    "href": "slides/00-welcome.html#e-commerce-and-web-traffic",
+    "title": "Welcome to STA 542!",
+    "section": "E-commerce and web traffic",
+    "text": "E-commerce and web traffic\namazon.com is never “offline.”"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#likelihood-based-inference",
-    "href": "slides/03-ar-1-forecasting.html#likelihood-based-inference",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Likelihood-based inference",
-    "text": "Likelihood-based inference\nIn practice it is easiest to work with the conditional likelihood:\n\\[\np(y_{1:T}\\given  y_0\\com \\Btheta)\n=\n\\prod_{t=1}^T\np(y_t\\given y_{t-1}\\com\\Btheta).\n\\]\n\nClassical route:\n\\[\n\\hat{\\Btheta}_T=\\argmax{\\Btheta}\\,p(y_{1:T}\\given y_0\\com \\Btheta).\n\\]\n\n\nBayesian route:\n\\[\np(\\Btheta\\given y_{0:T})\n=\n\\frac{p(y_{1:T}\\given y_0\\com \\Btheta)p(\\Btheta)}{p(y_{1:T}\\given y_0)}\n.\n\\]\n\n\nEither way, everything you know about inference for iid regression goes through unmodified."
+    "objectID": "slides/00-welcome.html#extreme-weather-forecasting",
+    "href": "slides/00-welcome.html#extreme-weather-forecasting",
+    "title": "Welcome to STA 542!",
+    "section": "Extreme weather forecasting",
+    "text": "Extreme weather forecasting"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#maximum-likelihood",
-    "href": "slides/03-ar-1-forecasting.html#maximum-likelihood",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Maximum likelihood",
-    "text": "Maximum likelihood\nIt’s just ordinary least squares (OLS):\n\n\\[\n\\begin{aligned}\n\\By_T\n&=\n\\begin{bmatrix}y_1&y_2 & \\cdots & y_T\\end{bmatrix}^\\tr\n\\\\\n\\BX_T\n&=\n\\begin{bmatrix}\n1 & 1 & \\cdots & 1 \\\\\ny_0 & y_1 & \\cdots & y_{T-1}\n\\end{bmatrix}^\\tr\n\\\\\n\\Bbeta\n&=\n\\begin{bmatrix}\\beta_0&\\beta_1\\end{bmatrix}^\\tr\n\\\\\n\\\\\n\\hat{\\Bbeta}_T\n&=\n(\\BX_T^\\tr\\BX_T)^{-1}\\BX_T^\\tr\\By_T\n\\\\\n\\hat{\\sigma^2_T}\n&=\n||\\By_T-\\BX_T\\hat{\\Bbeta}_T||_2^2 / T.\n\\end{aligned}\n\\]\n\n\nThings can get weird, but we have asymptotic theory for this regardless whether or not things are stationary."
+    "objectID": "slides/00-welcome.html#monitoring-disease-case-counts",
+    "href": "slides/00-welcome.html#monitoring-disease-case-counts",
+    "title": "Welcome to STA 542!",
+    "section": "Monitoring disease case counts",
+    "text": "Monitoring disease case counts"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#recursive-version",
-    "href": "slides/03-ar-1-forecasting.html#recursive-version",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Recursive version",
-    "text": "Recursive version\nIf the data are streaming, we have some bad ass rank-1 updates:\n\n\\[\n\\begin{aligned}\n\\hat{\\Bbeta}_t\n&=\n\\hat{\\Bbeta}_{t-1}\n+\n\\Bk_t(y_t-\\Bx_t^\\tr\\hat{\\Bbeta}_{t-1})\n\\\\\n\\Bk_t\n&=\n\\frac{\\BP_{t-1}\\Bx_t}\n{1+\\Bx_t^\\tr\\BP_{t-1}\\Bx_t}\n\\\\\n\\BP_t\n&=\n(\\BX_t^\\tr\\BX_t)^{-1}\n\\\\\n&=\n(\\BX_{t-1}^\\tr\\BX_{t-1}+\\Bx_t\\Bx_t^\\tr)^{-1}\n\\\\\n&=\n(\\BP_{t-1}+\\Bx_t\\Bx_t^\\tr)^{-1}\n\\\\\n&=\n\\BP_{t-1}\n-\n\\Bk_t\n\\Bx_t^\\tr\\BP_{t-1}\n.\n\\end{aligned}\n\\]\n\n\nThanks Sherman-Morrison!"
+    "objectID": "slides/00-welcome.html#monitoring-the-energy-grid",
+    "href": "slides/00-welcome.html#monitoring-the-energy-grid",
+    "title": "Welcome to STA 542!",
+    "section": "Monitoring the energy grid",
+    "text": "Monitoring the energy grid"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#conjugate-bayes",
-    "href": "slides/03-ar-1-forecasting.html#conjugate-bayes",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Conjugate Bayes",
-    "text": "Conjugate Bayes\nTake a conjugate normal-inverse-gamma prior:\n\n\\[\n\\begin{aligned}\n\\sigma^2\n&\\sim\n\\text{IG}(a_0\\com b_0)\n\\\\\n\\Bbeta\\given \\sigma^2\n&\\sim\n\\text{N}_2(\\Bm_0\\com\\sigma^2\\BH^{-1}_0)\n\\\\\ny_t\n\\given\ny_{t-1}\n\\com\n\\Bbeta\\com\\sigma^2\n&\\sim \\text{N}\n\\left(\n\\Bx_t^\\tr\\Bbeta\\com\\sigma^2\n\\right), && \\Bx_t=\\begin{bmatrix}1 & y_{t-1}\\end{bmatrix}^\\tr.\n\\end{aligned}\n\\]\n\n\nThe posterior is available in closed-form:\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:T}\n&\\sim\n\\text{IG}(a_T\\com b_T)\n\\\\\n\\Bbeta\\given \\sigma^2\\com y_{0:T}\n&\\sim\n\\text{N}_2(\\Bm_T\\com\\sigma^2\\BH^{-1}_T)\n\\\\\n\\\\\n\\BH_T\n&=\n\\BX_T^\\tr\\BX_T+\\BH_0\n\\\\\n\\Bm_T\n&=\n\\BH_T^{-1}(\\BX_T^\\tr\\By_T+\\BH_0\\Bm_0)\n\\\\\na_T\n&=\na_0 + T/2\n\\\\\nb_T\n&=\nb_0\n+\n(\\By_T^\\tr\\By_T+\\Bm_0^\\tr\\BH_0\\Bm_0-\\Bm_T^\\tr\\BH_T\\Bm_T)/2.\n\\end{aligned}\n\\]\n\n\nMake it recursive on Problem Set 1!"
+    "objectID": "slides/00-welcome.html#object-tracking",
+    "href": "slides/00-welcome.html#object-tracking",
+    "title": "Welcome to STA 542!",
+    "section": "Object tracking",
+    "text": "Object tracking\n\n\n\n\n\nAny ethical complaints about this one?"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#a-classic-example",
-    "href": "slides/03-ar-1-forecasting.html#a-classic-example",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "A classic example",
-    "text": "A classic example"
+    "objectID": "slides/00-welcome.html#autonomous-vehicle-navigation",
+    "href": "slides/00-welcome.html#autonomous-vehicle-navigation",
+    "title": "Welcome to STA 542!",
+    "section": "Autonomous vehicle navigation",
+    "text": "Autonomous vehicle navigation"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#point-forecast",
-    "href": "slides/03-ar-1-forecasting.html#point-forecast",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "objectID": "slides/00-welcome.html#lets-take-a-second-look-at-this",
+    "href": "slides/00-welcome.html#lets-take-a-second-look-at-this",
+    "title": "Welcome to STA 542!",
+    "section": "Let’s take a second look at this",
+    "text": "Let’s take a second look at this\n\n\n\n\n\nSequential inference and probabilistic prediction!"
+  },
+  {
+    "objectID": "slides/00-welcome.html#point-forecast",
+    "href": "slides/00-welcome.html#point-forecast",
+    "title": "Welcome to STA 542!",
     "section": "Point forecast",
     "text": "Point forecast\nYour single-number best guess at tomorrow’s observation:"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#forecast-interval",
-    "href": "slides/03-ar-1-forecasting.html#forecast-interval",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "objectID": "slides/00-welcome.html#forecast-interval",
+    "href": "slides/00-welcome.html#forecast-interval",
+    "title": "Welcome to STA 542!",
     "section": "Forecast interval",
     "text": "Forecast interval\nA range of likely values for tomorrow’s observation:"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#forecast-density",
-    "href": "slides/03-ar-1-forecasting.html#forecast-density",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "objectID": "slides/00-welcome.html#forecast-density",
+    "href": "slides/00-welcome.html#forecast-density",
+    "title": "Welcome to STA 542!",
     "section": "Forecast density",
     "text": "Forecast density\nFull distribution capturing uncertainty about tomorrow:"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#and-then-tomorrow-finally-comes",
-    "href": "slides/03-ar-1-forecasting.html#and-then-tomorrow-finally-comes",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "objectID": "slides/00-welcome.html#and-then-tomorrow-finally-comes",
+    "href": "slides/00-welcome.html#and-then-tomorrow-finally-comes",
+    "title": "Welcome to STA 542!",
     "section": "And then tomorrow finally comes",
     "text": "And then tomorrow finally comes\nSo…how’d we do?"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#whats-the-point",
-    "href": "slides/03-ar-1-forecasting.html#whats-the-point",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "What’s the point?",
-    "text": "What’s the point?\n\nWe want intervals and densities to communicate uncertainty about the forecast;\n\nWhat sources of uncertainty?\n\nBasic data uncertainty;\nParameter estimation uncertainty;\nHyperparameter uncertainty;\nModel uncertainty;\nUncertainty introduced by missing data.\n\n\nIn the small world of the AR(1), mainly the first two for now."
+    "objectID": "slides/00-welcome.html#the-main-themes-of-the-course",
+    "href": "slides/00-welcome.html#the-main-themes-of-the-course",
+    "title": "Welcome to STA 542!",
+    "section": "The main themes of the course",
+    "text": "The main themes of the course\nWe will focus on the following:\n\nInference should be sequential. We want recursive estimation techniques to handle data that are streaming in real-time;\nPredictions should be probabilistic. We want point, interval, and density forecasts that incorporate many sources of uncertainty;\nIf you can manipulate joint distributions, you can do time series analysis. Too many TS textbooks quickly lose sight of this;\n\n\nAnd there is a secret fourth theme:\n\nA Bayesian approach is an excellent way of achieving the goals of sequential inference and probabilistic prediction."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#forecast-distribution",
-    "href": "slides/03-ar-1-forecasting.html#forecast-distribution",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Forecast distribution",
-    "text": "Forecast distribution\nGiven the data we’ve seen, we want a distribution for the data we haven’t seen.\n\nIn other words:\n\\[\np(y_{t+1:t+H}\\given y_{0:t})\n\\]\n\n\nAssume for now the parameters are fixed and known (red flag!)."
+    "objectID": "slides/00-welcome.html#topics-may-include",
+    "href": "slides/00-welcome.html#topics-may-include",
+    "title": "Welcome to STA 542!",
+    "section": "Topics may include",
+    "text": "Topics may include\n\nARMA models;\nVector autoregressions (VARs);\nDynamic linear models (DLMs);\nHidden Markov Models (HMMs);\nProbabilistic forecast evaluation;\nNonlinear non-Gaussian state-space models;\nSequential Monte Carlo (AKA particle filtering);\nForecast combination."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#clumsy-but-true",
-    "href": "slides/03-ar-1-forecasting.html#clumsy-but-true",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Clumsy, but true",
-    "text": "Clumsy, but true\n\nWe know\n\\[\n\\begin{bmatrix}\n\\mathbf{y}_t \\\\\n\\mathbf{y}_{t+H}\n\\end{bmatrix}\n\\sim\n\\text{N}_{1+t+H}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}_t \\\\\n\\boldsymbol{\\mu}_{t+H}\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}_t & \\boldsymbol{\\Sigma}_{t,t+H}\\\\\n\\boldsymbol{\\Sigma}_{t,t+H}^{\\scriptscriptstyle\\mathsf{T}} & \\boldsymbol{\\Sigma}_{t+H}\n\\end{bmatrix}\n\\right),\n\\]\n\n\nand so strictly speaking:\n\\[\n\\mathbf{y}_{t+H} \\,|\\,\\mathbf{y}_t\n\\sim\n\\text{N}_H\n\\left(\n\\boldsymbol{\\mu}_{t+H} + \\boldsymbol{\\Sigma}_{t,t+H}^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\Sigma}_t^{-1}(\\mathbf{y}_t-\\boldsymbol{\\mu}_t)\n,\\,\n\\boldsymbol{\\Sigma}_{t+H} - \\boldsymbol{\\Sigma}_{t,t+H}^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}_t^{-1}\n\\boldsymbol{\\Sigma}_{t,t+H}\n\\right).\n\\]\n\n\nBut let’s make this…useful.\n\n\n(Also, ignore all this ridiculous notation)"
+    "objectID": "slides/00-welcome.html#bookmark-the-course-page",
+    "href": "slides/00-welcome.html#bookmark-the-course-page",
+    "title": "Welcome to STA 542!",
+    "section": "Bookmark the course page!",
+    "text": "Bookmark the course page!\n\n\n\n\n\nhttps://sta542-f25.github.io/"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#lets-give-it-some-thought",
-    "href": "slides/03-ar-1-forecasting.html#lets-give-it-some-thought",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Let’s give it some thought",
-    "text": "Let’s give it some thought\n\nFirst, the AR(1) is first order Markov, so\n\n\n\\[\np(y_{t+1:t+H}\\given y_{0:t})=p(y_{t+1:t+H}\\given y_{t}).\n\\]\n\n\nThe future data behaves just like the past, with a fixed initial condition:\n\n\n\\[\n\\begin{aligned}\ny_{t+h}\n&=\n\\beta_0\n+\n\\beta_1\ny_{t+h-1}\n+\n\\varepsilon_{t+h},\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2)\n\\\\\ny_t\n&\\text{ fixed}.\n\\end{aligned}\n\\]\nSo the conditional distribution has the same structure as the unconditional joint that we have already studied. Just starts in a different spot."
+    "objectID": "slides/00-welcome.html#final-grade-breakdown",
+    "href": "slides/00-welcome.html#final-grade-breakdown",
+    "title": "Welcome to STA 542!",
+    "section": "Final grade breakdown",
+    "text": "Final grade breakdown\nYour final course grade will be calculated as follows:\n\n\nCategory\nPercentage\n\n\n\nProblem Sets\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nFinal Project\n25%\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe final letter grade will be based on the usual thresholds, and there might be a curve."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#forecast-distributions",
-    "href": "slides/03-ar-1-forecasting.html#forecast-distributions",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Forecast distributions",
-    "text": "Forecast distributions\n\\[\n\\begin{aligned}\ny_{t+h}\\given y_{0:t}\n&\\sim\\N\\left(\\mu_{t+h|t}\\com \\tau^2_{t+h|t}\\right)\n\\\\\n\\\\\n\\mu_{t+h|t}\n&=\n\\beta_0\\sum\\limits_{i=0}^{h-1}\\beta_1^i\n+\n\\beta_1^hy_t\n\\\\\n&=\n\\beta_0\n+\n\\beta_1\n\\mu_{t+h-1|t}\n&& \\mu_{t|t}=y_t\n\\\\\n\\tau^2_{t+h|t}\n&=\n\\sigma^2\n\\sum\\limits_{i=0}^{h-1}\\beta_1^{2i}\n\\\\\n&=\n\\sigma^2\n+\n\\beta_1^2\n\\tau^2_{t+h-1|t}\n&&\n\\tau^2_{t|t}=0.\n\\end{aligned}\n\\]"
+    "objectID": "slides/00-welcome.html#course-components",
+    "href": "slides/00-welcome.html#course-components",
+    "title": "Welcome to STA 542!",
+    "section": "Course components",
+    "text": "Course components\n\nProblem sets: 6 in total; one due about every 2 weeks;\n\nExams: in-class, with only an 8.5” x 11” note sheet:\n\nWednesday October 8 11:45 AM - 12:00 PM;\nMonday November 24 11:45 AM - 12:00 PM;\n\n\nFinal project: no clue, honestly. Talk to me in October."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#prediction-intervals",
-    "href": "slides/03-ar-1-forecasting.html#prediction-intervals",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Prediction intervals",
-    "text": "Prediction intervals\nFull distribution:\n\\[\ny_{t+h}\\given y_{0:t}\n\\sim\\N\\left(\\mu_{t+h|t}\\com \\tau^2_{t+h|t}\\right)\n\\]\nPrediction interval:\n\\[\n\\begin{aligned}\n\\mu_{t+h-1|t}\n&\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\tau_{t+h|t}\n\\\\\n\\beta_0\\sum\\limits_{i=0}^{h-1}\\beta_1^i\n&\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\sqrt{\\sigma^2\n\\sum\\limits_{i=0}^{h-1}\\beta_1^{2i}}\n\\end{aligned}\n\\]"
+    "objectID": "slides/00-welcome.html#late-policy",
+    "href": "slides/00-welcome.html#late-policy",
+    "title": "Welcome to STA 542!",
+    "section": "Late policy",
+    "text": "Late policy\nNo late work will be accepted unless you request an extension in advance by e-mailing JZ. All reasonable requests will be entertained, but extensions will not be long."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#summary",
-    "href": "slides/03-ar-1-forecasting.html#summary",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Summary",
-    "text": "Summary\nDistribution forecasts:\n\\[\n\\begin{aligned}\ny_{t+h}\\given y_{0:t}\n&\\sim\\N\\left(\\mu_{t+h|t}\\com \\tau^2_{t+h|t}\\right)\n\\\\\n\\\\\n\\mu_{t+h|t}\n&=\n\\beta_0\\sum\\limits_{i=0}^{h-1}\\beta_1^i\n+\n\\beta_1^hy_t\n\\\\\n&=\n\\beta_0\n+\n\\beta_1\n\\mu_{t+h-1|t}\n&& \\mu_{t|t}=y_t\n\\\\\n\\tau^2_{t+h|t}\n&=\n\\sigma^2\n\\sum\\limits_{i=0}^{h-1}\\beta_1^{2i}\n\\\\\n&=\n\\sigma^2\n+\n\\beta_1^2\n\\tau^2_{t+h-1|t}\n&&\n\\tau^2_{t|t}=0.\n\\end{aligned}\n\\]\nPrediction intervals:\n\\[\n\\mu_{t+h-1|t}\n\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\tau_{t+h|t}\n.\n\\]"
+    "objectID": "slides/00-welcome.html#attendance",
+    "href": "slides/00-welcome.html#attendance",
+    "title": "Welcome to STA 542!",
+    "section": "Attendance",
+    "text": "Attendance\nNot required. Live your life."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#pics-or-it-didnt-happen",
-    "href": "slides/03-ar-1-forecasting.html#pics-or-it-didnt-happen",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Pics or it didn’t happen",
-    "text": "Pics or it didn’t happen\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\n\nsimulate_ar_1 &lt;- function(T, b0, b1, s, y0){\n  y &lt;- numeric(T)\n  y[1] &lt;- y0\n  for(t in 2:T){\n    y[t] &lt;- b0 + b1 * y[t - 1] + rnorm(1, 0, s)\n  }\n  return(y)\n}\n\nar_1_mean &lt;- function(h, b0, b1, yT){\n  if(h == 0){\n    return(yT)\n  } else {\n    return(b0 * sum(b1 ^ (0:(h-1))) + yT * (b1^h)) \n  }\n}\n\nar_1_var &lt;- function(h, b1, s){\n  if(h == 0){\n    return(0)\n  } else {\n    return((s^2) * sum(b1 ^ (2*(0:(h-1)))))\n  }\n}\n\nui &lt;- fluidPage(\n  titlePanel(\"Forecast distribution of a Gaussian AR(1)\"),\n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"b0\", \"β₀\", min = -5, max = 5, value = 0, step = 0.1),\n      sliderInput(\"b1\", \"β₁\", min = -2, max = 2, value = 0, step = 0.1),\n      sliderInput(\"s\", \"σ\", min = 0, max = 2, value = 1, step = 0.1)\n    ),\n    mainPanel(\n      plotOutput(\"distPlot\", height = \"600px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  \n  # fixed observed data\n  set.seed(123)\n  y_obs &lt;- simulate_ar_1(10, 0, 0, 1, 0)\n  \n  output$distPlot &lt;- renderPlot({\n    b0 &lt;- input$b0\n    b1 &lt;- input$b1\n    s &lt;- input$s\n    \n    T_obs &lt;- length(y_obs)\n    H &lt;- 20  # forecast horizon\n    range &lt;- 1:(T_obs + H)\n    \n    # plot window\n    plot(range, c(y_obs, rep(NA,H)), type=\"n\",\n         xlab = \"t\", ylab = expression(y[t]),\n         ylim = c(-20,20), bty=\"n\")\n    \n    # grey forecast region\n    rect(T_obs+0.5, -20, T_obs+H+0.5, 20, col=rgb(0.8,0.8,0.8,0.5), border=NA)\n    \n    # observed data\n    lines(1:T_obs, y_obs, col=\"black\", lwd=2)\n    \n    # forecast distribution intervals\n    alpha = c(0.01, seq(0.1,0.9,0.1))\n    middle &lt;- sapply(0:H, ar_1_mean, b0, b1, y_obs[T_obs])\n    sds &lt;- sqrt(sapply(0:H, ar_1_var, b1, s))\n    f_range &lt;- T_obs:(T_obs+H)\n    \n    for(a in alpha){\n      U = qnorm(1 - a/2, mean = middle, sd = sds)\n      L = qnorm(a/2, mean = middle, sd = sds)\n      polygon(c(f_range, rev(f_range)),\n              c(U, rev(L)),\n              col = rgb(1,0,0,0.15), border=NA)\n    }\n    \n    # add mean forecast line\n    lines(f_range, middle, col=\"red\", lwd=2, lty=2)\n  })\n}\n\nshinyApp(ui = ui, server = server)"
+    "objectID": "slides/00-welcome.html#communication",
+    "href": "slides/00-welcome.html#communication",
+    "title": "Welcome to STA 542!",
+    "section": "Communication",
+    "text": "Communication\nIf you wish to ask questions in writing…\n\nPost on Ed: about general course policies and content;\nEmail JZ directly: personal matters.\n\nYou should not really be emailing Aihua directly for any reason."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#but-wait",
-    "href": "slides/03-ar-1-forecasting.html#but-wait",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "But wait!",
-    "text": "But wait!\nThe parameters are not known. They have to be estimated.\n\n\\[\n\\mu_{t+h-1|t}\n\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\tau_{t+h|t}\n.\n\\]\n\n\nCan we plug-in estimates and replace \\(z\\) with \\(t\\)?\n\n\nNot quite."
+    "objectID": "slides/00-welcome.html#collaboration",
+    "href": "slides/00-welcome.html#collaboration",
+    "title": "Welcome to STA 542!",
+    "section": "Collaboration",
+    "text": "Collaboration\nYou are enthusiastically encouraged to work together on the problem sets. You will learn a lot from each other! Two policies:\n\n✅ Acknowledge your collaborators: “Aloysius, Cybill, and I worked together on this problem;”\n❌ Do not outright share or copy solutions. All submitted work must be your own.\n\nViolation of the second policy is plagiarism. Sharers and recipients alike are referred to the conduct office and receive zeros."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#bootstrapping-for-dependent-data-with-iid-errors",
-    "href": "slides/03-ar-1-forecasting.html#bootstrapping-for-dependent-data-with-iid-errors",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Bootstrapping for dependent data with iid errors",
-    "text": "Bootstrapping for dependent data with iid errors\n\n\nData come from an AR(1) with mean zero iid errors (may not be normal!):\n\n\n\n\\[\ny_t\n=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\n\\overset{\\text{iid}}{\\sim}F;\n\\]\n\n\n\nUse observed \\(y_{0:T}\\) to compute OLS estimate \\(\\hat{\\Bbeta}_T\\);\n\n\n\n\nEstimate residuals and center them:\n\n\\[\n\\hat{\\varepsilon}_t=y_t-\\hat{\\beta}_0-\\hat{\\beta}_1y_{t-1}\\quad \\to\\quad e_t=\\hat{\\varepsilon}_t-\\sum\\limits_{j=1}^T\\hat{\\varepsilon}_j/T.\n\\]\n\n\n\nConstruct alternative time series by resampling residuals:\n\n\\[\n\\begin{aligned}\n\\tilde{y}_0&=y_0\\\\\n\\tilde{y}_t&=\\hat{\\beta}_0+\\hat{\\beta}_1\\tilde{y}_{t-1}+\\tilde{e}_{t},&&\\tilde{e}_{t}\\overset{\\text{iid}}{\\sim} \\hat{F}_T.\n\\end{aligned}\n\\]\n\n\nRepeats the last step many times, and from then on it’s bootstrap like normal."
+    "objectID": "slides/00-welcome.html#use-of-outside-resources-including-ai",
+    "href": "slides/00-welcome.html#use-of-outside-resources-including-ai",
+    "title": "Welcome to STA 542!",
+    "section": "Use of outside resources, including AI",
+    "text": "Use of outside resources, including AI\n\nUsing ChatGPT to complete assignments is like bringing a forklift into the weight room; you will never improve your cognitive fitness that way.\n\n\nIf you find a problem solution online (or prompt an LLM to generate one) and submit it as your own work, that will obviously be considered plagiarism;\nOtherwise, all outside resources are fair game for you to study and get extra practice;\nIf you outsource all of your thinking to a language model, you will probably fail both exams. Good luck!"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#bootstrapping-the-residuals",
-    "href": "slides/03-ar-1-forecasting.html#bootstrapping-the-residuals",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Bootstrapping the residuals",
-    "text": "Bootstrapping the residuals\nGird your loins:\n\n\\[\n\\begin{matrix}\n\\text{1. Original data} &&& y_{0:n} && \\\\\n&&& \\downarrow && \\\\\n\\text{2. OLS} &&& \\hat{\\Btheta}_{T} && \\\\\n&&& \\downarrow && \\\\\n\\text{3. Estimate (centered) residuals} &&& e_{1:T} && \\\\\n&\\swarrow &\\swarrow& \\cdots &\\searrow&\\searrow \\\\\n\\text{4. Resample residuals}&\\tilde{e}_{1:T}^{(1)} &\\tilde{e}_{1:T}^{(2)}& \\cdots &\\tilde{e}_{1:T}^{(k-1)}&\\tilde{e}_{1:T}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{5. Bootstrap time series}&\\tilde{y}_{0:T}^{(1)} &\\tilde{y}_{0:T}^{(2)}& \\cdots &\\tilde{y}_{0:T}^{(k-1)}&\\tilde{y}_{0:T}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{6. Bootstrap estimates}&\\tilde{\\Btheta}_{T}^{(1)} &\\tilde{\\Btheta}_{T}^{(2)}& \\cdots &\\tilde{\\Btheta}_{T}^{(k-1)}&\\tilde{\\Btheta}_{T}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{7. Draw more residuals}&\\tilde{e}_{t+1:t+h}^{(1)} &\\tilde{e}_{t+1:t+h}^{(2)}& \\cdots &\\tilde{e}_{t+1:t+h}^{(k-1)}&\\tilde{e}_{t+1:t+h}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{8. Simulate forecasts}&\\tilde{y}_{t+1:t+h}^{(1)} &\\tilde{y}_{t+1:t+h}^{(2)}& \\cdots &\\tilde{y}_{t+1:t+h}^{(k-1)}&\\tilde{y}_{t+1:t+h}^{(k)} \\\\\n\\end{matrix}\n\\]\n\n\nIn other words, it’s awful."
+    "objectID": "slides/00-welcome.html#what-background-do-you-need",
+    "href": "slides/00-welcome.html#what-background-do-you-need",
+    "title": "Welcome to STA 542!",
+    "section": "What background do you need?",
+    "text": "What background do you need?\nI assume you have a working knowledge of…\n\nmatrix algebra;\nOLS regression;\nprobability and math stat at the level of Casella & Berger;\nBayesian statistics at the level of STA 602;\nThe R programming language.\n\n\nProblem Set 0 gives you a workout in all of the above."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#probabilistic-forecasting-via-monte-carlo",
-    "href": "slides/03-ar-1-forecasting.html#probabilistic-forecasting-via-monte-carlo",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Probabilistic forecasting via Monte Carlo",
-    "text": "Probabilistic forecasting via Monte Carlo\nUse the simulations \\(\\tilde{y}_{t+h}^{(1:k)}=\\left\\{\\tilde{y}_{t+h}^{(1)}\\com \\tilde{y}_{t+h}^{(2)}\\com ...\\com \\tilde{y}_{t+h}^{(k)}\\right\\}\\) to construct whatever forecast object you want:\n\n\\[\n\\hat{y}_{t+h|t}=\\frac{1}{k}\\sum\\limits_{j=1}^k\\tilde{y}_{t+h}^{(j)}. \\quad (\\text{...or median})\n\\]\n\n\nForecast interval:\n\\[\n\\hat{I}_{t+h|t} = \\left[\\hat{Q}_{\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\com \\hat{Q}_{1-\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\right]. \\quad (...\\text{or hdi})\n\\]\n\n\nForecast distribution:\n\\[\n\\hat{f}_{t+h|t}\n=\n\\text{histogram}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right). \\quad (...\\text{or kde})\n\\]"
+    "objectID": "slides/00-welcome.html#time-series",
+    "href": "slides/00-welcome.html#time-series",
+    "title": "Welcome to STA 542!",
+    "section": "Time series",
+    "text": "Time series\n\nA time series is a set of measurements collected over time;\nWe model these data as a sequence of dependent random variables:\n\n\\[\n\\mathbf{y}_{0:T} = \\{\\mathbf{y}_0,\\,\\mathbf{y}_1,\\,\\mathbf{y}_2,\\,...,\\,\\mathbf{y}_T\\}.\n\\]\n\nA time series model is “just” their joint probability distribution:\n\n\\[\np(\\mathbf{y}_{0:T}) = p(\\mathbf{y}_0)\\prod_{t=1}^Tp(\\mathbf{y}_t\\,|\\,\\mathbf{y}_{0:t-1}).\n\\]\n\n\n\n\n\n\n\nStay grounded.\n\n\nLike much wisdom, that last bullet is simultaneously vacuous and profound. It tells you everything and it tells you nothing all at once. But don’t let this basic fact get lost in the sea of details."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#compare-intervals",
-    "href": "slides/03-ar-1-forecasting.html#compare-intervals",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Compare intervals",
-    "text": "Compare intervals\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"AR(1) Forecast: Plug-in vs Residual Bootstrap\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"true_b0\", \"True β₀:\", min = -1, max = 1, value = 0.5, step = 0.1),\n      sliderInput(\"true_b1\", \"True β₁:\", min = -0.95, max = 0.95, value = 0.7, step = 0.05),\n      sliderInput(\"true_sigma\", \"True σ:\", min = 0.1, max = 2, value = 1, step = 0.1),\n      sliderInput(\"n_obs\", \"Sample size:\", min = 40, max = 500, value = 100, step = 10),\n      actionButton(\"rerun\", \"Re-run simulation\"),\n      checkboxInput(\"show_red\", \"Show plug-in fan (red)\", TRUE),\n      checkboxInput(\"show_blue\", \"Show bootstrap fan (blue)\", TRUE)\n    ),\n    \n    mainPanel(\n      plotOutput(\"fanPlot\", height = \"600px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  \n  simulate_ar_1 &lt;- function(T, b0, b1, s, y1 = 0){\n    y &lt;- numeric(T)\n    y[1] &lt;- y1\n    for(t in 2:T){\n      y[t] &lt;- b0 + b1 * y[t-1] + rnorm(1, 0, s)\n    }\n    return(y)\n  }\n  \n  ar_1_mean_h &lt;- function(h, b0, b1, yT){\n    if(h == 0) return(yT)\n    b0 * sum(b1^(0:(h-1))) + yT * (b1^h)\n  }\n  \n  ar_1_var_h &lt;- function(h, b1, sigma){\n    if(h == 0) return(0)\n    sigma^2 * sum(b1^(2*(0:(h-1))))\n  }\n  \n  sim_data &lt;- reactiveVal(NULL)\n  \n  observeEvent(input$rerun, {\n    set.seed(123)  # keep deterministic for reproducibility\n    n_obs &lt;- input$n_obs\n    H &lt;- 20\n    B &lt;- 7500\n    \n    y_obs &lt;- simulate_ar_1(n_obs, input$true_b0, input$true_b1, input$true_sigma, y1 = 0)\n    \n    # OLS fit\n    Y &lt;- y_obs[2:n_obs]\n    X &lt;- cbind(1, y_obs[1:(n_obs-1)])\n    ols_fit &lt;- lm(Y ~ X - 1)\n    coef_hat &lt;- coef(ols_fit)\n    b0_hat &lt;- coef_hat[1]\n    b1_hat &lt;- coef_hat[2]\n    resid_hat &lt;- resid(ols_fit)\n    sigma_hat &lt;- sqrt(sum(resid_hat^2) / (length(resid_hat) - 1))\n    \n    h_seq &lt;- 0:H\n    plug_mean &lt;- sapply(h_seq, ar_1_mean_h, b0 = b0_hat, b1 = b1_hat, yT = y_obs[n_obs])\n    plug_sd   &lt;- sqrt(sapply(h_seq, ar_1_var_h, b1 = b1_hat, sigma = sigma_hat))\n    \n    # bootstrap\n    bootstrap_forecasts &lt;- matrix(NA, nrow = B, ncol = H + 1)\n    resid_centered &lt;- resid_hat - mean(resid_hat)\n    \n    for(b in 1:B){\n      e_star &lt;- sample(resid_centered, size = n_obs - 1, replace = TRUE)\n      y_star &lt;- numeric(n_obs)\n      y_star[1] &lt;- y_obs[1]\n      for(t in 2:n_obs){\n        y_star[t] &lt;- b0_hat + b1_hat * y_star[t-1] + e_star[t-1]\n      }\n      Ys &lt;- y_star[2:n_obs]\n      Xs &lt;- cbind(1, y_star[1:(n_obs-1)])\n      fit_star &lt;- lm(Ys ~ Xs - 1)\n      coef_star &lt;- coef(fit_star)\n      b0_star &lt;- coef_star[1]\n      b1_star &lt;- coef_star[2]\n      resid_star &lt;- resid(fit_star)\n      resid_star_centered &lt;- resid_star - mean(resid_star)\n      \n      y_fut &lt;- numeric(H + 1)\n      y_fut[1] &lt;- y_obs[n_obs]\n      future_shocks &lt;- sample(resid_star_centered, size = H, replace = TRUE)\n      for(h in 1:H){\n        y_fut[h + 1] &lt;- b0_star + b1_star * y_fut[h] + future_shocks[h]\n      }\n      bootstrap_forecasts[b, ] &lt;- y_fut\n    }\n    \n    boot_mean &lt;- colMeans(bootstrap_forecasts)\n    \n    sim_data(list(\n      y_obs = y_obs,\n      plug_mean = plug_mean,\n      plug_sd = plug_sd,\n      bootstrap_forecasts = bootstrap_forecasts,\n      boot_mean = boot_mean,\n      H = H\n    ))\n  }, ignoreNULL = FALSE)\n  \n  output$fanPlot &lt;- renderPlot({\n    dat &lt;- sim_data()\n    if(is.null(dat)) return(NULL)\n    \n    y_obs &lt;- dat$y_obs\n    plug_mean &lt;- dat$plug_mean\n    plug_sd &lt;- dat$plug_sd\n    bootstrap_forecasts &lt;- dat$bootstrap_forecasts\n    boot_mean &lt;- dat$boot_mean\n    H &lt;- dat$H\n    \n    n_obs &lt;- length(y_obs)\n    \n    # Window: last 20 obs and 20 forecasts\n    obs_window &lt;- (n_obs-19):n_obs\n    f_range &lt;- (n_obs):(n_obs + H)\n    plot_range &lt;- c((n_obs-19):(n_obs+H))\n    \n    y_min &lt;- min(c(y_obs[obs_window], plug_mean - 4 * plug_sd, bootstrap_forecasts))\n    y_max &lt;- max(c(y_obs[obs_window], plug_mean + 4 * plug_sd, bootstrap_forecasts))\n    \n    plot(plot_range, rep(NA, length(plot_range)), type = \"n\",\n         xlab = \"t\", ylab = expression(y[t]),\n         ylim = c(y_min, y_max), bty = \"n\",\n         main = \"AR(1) forecast: plug-in (red) vs residual-bootstrap (blue)\")\n    \n    rect(n_obs + 0.5, y_min, n_obs + H + 0.5, y_max,\n         col = rgb(0.85,0.85,0.85,0.5), border = NA)\n    \n    lines(obs_window, y_obs[obs_window], col = \"black\", lwd = 2)\n    \n    # bootstrap fan\n    if(input$show_blue){\n      prob_levels &lt;- c(0.001, 0.005, 0.01, seq(0.02, 0.48, by = 0.02))\n      lower_probs &lt;- prob_levels\n      upper_probs &lt;- 1 - prob_levels\n      boot_fan_lower &lt;- apply(bootstrap_forecasts, 2, quantile, probs = lower_probs)\n      boot_fan_upper &lt;- apply(bootstrap_forecasts, 2, quantile, probs = upper_probs)\n      for(i in seq_len(nrow(boot_fan_lower))){\n        polygon(c(f_range, rev(f_range)),\n                c(boot_fan_upper[i, ], rev(boot_fan_lower[i, ])),\n                col = rgb(0,0,1,0.08), border = NA)\n      }\n      lines(f_range, apply(bootstrap_forecasts, 2, median),\n            col = rgb(0,0,1,0.8), lty = 2, lwd = 1.5)\n      lines(f_range, boot_mean, col = rgb(0,0,1,0.9), lty = 1, lwd = 1)\n    }\n    \n    # plug-in fan\n    if(input$show_red){\n      alpha_vec &lt;- c(0.01, seq(0.1,0.9,by=0.1))\n      for(a in rev(alpha_vec)){\n        U &lt;- qnorm(1 - a/2, mean = plug_mean, sd = plug_sd)\n        L &lt;- qnorm(a/2, mean = plug_mean, sd = plug_sd)\n        polygon(c(f_range, rev(f_range)),\n                c(U, rev(L)),\n                col = rgb(1, 0, 0, 0.15), border = NA)\n      }\n      lines(f_range, plug_mean, col = \"red\", lty = 2, lwd = 2)\n    }\n    \n    abline(v = n_obs + 0.5, lty = 3)\n  })\n}\n\nshinyApp(ui, server)"
+    "objectID": "slides/00-welcome.html#notation-to-get-used-to",
+    "href": "slides/00-welcome.html#notation-to-get-used-to",
+    "title": "Welcome to STA 542!",
+    "section": "Notation to get used to",
+    "text": "Notation to get used to\n\nI will not use uppercase \\(Y_t\\) versus lowercase \\(y_t\\) to distinguish random variables and fixed realizations. It’s all just \\(y_t\\);\nA vector \\(\\mathbf{y}\\in\\RR^n\\) is always an \\(n\\times 1\\) column. The corresponding row vector is \\(\\By^\\tr\\);\nFor integers \\(i&lt;j\\), you will see this shorthand all the time:\n\n\\[\ny_{i:j}\n=\n\\{y_i\\com y_{i+1}\\com y_{i+2}\\com...\\com y_{j-2}\\com y_{j-1}\\com y_{j}\\}\n.\n\\]\n\nThe symbol “\\(p\\)” will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same line:\n\n\\[\np(\\mathbf{y}_{0:T}) = p(\\mathbf{y}_0)\\prod_{t=1}^Tp(\\mathbf{y}_t\\,|\\,\\mathbf{y}_{0:t-1}).\n\\]"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#thats-just-the-tip-of-the-iceberg",
-    "href": "slides/03-ar-1-forecasting.html#thats-just-the-tip-of-the-iceberg",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "That’s just the tip of the iceberg",
-    "text": "That’s just the tip of the iceberg\n\n\n\n\nIf you really want to know,\nLahiri is your man."
+    "objectID": "slides/00-welcome.html#definition",
+    "href": "slides/00-welcome.html#definition",
+    "title": "Welcome to STA 542!",
+    "section": "Definition",
+    "text": "Definition\nA random vector \\(\\mathbf{x}=\\begin{bmatrix}x_1&x_2&\\cdots&x_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) has the multivariate normal distribution with mean vector \\(\\boldsymbol{\\mu}\\in\\mathbb{R}^n\\) and covariance matrix \\(\\boldsymbol{\\Sigma}\\in\\mathbb{R}^{n\\times n}\\) if its density is\n\n\\[\np(\\mathbf{x})\n=\n\\frac\n{\n\\exp\n\\left(\n-\\frac{1}{2}\n(\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n}\n{\n(2\\pi)^{\\frac{n}{2}}\n|\\boldsymbol{\\Sigma}|^{1/2}\n}\n,\n\\quad\n\\mathbf{x}\n\\in\n\\mathbb{R}^n.\n\\]\n\n\nWe denote this \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\).\n\n\n\n\n\n\n\n\nPlenty of linear algebra coming your way!\n\n\n\nTranspose \\((\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\\);\nInverse \\(\\boldsymbol{\\Sigma}^{-1}\\);\nMatrix multiplication \\((\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\Sigma}^{-1}(\\mathbf{x}-\\boldsymbol{\\mu})\\);\nDeterminant \\(|\\boldsymbol{\\Sigma}|\\);\n\n\\(\\boldsymbol{\\Sigma}\\) is a symmetric and positive definite matrix."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#posterior-predictive-distribution",
-    "href": "slides/03-ar-1-forecasting.html#posterior-predictive-distribution",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Posterior predictive distribution",
-    "text": "Posterior predictive distribution\nAfter computing the posterior\n\\[\np(\\Btheta\\given y_{0:T})\n=\n\\frac{p(y_{1:T}\\given y_0\\com \\Btheta)p(\\Btheta)}{p(y_{1:T}\\given y_0)}\n,\n\\]\n\nyou base forecasts on the posterior predictive distribution:\n\\[\np(y_{T+1:T+H}\\,|\\,y_{1:T})\n=\n\\int\np(y_{T+1:T+H}\\,|\\,y_{1:T},\\,\\boldsymbol{\\theta})\np(\\boldsymbol{\\theta}\\,|\\,y_{1:T})\n\\,\\text{d}\\boldsymbol{\\theta}.\n\\]\n\n\nImmediately incorporates both data and parameter uncertainty by construction.\n\n\nThere’s…nothing else to say about this."
+    "objectID": "slides/00-welcome.html#univariate",
+    "href": "slides/00-welcome.html#univariate",
+    "title": "Welcome to STA 542!",
+    "section": "Univariate",
+    "text": "Univariate\nIf \\(n=1\\), then we meet an old friend:\n\n\n\n\\[\np(x)=\\frac{\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}{\\sqrt{2\\pi\\sigma^2}}.\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nSo \\(\\mathbf{x} = [x]\\sim\\text{N}_1([\\mu],\\,[\\sigma^2])\\) is just \\(x\\sim\\text{N}(\\mu,\\,\\sigma^2)\\)."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#probabilistic-prediction-is-a-natural-byproduct-of-a-bayesian-approach",
-    "href": "slides/03-ar-1-forecasting.html#probabilistic-prediction-is-a-natural-byproduct-of-a-bayesian-approach",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Probabilistic prediction is a natural byproduct of a Bayesian approach",
-    "text": "Probabilistic prediction is a natural byproduct of a Bayesian approach\nIt falls out basically for free:\n\n\n\n\n\n\nBjørnstad, Jan (1990): “Predictive likelihood: a review,” Statistical Science\n\n\n“Prediction of the value of an unobserved or future random variable is a fundamental problem in statistics. From a Bayesian point of view, it is solved in a straightforward manner by finding the posterior predictive density of the unobserved random variable given the data. If one does not want to pay the Bayesian price of having to determine a prior, no unifying basis for prediction has existed until recently.”\n\n\n\n\nIt’s a price I’m willing to pay, dude."
+    "objectID": "slides/00-welcome.html#bivariate-elliptical-contours",
+    "href": "slides/00-welcome.html#bivariate-elliptical-contours",
+    "title": "Welcome to STA 542!",
+    "section": "Bivariate: elliptical contours!",
+    "text": "Bivariate: elliptical contours!"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#in-general-just-simulate",
-    "href": "slides/03-ar-1-forecasting.html#in-general-just-simulate",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "In general, just simulate",
-    "text": "In general, just simulate\nSimulate the posterior somehow (iid, MCMC, HMC, SMC, whatever), and then for each draw, simulate the model forward:\n\\[\n\\begin{aligned}\n\\Btheta^{(j)} &\\sim p(\\boldsymbol{\\theta}\\,|\\,y_{0:T})\\\\\n\\tilde{y}^{(j)}_{T+1:T+H}\n&\\sim\np(y_{T+1:T+H}\\,|\\,y_{0:T},\\,\\Btheta^{(j)}), &&j = 1\\com 2\\com ...\\com k.\n\\end{aligned}\n\\]\nThe retained sample \\(\\tilde{y}^{(1:k)}_{T+1:T+H}\\) is drawn from the posterior predictive."
+    "objectID": "slides/00-welcome.html#moments",
+    "href": "slides/00-welcome.html#moments",
+    "title": "Welcome to STA 542!",
+    "section": "Moments",
+    "text": "Moments\nFirst:\n\\[\n\\boldsymbol{\\mu}\n=\nE(\\mathbf{x})\n=\n\\begin{bmatrix}\n\\mu_1\n&\n\\mu_2\n&\n\\cdots\n&\n\\mu_n\n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\n=\n\\begin{bmatrix}\nE(x_1)\n&\nE(x_2)\n&\n\\cdots\n&\nE(x_n)\n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\n.\n\\]\n\nSecond:\n\\[\n\\begin{aligned}\n\\boldsymbol{\\Sigma}\n=\n\\text{cov}(\\mathbf{x})\n&=\n\\begin{bmatrix}\n\\sigma^2_1 & \\sigma_{1,2} & \\cdots & \\sigma_{1,n}\\\\\n\\sigma_{1,2} & \\sigma_{2}^2 & \\cdots & \\sigma_{2,n}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\n\\sigma_{1,n} & \\sigma_{2,n} & \\cdots & \\sigma_{n}^2\\\\\n\\end{bmatrix}\n\\\\\n&=\n\\begin{bmatrix}\n\\text{var}(x_1) & \\text{cov}(x_1,\\,x_2) & \\cdots & \\text{cov}(x_1,\\,x_n)\\\\\n\\text{cov}(x_2,\\,x_1) & \\text{var}(x_2) & \\cdots & \\text{cov}(x_2,\\,x_n)\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\n\\text{cov}(x_n,\\,x_1) & \\text{cov}(x_n,\\,x_2) & \\cdots & \\text{var}(x_n)\\\\\n\\end{bmatrix}\n.\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#same-slide-as-before",
-    "href": "slides/03-ar-1-forecasting.html#same-slide-as-before",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Same slide as before",
-    "text": "Same slide as before\nUse the simulations \\(\\tilde{y}_{t+h}^{(1:k)}=\\left\\{\\tilde{y}_{t+h}^{(1)}\\com \\tilde{y}_{t+h}^{(2)}\\com ...\\com \\tilde{y}_{t+h}^{(k)}\\right\\}\\) to construct whatever forecast object you want:\n\n\\[\n\\hat{y}_{t+h|t}=\\frac{1}{k}\\sum\\limits_{j=1}^k\\tilde{y}_{t+h}^{(j)}. \\quad (\\text{...or median})\n\\]\n\n\nForecast interval:\n\\[\n\\hat{I}_{t+h|t} = \\left[\\hat{Q}_{\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\com \\hat{Q}_{1-\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\right]. \\quad (...\\text{or hdi})\n\\]\n\n\nForecast distribution:\n\\[\n\\hat{f}_{t+h|t}\n=\n\\text{histogram}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right). \\quad (...\\text{or kde})\n\\]"
+    "objectID": "slides/00-welcome.html#oh-my-aching-eigen",
+    "href": "slides/00-welcome.html#oh-my-aching-eigen",
+    "title": "Welcome to STA 542!",
+    "section": "Oh my aching eigen",
+    "text": "Oh my aching eigen\n\n\n\n\n\n\n\nEigenvectors and eigenvalues\n\n\nThere are \\(n\\) orthogonal vectors \\(\\mathbf{v}_i\\in\\mathbb{R}^n\\) and values \\(\\lambda_i&gt;0\\) satisfying:\n\\[\n\\boldsymbol{\\Sigma}\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i.\n\\] Positive definite means all the eigenvalues are real and strictly postive.\n\n\n\n\n\n\n\n\n\n\n\nEigendecomposition (AKA spectral decomposition)\n\n\nA useful way to rewrite \\(\\boldsymbol{\\Sigma}\\): \\[\n\\begin{aligned}\n\\boldsymbol{\\Sigma}\n&=\n\\begin{bmatrix}\n\\mathbf{v}_1 & \\mathbf{v}_2 & \\cdots & \\mathbf{v}_n\n\\end{bmatrix}\n\\begin{bmatrix}\n\\lambda_1 & & &\\mathbf{0}\\\\\n& \\lambda_2 & & \\\\\n  & & \\ddots& \\\\\n  \\mathbf{0}  & & & \\lambda_n\\\\\n\\end{bmatrix}\n\\begin{bmatrix}\n\\mathbf{v}_1^{\\scriptscriptstyle\\mathsf{T}} \\\\ \\mathbf{v}_2^{\\scriptscriptstyle\\mathsf{T}} \\\\ \\vdots \\\\ \\mathbf{v}_n^{\\scriptscriptstyle\\mathsf{T}}\n\\end{bmatrix}\n=\n\\mathbf{Q}\\boldsymbol{\\Lambda}\\mathbf{Q}^{\\scriptscriptstyle\\mathsf{T}}.\n\\end{aligned}\n\\]\nWe often set \\(||\\mathbf{v}_i||_2=1\\), and so the \\(n\\times n\\) matrix \\(\\mathbf{Q}\\) is orthogonal: \\(\\mathbf{Q}\\mathbf{Q}^{\\scriptscriptstyle\\mathsf{T}}=\\mathbf{Q}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{Q}=\\mathbf{I}_n\\)."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#one-step-ahead-in-the-conjugate-case",
-    "href": "slides/03-ar-1-forecasting.html#one-step-ahead-in-the-conjugate-case",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "One-step-ahead in the conjugate case",
-    "text": "One-step-ahead in the conjugate case\nWe want\n\n\\[\np(y_{t+1}\\given y_{0:t})\n=\n\\int\n\\int\np(y_{t+1}\\given\\Bbeta\\com\\sigma^2\\com y_{0:t})p(\\Bbeta\\com\\sigma^2\\given y_{0:t})\\,\\dd\\Bbeta\\,\\dd\\sigma^2\n,\n\\]\n\n\nand we know that\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:t}\n&\\sim\n\\text{IG}(a_t\\com b_t)\n\\\\\n\\Bbeta\\given \\sigma^2\\com y_{0:t}\n&\\sim\n\\text{N}_2(\\Bm_t\\com\\sigma^2\\BH^{-1}_t)\n\\\\\ny_{t+1}\\given\\Bbeta\\com \\sigma^2\\com y_{0:t}\n&\\sim \\N(\\Bx_{t+1}^\\tr\\Bbeta\\com\\sigma^2).\n\\end{aligned}\n\\]\n\n\nThere is actually a closed-form solution."
+    "objectID": "slides/00-welcome.html#who-cares",
+    "href": "slides/00-welcome.html#who-cares",
+    "title": "Welcome to STA 542!",
+    "section": "Who cares?",
+    "text": "Who cares?\nThe eigenvectors of \\(\\boldsymbol{\\Sigma}\\) point along the axes of the elliptical density contours. These are the directions of the principal components!"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#marginalize-out-bbeta",
-    "href": "slides/03-ar-1-forecasting.html#marginalize-out-bbeta",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Marginalize out \\(\\Bbeta\\)\n",
-    "text": "Marginalize out \\(\\Bbeta\\)\n\nWe know that\n\\[\n\\begin{aligned}\n\\Bbeta\\given \\sigma^2\\com y_{0:t}\n&\\sim\n\\text{N}_2(\\Bm_t\\com\\sigma^2\\BH^{-1}_t)\n\\\\\ny_{t+1}\n&=\n\\Bx_{t+1}^\\tr\\Bbeta\n+\n\\varepsilon_{t+1}\n,\n&&\n\\varepsilon_{t+1}\\sim\\N(0\\com \\sigma^2).\n\\end{aligned}\n\\]\n\nBy affine transformation:\n\\[\n\\Bx_{t+1}^\\tr\\Bbeta\n\\given \\sigma^2\\com y_{0:t}\n\\sim\n\\N(\n\\Bx_{t+1}^\\tr\\Bm_t\n\\com\n\\sigma^2\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1}\n).\n\\]\n\n\nBy linear combination of independent normals:\n\\[\n\\begin{aligned}\ny_{t+1}\\given \\sigma^2\\com y_{0:t}\n&\\sim \\N\\left(\\Bx_{t+1}^\\tr\\Bm_t\\com\\sigma^2(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\\right).\n\\end{aligned}\n\\]"
+    "objectID": "slides/00-welcome.html#review-joint-distributions",
+    "href": "slides/00-welcome.html#review-joint-distributions",
+    "title": "Welcome to STA 542!",
+    "section": "Review: joint distributions",
+    "text": "Review: joint distributions\n\nThe marginal distribution:\n\\[\np(\\mathbf{y}) = \\int p(\\mathbf{x},\\,\\mathbf{y})\\,\\text{d}\\mathbf{x}.\n\\]\n\n\nThe conditional distribution:\n\\[\np(\\mathbf{y}\\,|\\,\\mathbf{x})\n=\n\\frac{p(\\mathbf{x},\\,\\mathbf{y})}{p(\\mathbf{x})}\n=\n\\frac{p(\\mathbf{x}\\,|\\,\\mathbf{y})p(\\mathbf{y})}{p(\\mathbf{x})}\n.\n\\]"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#marginalize-out-sigma2",
-    "href": "slides/03-ar-1-forecasting.html#marginalize-out-sigma2",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Marginalize out \\(\\sigma^2\\)\n",
-    "text": "Marginalize out \\(\\sigma^2\\)\n\nWe know that\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:t}\n&\\sim\n\\text{IG}(a_t\\com b_t)\n\\\\\ny_{t+1}\\given \\sigma^2\\com y_{0:t}\n&\\sim \\N\\left(\\Bx_{t+1}^\\tr\\Bm_t\\com\\sigma^2(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\\right).\n\\end{aligned}\n\\]\n\nMarginalizing \\(\\sigma^2\\) out of this hierarchy is essentially the definition of Student’s \\(t\\):\n\n\n\\[\n\\begin{aligned}\ny_{t+1}\\given y_{0:t}\n&\\sim\nt(\\nu_{t+1|t}\\com\\bar{y}_{t+1|t}\\com s_{t+1|t}^2)\n\\\\\n\\\\\n\\nu_{t+1|t}\n&=\n2a_t\n\\\\\n\\bar{y}_{t+1|t}\n&=\n\\Bx_{t+1}^\\tr\\Bm_t\n\\\\\ns_{t+1|t}^2\n&=\n\\frac{b_t}{a_t}\n(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\n.\n\\end{aligned}\n\\]\n\n\nSo, Student’s \\(t\\) with location-scale."
+    "objectID": "slides/00-welcome.html#marginals-and-conditionals",
+    "href": "slides/00-welcome.html#marginals-and-conditionals",
+    "title": "Welcome to STA 542!",
+    "section": "Marginals and conditionals",
+    "text": "Marginals and conditionals\nIf you apply those formulas to this\n\\[\n\\begin{bmatrix}\n\\mathbf{x} \\\\\n\\mathbf{y}\n\\end{bmatrix}\n\\sim\n\\text{N}_{n+m}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}_x \\\\\n\\boldsymbol{\\mu}_y\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}_x & \\boldsymbol{\\Sigma}_{xy}\\\\\n\\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}} & \\boldsymbol{\\Sigma}_y\n\\end{bmatrix}\n\\right),\n\\]\n\nthen you get this:\n\\[\n\\begin{aligned}\n\\mathbf{x} &\\sim  \\text{N}_n(\\boldsymbol{\\mu}_x,\\,\\boldsymbol{\\Sigma}_x)\\\\\n\\mathbf{y} &\\sim  \\text{N}_m(\\boldsymbol{\\mu}_y,\\,\\boldsymbol{\\Sigma}_y)\\\\\n\\mathbf{x} \\,|\\,\\mathbf{y}\n&\\sim\n\\text{N}_n\n\\left(\n\\boldsymbol{\\mu}_x + \\boldsymbol{\\Sigma}_{xy}\\boldsymbol{\\Sigma}_y^{-1}(\\mathbf{y}-\\boldsymbol{\\mu}_y)\n,\\,\n\\boldsymbol{\\Sigma}_x - \\boldsymbol{\\Sigma}_{xy}\n\\boldsymbol{\\Sigma}_y^{-1}\n\\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n\\\\\n\\mathbf{y} \\,|\\,\\mathbf{x}\n&\\sim\n\\text{N}_m\n\\left(\n\\boldsymbol{\\mu}_y + \\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\Sigma}_x^{-1}(\\mathbf{x}-\\boldsymbol{\\mu}_x)\n,\\,\n\\boldsymbol{\\Sigma}_y - \\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}_x^{-1}\n\\boldsymbol{\\Sigma}_{xy}\n\\right).\n\\end{aligned}\n\\]\n\n\nSo the individual components are all normal: \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\)."
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#one-step-ahead-probabilistic-prediction",
-    "href": "slides/03-ar-1-forecasting.html#one-step-ahead-probabilistic-prediction",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "One-step-ahead probabilistic prediction",
-    "text": "One-step-ahead probabilistic prediction\n\nOur density forecast is:\n\\[\ny_{t+1}\\given y_{0:t}\n\\sim\nt(\\nu_{t+1|t}\\com\\bar{y}_{t+1|t}\\com s_{t+1|t}^2).\n\\]\n\n\nThis gives a \\(100\\times(1-\\alpha)\\%\\) credible interval:\n\\[\n\\bar{y}_{t+1|t}\n\\pm\n\\underbrace{t_{\\nu_{t+1|t}}\n\\left(\n1-\\frac{\\alpha}{2}\n\\right)}_{\\text{quantile of }t(\\nu_{t+1|t}\\com 0\\com 1)}\ns_{t+1|t}\n.\n\\]\n\n\nAnd the moments are\n\\[\n\\begin{aligned}\nE(y_{t+1}\\given y_{0:t})\n&=\n\\bar{y}_{t+1|t}\n,\n&&\n\\nu_{t+1|t}&gt;1\n\\\\\n\\text{var}(y_{t+1}\\given y_{0:t})\n&=\n\\frac{\\nu_{t+1|t}}{\\nu_{t+1|t}-2}\ns_{t+1|t}^2\n,\n&&\n\\nu_{t+1|t}&gt;2.\n\\end{aligned}\n\\]"
+    "objectID": "slides/00-welcome.html#those-ugly-conditional-formulas-are-not-new",
+    "href": "slides/00-welcome.html#those-ugly-conditional-formulas-are-not-new",
+    "title": "Welcome to STA 542!",
+    "section": "Those ugly conditional formulas are not new",
+    "text": "Those ugly conditional formulas are not new\nConsider the bivariate case:\n\\[\n\\begin{bmatrix}\nx \\\\\ny\n\\end{bmatrix}\n\\sim\\text{N}_2\n\\left(\n\\begin{bmatrix}\n\\mu_x \\\\\n\\mu_y\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\sigma_x^2\n&\n\\rho\\sigma_x\\sigma_y\n\\\\\n\\rho\\sigma_x\\sigma_y\n&\n\\sigma^2_y\n\\end{bmatrix}\n\\right).\n\\]\n\nThen the formula collapses to:\n\\[\ny\\,|\\,\nx\n\\sim\n\\text{N}\n\\left(\n\\underbrace{\\left(\\mu_y-\\rho\\frac{\\sigma_y}{\\sigma_x}\\mu_x\\right)}_{\\beta_0}\n+\n\\underbrace{\\rho\\frac{\\sigma_y}{\\sigma_x}}_{\\beta_1}\nx\n,\\,\n\\underbrace{(1-\\rho)^2\n\\sigma^2_y}_{\\sigma^2}\n\\right).\n\\]\n\n\nIn other words:\n\\[\ny = \\beta_0+\\beta_1x + \\varepsilon,\\quad \\varepsilon\\sim\\text{N}(0,\\,\\sigma^2).\n\\]\n\n\nWelcome back to regression 101!"
   },
   {
-    "objectID": "slides/03-ar-1-forecasting.html#things-to-notice",
-    "href": "slides/03-ar-1-forecasting.html#things-to-notice",
-    "title": "How do you compute probabilistic forecasts from the AR(1)?",
-    "section": "Things to notice",
-    "text": "Things to notice\n\nGoal: generate probabilistic predictions incorporating many sources of uncertainty. In the small world of the AR(1), these are mainly uncertainty from parameter estimation and the inherent randomness of future observations.\n\n\n\n\nClassical approach: pretty unnatural. Can’t do anything analytically. Whole books have been written about how the bootstrapping ought to go;\n\n\n\n\n\nBayesian approach: totally natural. Everything is probabilistic already. Posterior predictive simulation is conceptually straightforward. We can even do the math in a special case.\n\n\n\nBut in fairness, the Bayes stuff leans hard into normality. The bootstrap stuff less so."
+    "objectID": "slides/00-welcome.html#affine-transformations",
+    "href": "slides/00-welcome.html#affine-transformations",
+    "title": "Welcome to STA 542!",
+    "section": "Affine transformations",
+    "text": "Affine transformations\nFix some objects:\n\nRandom \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\);\nConstant \\(\\mathbf{A}\\in\\mathbb{R}^{m\\times n}\\);\nConstant \\(\\mathbf{c}\\in\\mathbb{R}^m\\).\n\n\nThen\n\\[\n\\mathbf{y}\n=\n\\mathbf{A}\n\\mathbf{x}\n+\n\\mathbf{c}\n\\sim\n\\text{N}_m\n\\left(\n\\mathbf{A}\n\\boldsymbol{\\mu}\n+\n\\mathbf{c}\n,\\,\n\\mathbf{A}\n\\boldsymbol{\\Sigma}\n\\mathbf{A}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n.\n\\]\n\n\nProve it on Problem Set 0!"
+  },
+  {
+    "objectID": "slides/00-welcome.html#a-useful-special-case-problem-set-0",
+    "href": "slides/00-welcome.html#a-useful-special-case-problem-set-0",
+    "title": "Welcome to STA 542!",
+    "section": "A useful special case (Problem Set 0!)",
+    "text": "A useful special case (Problem Set 0!)\n\n\n\n\n\n\nLinear combinations of independent normals are normal\n\n\nIf \\(x_i\\overset{\\text{indep}}{\\sim}\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) and \\(a_i\\in\\mathbb{R}\\) are constant, then\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]\n\n\n\n\nThe result on the previous slide is way more general, and the linear combination is still normal even if the \\(X_i\\) are dependent, but the formula for the variance is less nice;\nThe mean formula is right even if the \\(x_i\\) are dependent and non-Gaussian;\nThe variance formula is right even if the \\(x_i\\) are non-Gaussian."
+  },
+  {
+    "objectID": "slides/00-welcome.html#independence",
+    "href": "slides/00-welcome.html#independence",
+    "title": "Welcome to STA 542!",
+    "section": "Independence",
+    "text": "Independence\n\nIf random variables are independent, then they are uncorrelated (their covariance is zero). The reverse is false in general!\nSo writing \\(x_1,\\,x_2,\\,...,\\,x_n\\overset{\\text{iid}}{\\sim}\\text{N}(\\mu,\\,\\sigma^2)\\) is the same as saying\n\n\n\\[\n\\begin{bmatrix}\nx_1\\\\\nx_2\\\\\n\\vdots \\\\\nx_n\n\\end{bmatrix}\n\\sim\\text{N}_n\\left(\\mu\\mathbf{1}_n,\\,\\sigma^2\\mathbf{I}_n\\right).\n\\]\n\n\n\n\n\\(\\mathbf{1}_n\\) is the \\(n\\times 1\\) vector of all ones;\n\n\n\n\n\n\\(\\mathbf{I}_n\\) is the \\(n\\times n\\) identity matrix: ones on the diagonal, zeros off."
   },
   {
     "objectID": "slides/01-ar-1-structure.html#time-series",
@@ -1136,32 +1157,32 @@
     "text": "Any ideas?"
   },
   {
-    "objectID": "slides/04-forecast-evaluation.html#recap-probability-integral-transform",
-    "href": "slides/04-forecast-evaluation.html#recap-probability-integral-transform",
+    "objectID": "slides/04-forecast-evaluation.html#recap-probability-integral-transform-pit",
+    "href": "slides/04-forecast-evaluation.html#recap-probability-integral-transform-pit",
     "title": "How do you evaluate probabilistic predictions?",
-    "section": "Recap: probability integral transform",
-    "text": "Recap: probability integral transform"
+    "section": "Recap: probability integral transform (PIT)",
+    "text": "Recap: probability integral transform (PIT)"
   },
   {
-    "objectID": "slides/04-forecast-evaluation.html#probability-integral-transform-pit",
-    "href": "slides/04-forecast-evaluation.html#probability-integral-transform-pit",
+    "objectID": "slides/04-forecast-evaluation.html#recap-probability-integral-transform-pit-1",
+    "href": "slides/04-forecast-evaluation.html#recap-probability-integral-transform-pit-1",
     "title": "How do you evaluate probabilistic predictions?",
-    "section": "Probability integral transform (PIT)",
-    "text": "Probability integral transform (PIT)\nLet \\(Y\\sim F\\) be continuous. If you define a new random variable \\(U=F(Y)\\) by plugging \\(Y\\) into its own cdf, then you get\n\n\\[\nU\\sim \\text{Unif}(0\\com 1).\n\\]\n\n\nFix \\(u\\in(0\\com 1)\\). Then\n\n\n\\[\nP(U\\leq u)=P(F(Y)\\leq u)=P(Y\\leq F^{-1}(u))=F(F^{-1}(u))=u.\n\\]\n\n\nThat’s the cdf of Unif(0, 1)."
+    "section": "Recap: probability integral transform (PIT)",
+    "text": "Recap: probability integral transform (PIT)\nLet \\(Y\\sim F\\) be continuous. If you define a new random variable \\(U=F(Y)\\) by plugging \\(Y\\) into its own cdf, then you get\n\n\\[\nU\\sim \\text{Unif}(0\\com 1).\n\\]\n\n\nFix \\(u\\in(0\\com 1)\\). Then\n\n\n\\[\nP(U\\leq u)=P(F(Y)\\leq u)=P(Y\\leq F^{-1}(u))=F(F^{-1}(u))=u.\n\\]\n\n\nThat’s the cdf of Unif(0, 1)."
   },
   {
-    "objectID": "slides/04-forecast-evaluation.html#probability-integral-transform-pit-1",
-    "href": "slides/04-forecast-evaluation.html#probability-integral-transform-pit-1",
+    "objectID": "slides/04-forecast-evaluation.html#recap-probability-integral-transform-pit-2",
+    "href": "slides/04-forecast-evaluation.html#recap-probability-integral-transform-pit-2",
     "title": "How do you evaluate probabilistic predictions?",
-    "section": "Probability integral transform (PIT)",
-    "text": "Probability integral transform (PIT)\n\nx &lt;- rnorm(10000)\nu &lt;- pnorm(x)\nhist(u, breaks = \"Scott\", freq = FALSE)\nabline(h = 1, col = \"red\")"
+    "section": "Recap: probability integral transform (PIT)",
+    "text": "Recap: probability integral transform (PIT)\n\nx &lt;- rnorm(10000)\nu &lt;- pnorm(x)\nhist(u, breaks = \"Scott\", freq = FALSE)\nabline(h = 1, col = \"red\")"
   },
   {
-    "objectID": "slides/04-forecast-evaluation.html#applying-pit-to-forecasting",
-    "href": "slides/04-forecast-evaluation.html#applying-pit-to-forecasting",
+    "objectID": "slides/04-forecast-evaluation.html#whats-pit-got-to-do-with-it",
+    "href": "slides/04-forecast-evaluation.html#whats-pit-got-to-do-with-it",
     "title": "How do you evaluate probabilistic predictions?",
-    "section": "Applying PIT to forecasting",
-    "text": "Applying PIT to forecasting\nLet \\(G_t\\) be the “true” cdf that nature is drawing from to produce \\(y_t\\). By the probability integral transform, we know that:\n\n\\[\nG_1(y_1)\\com G_2(y_2)\\com ...\\com G_t(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nIt would be ideal if \\(\\hat{F}_{t|t-1}=G_t\\). We’re probably not so lucky, but if we’re close, then we should see:\n\n\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nLet’s check!"
+    "section": "What’s PIT got to do with it?",
+    "text": "What’s PIT got to do with it?\nLet \\(G_t\\) be the “true” cdf that nature is drawing from to produce \\(y_t\\). By the probability integral transform, we know that:\n\n\\[\nG_1(y_1)\\com G_2(y_2)\\com ...\\com G_t(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nIt would be ideal if \\(\\hat{F}_{t|t-1}=G_t\\). We’re probably not so lucky, but if we’re close, then we should see:\n\n\n\\[\n\\hat{F}_{1|0}(y_1)\\com \\hat{F}_{2|1}(y_2)\\com ...\\com \\hat{F}_{t|t-1}(y_t)\\com ...\\sim\\text{Unif}(0\\com 1).\n\\]\n\n\nLet’s check!"
   },
   {
     "objectID": "slides/04-forecast-evaluation.html#iid-normal-method-on-simulated-data",
@@ -1269,277 +1290,256 @@
     "text": "Authors and papers to know\n\nGneiting & Raftery (2007): “Strictly Proper Scoring Rules, Prediction, and Estimation,” JASA;\n\nHard to read, but packed with useful info;\n\n\nGneiting, Balabdaoui, & Raftery (2007): “Probabilistic Forecasts, Calibration and Sharpness,” JRSSB;\n\n“We propose a diagnostic approach to the evaluation of predictive performance that is based on the paradigm of maximizing the sharpness of the predictive distributions subject to calibration.” Bada bing."
   },
   {
-    "objectID": "slides/00-welcome.html#teaching-team",
-    "href": "slides/00-welcome.html#teaching-team",
-    "title": "Welcome to STA 542!",
-    "section": "Teaching team",
-    "text": "Teaching team\n\n\n\n\n\n\n\n\nMug\nName\nRole\nOffice Hours\n\n\n\n\nLi, Aihua\nTA\nThu 10:30AM - 12:30PM\n\n\n\nZito, John\nInstructor\nTue 1PM - 3PM"
+    "objectID": "slides/03-ar-1-forecasting.html#the-simplest-non-trivial-time-series-model",
+    "href": "slides/03-ar-1-forecasting.html#the-simplest-non-trivial-time-series-model",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "The simplest non-trivial time series model",
+    "text": "The simplest non-trivial time series model\nThe autoregression of order 1, or AR(1):\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2)\n\\\\\ny_0\n&\\sim\n\\text{N}(\\mu_0\\com \\initvar),\n\\end{aligned}\n\\]\n\n\nThis implies a joint distribution governed by a finite set of static parameters \\(\\Btheta = \\begin{bmatrix}\\beta_0&\\beta_1&\\sigma^2\\end{bmatrix}^\\tr\\):\n\n\n\\[\n\\begin{aligned}\np(y_{0:T}\\given \\Btheta)\n&=\np(y_0)\n\\prod_{t=1}^T\np(y_t\\given y_{t-1}\\com\\Btheta).\n\\end{aligned}\n\\]\n\n\nViewed as a function of \\(\\Btheta\\), that’s a likelihood!"
   },
   {
-    "objectID": "slides/00-welcome.html#motivation",
-    "href": "slides/00-welcome.html#motivation",
-    "title": "Welcome to STA 542!",
-    "section": "Motivation",
-    "text": "Motivation\n\n\n\n\n\n\n\nControversial statement\n\n\nStatistics is about quantifying uncertainty to help make decisions.\n\n\n\n\n\nIn modern data science environments, stakeholders are sequentially analyzing high volumes of dependent data and using it to forecast the future in real-time.\n\n\nLet’s see that in action."
+    "objectID": "slides/03-ar-1-forecasting.html#the-ar1-joint-distribution",
+    "href": "slides/03-ar-1-forecasting.html#the-ar1-joint-distribution",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "The AR(1) joint distribution",
+    "text": "The AR(1) joint distribution\nJoint distribution:\n\\[\n\\begin{bmatrix}\ny_0 & y_1 & \\cdots & y_T\n\\end{bmatrix}^\\tr\n\\sim\\text{N}_{T+1}\\left(\\Bmu\\com \\BSigma\\right).\n\\]\n\nMoments:\n\\[\n\\begin{aligned}\nE(y_t)\n&=\n\\beta_0\\sum\\limits_{i=0}^{t-1}\\beta_1^i\n+\n\\beta_1^t\\mu_0\n\\\\\n\\var(y_t)\n&=\n\\sigma^2\n\\sum\\limits_{i=0}^{t-1}\\beta_1^{2i}+\n\\beta_1^{2t}\\initvar\n\\\\\n\\cov(y_t\\com y_s)\n&=\n\\begin{cases}\n\\beta_1^{s-t}\\var(y_t) & t\\leq s\\\\\n\\beta_1^{t-s}\\var(y_s) & s &lt; t.\n\\end{cases}\n.\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#central-banking",
-    "href": "slides/00-welcome.html#central-banking",
-    "title": "Welcome to STA 542!",
-    "section": "Central banking",
-    "text": "Central banking"
+    "objectID": "slides/03-ar-1-forecasting.html#the-special-case-when-beta_11",
+    "href": "slides/03-ar-1-forecasting.html#the-special-case-when-beta_11",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "The special case when \\(|\\beta_1|<1\\)\n",
+    "text": "The special case when \\(|\\beta_1|&lt;1\\)\n\nThe mean and variance are time-invariant, and the covariance structure is shift-invariant:\n\n\\[\n\\begin{aligned}\nE(y_t)\n&=\n\\frac{\\beta_0}{1-\\beta_1}\n\\\\\n\\var(y_t)\n&=\n\\frac{\\sigma^2}{1-\\beta_1^2}\n\\\\\n\\gamma(h)\n&=\n\\cov(y_{t+h}\\com y_t)\n=\n\\beta_1^{h}\\frac{\\sigma^2}{1-\\beta_1^2}.\n\\end{aligned}\n\\]\n\n\nThe common marginal shared by all \\(y_t\\) is called the stationary distribution:\n\n\n\\[\ny_t\\sim\\text{N}\\left(\\frac{\\beta_0}{1-\\beta_1}\\com \\frac{\\sigma^2}{1-\\beta_1^2}\\right).\n\\]\n\n\nSo “did: dependent but identically distributed.”"
   },
   {
-    "objectID": "slides/00-welcome.html#e-commerce-and-web-traffic",
-    "href": "slides/00-welcome.html#e-commerce-and-web-traffic",
-    "title": "Welcome to STA 542!",
-    "section": "E-commerce and web traffic",
-    "text": "E-commerce and web traffic\namazon.com is never “offline.”"
+    "objectID": "slides/03-ar-1-forecasting.html#method-of-moments",
+    "href": "slides/03-ar-1-forecasting.html#method-of-moments",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Method of moments",
+    "text": "Method of moments\nThe Yule-Walker estimators are\n\\[\n\\begin{aligned}\n\\hat{\\beta}_1&=\\frac{\\hat{\\gamma}_T(1)}{\\hat{\\gamma}_T(0)}\n\\\\\n\\hat{\\beta}_0&=(1-\\hat{\\beta}_1)\\hat{\\mu}_T\\\\\n\\hat{\\sigma^2_T}&=(1-\\hat{\\beta}_1^2)\\hat{\\gamma}_T(0),\n\\end{aligned}\n\\]\nwhere \\(\\hat{\\mu}_T\\), \\(\\hat{\\gamma}_T(0)\\), and \\(\\hat{\\gamma}_T(1)\\) are simple sample averages.\n\nThese have good statistical properties, but only if the true process is stationary."
   },
   {
-    "objectID": "slides/00-welcome.html#extreme-weather-forecasting",
-    "href": "slides/00-welcome.html#extreme-weather-forecasting",
-    "title": "Welcome to STA 542!",
-    "section": "Extreme weather forecasting",
-    "text": "Extreme weather forecasting"
+    "objectID": "slides/03-ar-1-forecasting.html#likelihood-based-inference",
+    "href": "slides/03-ar-1-forecasting.html#likelihood-based-inference",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Likelihood-based inference",
+    "text": "Likelihood-based inference\nIn practice it is easiest to work with the conditional likelihood:\n\\[\np(y_{1:T}\\given  y_0\\com \\Btheta)\n=\n\\prod_{t=1}^T\np(y_t\\given y_{t-1}\\com\\Btheta).\n\\]\n\nClassical route:\n\\[\n\\hat{\\Btheta}_T=\\argmax{\\Btheta}\\,p(y_{1:T}\\given y_0\\com \\Btheta).\n\\]\n\n\nBayesian route:\n\\[\np(\\Btheta\\given y_{0:T})\n=\n\\frac{p(y_{1:T}\\given y_0\\com \\Btheta)p(\\Btheta)}{p(y_{1:T}\\given y_0)}\n.\n\\]\n\n\nEither way, everything you know about inference for iid regression goes through unmodified."
   },
   {
-    "objectID": "slides/00-welcome.html#monitoring-disease-case-counts",
-    "href": "slides/00-welcome.html#monitoring-disease-case-counts",
-    "title": "Welcome to STA 542!",
-    "section": "Monitoring disease case counts",
-    "text": "Monitoring disease case counts"
+    "objectID": "slides/03-ar-1-forecasting.html#maximum-likelihood",
+    "href": "slides/03-ar-1-forecasting.html#maximum-likelihood",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Maximum likelihood",
+    "text": "Maximum likelihood\nIt’s just ordinary least squares (OLS):\n\n\\[\n\\begin{aligned}\n\\By_T\n&=\n\\begin{bmatrix}y_1&y_2 & \\cdots & y_T\\end{bmatrix}^\\tr\n\\\\\n\\BX_T\n&=\n\\begin{bmatrix}\n1 & 1 & \\cdots & 1 \\\\\ny_0 & y_1 & \\cdots & y_{T-1}\n\\end{bmatrix}^\\tr\n\\\\\n\\Bbeta\n&=\n\\begin{bmatrix}\\beta_0&\\beta_1\\end{bmatrix}^\\tr\n\\\\\n\\\\\n\\hat{\\Bbeta}_T\n&=\n(\\BX_T^\\tr\\BX_T)^{-1}\\BX_T^\\tr\\By_T\n\\\\\n\\hat{\\sigma^2_T}\n&=\n||\\By_T-\\BX_T\\hat{\\Bbeta}_T||_2^2 / T.\n\\end{aligned}\n\\]\n\n\nThings can get weird, but we have asymptotic theory for this regardless whether or not things are stationary."
   },
   {
-    "objectID": "slides/00-welcome.html#monitoring-the-energy-grid",
-    "href": "slides/00-welcome.html#monitoring-the-energy-grid",
-    "title": "Welcome to STA 542!",
-    "section": "Monitoring the energy grid",
-    "text": "Monitoring the energy grid"
+    "objectID": "slides/03-ar-1-forecasting.html#recursive-version",
+    "href": "slides/03-ar-1-forecasting.html#recursive-version",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Recursive version",
+    "text": "Recursive version\nIf the data are streaming, we have some bad ass rank-1 updates:\n\n\\[\n\\begin{aligned}\n\\hat{\\Bbeta}_t\n&=\n\\hat{\\Bbeta}_{t-1}\n+\n\\Bk_t(y_t-\\Bx_t^\\tr\\hat{\\Bbeta}_{t-1})\n\\\\\n\\Bk_t\n&=\n\\frac{\\BP_{t-1}\\Bx_t}\n{1+\\Bx_t^\\tr\\BP_{t-1}\\Bx_t}\n\\\\\n\\BP_t\n&=\n(\\BX_t^\\tr\\BX_t)^{-1}\n\\\\\n&=\n(\\BX_{t-1}^\\tr\\BX_{t-1}+\\Bx_t\\Bx_t^\\tr)^{-1}\n\\\\\n&=\n(\\BP_{t-1}+\\Bx_t\\Bx_t^\\tr)^{-1}\n\\\\\n&=\n\\BP_{t-1}\n-\n\\Bk_t\n\\Bx_t^\\tr\\BP_{t-1}\n.\n\\end{aligned}\n\\]\n\n\nThanks Sherman-Morrison!"
   },
   {
-    "objectID": "slides/00-welcome.html#object-tracking",
-    "href": "slides/00-welcome.html#object-tracking",
-    "title": "Welcome to STA 542!",
-    "section": "Object tracking",
-    "text": "Object tracking\n\n\n\n\n\nAny ethical complaints about this one?"
+    "objectID": "slides/03-ar-1-forecasting.html#conjugate-bayes",
+    "href": "slides/03-ar-1-forecasting.html#conjugate-bayes",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Conjugate Bayes",
+    "text": "Conjugate Bayes\nTake a conjugate normal-inverse-gamma prior:\n\n\\[\n\\begin{aligned}\n\\sigma^2\n&\\sim\n\\text{IG}(a_0\\com b_0)\n\\\\\n\\Bbeta\\given \\sigma^2\n&\\sim\n\\text{N}_2(\\Bm_0\\com\\sigma^2\\BH^{-1}_0)\n\\\\\ny_t\n\\given\ny_{t-1}\n\\com\n\\Bbeta\\com\\sigma^2\n&\\sim \\text{N}\n\\left(\n\\Bx_t^\\tr\\Bbeta\\com\\sigma^2\n\\right), && \\Bx_t=\\begin{bmatrix}1 & y_{t-1}\\end{bmatrix}^\\tr.\n\\end{aligned}\n\\]\n\n\nThe posterior is available in closed-form:\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:T}\n&\\sim\n\\text{IG}(a_T\\com b_T)\n\\\\\n\\Bbeta\\given \\sigma^2\\com y_{0:T}\n&\\sim\n\\text{N}_2(\\Bm_T\\com\\sigma^2\\BH^{-1}_T)\n\\\\\n\\\\\n\\BH_T\n&=\n\\BX_T^\\tr\\BX_T+\\BH_0\n\\\\\n\\Bm_T\n&=\n\\BH_T^{-1}(\\BX_T^\\tr\\By_T+\\BH_0\\Bm_0)\n\\\\\na_T\n&=\na_0 + T/2\n\\\\\nb_T\n&=\nb_0\n+\n(\\By_T^\\tr\\By_T+\\Bm_0^\\tr\\BH_0\\Bm_0-\\Bm_T^\\tr\\BH_T\\Bm_T)/2.\n\\end{aligned}\n\\]\n\n\nMake it recursive on Problem Set 1!"
   },
   {
-    "objectID": "slides/00-welcome.html#autonomous-vehicle-navigation",
-    "href": "slides/00-welcome.html#autonomous-vehicle-navigation",
-    "title": "Welcome to STA 542!",
-    "section": "Autonomous vehicle navigation",
-    "text": "Autonomous vehicle navigation"
+    "objectID": "slides/03-ar-1-forecasting.html#a-classic-example",
+    "href": "slides/03-ar-1-forecasting.html#a-classic-example",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "A classic example",
+    "text": "A classic example"
   },
   {
-    "objectID": "slides/00-welcome.html#lets-take-a-second-look-at-this",
-    "href": "slides/00-welcome.html#lets-take-a-second-look-at-this",
-    "title": "Welcome to STA 542!",
-    "section": "Let’s take a second look at this",
-    "text": "Let’s take a second look at this\n\n\n\n\n\nSequential inference and probabilistic prediction!"
-  },
-  {
-    "objectID": "slides/00-welcome.html#point-forecast",
-    "href": "slides/00-welcome.html#point-forecast",
-    "title": "Welcome to STA 542!",
+    "objectID": "slides/03-ar-1-forecasting.html#point-forecast",
+    "href": "slides/03-ar-1-forecasting.html#point-forecast",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
     "section": "Point forecast",
     "text": "Point forecast\nYour single-number best guess at tomorrow’s observation:"
   },
   {
-    "objectID": "slides/00-welcome.html#forecast-interval",
-    "href": "slides/00-welcome.html#forecast-interval",
-    "title": "Welcome to STA 542!",
+    "objectID": "slides/03-ar-1-forecasting.html#forecast-interval",
+    "href": "slides/03-ar-1-forecasting.html#forecast-interval",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
     "section": "Forecast interval",
     "text": "Forecast interval\nA range of likely values for tomorrow’s observation:"
   },
   {
-    "objectID": "slides/00-welcome.html#forecast-density",
-    "href": "slides/00-welcome.html#forecast-density",
-    "title": "Welcome to STA 542!",
+    "objectID": "slides/03-ar-1-forecasting.html#forecast-density",
+    "href": "slides/03-ar-1-forecasting.html#forecast-density",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
     "section": "Forecast density",
     "text": "Forecast density\nFull distribution capturing uncertainty about tomorrow:"
   },
   {
-    "objectID": "slides/00-welcome.html#and-then-tomorrow-finally-comes",
-    "href": "slides/00-welcome.html#and-then-tomorrow-finally-comes",
-    "title": "Welcome to STA 542!",
+    "objectID": "slides/03-ar-1-forecasting.html#and-then-tomorrow-finally-comes",
+    "href": "slides/03-ar-1-forecasting.html#and-then-tomorrow-finally-comes",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
     "section": "And then tomorrow finally comes",
     "text": "And then tomorrow finally comes\nSo…how’d we do?"
   },
   {
-    "objectID": "slides/00-welcome.html#the-main-themes-of-the-course",
-    "href": "slides/00-welcome.html#the-main-themes-of-the-course",
-    "title": "Welcome to STA 542!",
-    "section": "The main themes of the course",
-    "text": "The main themes of the course\nWe will focus on the following:\n\nInference should be sequential. We want recursive estimation techniques to handle data that are streaming in real-time;\nPredictions should be probabilistic. We want point, interval, and density forecasts that incorporate many sources of uncertainty;\nIf you can manipulate joint distributions, you can do time series analysis. Too many TS textbooks quickly lose sight of this;\n\n\nAnd there is a secret fourth theme:\n\nA Bayesian approach is an excellent way of achieving the goals of sequential inference and probabilistic prediction."
+    "objectID": "slides/03-ar-1-forecasting.html#whats-the-point",
+    "href": "slides/03-ar-1-forecasting.html#whats-the-point",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "What’s the point?",
+    "text": "What’s the point?\n\nWe want intervals and densities to communicate uncertainty about the forecast;\n\nWhat sources of uncertainty?\n\nBasic data uncertainty;\nParameter estimation uncertainty;\nHyperparameter uncertainty;\nModel uncertainty;\nUncertainty introduced by missing data.\n\n\nIn the small world of the AR(1), mainly the first two for now."
   },
   {
-    "objectID": "slides/00-welcome.html#topics-may-include",
-    "href": "slides/00-welcome.html#topics-may-include",
-    "title": "Welcome to STA 542!",
-    "section": "Topics may include",
-    "text": "Topics may include\n\nARMA models;\nVector autoregressions (VARs);\nDynamic linear models (DLMs);\nHidden Markov Models (HMMs);\nProbabilistic forecast evaluation;\nNonlinear non-Gaussian state-space models;\nSequential Monte Carlo (AKA particle filtering);\nForecast combination."
+    "objectID": "slides/03-ar-1-forecasting.html#forecast-distribution",
+    "href": "slides/03-ar-1-forecasting.html#forecast-distribution",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Forecast distribution",
+    "text": "Forecast distribution\nGiven the data we’ve seen, we want a distribution for the data we haven’t seen.\n\nIn other words:\n\\[\np(y_{t+1:t+H}\\given y_{0:t})\n\\]\n\n\nAssume for now the parameters are fixed and known (red flag!)."
   },
   {
-    "objectID": "slides/00-welcome.html#bookmark-the-course-page",
-    "href": "slides/00-welcome.html#bookmark-the-course-page",
-    "title": "Welcome to STA 542!",
-    "section": "Bookmark the course page!",
-    "text": "Bookmark the course page!\n\n\n\n\n\nhttps://sta542-f25.github.io/"
+    "objectID": "slides/03-ar-1-forecasting.html#clumsy-but-true",
+    "href": "slides/03-ar-1-forecasting.html#clumsy-but-true",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Clumsy, but true",
+    "text": "Clumsy, but true\n\nWe know\n\\[\n\\begin{bmatrix}\n\\mathbf{y}_t \\\\\n\\mathbf{y}_{t+H}\n\\end{bmatrix}\n\\sim\n\\text{N}_{1+t+H}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}_t \\\\\n\\boldsymbol{\\mu}_{t+H}\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}_t & \\boldsymbol{\\Sigma}_{t,t+H}\\\\\n\\boldsymbol{\\Sigma}_{t,t+H}^{\\scriptscriptstyle\\mathsf{T}} & \\boldsymbol{\\Sigma}_{t+H}\n\\end{bmatrix}\n\\right),\n\\]\n\n\nand so strictly speaking:\n\\[\n\\mathbf{y}_{t+H} \\,|\\,\\mathbf{y}_t\n\\sim\n\\text{N}_H\n\\left(\n\\boldsymbol{\\mu}_{t+H} + \\boldsymbol{\\Sigma}_{t,t+H}^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\Sigma}_t^{-1}(\\mathbf{y}_t-\\boldsymbol{\\mu}_t)\n,\\,\n\\boldsymbol{\\Sigma}_{t+H} - \\boldsymbol{\\Sigma}_{t,t+H}^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}_t^{-1}\n\\boldsymbol{\\Sigma}_{t,t+H}\n\\right).\n\\]\n\n\nBut let’s make this…useful.\n\n\n(Also, ignore all this ridiculous notation)"
   },
   {
-    "objectID": "slides/00-welcome.html#final-grade-breakdown",
-    "href": "slides/00-welcome.html#final-grade-breakdown",
-    "title": "Welcome to STA 542!",
-    "section": "Final grade breakdown",
-    "text": "Final grade breakdown\nYour final course grade will be calculated as follows:\n\n\nCategory\nPercentage\n\n\n\nProblem Sets\n25%\n\n\nExam 1\n25%\n\n\nExam 2\n25%\n\n\nFinal Project\n25%\n\n\n\n\n\n\n\n\n\nNote\n\n\nThe final letter grade will be based on the usual thresholds, and there might be a curve."
+    "objectID": "slides/03-ar-1-forecasting.html#lets-give-it-some-thought",
+    "href": "slides/03-ar-1-forecasting.html#lets-give-it-some-thought",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Let’s give it some thought",
+    "text": "Let’s give it some thought\n\nFirst, the AR(1) is first order Markov, so\n\n\n\\[\np(y_{t+1:t+H}\\given y_{0:t})=p(y_{t+1:t+H}\\given y_{t}).\n\\]\n\n\nThe future data behaves just like the past, with a fixed initial condition:\n\n\n\\[\n\\begin{aligned}\ny_{t+h}\n&=\n\\beta_0\n+\n\\beta_1\ny_{t+h-1}\n+\n\\varepsilon_{t+h},\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2)\n\\\\\ny_t\n&\\text{ fixed}.\n\\end{aligned}\n\\]\nSo the conditional distribution has the same structure as the unconditional joint that we have already studied. Just starts in a different spot."
   },
   {
-    "objectID": "slides/00-welcome.html#course-components",
-    "href": "slides/00-welcome.html#course-components",
-    "title": "Welcome to STA 542!",
-    "section": "Course components",
-    "text": "Course components\n\nProblem sets: 6 in total; one due about every 2 weeks;\n\nExams: in-class, with only an 8.5” x 11” note sheet:\n\nWednesday October 8 11:45 AM - 12:00 PM;\nMonday November 24 11:45 AM - 12:00 PM;\n\n\nFinal project: no clue, honestly. Talk to me in October."
+    "objectID": "slides/03-ar-1-forecasting.html#forecast-distributions",
+    "href": "slides/03-ar-1-forecasting.html#forecast-distributions",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Forecast distributions",
+    "text": "Forecast distributions\n\\[\n\\begin{aligned}\ny_{t+h}\\given y_{0:t}\n&\\sim\\N\\left(\\mu_{t+h|t}\\com \\tau^2_{t+h|t}\\right)\n\\\\\n\\\\\n\\mu_{t+h|t}\n&=\n\\beta_0\\sum\\limits_{i=0}^{h-1}\\beta_1^i\n+\n\\beta_1^hy_t\n\\\\\n&=\n\\beta_0\n+\n\\beta_1\n\\mu_{t+h-1|t}\n&& \\mu_{t|t}=y_t\n\\\\\n\\tau^2_{t+h|t}\n&=\n\\sigma^2\n\\sum\\limits_{i=0}^{h-1}\\beta_1^{2i}\n\\\\\n&=\n\\sigma^2\n+\n\\beta_1^2\n\\tau^2_{t+h-1|t}\n&&\n\\tau^2_{t|t}=0.\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#late-policy",
-    "href": "slides/00-welcome.html#late-policy",
-    "title": "Welcome to STA 542!",
-    "section": "Late policy",
-    "text": "Late policy\nNo late work will be accepted unless you request an extension in advance by e-mailing JZ. All reasonable requests will be entertained, but extensions will not be long."
+    "objectID": "slides/03-ar-1-forecasting.html#prediction-intervals",
+    "href": "slides/03-ar-1-forecasting.html#prediction-intervals",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Prediction intervals",
+    "text": "Prediction intervals\nFull distribution:\n\\[\ny_{t+h}\\given y_{0:t}\n\\sim\\N\\left(\\mu_{t+h|t}\\com \\tau^2_{t+h|t}\\right)\n\\]\nPrediction interval:\n\\[\n\\begin{aligned}\n\\mu_{t+h-1|t}\n&\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\tau_{t+h|t}\n\\\\\n\\beta_0\\sum\\limits_{i=0}^{h-1}\\beta_1^i\n&\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\sqrt{\\sigma^2\n\\sum\\limits_{i=0}^{h-1}\\beta_1^{2i}}\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#attendance",
-    "href": "slides/00-welcome.html#attendance",
-    "title": "Welcome to STA 542!",
-    "section": "Attendance",
-    "text": "Attendance\nNot required. Live your life."
+    "objectID": "slides/03-ar-1-forecasting.html#summary",
+    "href": "slides/03-ar-1-forecasting.html#summary",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Summary",
+    "text": "Summary\nDistribution forecasts:\n\\[\n\\begin{aligned}\ny_{t+h}\\given y_{0:t}\n&\\sim\\N\\left(\\mu_{t+h|t}\\com \\tau^2_{t+h|t}\\right)\n\\\\\n\\\\\n\\mu_{t+h|t}\n&=\n\\beta_0\\sum\\limits_{i=0}^{h-1}\\beta_1^i\n+\n\\beta_1^hy_t\n\\\\\n&=\n\\beta_0\n+\n\\beta_1\n\\mu_{t+h-1|t}\n&& \\mu_{t|t}=y_t\n\\\\\n\\tau^2_{t+h|t}\n&=\n\\sigma^2\n\\sum\\limits_{i=0}^{h-1}\\beta_1^{2i}\n\\\\\n&=\n\\sigma^2\n+\n\\beta_1^2\n\\tau^2_{t+h-1|t}\n&&\n\\tau^2_{t|t}=0.\n\\end{aligned}\n\\]\nPrediction intervals:\n\\[\n\\mu_{t+h-1|t}\n\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\tau_{t+h|t}\n.\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#communication",
-    "href": "slides/00-welcome.html#communication",
-    "title": "Welcome to STA 542!",
-    "section": "Communication",
-    "text": "Communication\nIf you wish to ask questions in writing…\n\nPost on Ed: about general course policies and content;\nEmail JZ directly: personal matters.\n\nYou should not really be emailing Aihua directly for any reason."
+    "objectID": "slides/03-ar-1-forecasting.html#pics-or-it-didnt-happen",
+    "href": "slides/03-ar-1-forecasting.html#pics-or-it-didnt-happen",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Pics or it didn’t happen",
+    "text": "Pics or it didn’t happen\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\n\nsimulate_ar_1 &lt;- function(T, b0, b1, s, y0){\n  y &lt;- numeric(T)\n  y[1] &lt;- y0\n  for(t in 2:T){\n    y[t] &lt;- b0 + b1 * y[t - 1] + rnorm(1, 0, s)\n  }\n  return(y)\n}\n\nar_1_mean &lt;- function(h, b0, b1, yT){\n  if(h == 0){\n    return(yT)\n  } else {\n    return(b0 * sum(b1 ^ (0:(h-1))) + yT * (b1^h)) \n  }\n}\n\nar_1_var &lt;- function(h, b1, s){\n  if(h == 0){\n    return(0)\n  } else {\n    return((s^2) * sum(b1 ^ (2*(0:(h-1)))))\n  }\n}\n\nui &lt;- fluidPage(\n  titlePanel(\"Forecast distribution of a Gaussian AR(1)\"),\n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"b0\", \"β₀\", min = -5, max = 5, value = 0, step = 0.1),\n      sliderInput(\"b1\", \"β₁\", min = -2, max = 2, value = 0, step = 0.1),\n      sliderInput(\"s\", \"σ\", min = 0, max = 2, value = 1, step = 0.1)\n    ),\n    mainPanel(\n      plotOutput(\"distPlot\", height = \"600px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  \n  # fixed observed data\n  set.seed(123)\n  y_obs &lt;- simulate_ar_1(10, 0, 0, 1, 0)\n  \n  output$distPlot &lt;- renderPlot({\n    b0 &lt;- input$b0\n    b1 &lt;- input$b1\n    s &lt;- input$s\n    \n    T_obs &lt;- length(y_obs)\n    H &lt;- 20  # forecast horizon\n    range &lt;- 1:(T_obs + H)\n    \n    # plot window\n    plot(range, c(y_obs, rep(NA,H)), type=\"n\",\n         xlab = \"t\", ylab = expression(y[t]),\n         ylim = c(-20,20), bty=\"n\")\n    \n    # grey forecast region\n    rect(T_obs+0.5, -20, T_obs+H+0.5, 20, col=rgb(0.8,0.8,0.8,0.5), border=NA)\n    \n    # observed data\n    lines(1:T_obs, y_obs, col=\"black\", lwd=2)\n    \n    # forecast distribution intervals\n    alpha = c(0.01, seq(0.1,0.9,0.1))\n    middle &lt;- sapply(0:H, ar_1_mean, b0, b1, y_obs[T_obs])\n    sds &lt;- sqrt(sapply(0:H, ar_1_var, b1, s))\n    f_range &lt;- T_obs:(T_obs+H)\n    \n    for(a in alpha){\n      U = qnorm(1 - a/2, mean = middle, sd = sds)\n      L = qnorm(a/2, mean = middle, sd = sds)\n      polygon(c(f_range, rev(f_range)),\n              c(U, rev(L)),\n              col = rgb(1,0,0,0.15), border=NA)\n    }\n    \n    # add mean forecast line\n    lines(f_range, middle, col=\"red\", lwd=2, lty=2)\n  })\n}\n\nshinyApp(ui = ui, server = server)"
   },
   {
-    "objectID": "slides/00-welcome.html#collaboration",
-    "href": "slides/00-welcome.html#collaboration",
-    "title": "Welcome to STA 542!",
-    "section": "Collaboration",
-    "text": "Collaboration\nYou are enthusiastically encouraged to work together on the problem sets. You will learn a lot from each other! Two policies:\n\n✅ Acknowledge your collaborators: “Aloysius, Cybill, and I worked together on this problem;”\n❌ Do not outright share or copy solutions. All submitted work must be your own.\n\nViolation of the second policy is plagiarism. Sharers and recipients alike are referred to the conduct office and receive zeros."
+    "objectID": "slides/03-ar-1-forecasting.html#but-wait",
+    "href": "slides/03-ar-1-forecasting.html#but-wait",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "But wait!",
+    "text": "But wait!\nThe parameters are not known. They have to be estimated.\n\n\\[\n\\mu_{t+h-1|t}\n\\pm\nz_{1-\\frac{\\alpha}{2}}\n\\tau_{t+h|t}\n.\n\\]\n\n\nCan we plug-in estimates and replace \\(z\\) with \\(t\\)?\n\n\nNot quite."
   },
   {
-    "objectID": "slides/00-welcome.html#use-of-outside-resources-including-ai",
-    "href": "slides/00-welcome.html#use-of-outside-resources-including-ai",
-    "title": "Welcome to STA 542!",
-    "section": "Use of outside resources, including AI",
-    "text": "Use of outside resources, including AI\n\nUsing ChatGPT to complete assignments is like bringing a forklift into the weight room; you will never improve your cognitive fitness that way.\n\n\nIf you find a problem solution online (or prompt an LLM to generate one) and submit it as your own work, that will obviously be considered plagiarism;\nOtherwise, all outside resources are fair game for you to study and get extra practice;\nIf you outsource all of your thinking to a language model, you will probably fail both exams. Good luck!"
+    "objectID": "slides/03-ar-1-forecasting.html#bootstrapping-for-dependent-data-with-iid-errors",
+    "href": "slides/03-ar-1-forecasting.html#bootstrapping-for-dependent-data-with-iid-errors",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Bootstrapping for dependent data with iid errors",
+    "text": "Bootstrapping for dependent data with iid errors\n\n\nData come from an AR(1) with mean zero iid errors (may not be normal!):\n\n\n\n\\[\ny_t\n=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\n\\overset{\\text{iid}}{\\sim}F;\n\\]\n\n\n\nUse observed \\(y_{0:T}\\) to compute OLS estimate \\(\\hat{\\Bbeta}_T\\);\n\n\n\n\nEstimate residuals and center them:\n\n\\[\n\\hat{\\varepsilon}_t=y_t-\\hat{\\beta}_0-\\hat{\\beta}_1y_{t-1}\\quad \\to\\quad e_t=\\hat{\\varepsilon}_t-\\sum\\limits_{j=1}^T\\hat{\\varepsilon}_j/T.\n\\]\n\n\n\nConstruct alternative time series by resampling residuals:\n\n\\[\n\\begin{aligned}\n\\tilde{y}_0&=y_0\\\\\n\\tilde{y}_t&=\\hat{\\beta}_0+\\hat{\\beta}_1\\tilde{y}_{t-1}+\\tilde{e}_{t},&&\\tilde{e}_{t}\\overset{\\text{iid}}{\\sim} \\hat{F}_T.\n\\end{aligned}\n\\]\n\n\nRepeats the last step many times, and from then on it’s bootstrap like normal."
   },
   {
-    "objectID": "slides/00-welcome.html#what-background-do-you-need",
-    "href": "slides/00-welcome.html#what-background-do-you-need",
-    "title": "Welcome to STA 542!",
-    "section": "What background do you need?",
-    "text": "What background do you need?\nI assume you have a working knowledge of…\n\nmatrix algebra;\nOLS regression;\nprobability and math stat at the level of Casella & Berger;\nBayesian statistics at the level of STA 602;\nThe R programming language.\n\n\nProblem Set 0 gives you a workout in all of the above."
+    "objectID": "slides/03-ar-1-forecasting.html#bootstrapping-the-residuals",
+    "href": "slides/03-ar-1-forecasting.html#bootstrapping-the-residuals",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Bootstrapping the residuals",
+    "text": "Bootstrapping the residuals\nGird your loins:\n\n\\[\n\\begin{matrix}\n\\text{1. Original data} &&& y_{0:n} && \\\\\n&&& \\downarrow && \\\\\n\\text{2. OLS} &&& \\hat{\\Btheta}_{T} && \\\\\n&&& \\downarrow && \\\\\n\\text{3. Estimate (centered) residuals} &&& e_{1:T} && \\\\\n&\\swarrow &\\swarrow& \\cdots &\\searrow&\\searrow \\\\\n\\text{4. Resample residuals}&\\tilde{e}_{1:T}^{(1)} &\\tilde{e}_{1:T}^{(2)}& \\cdots &\\tilde{e}_{1:T}^{(k-1)}&\\tilde{e}_{1:T}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{5. Bootstrap time series}&\\tilde{y}_{0:T}^{(1)} &\\tilde{y}_{0:T}^{(2)}& \\cdots &\\tilde{y}_{0:T}^{(k-1)}&\\tilde{y}_{0:T}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{6. Bootstrap estimates}&\\tilde{\\Btheta}_{T}^{(1)} &\\tilde{\\Btheta}_{T}^{(2)}& \\cdots &\\tilde{\\Btheta}_{T}^{(k-1)}&\\tilde{\\Btheta}_{T}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{7. Draw more residuals}&\\tilde{e}_{T+1:T+h}^{(1)} &\\tilde{e}_{T+1:T+h}^{(2)}& \\cdots &\\tilde{e}_{T+1:T+h}^{(k-1)}&\\tilde{e}_{T+1:T+h}^{(k)} \\\\\n&\\downarrow &\\downarrow& \\cdots &\\downarrow&\\downarrow \\\\\n\\text{8. Simulate forecasts}&\\tilde{y}_{T+1:T+h}^{(1)} &\\tilde{y}_{T+1:T+h}^{(2)}& \\cdots &\\tilde{y}_{T+1:T+h}^{(k-1)}&\\tilde{y}_{T+1:T+h}^{(k)} \\\\\n\\end{matrix}\n\\]\n\n\nIn other words, it’s awful."
   },
   {
-    "objectID": "slides/00-welcome.html#time-series",
-    "href": "slides/00-welcome.html#time-series",
-    "title": "Welcome to STA 542!",
-    "section": "Time series",
-    "text": "Time series\n\nA time series is a set of measurements collected over time;\nWe model these data as a sequence of dependent random variables:\n\n\\[\n\\mathbf{y}_{0:T} = \\{\\mathbf{y}_0,\\,\\mathbf{y}_1,\\,\\mathbf{y}_2,\\,...,\\,\\mathbf{y}_T\\}.\n\\]\n\nA time series model is “just” their joint probability distribution:\n\n\\[\np(\\mathbf{y}_{0:T}) = p(\\mathbf{y}_0)\\prod_{t=1}^Tp(\\mathbf{y}_t\\,|\\,\\mathbf{y}_{0:t-1}).\n\\]\n\n\n\n\n\n\n\nStay grounded.\n\n\nLike much wisdom, that last bullet is simultaneously vacuous and profound. It tells you everything and it tells you nothing all at once. But don’t let this basic fact get lost in the sea of details."
+    "objectID": "slides/03-ar-1-forecasting.html#probabilistic-forecasting-via-monte-carlo",
+    "href": "slides/03-ar-1-forecasting.html#probabilistic-forecasting-via-monte-carlo",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Probabilistic forecasting via Monte Carlo",
+    "text": "Probabilistic forecasting via Monte Carlo\nUse the simulations \\(\\tilde{y}_{t+h}^{(1:k)}=\\left\\{\\tilde{y}_{t+h}^{(1)}\\com \\tilde{y}_{t+h}^{(2)}\\com ...\\com \\tilde{y}_{t+h}^{(k)}\\right\\}\\) to construct whatever forecast object you want:\n\n\\[\n\\hat{y}_{t+h|t}=\\frac{1}{k}\\sum\\limits_{j=1}^k\\tilde{y}_{t+h}^{(j)}. \\quad (\\text{...or median})\n\\]\n\n\nForecast interval:\n\\[\n\\hat{I}_{t+h|t} = \\left[\\hat{Q}_{\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\com \\hat{Q}_{1-\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\right]. \\quad (...\\text{or hdi})\n\\]\n\n\nForecast distribution:\n\\[\n\\hat{f}_{t+h|t}\n=\n\\text{histogram}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right). \\quad (...\\text{or kde})\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#notation-to-get-used-to",
-    "href": "slides/00-welcome.html#notation-to-get-used-to",
-    "title": "Welcome to STA 542!",
-    "section": "Notation to get used to",
-    "text": "Notation to get used to\n\nI will not use uppercase \\(Y_t\\) versus lowercase \\(y_t\\) to distinguish random variables and fixed realizations. It’s all just \\(y_t\\);\nA vector \\(\\mathbf{y}\\in\\RR^n\\) is always an \\(n\\times 1\\) column. The corresponding row vector is \\(\\By^\\tr\\);\nFor integers \\(i&lt;j\\), you will see this shorthand all the time:\n\n\\[\ny_{i:j}\n=\n\\{y_i\\com y_{i+1}\\com y_{i+2}\\com...\\com y_{j-2}\\com y_{j-1}\\com y_{j}\\}\n.\n\\]\n\nThe symbol “\\(p\\)” will be aggressively abused and overloaded to represent any probability distribution, sometimes several in the same line:\n\n\\[\np(\\mathbf{y}_{0:T}) = p(\\mathbf{y}_0)\\prod_{t=1}^Tp(\\mathbf{y}_t\\,|\\,\\mathbf{y}_{0:t-1}).\n\\]"
+    "objectID": "slides/03-ar-1-forecasting.html#compare-intervals",
+    "href": "slides/03-ar-1-forecasting.html#compare-intervals",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Compare intervals",
+    "text": "Compare intervals\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"AR(1) Forecast: Plug-in vs Residual Bootstrap\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"true_b0\", \"True β₀:\", min = -1, max = 1, value = 0.5, step = 0.1),\n      sliderInput(\"true_b1\", \"True β₁:\", min = -0.95, max = 0.95, value = 0.7, step = 0.05),\n      sliderInput(\"true_sigma\", \"True σ:\", min = 0.1, max = 2, value = 1, step = 0.1),\n      sliderInput(\"n_obs\", \"Sample size:\", min = 40, max = 500, value = 100, step = 10),\n      actionButton(\"rerun\", \"Re-run simulation\"),\n      checkboxInput(\"show_red\", \"Show plug-in fan (red)\", TRUE),\n      checkboxInput(\"show_blue\", \"Show bootstrap fan (blue)\", TRUE)\n    ),\n    \n    mainPanel(\n      plotOutput(\"fanPlot\", height = \"600px\")\n    )\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  \n  simulate_ar_1 &lt;- function(T, b0, b1, s, y1 = 0){\n    y &lt;- numeric(T)\n    y[1] &lt;- y1\n    for(t in 2:T){\n      y[t] &lt;- b0 + b1 * y[t-1] + rnorm(1, 0, s)\n    }\n    return(y)\n  }\n  \n  ar_1_mean_h &lt;- function(h, b0, b1, yT){\n    if(h == 0) return(yT)\n    b0 * sum(b1^(0:(h-1))) + yT * (b1^h)\n  }\n  \n  ar_1_var_h &lt;- function(h, b1, sigma){\n    if(h == 0) return(0)\n    sigma^2 * sum(b1^(2*(0:(h-1))))\n  }\n  \n  sim_data &lt;- reactiveVal(NULL)\n  \n  observeEvent(input$rerun, {\n    set.seed(123)  # keep deterministic for reproducibility\n    n_obs &lt;- input$n_obs\n    H &lt;- 20\n    B &lt;- 7500\n    \n    y_obs &lt;- simulate_ar_1(n_obs, input$true_b0, input$true_b1, input$true_sigma, y1 = 0)\n    \n    # OLS fit\n    Y &lt;- y_obs[2:n_obs]\n    X &lt;- cbind(1, y_obs[1:(n_obs-1)])\n    ols_fit &lt;- lm(Y ~ X - 1)\n    coef_hat &lt;- coef(ols_fit)\n    b0_hat &lt;- coef_hat[1]\n    b1_hat &lt;- coef_hat[2]\n    resid_hat &lt;- resid(ols_fit)\n    sigma_hat &lt;- sqrt(sum(resid_hat^2) / (length(resid_hat) - 1))\n    \n    h_seq &lt;- 0:H\n    plug_mean &lt;- sapply(h_seq, ar_1_mean_h, b0 = b0_hat, b1 = b1_hat, yT = y_obs[n_obs])\n    plug_sd   &lt;- sqrt(sapply(h_seq, ar_1_var_h, b1 = b1_hat, sigma = sigma_hat))\n    \n    # bootstrap\n    bootstrap_forecasts &lt;- matrix(NA, nrow = B, ncol = H + 1)\n    resid_centered &lt;- resid_hat - mean(resid_hat)\n    \n    for(b in 1:B){\n      e_star &lt;- sample(resid_centered, size = n_obs - 1, replace = TRUE)\n      y_star &lt;- numeric(n_obs)\n      y_star[1] &lt;- y_obs[1]\n      for(t in 2:n_obs){\n        y_star[t] &lt;- b0_hat + b1_hat * y_star[t-1] + e_star[t-1]\n      }\n      Ys &lt;- y_star[2:n_obs]\n      Xs &lt;- cbind(1, y_star[1:(n_obs-1)])\n      fit_star &lt;- lm(Ys ~ Xs - 1)\n      coef_star &lt;- coef(fit_star)\n      b0_star &lt;- coef_star[1]\n      b1_star &lt;- coef_star[2]\n      resid_star &lt;- resid(fit_star)\n      resid_star_centered &lt;- resid_star - mean(resid_star)\n      \n      y_fut &lt;- numeric(H + 1)\n      y_fut[1] &lt;- y_obs[n_obs]\n      future_shocks &lt;- sample(resid_star_centered, size = H, replace = TRUE)\n      for(h in 1:H){\n        y_fut[h + 1] &lt;- b0_star + b1_star * y_fut[h] + future_shocks[h]\n      }\n      bootstrap_forecasts[b, ] &lt;- y_fut\n    }\n    \n    boot_mean &lt;- colMeans(bootstrap_forecasts)\n    \n    sim_data(list(\n      y_obs = y_obs,\n      plug_mean = plug_mean,\n      plug_sd = plug_sd,\n      bootstrap_forecasts = bootstrap_forecasts,\n      boot_mean = boot_mean,\n      H = H\n    ))\n  }, ignoreNULL = FALSE)\n  \n  output$fanPlot &lt;- renderPlot({\n    dat &lt;- sim_data()\n    if(is.null(dat)) return(NULL)\n    \n    y_obs &lt;- dat$y_obs\n    plug_mean &lt;- dat$plug_mean\n    plug_sd &lt;- dat$plug_sd\n    bootstrap_forecasts &lt;- dat$bootstrap_forecasts\n    boot_mean &lt;- dat$boot_mean\n    H &lt;- dat$H\n    \n    n_obs &lt;- length(y_obs)\n    \n    # Window: last 20 obs and 20 forecasts\n    obs_window &lt;- (n_obs-19):n_obs\n    f_range &lt;- (n_obs):(n_obs + H)\n    plot_range &lt;- c((n_obs-19):(n_obs+H))\n    \n    y_min &lt;- min(c(y_obs[obs_window], plug_mean - 4 * plug_sd, bootstrap_forecasts))\n    y_max &lt;- max(c(y_obs[obs_window], plug_mean + 4 * plug_sd, bootstrap_forecasts))\n    \n    plot(plot_range, rep(NA, length(plot_range)), type = \"n\",\n         xlab = \"t\", ylab = expression(y[t]),\n         ylim = c(y_min, y_max), bty = \"n\",\n         main = \"AR(1) forecast: plug-in (red) vs residual-bootstrap (blue)\")\n    \n    rect(n_obs + 0.5, y_min, n_obs + H + 0.5, y_max,\n         col = rgb(0.85,0.85,0.85,0.5), border = NA)\n    \n    lines(obs_window, y_obs[obs_window], col = \"black\", lwd = 2)\n    \n    # bootstrap fan\n    if(input$show_blue){\n      prob_levels &lt;- c(0.001, 0.005, 0.01, seq(0.02, 0.48, by = 0.02))\n      lower_probs &lt;- prob_levels\n      upper_probs &lt;- 1 - prob_levels\n      boot_fan_lower &lt;- apply(bootstrap_forecasts, 2, quantile, probs = lower_probs)\n      boot_fan_upper &lt;- apply(bootstrap_forecasts, 2, quantile, probs = upper_probs)\n      for(i in seq_len(nrow(boot_fan_lower))){\n        polygon(c(f_range, rev(f_range)),\n                c(boot_fan_upper[i, ], rev(boot_fan_lower[i, ])),\n                col = rgb(0,0,1,0.08), border = NA)\n      }\n      lines(f_range, apply(bootstrap_forecasts, 2, median),\n            col = rgb(0,0,1,0.8), lty = 2, lwd = 1.5)\n      lines(f_range, boot_mean, col = rgb(0,0,1,0.9), lty = 1, lwd = 1)\n    }\n    \n    # plug-in fan\n    if(input$show_red){\n      alpha_vec &lt;- c(0.01, seq(0.1,0.9,by=0.1))\n      for(a in rev(alpha_vec)){\n        U &lt;- qnorm(1 - a/2, mean = plug_mean, sd = plug_sd)\n        L &lt;- qnorm(a/2, mean = plug_mean, sd = plug_sd)\n        polygon(c(f_range, rev(f_range)),\n                c(U, rev(L)),\n                col = rgb(1, 0, 0, 0.15), border = NA)\n      }\n      lines(f_range, plug_mean, col = \"red\", lty = 2, lwd = 2)\n    }\n    \n    abline(v = n_obs + 0.5, lty = 3)\n  })\n}\n\nshinyApp(ui, server)"
   },
   {
-    "objectID": "slides/00-welcome.html#definition",
-    "href": "slides/00-welcome.html#definition",
-    "title": "Welcome to STA 542!",
-    "section": "Definition",
-    "text": "Definition\nA random vector \\(\\mathbf{x}=\\begin{bmatrix}x_1&x_2&\\cdots&x_n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\\in\\mathbb{R}^n\\) has the multivariate normal distribution with mean vector \\(\\boldsymbol{\\mu}\\in\\mathbb{R}^n\\) and covariance matrix \\(\\boldsymbol{\\Sigma}\\in\\mathbb{R}^{n\\times n}\\) if its density is\n\n\\[\np(\\mathbf{x})\n=\n\\frac\n{\n\\exp\n\\left(\n-\\frac{1}{2}\n(\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n}\n{\n(2\\pi)^{\\frac{n}{2}}\n|\\boldsymbol{\\Sigma}|^{1/2}\n}\n,\n\\quad\n\\mathbf{x}\n\\in\n\\mathbb{R}^n.\n\\]\n\n\nWe denote this \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\).\n\n\n\n\n\n\n\n\nPlenty of linear algebra coming your way!\n\n\n\nTranspose \\((\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\\);\nInverse \\(\\boldsymbol{\\Sigma}^{-1}\\);\nMatrix multiplication \\((\\mathbf{x} - \\boldsymbol{\\mu})^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\Sigma}^{-1}(\\mathbf{x}-\\boldsymbol{\\mu})\\);\nDeterminant \\(|\\boldsymbol{\\Sigma}|\\);\n\n\\(\\boldsymbol{\\Sigma}\\) is a symmetric and positive definite matrix."
+    "objectID": "slides/03-ar-1-forecasting.html#thats-just-the-tip-of-the-iceberg",
+    "href": "slides/03-ar-1-forecasting.html#thats-just-the-tip-of-the-iceberg",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "That’s just the tip of the iceberg",
+    "text": "That’s just the tip of the iceberg\n\n\n\n\nIf you really want to know,\nLahiri is your man."
   },
   {
-    "objectID": "slides/00-welcome.html#univariate",
-    "href": "slides/00-welcome.html#univariate",
-    "title": "Welcome to STA 542!",
-    "section": "Univariate",
-    "text": "Univariate\nIf \\(n=1\\), then we meet an old friend:\n\n\n\n\\[\np(x)=\\frac{\\exp\\left(-\\frac{1}{2}\\frac{(x-\\mu)^2}{\\sigma^2}\\right)}{\\sqrt{2\\pi\\sigma^2}}.\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nSo \\(\\mathbf{x} = [x]\\sim\\text{N}_1([\\mu],\\,[\\sigma^2])\\) is just \\(x\\sim\\text{N}(\\mu,\\,\\sigma^2)\\)."
+    "objectID": "slides/03-ar-1-forecasting.html#posterior-predictive-distribution",
+    "href": "slides/03-ar-1-forecasting.html#posterior-predictive-distribution",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Posterior predictive distribution",
+    "text": "Posterior predictive distribution\nAfter computing the posterior\n\\[\np(\\Btheta\\given y_{0:T})\n=\n\\frac{p(y_{1:T}\\given y_0\\com \\Btheta)p(\\Btheta)}{p(y_{1:T}\\given y_0)}\n,\n\\]\n\nyou base forecasts on the posterior predictive distribution:\n\\[\np(y_{T+1:T+H}\\,|\\,y_{1:T})\n=\n\\int\np(y_{T+1:T+H}\\,|\\,y_{1:T},\\,\\boldsymbol{\\theta})\np(\\boldsymbol{\\theta}\\,|\\,y_{1:T})\n\\,\\text{d}\\boldsymbol{\\theta}.\n\\]\n\n\nImmediately incorporates both data and parameter uncertainty by construction.\n\n\nThere’s…nothing else to say about this."
   },
   {
-    "objectID": "slides/00-welcome.html#bivariate-elliptical-contours",
-    "href": "slides/00-welcome.html#bivariate-elliptical-contours",
-    "title": "Welcome to STA 542!",
-    "section": "Bivariate: elliptical contours!",
-    "text": "Bivariate: elliptical contours!"
+    "objectID": "slides/03-ar-1-forecasting.html#probabilistic-prediction-is-a-natural-byproduct-of-a-bayesian-approach",
+    "href": "slides/03-ar-1-forecasting.html#probabilistic-prediction-is-a-natural-byproduct-of-a-bayesian-approach",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Probabilistic prediction is a natural byproduct of a Bayesian approach",
+    "text": "Probabilistic prediction is a natural byproduct of a Bayesian approach\nIt falls out basically for free:\n\n\n\n\n\n\nBjørnstad, Jan (1990): “Predictive likelihood: a review,” Statistical Science\n\n\n“Prediction of the value of an unobserved or future random variable is a fundamental problem in statistics. From a Bayesian point of view, it is solved in a straightforward manner by finding the posterior predictive density of the unobserved random variable given the data. If one does not want to pay the Bayesian price of having to determine a prior, no unifying basis for prediction has existed until recently.”\n\n\n\n\nIt’s a price I’m willing to pay, dude."
   },
   {
-    "objectID": "slides/00-welcome.html#moments",
-    "href": "slides/00-welcome.html#moments",
-    "title": "Welcome to STA 542!",
-    "section": "Moments",
-    "text": "Moments\nFirst:\n\\[\n\\boldsymbol{\\mu}\n=\nE(\\mathbf{x})\n=\n\\begin{bmatrix}\n\\mu_1\n&\n\\mu_2\n&\n\\cdots\n&\n\\mu_n\n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\n=\n\\begin{bmatrix}\nE(x_1)\n&\nE(x_2)\n&\n\\cdots\n&\nE(x_n)\n\\end{bmatrix}^{\\scriptscriptstyle\\mathsf{T}}\n.\n\\]\n\nSecond:\n\\[\n\\begin{aligned}\n\\boldsymbol{\\Sigma}\n=\n\\text{cov}(\\mathbf{x})\n&=\n\\begin{bmatrix}\n\\sigma^2_1 & \\sigma_{1,2} & \\cdots & \\sigma_{1,n}\\\\\n\\sigma_{1,2} & \\sigma_{2}^2 & \\cdots & \\sigma_{2,n}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\n\\sigma_{1,n} & \\sigma_{2,n} & \\cdots & \\sigma_{n}^2\\\\\n\\end{bmatrix}\n\\\\\n&=\n\\begin{bmatrix}\n\\text{var}(x_1) & \\text{cov}(x_1,\\,x_2) & \\cdots & \\text{cov}(x_1,\\,x_n)\\\\\n\\text{cov}(x_2,\\,x_1) & \\text{var}(x_2) & \\cdots & \\text{cov}(x_2,\\,x_n)\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\n\\text{cov}(x_n,\\,x_1) & \\text{cov}(x_n,\\,x_2) & \\cdots & \\text{var}(x_n)\\\\\n\\end{bmatrix}\n.\n\\end{aligned}\n\\]"
+    "objectID": "slides/03-ar-1-forecasting.html#in-general-just-simulate",
+    "href": "slides/03-ar-1-forecasting.html#in-general-just-simulate",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "In general, just simulate",
+    "text": "In general, just simulate\nSimulate the posterior somehow (iid, MCMC, HMC, SMC, whatever), and then for each draw, simulate the model forward:\n\\[\n\\begin{aligned}\n\\Btheta^{(j)} &\\sim p(\\boldsymbol{\\theta}\\,|\\,y_{0:T})\\\\\n\\tilde{y}^{(j)}_{T+1:T+H}\n&\\sim\np(y_{T+1:T+H}\\,|\\,y_{0:T},\\,\\Btheta^{(j)}), &&j = 1\\com 2\\com ...\\com k.\n\\end{aligned}\n\\]\nThe retained sample \\(\\tilde{y}^{(1:k)}_{T+1:T+H}\\) is drawn from the posterior predictive."
   },
   {
-    "objectID": "slides/00-welcome.html#oh-my-aching-eigen",
-    "href": "slides/00-welcome.html#oh-my-aching-eigen",
-    "title": "Welcome to STA 542!",
-    "section": "Oh my aching eigen",
-    "text": "Oh my aching eigen\n\n\n\n\n\n\n\nEigenvectors and eigenvalues\n\n\nThere are \\(n\\) orthogonal vectors \\(\\mathbf{v}_i\\in\\mathbb{R}^n\\) and values \\(\\lambda_i&gt;0\\) satisfying:\n\\[\n\\boldsymbol{\\Sigma}\\mathbf{v}_i=\\lambda_i\\mathbf{v}_i.\n\\] Positive definite means all the eigenvalues are real and strictly postive.\n\n\n\n\n\n\n\n\n\n\n\nEigendecomposition (AKA spectral decomposition)\n\n\nA useful way to rewrite \\(\\boldsymbol{\\Sigma}\\): \\[\n\\begin{aligned}\n\\boldsymbol{\\Sigma}\n&=\n\\begin{bmatrix}\n\\mathbf{v}_1 & \\mathbf{v}_2 & \\cdots & \\mathbf{v}_n\n\\end{bmatrix}\n\\begin{bmatrix}\n\\lambda_1 & & &\\mathbf{0}\\\\\n& \\lambda_2 & & \\\\\n  & & \\ddots& \\\\\n  \\mathbf{0}  & & & \\lambda_n\\\\\n\\end{bmatrix}\n\\begin{bmatrix}\n\\mathbf{v}_1^{\\scriptscriptstyle\\mathsf{T}} \\\\ \\mathbf{v}_2^{\\scriptscriptstyle\\mathsf{T}} \\\\ \\vdots \\\\ \\mathbf{v}_n^{\\scriptscriptstyle\\mathsf{T}}\n\\end{bmatrix}\n=\n\\mathbf{Q}\\boldsymbol{\\Lambda}\\mathbf{Q}^{\\scriptscriptstyle\\mathsf{T}}.\n\\end{aligned}\n\\]\nWe often set \\(||\\mathbf{v}_i||_2=1\\), and so the \\(n\\times n\\) matrix \\(\\mathbf{Q}\\) is orthogonal: \\(\\mathbf{Q}\\mathbf{Q}^{\\scriptscriptstyle\\mathsf{T}}=\\mathbf{Q}^{\\scriptscriptstyle\\mathsf{T}}\\mathbf{Q}=\\mathbf{I}_n\\)."
+    "objectID": "slides/03-ar-1-forecasting.html#same-slide-as-before",
+    "href": "slides/03-ar-1-forecasting.html#same-slide-as-before",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Same slide as before",
+    "text": "Same slide as before\nUse the simulations \\(\\tilde{y}_{t+h}^{(1:k)}=\\left\\{\\tilde{y}_{t+h}^{(1)}\\com \\tilde{y}_{t+h}^{(2)}\\com ...\\com \\tilde{y}_{t+h}^{(k)}\\right\\}\\) to construct whatever forecast object you want:\n\n\\[\n\\hat{y}_{t+h|t}=\\frac{1}{k}\\sum\\limits_{j=1}^k\\tilde{y}_{t+h}^{(j)}. \\quad (\\text{...or median})\n\\]\n\n\nForecast interval:\n\\[\n\\hat{I}_{t+h|t} = \\left[\\hat{Q}_{\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\com \\hat{Q}_{1-\\frac{\\alpha}{2}}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right)\\right]. \\quad (...\\text{or hdi})\n\\]\n\n\nForecast distribution:\n\\[\n\\hat{f}_{t+h|t}\n=\n\\text{histogram}\\left(\\tilde{y}_{t+h}^{(1:k)}\\right). \\quad (...\\text{or kde})\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#who-cares",
-    "href": "slides/00-welcome.html#who-cares",
-    "title": "Welcome to STA 542!",
-    "section": "Who cares?",
-    "text": "Who cares?\nThe eigenvectors of \\(\\boldsymbol{\\Sigma}\\) point along the axes of the elliptical density contours. These are the directions of the principal components!"
+    "objectID": "slides/03-ar-1-forecasting.html#one-step-ahead-in-the-conjugate-case",
+    "href": "slides/03-ar-1-forecasting.html#one-step-ahead-in-the-conjugate-case",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "One-step-ahead in the conjugate case",
+    "text": "One-step-ahead in the conjugate case\nWe want\n\n\\[\np(y_{t+1}\\given y_{0:t})\n=\n\\int\n\\int\np(y_{t+1}\\given\\Bbeta\\com\\sigma^2\\com y_{0:t})p(\\Bbeta\\com\\sigma^2\\given y_{0:t})\\,\\dd\\Bbeta\\,\\dd\\sigma^2\n,\n\\]\n\n\nand we know that\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:t}\n&\\sim\n\\text{IG}(a_t\\com b_t)\n\\\\\n\\Bbeta\\given \\sigma^2\\com y_{0:t}\n&\\sim\n\\text{N}_2(\\Bm_t\\com\\sigma^2\\BH^{-1}_t)\n\\\\\ny_{t+1}\\given\\Bbeta\\com \\sigma^2\\com y_{0:t}\n&\\sim \\N(\\Bx_{t+1}^\\tr\\Bbeta\\com\\sigma^2).\n\\end{aligned}\n\\]\n\n\nThere is actually a closed-form solution."
   },
   {
-    "objectID": "slides/00-welcome.html#review-joint-distributions",
-    "href": "slides/00-welcome.html#review-joint-distributions",
-    "title": "Welcome to STA 542!",
-    "section": "Review: joint distributions",
-    "text": "Review: joint distributions\n\nThe marginal distribution:\n\\[\np(\\mathbf{y}) = \\int p(\\mathbf{x},\\,\\mathbf{y})\\,\\text{d}\\mathbf{x}.\n\\]\n\n\nThe conditional distribution:\n\\[\np(\\mathbf{y}\\,|\\,\\mathbf{x})\n=\n\\frac{p(\\mathbf{x},\\,\\mathbf{y})}{p(\\mathbf{x})}\n=\n\\frac{p(\\mathbf{x}\\,|\\,\\mathbf{y})p(\\mathbf{y})}{p(\\mathbf{x})}\n.\n\\]"
+    "objectID": "slides/03-ar-1-forecasting.html#marginalize-out-bbeta",
+    "href": "slides/03-ar-1-forecasting.html#marginalize-out-bbeta",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Marginalize out \\(\\Bbeta\\)\n",
+    "text": "Marginalize out \\(\\Bbeta\\)\n\nWe know that\n\\[\n\\begin{aligned}\n\\Bbeta\\given \\sigma^2\\com y_{0:t}\n&\\sim\n\\text{N}_2(\\Bm_t\\com\\sigma^2\\BH^{-1}_t)\n\\\\\ny_{t+1}\n&=\n\\Bx_{t+1}^\\tr\\Bbeta\n+\n\\varepsilon_{t+1}\n,\n&&\n\\varepsilon_{t+1}\\sim\\N(0\\com \\sigma^2).\n\\end{aligned}\n\\]\n\nBy affine transformation:\n\\[\n\\Bx_{t+1}^\\tr\\Bbeta\n\\given \\sigma^2\\com y_{0:t}\n\\sim\n\\N(\n\\Bx_{t+1}^\\tr\\Bm_t\n\\com\n\\sigma^2\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1}\n).\n\\]\n\n\nBy linear combination of independent normals:\n\\[\n\\begin{aligned}\ny_{t+1}\\given \\sigma^2\\com y_{0:t}\n&\\sim \\N\\left(\\Bx_{t+1}^\\tr\\Bm_t\\com\\sigma^2(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\\right).\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#marginals-and-conditionals",
-    "href": "slides/00-welcome.html#marginals-and-conditionals",
-    "title": "Welcome to STA 542!",
-    "section": "Marginals and conditionals",
-    "text": "Marginals and conditionals\nIf you apply those formulas to this\n\\[\n\\begin{bmatrix}\n\\mathbf{x} \\\\\n\\mathbf{y}\n\\end{bmatrix}\n\\sim\n\\text{N}_{n+m}\n\\left(\n\\begin{bmatrix}\n\\boldsymbol{\\mu}_x \\\\\n\\boldsymbol{\\mu}_y\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\boldsymbol{\\Sigma}_x & \\boldsymbol{\\Sigma}_{xy}\\\\\n\\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}} & \\boldsymbol{\\Sigma}_y\n\\end{bmatrix}\n\\right),\n\\]\n\nthen you get this:\n\\[\n\\begin{aligned}\n\\mathbf{x} &\\sim  \\text{N}_n(\\boldsymbol{\\mu}_x,\\,\\boldsymbol{\\Sigma}_x)\\\\\n\\mathbf{y} &\\sim  \\text{N}_m(\\boldsymbol{\\mu}_y,\\,\\boldsymbol{\\Sigma}_y)\\\\\n\\mathbf{x} \\,|\\,\\mathbf{y}\n&\\sim\n\\text{N}_n\n\\left(\n\\boldsymbol{\\mu}_x + \\boldsymbol{\\Sigma}_{xy}\\boldsymbol{\\Sigma}_y^{-1}(\\mathbf{y}-\\boldsymbol{\\mu}_y)\n,\\,\n\\boldsymbol{\\Sigma}_x - \\boldsymbol{\\Sigma}_{xy}\n\\boldsymbol{\\Sigma}_y^{-1}\n\\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n\\\\\n\\mathbf{y} \\,|\\,\\mathbf{x}\n&\\sim\n\\text{N}_m\n\\left(\n\\boldsymbol{\\mu}_y + \\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}}\\boldsymbol{\\Sigma}_x^{-1}(\\mathbf{x}-\\boldsymbol{\\mu}_x)\n,\\,\n\\boldsymbol{\\Sigma}_y - \\boldsymbol{\\Sigma}_{xy}^{\\scriptscriptstyle\\mathsf{T}}\n\\boldsymbol{\\Sigma}_x^{-1}\n\\boldsymbol{\\Sigma}_{xy}\n\\right).\n\\end{aligned}\n\\]\n\n\nSo the individual components are all normal: \\(x_i\\sim\\text{N}(\\mu_i,\\,\\sigma^2_i)\\)."
+    "objectID": "slides/03-ar-1-forecasting.html#marginalize-out-sigma2",
+    "href": "slides/03-ar-1-forecasting.html#marginalize-out-sigma2",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Marginalize out \\(\\sigma^2\\)\n",
+    "text": "Marginalize out \\(\\sigma^2\\)\n\nWe know that\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:t}\n&\\sim\n\\text{IG}(a_t\\com b_t)\n\\\\\ny_{t+1}\\given \\sigma^2\\com y_{0:t}\n&\\sim \\N\\left(\\Bx_{t+1}^\\tr\\Bm_t\\com\\sigma^2(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\\right).\n\\end{aligned}\n\\]\n\nMarginalizing \\(\\sigma^2\\) out of this hierarchy is essentially the definition of Student’s \\(t\\):\n\n\n\\[\n\\begin{aligned}\ny_{t+1}\\given y_{0:t}\n&\\sim\nt(\\nu_{t+1|t}\\com\\bar{y}_{t+1|t}\\com s_{t+1|t}^2)\n\\\\\n\\\\\n\\nu_{t+1|t}\n&=\n2a_t\n\\\\\n\\bar{y}_{t+1|t}\n&=\n\\Bx_{t+1}^\\tr\\Bm_t\n\\\\\ns_{t+1|t}^2\n&=\n\\frac{b_t}{a_t}\n(1+\\Bx_{t+1}^\\tr\\BH_t^{-1}\\Bx_{t+1})\n.\n\\end{aligned}\n\\]\n\n\nSo, Student’s \\(t\\) with location-scale."
   },
   {
-    "objectID": "slides/00-welcome.html#those-ugly-conditional-formulas-are-not-new",
-    "href": "slides/00-welcome.html#those-ugly-conditional-formulas-are-not-new",
-    "title": "Welcome to STA 542!",
-    "section": "Those ugly conditional formulas are not new",
-    "text": "Those ugly conditional formulas are not new\nConsider the bivariate case:\n\\[\n\\begin{bmatrix}\nx \\\\\ny\n\\end{bmatrix}\n\\sim\\text{N}_2\n\\left(\n\\begin{bmatrix}\n\\mu_x \\\\\n\\mu_y\n\\end{bmatrix}\n,\\,\n\\begin{bmatrix}\n\\sigma_x^2\n&\n\\rho\\sigma_x\\sigma_y\n\\\\\n\\rho\\sigma_x\\sigma_y\n&\n\\sigma^2_y\n\\end{bmatrix}\n\\right).\n\\]\n\nThen the formula collapses to:\n\\[\ny\\,|\\,\nx\n\\sim\n\\text{N}\n\\left(\n\\underbrace{\\left(\\mu_y-\\rho\\frac{\\sigma_y}{\\sigma_x}\\mu_x\\right)}_{\\beta_0}\n+\n\\underbrace{\\rho\\frac{\\sigma_y}{\\sigma_x}}_{\\beta_1}\nx\n,\\,\n\\underbrace{(1-\\rho)^2\n\\sigma^2_y}_{\\sigma^2}\n\\right).\n\\]\n\n\nIn other words:\n\\[\ny = \\beta_0+\\beta_1x + \\varepsilon,\\quad \\varepsilon\\sim\\text{N}(0,\\,\\sigma^2).\n\\]\n\n\nWelcome back to regression 101!"
+    "objectID": "slides/03-ar-1-forecasting.html#one-step-ahead-probabilistic-prediction",
+    "href": "slides/03-ar-1-forecasting.html#one-step-ahead-probabilistic-prediction",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "One-step-ahead probabilistic prediction",
+    "text": "One-step-ahead probabilistic prediction\n\nOur density forecast is:\n\\[\ny_{t+1}\\given y_{0:t}\n\\sim\nt(\\nu_{t+1|t}\\com\\bar{y}_{t+1|t}\\com s_{t+1|t}^2).\n\\]\n\n\nThis gives a \\(100\\times(1-\\alpha)\\%\\) credible interval:\n\\[\n\\bar{y}_{t+1|t}\n\\pm\n\\underbrace{t_{\\nu_{t+1|t}}\n\\left(\n1-\\frac{\\alpha}{2}\n\\right)}_{\\text{quantile of }t(\\nu_{t+1|t}\\com 0\\com 1)}\ns_{t+1|t}\n.\n\\]\n\n\nAnd the moments are\n\\[\n\\begin{aligned}\nE(y_{t+1}\\given y_{0:t})\n&=\n\\bar{y}_{t+1|t}\n,\n&&\n\\nu_{t+1|t}&gt;1\n\\\\\n\\text{var}(y_{t+1}\\given y_{0:t})\n&=\n\\frac{\\nu_{t+1|t}}{\\nu_{t+1|t}-2}\ns_{t+1|t}^2\n,\n&&\n\\nu_{t+1|t}&gt;2.\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "slides/00-welcome.html#affine-transformations",
-    "href": "slides/00-welcome.html#affine-transformations",
-    "title": "Welcome to STA 542!",
-    "section": "Affine transformations",
-    "text": "Affine transformations\nFix some objects:\n\nRandom \\(\\mathbf{x}\\sim\\text{N}_n(\\boldsymbol{\\mu},\\,\\boldsymbol{\\Sigma})\\);\nConstant \\(\\mathbf{A}\\in\\mathbb{R}^{m\\times n}\\);\nConstant \\(\\mathbf{c}\\in\\mathbb{R}^m\\).\n\n\nThen\n\\[\n\\mathbf{y}\n=\n\\mathbf{A}\n\\mathbf{x}\n+\n\\mathbf{c}\n\\sim\n\\text{N}_m\n\\left(\n\\mathbf{A}\n\\boldsymbol{\\mu}\n+\n\\mathbf{c}\n,\\,\n\\mathbf{A}\n\\boldsymbol{\\Sigma}\n\\mathbf{A}^{\\scriptscriptstyle\\mathsf{T}}\n\\right)\n.\n\\]\n\n\nProve it on Problem Set 0!"
-  },
-  {
-    "objectID": "slides/00-welcome.html#a-useful-special-case-problem-set-0",
-    "href": "slides/00-welcome.html#a-useful-special-case-problem-set-0",
-    "title": "Welcome to STA 542!",
-    "section": "A useful special case (Problem Set 0!)",
-    "text": "A useful special case (Problem Set 0!)\n\n\n\n\n\n\nLinear combinations of independent normals are normal\n\n\nIf \\(x_i\\overset{\\text{indep}}{\\sim}\\text{N}(\\mu_i,\\,\\sigma^2_i)\\) and \\(a_i\\in\\mathbb{R}\\) are constant, then\n\\[\n\\sum\\limits_{i=1}^na_ix_i\\sim\\text{N}\\left(\\sum\\limits_{i=1}^na_i\\mu_i,\\, \\sum\\limits_{i=1}^na_i^2\\sigma_i^2\\right).\n\\]\n\n\n\n\n\nThe result on the previous slide is way more general, and the linear combination is still normal even if the \\(X_i\\) are dependent, but the formula for the variance is less nice;\nThe mean formula is right even if the \\(x_i\\) are dependent and non-Gaussian;\nThe variance formula is right even if the \\(x_i\\) are non-Gaussian."
-  },
-  {
-    "objectID": "slides/00-welcome.html#independence",
-    "href": "slides/00-welcome.html#independence",
-    "title": "Welcome to STA 542!",
-    "section": "Independence",
-    "text": "Independence\n\nIf random variables are independent, then they are uncorrelated (their covariance is zero). The reverse is false in general!\nSo writing \\(x_1,\\,x_2,\\,...,\\,x_n\\overset{\\text{iid}}{\\sim}\\text{N}(\\mu,\\,\\sigma^2)\\) is the same as saying\n\n\n\\[\n\\begin{bmatrix}\nx_1\\\\\nx_2\\\\\n\\vdots \\\\\nx_n\n\\end{bmatrix}\n\\sim\\text{N}_n\\left(\\mu\\mathbf{1}_n,\\,\\sigma^2\\mathbf{I}_n\\right).\n\\]\n\n\n\n\n\\(\\mathbf{1}_n\\) is the \\(n\\times 1\\) vector of all ones;\n\n\n\n\n\n\\(\\mathbf{I}_n\\) is the \\(n\\times n\\) identity matrix: ones on the diagonal, zeros off."
+    "objectID": "slides/03-ar-1-forecasting.html#things-to-notice",
+    "href": "slides/03-ar-1-forecasting.html#things-to-notice",
+    "title": "How do you compute probabilistic forecasts from the AR(1)?",
+    "section": "Things to notice",
+    "text": "Things to notice\n\nGoal: generate probabilistic predictions incorporating many sources of uncertainty. In the small world of the AR(1), these are mainly uncertainty from parameter estimation and the inherent randomness of future observations.\n\n\n\n\nClassical approach: pretty unnatural. Can’t do anything analytically. Whole books have been written about how the bootstrapping ought to go;\n\n\n\n\n\nBayesian approach: totally natural. Everything is probabilistic already. Posterior predictive simulation is conceptually straightforward. We can even do the math in a special case.\n\n\n\nBut in fairness, the Bayes stuff leans hard into normality. The bootstrap stuff less so."
   },
   {
     "objectID": "slides/02-ar-1-inference.html#the-simplest-non-trivial-time-series-model",

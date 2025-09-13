@@ -837,7 +837,7 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 </div>
 </div>
 </div>
-</section><section id="recap-probability-integral-transform" class="slide level2"><h2>Recap: probability integral transform</h2>
+</section><section id="recap-probability-integral-transform-pit" class="slide level2"><h2>Recap: probability integral transform (PIT)</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -846,7 +846,7 @@ L(y_{t+1},\hat{y}) = |y_{t+1} - \hat{y}|
 </div>
 </div>
 </div>
-</section><section id="probability-integral-transform-pit" class="slide level2 small"><h2>Probability integral transform (PIT)</h2>
+</section><section id="recap-probability-integral-transform-pit-1" class="slide level2 small"><h2>Recap: probability integral transform (PIT)</h2>
 <p>Let <span class="math inline">\(Y\sim F\)</span> be continuous. If you define a new random variable <span class="math inline">\(U=F(Y)\)</span> by plugging <span class="math inline">\(Y\)</span> into <em>its own</em> cdf, then you get</p>
 <div class="fragment">
 <p><span class="math display">\[
@@ -864,7 +864,7 @@ P(U\leq u)=P(F(Y)\leq u)=P(Y\leq F^{-1}(u))=F(F^{-1}(u))=u.
 <div class="fragment">
 <p>That’s the cdf of Unif(0, 1).</p>
 </div>
-</section><section id="probability-integral-transform-pit-1" class="slide level2"><h2>Probability integral transform (PIT)</h2>
+</section><section id="recap-probability-integral-transform-pit-2" class="slide level2"><h2>Recap: probability integral transform (PIT)</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>)</span>
 <span id="cb35-2"><a></a>u <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x)</span>
@@ -877,7 +877,7 @@ P(U\leq u)=P(F(Y)\leq u)=P(Y\leq F^{-1}(u))=F(F^{-1}(u))=u.
 </div>
 </div>
 </div>
-</section><section id="applying-pit-to-forecasting" class="slide level2 medium"><h2>Applying PIT to forecasting</h2>
+</section><section id="whats-pit-got-to-do-with-it" class="slide level2 medium"><h2>What’s PIT got to do with it?</h2>
 <p>Let <span class="math inline">\(G_t\)</span> be the “true” cdf that nature is drawing from to produce <span class="math inline">\(y_t\)</span>. By the probability integral transform, we know that:</p>
 <div class="fragment">
 <p><span class="math display">\[
