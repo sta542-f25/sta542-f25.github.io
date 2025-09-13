@@ -901,9 +901,9 @@ $$
 &\downarrow &\downarrow& \cdots &\downarrow&\downarrow \\
 \text{6. Bootstrap estimates}&\tilde{\Btheta}_{T}^{(1)} &\tilde{\Btheta}_{T}^{(2)}& \cdots &\tilde{\Btheta}_{T}^{(k-1)}&\tilde{\Btheta}_{T}^{(k)} \\
 &\downarrow &\downarrow& \cdots &\downarrow&\downarrow \\
-\text{7. Draw more residuals}&\tilde{e}_{t+1:t+h}^{(1)} &\tilde{e}_{t+1:t+h}^{(2)}& \cdots &\tilde{e}_{t+1:t+h}^{(k-1)}&\tilde{e}_{t+1:t+h}^{(k)} \\
+\text{7. Draw more residuals}&\tilde{e}_{T+1:T+h}^{(1)} &\tilde{e}_{T+1:T+h}^{(2)}& \cdots &\tilde{e}_{T+1:T+h}^{(k-1)}&\tilde{e}_{T+1:T+h}^{(k)} \\
 &\downarrow &\downarrow& \cdots &\downarrow&\downarrow \\
-\text{8. Simulate forecasts}&\tilde{y}_{t+1:t+h}^{(1)} &\tilde{y}_{t+1:t+h}^{(2)}& \cdots &\tilde{y}_{t+1:t+h}^{(k-1)}&\tilde{y}_{t+1:t+h}^{(k)} \\
+\text{8. Simulate forecasts}&\tilde{y}_{T+1:T+h}^{(1)} &\tilde{y}_{T+1:T+h}^{(2)}& \cdots &\tilde{y}_{T+1:T+h}^{(k-1)}&\tilde{y}_{T+1:T+h}^{(k)} \\
 \end{matrix}
 $$
 
