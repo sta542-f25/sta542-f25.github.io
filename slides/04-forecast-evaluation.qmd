@@ -3,8 +3,6 @@ title: "How do you evaluate probabilistic predictions?"
 subtitle: "Lecture 4"
 format: revealjs
 auto-stretch: false
-filters:
-  - shinylive
 ---
 
 # Recap: probabilistic prediction
