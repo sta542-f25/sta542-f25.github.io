@@ -120,6 +120,237 @@
     ]
   },
   {
+    "objectID": "slides/05-ar-p.html#time-series",
+    "href": "slides/05-ar-p.html#time-series",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Time series",
+    "text": "Time series\n\nA time series is a set of measurements collected over time;\nWe model these data as a sequence of dependent random variables:\n\n\\[\n\\By_{0:T} = \\{\\By_0,\\,\\By_1,\\,\\By_2,\\,...,\\,\\By_T\\}.\n\\]\n\nA time series model is “just” their joint probability distribution:\n\n\\[\np(\\By_{0:T}) = p(\\By_0)\\prod_{t=1}^Tp(\\By_t\\,|\\,\\By_{0:t-1}).\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#the-simplest-non-trivial-time-series-model",
+    "href": "slides/05-ar-p.html#the-simplest-non-trivial-time-series-model",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "The simplest non-trivial time series model",
+    "text": "The simplest non-trivial time series model\nThe autoregression of order 1, or AR(1):\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2)\n\\\\\ny_0\n&\\sim\n\\text{N}(\\mu_0\\com \\initvar),\n\\end{aligned}\n\\]\n\n\nThat’s the recursive form. It implies a joint distribution written marginal-conditional style:\n\n\n\\[\n\\begin{aligned}\np(y_{0:T})\n&=\np(y_0)\n\\prod_{t=1}^T\np(y_t\\given y_{0:t-1})\n\\\\\n&=\np(y_0)\n\\prod_{t=1}^T\np(y_t\\given y_{t-1}).\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#all-of-time-series-analysis",
+    "href": "slides/05-ar-p.html#all-of-time-series-analysis",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "“All of Time Series Analysis”",
+    "text": "“All of Time Series Analysis”\nWhat we did for the AR(1):\n\nStructure of the joint distribution: distribution family, mean, covariance, marginals, conditionals;\nStationarity;\nMethod-of-moments estimation (Yule-Walker);\nLikelihood-based inferences;\n\nClassical: MLE/OLS;\nBayesian: conjugate normal-inverse-gamma;\nMake these recursive using Sherman-Morrison;\n\nProbabilistic prediction: points, intervals, and densities speaking to many sources of uncertainty;\n\ngeneric Monte Carlo approach;\nClassical: tough, need bootstrap;\nBayesian: natural, just use posterior predictive;\n\nForecast evaluation:\n\nPoint: loss functions, MSE, MAE, etc;\nInterval: size, coverage, interval score;\nDensity: PIT, calibration, sharpness, log predictive score."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#what-we-havent-talked-about-yet",
+    "href": "slides/05-ar-p.html#what-we-havent-talked-about-yet",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "What we haven’t talked about yet",
+    "text": "What we haven’t talked about yet\nWith only one model on the table, we couldn’t dig into…\n\nmodel selection;\nforecast combination.\n\n\nWe will add those themes in the coming weeks, and then our table is basically set for the rest of the semester."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#arp",
+    "href": "slides/05-ar-p.html#arp",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "AR(\\(p\\))",
+    "text": "AR(\\(p\\))\nThe autoregression of order \\(p\\), or AR(\\(p\\)):\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\beta_2\ny_{t-2}\n+\n\\cdots\n+\n\\beta_p\ny_{t-p}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2)\n\\\\\ny_{(1-p):0}\n&\\sim\n\\text{N}_p(\\Bmu_0\\com \\BV_0),\n\\end{aligned}\n\\]\n\n\nThat’s the recursive form. It implies a joint distribution written marginal-conditional style:\n\n\n\\[\n\\begin{aligned}\np(y_{(1-p):T})\n&=\np(y_{(1-p):0})\n\\prod_{t=1}^T\np(y_t\\given y_{(1-p):t-1})\n\\\\\n&=\np(y_{(1-p):0})\n\\prod_{t=1}^T\np(y_t\\given y_{t-1}\\com y_{t-2}\\com ...\\com y_{t-p}).\n\\end{aligned}\n\\]\n\n\nThere are several ways to rewrite this, each teaching you different things about the model."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#linear-transformation-form",
+    "href": "slides/05-ar-p.html#linear-transformation-form",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Linear transformation form",
+    "text": "Linear transformation form\nConsider:\n\\[\n\\begin{aligned}\n\\By\n&=\n\\begin{bmatrix}\ny_1 & y_2 & \\cdots & y_T\n\\end{bmatrix}^\\tr\n\\\\\n\\Be\n&=\n\\begin{bmatrix}\ny_{1-p} & \\cdots & y_{-1} & y_0 & \\varepsilon_1 & \\varepsilon_2 & \\cdots & \\varepsilon_{T-1} & \\varepsilon_T\n\\end{bmatrix}^\\tr\n.\n\\end{aligned}\n\\]\n\nYou can show that\n\\[\n\\By\n=\n\\Bc+\\BA\\Be\n,\n\\quad\n\\Be\\sim\n\\N_{p+T}\n\\left(\n\\Bm=\n\\begin{bmatrix}\n\\Bmu_0\\\\\\Bzero\n\\end{bmatrix}\n\\com\n\\BS=\n\\begin{bmatrix}\n\\BV_0& \\Bzero\\\\\n\\Bzero & \\sigma^2\\BI_T\n\\end{bmatrix}\n\\right)\n.\n\\]\n\n\nBy affine transformation,\n\\[\n\\By\n\\sim\n\\text{N}_{T}\n\\left(\n\\Bmu=\\Bc+\\BA\\Bm\n\\com\n\\BSigma\n=\n\\BA\\BS\\BA^\\tr\n\\right)\n.\n\\]\nSo, the AR(p) is just a way of writing down a big, weird multivariate normal."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#multiple-regression-form",
+    "href": "slides/05-ar-p.html#multiple-regression-form",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Multiple regression form",
+    "text": "Multiple regression form\n\nThe conditionals \\(p(y_t\\given y_{t-1}\\com y_{t-2}\\com ...\\com y_{t-p})\\) have the form:\n\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\Bx_t^\\tr\\Bbeta+\\varepsilon_t,&&\\varepsilon_t\\iid\\N(0\\com\\sigma^2)\\\\\n\\Bx_t\n&=\n\\begin{bmatrix}\n1 & y_{t-1} & y_{t-2} & \\cdots & y_{t-p}\n\\end{bmatrix}\n.\n\\end{aligned}\n\\]\n\n\n\nOnce the data are observed and treated as fixed, this is “just” multiple linear regression, and the mechanics of (conditional) likelihood-based inference proceed identically to the iid case;\n\n(but recall, it’s not “just regression” when we do prediction!)\n\n\n\n\n\nAll the AR(1) formulas are the same, only the design matrix \\(\\BX_T\\) has more columns."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#state-space-form",
+    "href": "slides/05-ar-p.html#state-space-form",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "State-space form",
+    "text": "State-space form\nStack up some stuff:\n\n\\[\n\\begin{aligned}\n    \\Bs_t&=\\begin{bmatrix}y_t & y_{t-1} & \\cdots & y_{t-(p-1)} \\end{bmatrix}^\\tr\\\\\n    \\Bf&=\\begin{bmatrix}1 & 0 & \\cdots & 0\\end{bmatrix}^\\tr\\\\\n    \\BG&=\\begin{bmatrix}\n    \\beta_1 & \\beta_2 & \\cdots & \\beta_{p-1} & \\beta_p \\\\\n    1       & 0       & \\cdots & 0           & 0 \\\\\n    0       & 1       & \\cdots & 0           & 0 \\\\\n    \\vdots  & \\vdots  & \\ddots & \\vdots      & \\vdots \\\\\n    0       & 0       & \\cdots & 1           & 0 \\\\\n    \\end{bmatrix}\\\\\n    \\Beta_t&=\\begin{bmatrix}\\varepsilon_t & 0 & \\cdots & 0\\end{bmatrix}^\\tr\n    \\\\\n    \\Bb\n    &=\n    \\begin{bmatrix}\\beta_0 & 0 & \\cdots & 0\\end{bmatrix}^\\tr\n\\end{aligned}\n\\]\n\n\nState-space form:\n\\[\n\\begin{aligned}\n    y_t&=\\Bf^\\tr\\Bs_t && \\text{(measurement/observation eq)}\\\\\n    \\Bs_t&=\\BG\\Bs_{t-1}+\\Bb+\\Beta_t && \\text{(state transition/law of motion)}\\\\\n    \\Bs_0&\\sim\\text{N}_p(\\Bmu_0\\com\\BV_0)\\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#the-companion-form-matrix",
+    "href": "slides/05-ar-p.html#the-companion-form-matrix",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "The companion form matrix",
+    "text": "The companion form matrix\nConsider\n\\[\n\\BG=\\begin{bmatrix}\n    \\beta_1 & \\beta_2 & \\cdots & \\beta_{p-1} & \\beta_p \\\\\n    1       & 0       & \\cdots & 0           & 0 \\\\\n    0       & 1       & \\cdots & 0           & 0 \\\\\n    \\vdots  & \\vdots  & \\ddots & \\vdots      & \\vdots \\\\\n    0       & 0       & \\cdots & 1           & 0 \\\\\n    \\end{bmatrix}\n    .\n\\]\n\nBelieve it or not, we will learn something by taking its eigendecomposition:\n\n\n\\[\n\\begin{aligned}\n\\BG\n&=\n\\BE\\BLambda\\BE^{-1}\n\\\\\n\\BLambda&=\\text{diag}(\\lambda_1\\com\\lambda_2\\com...\\com\\lambda_p)\\\\\n        \\BE&=\\begin{bmatrix}\\Be_1 & \\Be_2 & \\cdots & \\Be_p\\end{bmatrix}\\\\\n        \\Be_\\ell&=\\begin{bmatrix}\\lambda_{\\ell}^{p-1} & \\lambda_{\\ell}^{p-2} & \\cdots & 1 \\end{bmatrix}^\\tr,&& \\ell=1\\com 2\\com...\\com p.\n\\end{aligned}\n\\]\n\n\n\\(\\BG\\) is not SPD, so the eigenvalues might be complex numbers. Yuck!"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#the-mean",
+    "href": "slides/05-ar-p.html#the-mean",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "The mean",
+    "text": "The mean\nWe have\n\\[\n\\begin{aligned}\n    \\Bs_t&=\\BG\\Bs_{t-1}+\\Bb+\\Beta_t,\\quad \\Beta_t\\sim\\N_p(\\Bzero\\com\\BW=\\text{diag}(\\sigma^2, 0, ..., 0))\\\\\n    \\Bs_0&\\sim\\text{N}_p(\\Bmu_0\\com\\BV_0).\n\\end{aligned}\n\\]\n\nBy linearity \\(\\Bmu_t=E(\\Bs_t)=\\BG \\Bmu_{t-1}+\\Bb\\), so\n\\[\n\\begin{aligned}\n\\boldsymbol{\\mu}_1 &= \\mathbf{G} \\boldsymbol{\\mu}_0 + \\mathbf{b}, \\\\\n\\boldsymbol{\\mu}_2 &= \\mathbf{G} \\boldsymbol{\\mu}_1 + \\mathbf{b}\n             = \\mathbf{G}^2 \\boldsymbol{\\mu}_0 + \\mathbf{G} \\mathbf{b} + \\mathbf{b}, \\\\\n\\boldsymbol{\\mu}_3 &= \\mathbf{G} \\boldsymbol{\\mu}_2 + \\mathbf{b}\n             = \\mathbf{G}^3 \\boldsymbol{\\mu}_0 + \\mathbf{G}^2 \\mathbf{b} + \\mathbf{G} \\mathbf{b} + \\mathbf{b}, \\\\\n&\\vdots \\\\\n\\boldsymbol{\\mu}_t &= \\mathbf{G}^t \\boldsymbol{\\mu}_0 + \\sum_{k=0}^{t-1} \\mathbf{G}^k \\mathbf{b}.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#the-mean-1",
+    "href": "slides/05-ar-p.html#the-mean-1",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "The mean",
+    "text": "The mean\n\nWe have\n\\[\n\\boldsymbol{\\mu}_t = \\mathbf{G}^t \\boldsymbol{\\mu}_0 + \\sum_{k=0}^{t-1} \\mathbf{G}^k \\mathbf{b},\n\\]\n\n\nand we have\n\\[\n\\BG\n=\n\\BE\\BLambda\\BE^{-1}.\n\\]\n\n\nSo\n\\[\n\\boldsymbol{\\mu}_t = \\BE\\BLambda^t\\BE^{-1} \\boldsymbol{\\mu}_0 + \\sum_{k=0}^{t-1} \\BE\\BLambda^k\\BE^{-1} \\mathbf{b}.\n\\]\n\n\nLong-run behavior is governed by the eigenvalues. Ugh!"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#stationary-region",
+    "href": "slides/05-ar-p.html#stationary-region",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Stationary region",
+    "text": "Stationary region\nThe subset \\(\\ccal_{p,1}\\subseteq\\RR^p\\) where \\(\\beta_{1:p}\\) must live to ensure the process is stationary:\n\n\nFor \\(p=1\\), \\((-1\\com 1)\\);\n\n\n\n\nFor \\(p=2\\):\n\n\n\n\n\n\n\n\n\n\n\nFor \\(p&gt;2\\): harder to characterize."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#if-the-eigenvalues-have-lambda_ell1",
+    "href": "slides/05-ar-p.html#if-the-eigenvalues-have-lambda_ell1",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "If the eigenvalues have \\(|\\lambda_\\ell|<1\\)",
+    "text": "If the eigenvalues have \\(|\\lambda_\\ell|&lt;1\\)\nThen the time-invariant mean solves\n\\[\n\\Bmu\n=\n\\BG\\Bmu+\\Bb.\n\\]\n\nRearranging,\n\\[\n\\Bmu = (\\BI_p-\\BG)^{-1}\\Bb.\n\\]\n\n\nThe first component of this is\n\\[\nE(y_t)=\\frac{\\beta_0}{1-\\sum_{\\ell=1}^p\\beta_\\ell}\\quad \\forall t.\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#the-covariance",
+    "href": "slides/05-ar-p.html#the-covariance",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "The covariance",
+    "text": "The covariance\n\nWe have\n\\[\n\\begin{aligned}\n    \\Bs_t&=\\BG\\Bs_{t-1}+\\Bb+\\Beta_t,\\quad \\Beta_t\\sim\\N_p(\\Bzero\\com\\BW=\\text{diag}(\\sigma^2, 0, ..., 0))\\\\\n    \\Bs_0&\\sim\\text{N}_p(\\Bmu_0\\com\\BV_0).\n\\end{aligned}\n\\]\n\n\nSo\n\\[\n\\BV_t=\\text{cov}(\\Bs_t)=\\BG\\BV_{t-1}\\BG^\\tr+\\BW.\n\\]\n\n\nDo the recursive substitution, and\n\\[\n\\BV_t=\\BG^t\\BV_0(\\BG^\\tr)^t+\\sum\\limits_{k=0}^{t-1}\\BG^k\\BW(\\BG^\\tr)^k.\n\\]\nYou can show\n\\[\n\\text{cov}(\\Bs_t\\com \\Bs_s)=\\BG^{|t-s|}\\BV_{\\min\\{s,t\\}}.\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#if-the-eigenvalues-have-lambda_ell1-1",
+    "href": "slides/05-ar-p.html#if-the-eigenvalues-have-lambda_ell1-1",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "If the eigenvalues have \\(|\\lambda_\\ell|<1\\)",
+    "text": "If the eigenvalues have \\(|\\lambda_\\ell|&lt;1\\)\nThe time-invariant covariance satisfies\n\\[\n\\BV=\\BG\\BV\\BG^\\tr+\\BW.\n\\]\n\nSome linear algebra tricks give:\n\\[\n\\text{vec}(\\BV)=(\\BI_{p^2}-\\BG\\otimes\\BG)^{-1}\\text{vec}(\\BW).\n\\]\n\n\n(you don’t have to worry about it.)"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#centered-form",
+    "href": "slides/05-ar-p.html#centered-form",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Centered Form",
+    "text": "Centered Form\nDefine \\(x_t := y_t - \\mu\\).\nThen the AR(p) in centered form is\n\\[\nx_t = \\sum_{l=1}^p \\beta_l \\, x_{t-l} + \\varepsilon_t.\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#autocovariances",
+    "href": "slides/05-ar-p.html#autocovariances",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Autocovariances",
+    "text": "Autocovariances\nDefine the autocovariance \\(\\gamma(h) = \\operatorname{Cov}(y_t, y_{t-h}) = E[x_t x_{t-h}]\\).\nMultiply the centered equation by \\(x_{t-k}\\) and take expectations:\n\\[\n\\gamma(k) = \\sum_{l=1}^p \\beta_l \\, \\gamma(k-l) + E[\\varepsilon_t x_{t-k}].\n\\]\nFor \\(k \\ge 1\\), \\(\\varepsilon_t\\) is uncorrelated with \\(x_{t-k}\\), so\n\\[\n\\boxed{\\gamma(k) = \\sum_{l=1}^p \\beta_l \\, \\gamma(k-l), \\quad k \\ge 1.}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#variance-equation",
+    "href": "slides/05-ar-p.html#variance-equation",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Variance Equation",
+    "text": "Variance Equation\nFor \\(k=0\\), note that \\(E[\\varepsilon_t x_t] = \\sigma^2\\), giving\n\\[\n\\gamma(0) = \\sum_{l=1}^p \\beta_l \\, \\gamma(l) + \\sigma^2.\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#matrix-form-of-yule-walker-equations",
+    "href": "slides/05-ar-p.html#matrix-form-of-yule-walker-equations",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Matrix Form of Yule-Walker Equations",
+    "text": "Matrix Form of Yule-Walker Equations\nLet\n\\[\n\\boldsymbol{\\gamma}_p = \\begin{pmatrix} \\gamma(1) \\\\ \\gamma(2) \\\\ \\vdots \\\\ \\gamma(p) \\end{pmatrix}, \\quad\n\\boldsymbol{\\beta} = \\begin{pmatrix} \\beta_1 \\\\ \\beta_2 \\\\ \\vdots \\\\ \\beta_p \\end{pmatrix},\n\\]\nand\n\\[\n\\mathbf{\\Gamma}_p =\n\\begin{pmatrix}\n\\gamma(0) & \\gamma(1) & \\cdots & \\gamma(p-1) \\\\\n\\gamma(1) & \\gamma(0) & \\cdots & \\gamma(p-2) \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\gamma(p-1) & \\gamma(p-2) & \\cdots & \\gamma(0)\n\\end{pmatrix}.\n\\]\nThen the Yule-Walker equations are\n\\[\n\\boxed{\\boldsymbol{\\gamma}_p = \\mathbf{\\Gamma}_p \\, \\boldsymbol{\\beta}}\n\\quad\\Longrightarrow\\quad\n\\boxed{\\boldsymbol{\\beta} = \\mathbf{\\Gamma}_p^{-1} \\, \\boldsymbol{\\gamma}_p}.\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#yule-walker-estimating-equations",
+    "href": "slides/05-ar-p.html#yule-walker-estimating-equations",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Yule-Walker estimating equations",
+    "text": "Yule-Walker estimating equations\n\\[\n\\begin{aligned}\n\\text{AR coefficients:} \\quad &\n\\begin{pmatrix} \\beta_1 \\\\ \\beta_2 \\\\ \\vdots \\\\ \\beta_p \\end{pmatrix}\n= \\mathbf{\\Gamma}_p^{-1}\n\\begin{pmatrix} \\gamma(1) \\\\ \\gamma(2) \\\\ \\vdots \\\\ \\gamma(p) \\end{pmatrix}, \\\\[1em]\n\\text{Intercept:} \\quad &\n\\beta_0 = \\mu \\left( 1 - \\sum_{l=1}^p \\beta_l \\right), \\\\[0.5em]\n\\text{Noise variance:} \\quad &\n\\sigma^2 = \\gamma(0) - \\sum_{l=1}^p \\beta_l \\, \\gamma(l).\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#yule-walker-estimators",
+    "href": "slides/05-ar-p.html#yule-walker-estimators",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Yule-Walker estimators",
+    "text": "Yule-Walker estimators\n\\[\n\\begin{aligned}\n\\text{AR coefficients:} \\quad &\n\\begin{pmatrix} \\hat{\\beta}_1 \\\\ \\hat{\\beta}_2 \\\\ \\vdots \\\\ \\hat{\\beta}_p \\end{pmatrix}\n= \\hat{\\mathbf{\\Gamma}}_p^{-1}\n\\begin{pmatrix} \\hat{\\gamma}(1) \\\\ \\hat{\\gamma}(2) \\\\ \\vdots \\\\ \\hat{\\gamma}(p) \\end{pmatrix}, \\\\[1em]\n\\text{Intercept:} \\quad &\n\\hat{\\beta}_0 = \\hat{\\mu} \\left( 1 - \\sum_{l=1}^p \\hat{\\beta}_l \\right), \\\\[0.5em]\n\\text{Noise variance:} \\quad &\n\\hat{\\sigma}^2 = \\hat{\\gamma}(0) - \\sum_{l=1}^p \\hat{\\beta}_l \\, \\hat{\\gamma}(l),\n\\end{aligned}\n\\]\nwhere \\(\\hat{\\mu} = \\frac{1}{T} \\sum_{t=1}^T y_t\\), \\(\\hat{\\gamma}(k) = \\frac{1}{T} \\sum_{t=k+1}^{T} (y_t - \\hat{\\mu})(y_{t-k} - \\hat{\\mu})\\)."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#asymptotics",
+    "href": "slides/05-ar-p.html#asymptotics",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Asymptotics",
+    "text": "Asymptotics\n\n\n\n\n\n\nShumway and Stoffer (2025) Property 3.7\n\n\nLet \\(\\hat{\\boldsymbol{\\beta}} = (\\hat{\\beta}_1, \\dots, \\hat{\\beta}_p)^\\top\\) be the Yule-Walker estimator of the AR coefficients.\nUnder standard stationarity and moment conditions:\n\\[\n\\sqrt{T} \\, (\\hat{\\boldsymbol{\\beta}} - \\boldsymbol{\\beta}) \\;\\;\\;\\overset{d}{\\longrightarrow}\\;\\;\\; \\N_p\\bigl(\\mathbf{0}, \\, \\sigma^2 \\, \\mathbf{\\Gamma}_p^{-1}\\bigr).\n\\]\nwhere \\(\\mathbf{\\Gamma}_p\\) is the \\(p \\times p\\) autocovariance matrix with \\((i,j)\\) entry \\(\\gamma(|i-j|)\\)."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#lets-improve-the-notation",
+    "href": "slides/05-ar-p.html#lets-improve-the-notation",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Let’s improve the notation",
+    "text": "Let’s improve the notation\nThe autoregression of order p, or AR(p):\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\beta_0\n+\n\\sum\\limits_{\\ell=1}^p\n\\beta_\\ell\ny_{t-\\ell}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2).\n\\end{aligned}\n\\]\n\n\nThis implies a joint distribution governed by a finite set of static parameters \\(\\Btheta = \\begin{bmatrix}\\beta_0&\\beta_1&\\cdots &\\beta_p&\\sigma^2\\end{bmatrix}^\\tr\\):\n\n\n\\[\n\\begin{aligned}\np(y_{1:T}\\given y_{1-p:0}\\com\\Btheta)\n&=\n\\prod_{t=1}^T\np(y_t\\given y_{t-p:t-1}\\com\\Btheta).\n\\end{aligned}\n\\]\n\n\nViewed as a function of \\(\\Btheta\\), that’s a (conditional) likelihood!\n\n\nMaximize it, or combine with a prior."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#maximum-likelihood-estimation",
+    "href": "slides/05-ar-p.html#maximum-likelihood-estimation",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Maximum likelihood estimation",
+    "text": "Maximum likelihood estimation\nTreating the observed data \\(y_{0:T}\\) as fixed, we want:\n\\[\n\\hat{\\Btheta}_T=\\argmax{\\Btheta}\\,p(y_{1:T}\\given lags\\com \\Btheta).\n\\]\nTo do this, it helps to take the view that the AR(1) is “just” a multiple linear regression where \\(\\Bx_t\\) encodes the lagged values of \\(y_t\\)."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#maximum-likelihood-estimation-1",
+    "href": "slides/05-ar-p.html#maximum-likelihood-estimation-1",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Maximum likelihood estimation",
+    "text": "Maximum likelihood estimation\nSince \\(y_t\\given lags\\com\\Btheta\\sim\\N\\left(\\beta_0+\\sum\\limits_{l=1}^p\\beta_ly_{t-l}\\com\\sigma^2\\right)\\), we have\n\n\\[\n\\begin{aligned}\np(y_{1:T}\\given  y_0\\com \\Btheta)\n&=\n\\prod_{t=1}^T\np(y_t\\given lags\\com\\Btheta)\n\\\\\n&=\n\\prod_{t=1}^T\n\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\exp\\left(-\\frac{1}{2}\\frac{(y_t-\\beta_0-\\sum\\limits_{l=1}^p\\beta_ly_{t-l})^2}{\\sigma^2}\\right)\n\\\\\n&=\n(2\\pi\\sigma^2)^{-T/2}\n\\exp\\left(-\\frac{1}{2\\sigma^2}\\sum\\limits_{t=1}^T(y_t-\\beta_0-\\sum\\limits_{l=1}^p\\beta_ly_{t-l})^2\\right)\n.\n\\end{aligned}\n\\]\n\n\nTo compute the MLE, we just treat the data as fixed.\n\n\nWhere do you think this is headed?"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#stack-em-up",
+    "href": "slides/05-ar-p.html#stack-em-up",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Stack ’em up",
+    "text": "Stack ’em up\nDefine some things:\n\n\\[\n\\begin{aligned}\n\\By_T\n&=\n\\begin{bmatrix}y_1&y_2 & \\cdots & y_T\\end{bmatrix}^\\tr\n\\\\\n\\BX_T\n&=\n\\begin{bmatrix}\n1 & 1 & \\cdots & 1 \\\\\ny_0 & y_1 & \\cdots & y_{T-1}\\\\\ny_{-1} & y_0 & \\cdots & y_{T-2}\\\\\n\\vdots & \\vdots & \\cdots & \\vdots\\\\\ny_{1-p} & y_{1-p+1} & \\cdots & y_{T-p}\\\\\n\\end{bmatrix}^\\tr\n\\\\\n\\Bbeta\n&=\n\\begin{bmatrix}\\beta_0&\\beta_1 & \\cdots & \\beta_p\\end{bmatrix}^\\tr\n.\n\\end{aligned}\n\\]\n\n\nSo the log-likelihood is:\n\\[\n\\ln\np(y_{1:T}\\given  y_0\\com \\Btheta)\n=\n-\\frac{T}{2}\\ln(2\\pi\\sigma^2)\n-\\frac{1}{2\\sigma^2}\n||\\By_T-\\BX_T\\Bbeta||_2^2\n.\n\\]\n\n\nLook familiar?"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#were-just-back-to-regression-101",
+    "href": "slides/05-ar-p.html#were-just-back-to-regression-101",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "We’re just back to regression 101",
+    "text": "We’re just back to regression 101\nWe have\n\\[\n\\ln\np(y_{1:T}\\given  y_0\\com \\Btheta)\n=\n-\\frac{T}{2}\\ln(2\\pi\\sigma^2)\n-\\frac{1}{2\\sigma^2}\n||\\By_T-\\BX_T\\Bbeta||_2^2\n,\n\\]\n\nand we know that\n\\[\n\\begin{aligned}\n\\hat{\\Btheta}_T\n&=\\argmax{\\Btheta}\\,\\ln p(y_{1:T}\\given y_0\\com \\Btheta)\n\\\\\n&=\\argmin{\\Btheta}\\,-\\ln p(y_{1:T}\\given y_0\\com \\Btheta).\n\\end{aligned}\n\\]\n\n\nThis gives\n\\[\n\\begin{aligned}\n\\hat{\\Bbeta}_T\n&=\n\\argmin{\\Bbeta}\n\\,||\\By_T-\\BX_T\\Bbeta||_2^2\n\\\\\n\\hat{\\sigma^2_T}\n&=\n||\\By_T-\\BX_T\\hat{\\Bbeta}_T||_2^2 / T.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#ols-for-the-ar1",
+    "href": "slides/05-ar-p.html#ols-for-the-ar1",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "OLS for the AR(1)",
+    "text": "OLS for the AR(1)\n\n\nThe maximum (conditional) likelihood estimator in the AR(1) is the same as the ordinary least squares estimator:\n\n\n\n\\[\n\\begin{aligned}\n\\hat{\\Bbeta}_T\n&=\n(\\BX_T^\\tr\\BX_T)^{-1}\\BX_T^\\tr\\By_T\n\\\\\n\\hat{\\sigma^2_T}\n&=\n||\\By_T-\\BX_T\\hat{\\Bbeta}_T||_2^2 / T.\n\\end{aligned}\n\\]\n\n\n\nIt doesn’t matter that there’s time series dependence. Once the data are observed and fixed, everything you know about iid multiple regression applies unmodified."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#if-the-data-are-streaming-apply-pset-0",
+    "href": "slides/05-ar-p.html#if-the-data-are-streaming-apply-pset-0",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "If the data are streaming, apply PSET 0!",
+    "text": "If the data are streaming, apply PSET 0!\nDo not recompute that matrix inverse every period.\n\nInstead:\n\\[\n\\begin{aligned}\n\\hat{\\Bbeta}_t\n&=\n\\hat{\\Bbeta}_{t-1}\n+\n\\Bk_t(y_t-\\Bx_t^\\tr\\hat{\\Bbeta}_{t-1})\n\\\\\n\\Bk_t\n&=\n\\frac{\\BP_{t-1}\\Bx_t}\n{1+\\Bx_t^\\tr\\BP_{t-1}\\Bx_t}\n\\\\\n\\BP_t\n&=\n(\\BX_t^\\tr\\BX_t)^{-1}\n\\\\\n&=\n(\\BX_{t-1}^\\tr\\BX_{t-1}+\\Bx_t\\Bx_t^\\tr)^{-1}\n\\\\\n&=\n(\\BP_{t-1}+\\Bx_t\\Bx_t^\\tr)^{-1}\n\\\\\n&=\n\\BP_{t-1}\n-\n\\Bk_t\n\\Bx_t^\\tr\\BP_{t-1}\n.\n\\end{aligned}\n\\]\n\n\nKeyword: rank-1 update!"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#asymptotics-1",
+    "href": "slides/05-ar-p.html#asymptotics-1",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Asymptotics",
+    "text": "Asymptotics\n\n\n\n\n\n\nShumway and Stoffer (2025) Property 3.9\n\n\nLet \\(\\hat{\\boldsymbol{\\beta}} = (\\hat{\\beta}_1, \\dots, \\hat{\\beta}_p)^\\top\\) be the MLE/OLS estimator of the AR coefficients. If things are stationary, then:\n\\[\n\\sqrt{T} \\, (\\hat{\\boldsymbol{\\beta}} - \\boldsymbol{\\beta}) \\;\\;\\;\\overset{d}{\\longrightarrow}\\;\\;\\; \\N_p\\bigl(\\mathbf{0}, \\, \\sigma^2 \\, \\mathbf{\\Gamma}_p^{-1}\\bigr).\n\\]\nwhere \\(\\mathbf{\\Gamma}_p\\) is the \\(p \\times p\\) autocovariance matrix with \\((i,j)\\) entry \\(\\gamma(|i-j|)\\).\n\n\n\n\nSame as Yule-Walker!"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#recall",
+    "href": "slides/05-ar-p.html#recall",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Recall",
+    "text": "Recall\nGiven a prior distribution \\(p(\\Btheta)=p(\\beta_0\\com \\beta_1\\com \\sigma^2)\\) on the parameters and an observed time series \\(y_{0:T}\\), we seek to access the posterior distribution:\n\\[\np(\\Btheta\\given y_{0:T})\n=\n\\frac{p(y_{1:T}\\given y_0\\com \\Btheta)p(\\Btheta)}{p(y_{1:T}\\given y_0)}\n.\n\\]\n\nAs with MLE, everything you know about iid Bayesian regression applies pretty much unmodified."
+  },
+  {
+    "objectID": "slides/05-ar-p.html#conjugate-normal-inverse-gamma-prior",
+    "href": "slides/05-ar-p.html#conjugate-normal-inverse-gamma-prior",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "Conjugate normal-inverse-gamma prior",
+    "text": "Conjugate normal-inverse-gamma prior\nBayesian model with a conjugate prior:\n\\[\n\\begin{aligned}\n\\sigma^2\n&\\sim\n\\text{IG}(a_0\\com b_0)\n\\\\\n\\Bbeta\\given \\sigma^2\n&\\sim\n\\text{N}_2(\\Bm_0\\com\\sigma^2\\BH^{-1}_0)\n\\\\\ny_t\n\\given\ny_{t-1}\n\\com\n\\Bbeta\\com\\sigma^2\n&\\sim \\text{N}\n\\left(\n\\Bx_t^\\tr\\Bbeta\\com\\sigma^2\n\\right), && \\Bx_t=\\begin{bmatrix}1 & lags\\end{bmatrix}^\\tr.\n\\end{aligned}\n\\]\n\nThe posterior is available in closed-form:\n\\[\n\\begin{aligned}\n\\sigma^2\\given y_{0:T}\n&\\sim\n\\text{IG}(a_T\\com b_T)\n\\\\\n\\Bbeta\\given \\sigma^2\\com y_{0:T}\n&\\sim\n\\text{N}_2(\\Bm_T\\com\\sigma^2\\BH^{-1}_T)\n\\\\\n\\\\\n\\BH_T\n&=\n\\BX_T^\\tr\\BX_T+\\BH_0\n\\\\\n\\Bm_T\n&=\n\\BH_T^{-1}(\\BX_T^\\tr\\By_T+\\BH_0\\Bm_0)\n\\\\\na_T\n&=\na_0 + T/2\n\\\\\nb_T\n&=\nb_0\n+\n(\\By_T^\\tr\\By_T+\\Bm_0^\\tr\\BH_0\\Bm_0-\\Bm_T^\\tr\\BH_T\\Bm_T)/2.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/05-ar-p.html#but-wait",
+    "href": "slides/05-ar-p.html#but-wait",
+    "title": "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask",
+    "section": "But wait!",
+    "text": "But wait!\nThis entire time we assumed that the lag order \\(p\\) was fixed and known. In practice, we do not know it. It is a hyperparameter that needs to be tuned using the data. How do we do that?"
+  },
+  {
     "objectID": "slides/00-welcome.html#teaching-team",
     "href": "slides/00-welcome.html#teaching-team",
     "title": "Welcome to STA 542!",
@@ -614,7 +845,7 @@
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\nslides\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\nslides\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) forecasting\nslides\n\n\n\n\nWed, Sep 10\nGneiting et al (2007 JRSSB)\n🧑‍🏫 Forecast evaluation\nslides\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\nPSET 1 @ 11:30AM\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\nslides\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\nslides\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) forecasting\nslides\n\n\n\n\nWed, Sep 10\nGneiting et al (2007 JRSSB)\n🧑‍🏫 Forecast evaluation\nslides\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\ndraft\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\n\n\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\nPSET 1 @ 11:30AM\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
   },
   {
     "objectID": "problems/pset-1.html",
