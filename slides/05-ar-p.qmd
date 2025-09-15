@@ -11,35 +11,962 @@ filters:
 
 ## Time series
 
-## AR(1)
+- A [**time series**]{style="color:blue;"} is a set of measurements collected over time;
 
-## "All of Time Series Analysis"
+- We model these data as a sequence of [**dependent**]{style="color:blue;"} random variables:
 
-## Taking the "1" out of AR(1)
+$$
+\By_{0:T} = \{\By_0,\,\By_1,\,\By_2,\,...,\,\By_T\}.
+$$
 
-## Multiple regression form
+- A [**time series model**]{style="color:blue;"} is "just" their joint probability distribution:
 
-## State-space form
+$$
+p(\By_{0:T}) = p(\By_0)\prod_{t=1}^Tp(\By_t\,|\,\By_{0:t-1}).
+$$
 
-# What's the joint distribution
+## The simplest non-trivial time series model {.medium}
 
-## You can show this is linear trandformation of Gaussian vector. Not very enlightening
+The autoregression of order 1, or AR(1):
 
-## The mean
+. . .
 
-## The covariance
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_0
+&\sim
+\text{N}(\mu_0\com \initvar),
+\end{aligned}
+$$
 
-# Stationarity
+. . .
 
-## Eigenvalues inside the unit circle
+That's the recursive form. It implies a joint distribution written marginal-conditional style:
 
-## Stationary region
+. . .
+
+$$
+\begin{aligned}
+p(y_{0:T})
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{0:t-1})
+\\
+&=
+p(y_0)
+\prod_{t=1}^T
+p(y_t\given y_{t-1}).
+\end{aligned}
+$$
+
+## "All of Time Series Analysis" {.medium .scrollable}
+
+What we did for the AR(1):
+
+::: incremental
+- Structure of the joint distribution: distribution family, mean, covariance, marginals, conditionals;
+- Stationarity;
+- Method-of-moments estimation (Yule-Walker);
+- Likelihood-based inferences;
+    - Classical: MLE/OLS;
+    - Bayesian: conjugate normal-inverse-gamma;
+    - Make these recursive using Sherman-Morrison;
+- Probabilistic prediction: points, intervals, and densities speaking to many sources of uncertainty;
+    - generic Monte Carlo approach;
+    - Classical: tough, need bootstrap;
+    - Bayesian: natural, just use posterior predictive;
+- Forecast evaluation:
+    - Point: loss functions, MSE, MAE, etc;
+    - Interval: size, coverage, interval score;
+    - Density: PIT, calibration, sharpness, log predictive score.
+:::
+
+## What we haven't talked about yet
+
+With only one model on the table, we couldn't dig into...
+
+::: incremental
+- model selection;
+- forecast combination.
+:::
+
+. . .
+
+We will add those themes in the coming weeks, and then our table is basically set for the rest of the semester.
+
+# Taking the "1" out of AR(1)
+
+## AR($p$) {.small}
+
+The autoregression of order $p$, or AR($p$):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\beta_2
+y_{t-2}
++
+\cdots 
++
+\beta_p
+y_{t-p}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+y_{(1-p):0}
+&\sim
+\text{N}_p(\Bmu_0\com \BV_0),
+\end{aligned}
+$$
+
+. . .
+
+That's the recursive form. It implies a joint distribution written marginal-conditional style:
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{(1-p):T})
+&=
+p(y_{(1-p):0})
+\prod_{t=1}^T
+p(y_t\given y_{(1-p):t-1})
+\\
+&=
+p(y_{(1-p):0})
+\prod_{t=1}^T
+p(y_t\given y_{t-1}\com y_{t-2}\com ...\com y_{t-p}).
+\end{aligned}
+$$
+
+. . .
+
+There are several ways to rewrite this, each teaching you different things about the model.
+
+## Linear transformation form {.small}
+
+Consider:
+
+$$
+\begin{aligned}
+\By
+&=
+\begin{bmatrix}
+y_1 & y_2 & \cdots & y_T
+\end{bmatrix}^\tr
+\\
+\Be
+&=
+\begin{bmatrix}
+y_{1-p} & \cdots & y_{-1} & y_0 & \varepsilon_1 & \varepsilon_2 & \cdots & \varepsilon_{T-1} & \varepsilon_T
+\end{bmatrix}^\tr
+.
+\end{aligned}
+$$
+
+. . .
+
+You can show that 
+
+$$
+\By
+=
+\Bc+\BA\Be
+,
+\quad
+\Be\sim
+\N_{p+T}
+\left(
+\Bm=
+\begin{bmatrix}
+\Bmu_0\\\Bzero
+\end{bmatrix}
+\com 
+\BS=
+\begin{bmatrix}
+\BV_0& \Bzero\\
+\Bzero & \sigma^2\BI_T
+\end{bmatrix}
+\right)
+.
+$$
+
+. . .
+
+By affine transformation, 
+
+$$
+\By
+\sim 
+\text{N}_{T}
+\left(
+\Bmu=\Bc+\BA\Bm
+\com
+\BSigma 
+=
+\BA\BS\BA^\tr
+\right)
+.
+$$
+
+So, the AR(p) is just a way of writing down a big, weird multivariate normal.
+
+## Multiple regression form {.medium}
+
+
+- The conditionals $p(y_t\given y_{t-1}\com y_{t-2}\com ...\com y_{t-p})$ have the form:
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\Bx_t^\tr\Bbeta+\varepsilon_t,&&\varepsilon_t\iid\N(0\com\sigma^2)\\
+\Bx_t
+&=
+\begin{bmatrix}
+1 & y_{t-1} & y_{t-2} & \cdots & y_{t-p}
+\end{bmatrix}
+.
+\end{aligned}
+$$
+
+. . .
+
+- Once the data are observed and treated as fixed, this is "just" multiple linear regression, and the mechanics of (conditional) likelihood-based inference proceed identically to the iid case;
+
+    - (but recall, it's not "just regression" when we do prediction!)
+
+. . .
+
+- All the AR(1) formulas are the same, only the design matrix $\BX_T$ has more columns.
+
+## State-space form {.small .scrollable}
+
+Stack up some stuff:
+
+. . .
+
+$$
+\begin{aligned}
+    \Bs_t&=\begin{bmatrix}y_t & y_{t-1} & \cdots & y_{t-(p-1)} \end{bmatrix}^\tr\\
+    \Bf&=\begin{bmatrix}1 & 0 & \cdots & 0\end{bmatrix}^\tr\\
+    \BG&=\begin{bmatrix}
+    \beta_1 & \beta_2 & \cdots & \beta_{p-1} & \beta_p \\
+    1       & 0       & \cdots & 0           & 0 \\
+    0       & 1       & \cdots & 0           & 0 \\
+    \vdots  & \vdots  & \ddots & \vdots      & \vdots \\
+    0       & 0       & \cdots & 1           & 0 \\
+    \end{bmatrix}\\
+    \Beta_t&=\begin{bmatrix}\varepsilon_t & 0 & \cdots & 0\end{bmatrix}^\tr
+    \\
+    \Bb
+    &=
+    \begin{bmatrix}\beta_0 & 0 & \cdots & 0\end{bmatrix}^\tr
+\end{aligned}
+$$
+
+. . .
+
+State-space form:
+
+$$
+\begin{aligned}
+    y_t&=\Bf^\tr\Bs_t && \text{(measurement/observation eq)}\\
+    \Bs_t&=\BG\Bs_{t-1}+\Bb+\Beta_t && \text{(state transition/law of motion)}\\
+    \Bs_0&\sim\text{N}_p(\Bmu_0\com\BV_0)\\
+\end{aligned}
+$$
+
+## The companion form matrix {.small}
+
+Consider 
+
+$$
+\BG=\begin{bmatrix}
+    \beta_1 & \beta_2 & \cdots & \beta_{p-1} & \beta_p \\
+    1       & 0       & \cdots & 0           & 0 \\
+    0       & 1       & \cdots & 0           & 0 \\
+    \vdots  & \vdots  & \ddots & \vdots      & \vdots \\
+    0       & 0       & \cdots & 1           & 0 \\
+    \end{bmatrix}
+    .
+$$
+
+. . . 
+
+Believe it or not, we will learn something by taking its *eigendecomposition*:
+
+. . .
+
+$$
+\begin{aligned}
+\BG
+&=
+\BE\BLambda\BE^{-1}
+\\
+\BLambda&=\text{diag}(\lambda_1\com\lambda_2\com...\com\lambda_p)\\
+        \BE&=\begin{bmatrix}\Be_1 & \Be_2 & \cdots & \Be_p\end{bmatrix}\\
+        \Be_\ell&=\begin{bmatrix}\lambda_{\ell}^{p-1} & \lambda_{\ell}^{p-2} & \cdots & 1 \end{bmatrix}^\tr,&& \ell=1\com 2\com...\com p.
+\end{aligned}
+$$
+
+. . .
+
+$\BG$ is not SPD, so the eigenvalues might be complex numbers. Yuck!
+
+## The mean {.small}
+
+We have
+
+$$
+\begin{aligned}
+    \Bs_t&=\BG\Bs_{t-1}+\Bb+\Beta_t,\quad \Beta_t\sim\N_p(\Bzero\com\BW=\text{diag}(\sigma^2, 0, ..., 0))\\
+    \Bs_0&\sim\text{N}_p(\Bmu_0\com\BV_0).
+\end{aligned}
+$$
+
+. . .
+
+By linearity $\Bmu_t=E(\Bs_t)=\BG \Bmu_{t-1}+\Bb$, so 
+
+$$
+\begin{aligned}
+\boldsymbol{\mu}_1 &= \mathbf{G} \boldsymbol{\mu}_0 + \mathbf{b}, \\
+\boldsymbol{\mu}_2 &= \mathbf{G} \boldsymbol{\mu}_1 + \mathbf{b} 
+             = \mathbf{G}^2 \boldsymbol{\mu}_0 + \mathbf{G} \mathbf{b} + \mathbf{b}, \\
+\boldsymbol{\mu}_3 &= \mathbf{G} \boldsymbol{\mu}_2 + \mathbf{b} 
+             = \mathbf{G}^3 \boldsymbol{\mu}_0 + \mathbf{G}^2 \mathbf{b} + \mathbf{G} \mathbf{b} + \mathbf{b}, \\
+&\vdots \\
+\boldsymbol{\mu}_t &= \mathbf{G}^t \boldsymbol{\mu}_0 + \sum_{k=0}^{t-1} \mathbf{G}^k \mathbf{b}.
+\end{aligned}
+$$
+
+## The mean {.small}
+
+. . .
+
+We have 
+
+$$
+\boldsymbol{\mu}_t = \mathbf{G}^t \boldsymbol{\mu}_0 + \sum_{k=0}^{t-1} \mathbf{G}^k \mathbf{b},
+$$
+
+. . .
+
+and we have
+
+$$
+\BG
+=
+\BE\BLambda\BE^{-1}.
+$$
+
+. . .
+
+So 
+
+$$
+\boldsymbol{\mu}_t = \BE\BLambda^t\BE^{-1} \boldsymbol{\mu}_0 + \sum_{k=0}^{t-1} \BE\BLambda^k\BE^{-1} \mathbf{b}.
+$$
+
+. . .
+
+Long-run behavior is governed by the eigenvalues. Ugh!
+
+## Stationary region {.small}
+
+The subset $\ccal_{p,1}\subseteq\RR^p$ where $\beta_{1:p}$ must live to ensure the process is stationary:
+
+. . .
+
+- For $p=1$, $(-1\com 1)$;
+
+. . .
+
+- For $p=2$:
+
+. . .
+
+![](images/ar2stationary.png){fig-align="center" width="50%"}
+
+. . .
+
+- For $p>2$: harder to characterize.
+
+## If the eigenvalues have $|\lambda_\ell|<1$
+
+Then the time-invariant mean solves 
+
+$$
+\Bmu
+=
+\BG\Bmu+\Bb.
+$$
+
+. . .
+
+Rearranging,
+
+$$
+\Bmu = (\BI_p-\BG)^{-1}\Bb.
+$$
+
+. . .
+
+The first component of this is 
+
+$$
+E(y_t)=\frac{\beta_0}{1-\sum_{\ell=1}^p\beta_\ell}\quad \forall t.
+$$
+
+## The covariance {.small}
+
+. . .
+
+We have
+
+$$
+\begin{aligned}
+    \Bs_t&=\BG\Bs_{t-1}+\Bb+\Beta_t,\quad \Beta_t\sim\N_p(\Bzero\com\BW=\text{diag}(\sigma^2, 0, ..., 0))\\
+    \Bs_0&\sim\text{N}_p(\Bmu_0\com\BV_0).
+\end{aligned}
+$$
+
+. . .
+
+So 
+
+$$
+\BV_t=\text{cov}(\Bs_t)=\BG\BV_{t-1}\BG^\tr+\BW.
+$$
+
+. . .
+
+Do the recursive substitution, and 
+
+$$
+\BV_t=\BG^t\BV_0(\BG^\tr)^t+\sum\limits_{k=0}^{t-1}\BG^k\BW(\BG^\tr)^k.
+$$
+
+You can show 
+
+$$
+\text{cov}(\Bs_t\com \Bs_s)=\BG^{|t-s|}\BV_{\min\{s,t\}}.
+$$
+
+## If the eigenvalues have $|\lambda_\ell|<1$
+
+The time-invariant covariance satisfies
+
+$$
+\BV=\BG\BV\BG^\tr+\BW.
+$$
+
+. . .
+
+Some linear algebra tricks give:
+
+$$
+\text{vec}(\BV)=(\BI_{p^2}-\BG\otimes\BG)^{-1}\text{vec}(\BW).
+$$
+
+. . .
+
+(you don't have to worry about it.)
 
 # Inference
 
-## Yule-Walker
+## Centered Form
 
-# Forecasting
+Define $x_t := y_t - \mu$.  
+Then the AR(p) in centered form is
+
+$$
+x_t = \sum_{l=1}^p \beta_l \, x_{t-l} + \varepsilon_t.
+$$
+
+---
+
+## Autocovariances
+
+Define the autocovariance $\gamma(h) = \operatorname{Cov}(y_t, y_{t-h}) = E[x_t x_{t-h}]$.  
+
+Multiply the centered equation by $x_{t-k}$ and take expectations:
+
+$$
+\gamma(k) = \sum_{l=1}^p \beta_l \, \gamma(k-l) + E[\varepsilon_t x_{t-k}].
+$$
+
+For $k \ge 1$, $\varepsilon_t$ is uncorrelated with $x_{t-k}$, so
+
+$$
+\boxed{\gamma(k) = \sum_{l=1}^p \beta_l \, \gamma(k-l), \quad k \ge 1.}
+$$
+
+---
+
+## Variance Equation
+
+For $k=0$, note that $E[\varepsilon_t x_t] = \sigma^2$, giving
+
+$$
+\gamma(0) = \sum_{l=1}^p \beta_l \, \gamma(l) + \sigma^2.
+$$
+
+---
+
+## Matrix Form of Yule-Walker Equations {.small .scrollable}
+
+Let
+
+$$
+\boldsymbol{\gamma}_p = \begin{pmatrix} \gamma(1) \\ \gamma(2) \\ \vdots \\ \gamma(p) \end{pmatrix}, \quad
+\boldsymbol{\beta} = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_p \end{pmatrix},
+$$
+
+and
+
+$$
+\mathbf{\Gamma}_p =
+\begin{pmatrix}
+\gamma(0) & \gamma(1) & \cdots & \gamma(p-1) \\
+\gamma(1) & \gamma(0) & \cdots & \gamma(p-2) \\
+\vdots & \vdots & \ddots & \vdots \\
+\gamma(p-1) & \gamma(p-2) & \cdots & \gamma(0)
+\end{pmatrix}.
+$$
+
+Then the Yule-Walker equations are
+
+$$
+\boxed{\boldsymbol{\gamma}_p = \mathbf{\Gamma}_p \, \boldsymbol{\beta}}
+\quad\Longrightarrow\quad
+\boxed{\boldsymbol{\beta} = \mathbf{\Gamma}_p^{-1} \, \boldsymbol{\gamma}_p}.
+$$
+
+
+
+## Yule-Walker estimating equations {.small}
+
+$$
+\begin{aligned}
+\text{AR coefficients:} \quad & 
+\begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_p \end{pmatrix} 
+= \mathbf{\Gamma}_p^{-1} 
+\begin{pmatrix} \gamma(1) \\ \gamma(2) \\ \vdots \\ \gamma(p) \end{pmatrix}, \\[1em]
+\text{Intercept:} \quad & 
+\beta_0 = \mu \left( 1 - \sum_{l=1}^p \beta_l \right), \\[0.5em]
+\text{Noise variance:} \quad & 
+\sigma^2 = \gamma(0) - \sum_{l=1}^p \beta_l \, \gamma(l).
+\end{aligned}
+$$
+
+## Yule-Walker estimators {.small}
+
+$$
+\begin{aligned}
+\text{AR coefficients:} \quad & 
+\begin{pmatrix} \hat{\beta}_1 \\ \hat{\beta}_2 \\ \vdots \\ \hat{\beta}_p \end{pmatrix} 
+= \hat{\mathbf{\Gamma}}_p^{-1} 
+\begin{pmatrix} \hat{\gamma}(1) \\ \hat{\gamma}(2) \\ \vdots \\ \hat{\gamma}(p) \end{pmatrix}, \\[1em]
+\text{Intercept:} \quad & 
+\hat{\beta}_0 = \hat{\mu} \left( 1 - \sum_{l=1}^p \hat{\beta}_l \right), \\[0.5em]
+\text{Noise variance:} \quad & 
+\hat{\sigma}^2 = \hat{\gamma}(0) - \sum_{l=1}^p \hat{\beta}_l \, \hat{\gamma}(l),
+\end{aligned}
+$$
+
+where
+$\hat{\mu} = \frac{1}{T} \sum_{t=1}^T y_t$, \quad
+$\hat{\gamma}(k) = \frac{1}{T} \sum_{t=k+1}^{T} (y_t - \hat{\mu})(y_{t-k} - \hat{\mu})$.
+
+
+## Asymptotics
+
+::: callout-tip
+## Shumway and Stoffer (2025) Property 3.7
+Let $\hat{\boldsymbol{\beta}} = (\hat{\beta}_1, \dots, \hat{\beta}_p)^\top$ be the Yule-Walker estimator of the AR coefficients.  
+Under standard stationarity and moment conditions:
+
+$$
+\sqrt{T} \, (\hat{\boldsymbol{\beta}} - \boldsymbol{\beta}) \;\;\;\overset{d}{\longrightarrow}\;\;\; \N_p\bigl(\mathbf{0}, \, \sigma^2 \, \mathbf{\Gamma}_p^{-1}\bigr).
+$$
+
+where $\mathbf{\Gamma}_p$ is the $p \times p$ autocovariance matrix with $(i,j)$ entry $\gamma(|i-j|)$.
+
+:::
+
+
+# Likelihood-based inference 
+
+## Let's improve the notation {.medium}
+
+The autoregression of order p, or AR(p):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\sum\limits_{\ell=1}^p
+\beta_\ell
+y_{t-\ell}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2).
+\end{aligned}
+$$
+
+. . .
+
+This implies a joint distribution governed by a finite set of static parameters $\Btheta = \begin{bmatrix}\beta_0&\beta_1&\cdots &\beta_p&\sigma^2\end{bmatrix}^\tr$:
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{1:T}\given y_{1-p:0}\com\Btheta)
+&=
+\prod_{t=1}^T
+p(y_t\given y_{t-p:t-1}\com\Btheta).
+\end{aligned}
+$$
+
+. . .
+
+Viewed as a function of $\Btheta$, that's a (conditional) *likelihood*! 
+
+. . .
+
+Maximize it, or combine with a prior.
+
+
+## Maximum likelihood estimation
+
+Treating the observed data $y_{0:T}$ as fixed, we want:
+
+$$
+\hat{\Btheta}_T=\argmax{\Btheta}\,p(y_{1:T}\given lags\com \Btheta).
+$$
+
+To do this, it helps to take the view that the AR(1) is "just" a *multiple* linear regression where $\Bx_t$ encodes the lagged values of $y_t$.
+
+## Maximum likelihood estimation {.medium}
+
+Since $y_t\given lags\com\Btheta\sim\N\left(\beta_0+\sum\limits_{l=1}^p\beta_ly_{t-l}\com\sigma^2\right)$, we have
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{1:T}\given  y_0\com \Btheta)
+&=
+\prod_{t=1}^T
+p(y_t\given lags\com\Btheta)
+\\
+&=
+\prod_{t=1}^T
+\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2}\frac{(y_t-\beta_0-\sum\limits_{l=1}^p\beta_ly_{t-l})^2}{\sigma^2}\right)
+\\
+&=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}\sum\limits_{t=1}^T(y_t-\beta_0-\sum\limits_{l=1}^p\beta_ly_{t-l})^2\right)
+.
+\end{aligned}
+$$
+
+. . .
+
+To compute the MLE, we just treat the data as fixed. 
+
+. . .
+
+Where do you think this is headed?
+
+## Stack 'em up {.medium}
+
+Define some things:
+
+. . .
+
+$$
+\begin{aligned}
+\By_T
+&=
+\begin{bmatrix}y_1&y_2 & \cdots & y_T\end{bmatrix}^\tr
+\\
+\BX_T
+&=
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+y_0 & y_1 & \cdots & y_{T-1}\\
+y_{-1} & y_0 & \cdots & y_{T-2}\\
+\vdots & \vdots & \cdots & \vdots\\
+y_{1-p} & y_{1-p+1} & \cdots & y_{T-p}\\
+\end{bmatrix}^\tr
+\\
+\Bbeta
+&=
+\begin{bmatrix}\beta_0&\beta_1 & \cdots & \beta_p\end{bmatrix}^\tr
+.
+\end{aligned}
+$$
+
+. . .
+
+So the log-likelihood is:
+
+$$
+\ln 
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+.
+$$
+
+. . .
+
+Look familiar?
+
+## We're just back to regression 101 {.small .scrollable}
+
+We have 
+
+$$
+\ln 
+p(y_{1:T}\given  y_0\com \Btheta)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+,
+$$
+
+. . .
+
+and we know that 
+
+$$
+\begin{aligned}
+\hat{\Btheta}_T
+&=\argmax{\Btheta}\,\ln p(y_{1:T}\given y_0\com \Btheta)
+\\
+&=\argmin{\Btheta}\,-\ln p(y_{1:T}\given y_0\com \Btheta).
+\end{aligned}
+$$
+
+. . .
+
+This gives 
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_T
+&=
+\argmin{\Bbeta}
+\,||\By_T-\BX_T\Bbeta||_2^2
+\\
+\hat{\sigma^2_T}
+&=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+$$
+
+## OLS for the AR(1) {.medium}
+
+. . .
+
+- The maximum (conditional) likelihood estimator in the AR(1) is the same as the ordinary least squares estimator:
+
+. . .
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_T
+&=
+(\BX_T^\tr\BX_T)^{-1}\BX_T^\tr\By_T
+\\
+\hat{\sigma^2_T}
+&=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+$$
+
+. . .
+
+- It doesn't matter that there's time series dependence. Once the data are observed and fixed, everything you know about iid multiple regression applies unmodified.
+
+## If the data are streaming, apply PSET 0! {.medium}
+
+*Do not* recompute that matrix inverse every period. 
+
+. . .
+
+
+Instead:
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_t
+&=
+\hat{\Bbeta}_{t-1}
++
+\Bk_t(y_t-\Bx_t^\tr\hat{\Bbeta}_{t-1})
+\\
+\Bk_t
+&=
+\frac{\BP_{t-1}\Bx_t}
+{1+\Bx_t^\tr\BP_{t-1}\Bx_t}
+\\
+\BP_t
+&=
+(\BX_t^\tr\BX_t)^{-1}
+\\
+&=
+(\BX_{t-1}^\tr\BX_{t-1}+\Bx_t\Bx_t^\tr)^{-1}
+\\
+&=
+(\BP_{t-1}+\Bx_t\Bx_t^\tr)^{-1}
+\\
+&=
+\BP_{t-1}
+-
+\Bk_t
+\Bx_t^\tr\BP_{t-1}
+.
+\end{aligned}
+$$
+
+. . .
+
+**Keyword**: rank-1 update!
+
+## Asymptotics
+
+::: callout-tip
+## Shumway and Stoffer (2025) Property 3.9
+Let $\hat{\boldsymbol{\beta}} = (\hat{\beta}_1, \dots, \hat{\beta}_p)^\top$ be the MLE/OLS estimator of the AR coefficients. If things are stationary, then:
+
+$$
+\sqrt{T} \, (\hat{\boldsymbol{\beta}} - \boldsymbol{\beta}) \;\;\;\overset{d}{\longrightarrow}\;\;\; \N_p\bigl(\mathbf{0}, \, \sigma^2 \, \mathbf{\Gamma}_p^{-1}\bigr).
+$$
+
+where $\mathbf{\Gamma}_p$ is the $p \times p$ autocovariance matrix with $(i,j)$ entry $\gamma(|i-j|)$.
+
+:::
+
+. . .
+
+Same as Yule-Walker!
+
+# Bayesian inference
+
+## Recall
+
+Given a prior distribution $p(\Btheta)=p(\beta_0\com \beta_1\com \sigma^2)$ on the parameters and an observed time series $y_{0:T}$, we seek to access the posterior distribution:
+
+$$
+p(\Btheta\given y_{0:T})
+=
+\frac{p(y_{1:T}\given y_0\com \Btheta)p(\Btheta)}{p(y_{1:T}\given y_0)}
+.
+$$
+
+. . .
+
+As with MLE, everything you know about iid Bayesian regression applies pretty much unmodified.
+
+## Conjugate normal-inverse-gamma prior {.small}
+
+Bayesian model with a conjugate prior:
+
+$$
+\begin{aligned}
+\sigma^2
+&\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta\given \sigma^2
+&\sim 
+\text{N}_2(\Bm_0\com\sigma^2\BH^{-1}_0)
+\\
+y_t
+\given 
+y_{t-1}
+\com
+\Bbeta\com\sigma^2
+&\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right), && \Bx_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^\tr.
+\end{aligned}
+$$
+
+. . .
+
+The posterior is available in closed-form:
+
+$$
+\begin{aligned}
+\sigma^2\given y_{0:T}
+&\sim
+\text{IG}(a_T\com b_T)
+\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&\sim 
+\text{N}_2(\Bm_T\com\sigma^2\BH^{-1}_T)
+\\
+\\
+\BH_T
+&=
+\BX_T^\tr\BX_T+\BH_0
+\\
+\Bm_T
+&=
+\BH_T^{-1}(\BX_T^\tr\By_T+\BH_0\Bm_0)
+\\
+a_T 
+&= 
+a_0 + T/2
+\\
+b_T
+&=
+b_0
++
+(\By_T^\tr\By_T+\Bm_0^\tr\BH_0\Bm_0-\Bm_T^\tr\BH_T\Bm_T)/2.
+\end{aligned}
+$$
 
 ## But wait!
 
