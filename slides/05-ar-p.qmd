@@ -970,7 +970,7 @@ $$
 
 ## But wait!
 
-
+This entire time we assumed that the lag order $p$ was fixed and known. In practice, we do not know it. It is a *hyperparameter* that needs to be tuned using the data. How do we do that?
 
 
 # Next time...model selection!
