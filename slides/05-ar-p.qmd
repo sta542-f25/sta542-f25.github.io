@@ -929,7 +929,7 @@ y_{t-1}
 &\sim \text{N}
 \left(
 \Bx_t^\tr\Bbeta\com\sigma^2
-\right), && \Bx_t=\begin{bmatrix}1 & y_{t-1}\end{bmatrix}^\tr.
+\right), && \Bx_t=\begin{bmatrix}1 & lags\end{bmatrix}^\tr.
 \end{aligned}
 $$
 
