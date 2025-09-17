@@ -1,5 +1,5 @@
 ---
-title: "Everything You Always Wanted to Know About the AR(p) But Were Afraid to Ask"
+title: "What is the joint distribution of an AR(p)"
 subtitle: "Lecture 5"
 format: revealjs
 auto-stretch: false
