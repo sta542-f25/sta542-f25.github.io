@@ -1,8 +1,1234 @@
 ---
-title: "Model selection"
+title: "How do you estimate and tune the AR(p)?"
 subtitle: "Lecture 6"
 format: revealjs
 auto-stretch: false
 filters:
   - shinylive
 ---
+
+# Recap
+
+## AR(p) {.small}
+
+The autoregression of order $p$, or AR($p$):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\beta_2
+y_{t-2}
++
+\cdots 
++
+\beta_p
+y_{t-p}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2)
+\\
+\begin{bmatrix}
+y_0
+\\
+y_{-1}
+\\
+\vdots
+\\
+y_{1-p}
+\end{bmatrix}
+&\sim
+\text{N}_p(\Bmu_0\com \BP_0).
+\end{aligned}
+$$
+
+## State-space form {.small .scrollable}
+
+Equivalently:
+
+$$
+\begin{aligned}
+y_t
+&=
+\Bf^\tr\Bs_t\\
+\Bs_t
+&=
+\Bb
++
+\BG
+\Bs_{t-1}
++
+\Beta_t
+,\quad
+\Beta_t
+\sim\N_p(\Bzero\com\BW)
+\\
+\Bs_0&\sim
+\text{N}_p(\Bmu_0\com \BP_0)
+,
+\end{aligned}
+$$
+where
+
+$$
+\begin{aligned}
+    \Bs_t&=\begin{bmatrix}y_t & y_{t-1} & \cdots & y_{t-(p-1)} \end{bmatrix}^\tr\\
+    \Bf&=\begin{bmatrix}1 & 0 & \cdots & 0\end{bmatrix}^\tr\\
+    \BG&=\begin{bmatrix}
+    \beta_1 & \beta_2 & \cdots & \beta_{p-1} & \beta_p \\
+    1       & 0       & \cdots & 0           & 0 \\
+    0       & 1       & \cdots & 0           & 0 \\
+    \vdots  & \vdots  & \ddots & \vdots      & \vdots \\
+    0       & 0       & \cdots & 1           & 0 \\
+    \end{bmatrix}\\
+    \Beta_t&=\begin{bmatrix}\varepsilon_t & 0 & \cdots & 0\end{bmatrix}^\tr
+    \\
+    \Bb
+    &=
+    \begin{bmatrix}\beta_0 & 0 & \cdots & 0\end{bmatrix}^\tr
+    \\
+    \BW
+    &=
+    \text{diag}(\sigma^2\com 0\com ...\com 0).
+\end{aligned}
+$$
+
+
+## Moments {.small}
+
+- By substitution, $E(y_t)$, $\var(y_t)$, and $\cov(y_t\com y_s)$ are the (1, 1) elements of 
+
+. . .
+
+$$
+\begin{aligned}
+E(\Bs_t)
+&=
+ \mathbf{G}^t \boldsymbol{\mu}_0 + \sum_{k=0}^{t-1} \mathbf{G}^k \mathbf{b}
+\\
+\cov(\Bs_t)
+&=
+\BG^t\BP_0(\BG^\tr)^t+\sum\limits_{k=0}^{t-1}\BG^k\BW(\BG^\tr)^k
+\\
+\cov(\Bs_t\com\Bs_s)
+&=
+\BG^{|t-s|}\cov(\Bs_{\min\{s\com t\}}).
+\end{aligned}
+$$
+
+::: incremental
+- True and computable, but not super enlightening;
+- These will be more informative when we study *vector autoregressions*. $\Bs_t$ follows a VAR(1) here;
+- Eigenvalues of companion matrix $\BG$ govern the dynamics.
+:::
+
+# Yule-Walker
+
+## Assume the AR(p) is stationary
+
+If the eigenvalues of $\BG$ are all in the unit circle, then the mean is time invariant, and the covariance is shift-invariant:
+
+$$
+\begin{aligned}
+\mu
+&=
+E(y_t)
+=
+\frac{\beta_0}{1-\sum\limits_{l=1}^p\beta_l} && \forall t
+\\
+\gamma(h)
+&=
+\cov(y_{t+h}\com y_{t})&& \forall t.
+\end{aligned}
+$$
+
+. . .
+
+And notice that:
+
+$$
+\gamma(-h)=\cov(y_{t-h}\com y_{t})=\cov(y_{t}\com y_{t-h})=\gamma(h).
+$$
+
+## Sample averages (TODO)
+
+The "population" moments can be estimated with sample averages:
+
+$$
+\begin{aligned}
+\hat{\mu}_T
+&=
+\frac{1}{T}\sum\limits_{t=1}^Ty_t
+\\
+\hat{\gamma}_T(h)
+&=
+\frac{1}{T}\sum\limits_{t=1}^{T-h}(y_{t+h}-\hat{\mu}_T)(y_t-\hat{\mu}_T).
+\end{aligned}
+$$
+
+To show that $\hat{\mu}_T$ and $\hat{\gamma}_T(h)$ actually estimate $\mu$ and $\gamma(h)$, you need new LLNs and CLTs for dependent data.
+
+## Estimating equations
+
+Express the expected values as a function of the parameters:
+
+$$
+\begin{aligned}
+\mu
+&=\beta_0/\left(1-\sum\limits_{l=1}^p\beta_l\right)
+\\
+\gamma(0)
+&=
+g_0(\beta_0\com \beta_1\com ...\com \beta_p\com \sigma^2)
+\\
+\gamma(1)
+&=
+g_1(\beta_0\com \beta_1\com ...\com \beta_p\com \sigma^2)
+\\
+\gamma(2)
+&=
+g_2(\beta_0\com \beta_1\com ...\com \beta_p\com \sigma^2)
+\\
+&\vdots
+\\
+\gamma(p)
+&=
+g_p(\beta_0\com \beta_1\com ...\com \beta_p\com \sigma^2)
+.
+\end{aligned}
+$$
+
+## Method of moments estimator
+
+"Plug-in" the sample averages and solve the system:
+
+$$
+\begin{aligned}
+\hat{\mu}_T
+&=\hat{\beta}_0/\left(1-\sum\limits_{l=1}^p\hat{\beta}_l\right)
+\\
+\hat{\gamma}_T(0)
+&=
+g_0(\hat{\beta}_0\com \hat{\beta}_1\com ...\com \hat{\beta}_p\com \hat{\sigma^2})
+\\
+\hat{\gamma}_T(1)
+&=
+g_1(\hat{\beta}_0\com \hat{\beta}_1\com ...\com \hat{\beta}_p\com \hat{\sigma^2})
+\\
+\hat{\gamma}_T(2)
+&=
+g_2(\hat{\beta}_0\com \hat{\beta}_1\com ...\com \hat{\beta}_p\com \hat{\sigma^2})
+\\
+&\vdots
+\\
+\hat{\gamma}_T(p)
+&=
+g_p(\hat{\beta}_0\com \hat{\beta}_1\com ...\com \hat{\beta}_p\com \hat{\sigma^2})
+.
+\end{aligned}
+$$
+
+## Setting up the system
+
+Assume that $\beta_0=0$, or that you've otherwise centered the variables with $z_t=y_t-\mu$, and consider:
+
+$$
+z_t = \sum_{l=1}^p \beta_l \, z_{t-l} + \varepsilon_t.
+$$
+
+By centering, we have that $\gamma(h) = \operatorname{Cov}(y_t, y_{t-h}) = E(z_t z_{t-h})$.
+
+## Setting up the system {.medium}
+
+Start here:
+
+$$
+z_t = \sum_{l=1}^p \beta_l \, z_{t-l} + \varepsilon_t.
+$$
+
+. . .
+
+Multiply both sides by $z_{t-k}$:
+
+$$
+z_tz_{t-k} = \sum_{l=1}^p \beta_l \, z_{t-l}z_{t-k} + \varepsilon_tz_{t-k}.
+$$
+
+. . .
+
+Take expected value of both sides:
+
+$$
+E(z_tz_{t-k}) = \sum_{l=1}^p \beta_l \, E(z_{t-l}z_{t-k}) + E(\varepsilon_tz_{t-k}).
+$$
+
+## Setting up the system
+
+Stare at this:
+
+$$
+E(z_tz_{t-k}) = \sum_{l=1}^p \beta_l \, E(z_{t-l}z_{t-k}) + E(\varepsilon_tz_{t-k}).
+$$
+
+Notice:
+
+::: incremental
+- $E(z_tz_{t-k})=\cov(z_t\com z_{t-k})=\gamma(k)$;
+- $E(z_{t-l}z_{t-k})=\cov(z_{t-l}\com z_{t-k})=\gamma(k-l)$;
+- $E(\varepsilon_tz_{t-k})=\cov(\varepsilon_t\com z_{t-k})=0$ if $k\geq 1$ by independence;
+- $E(\varepsilon_tz_{t-k})=\cov(\varepsilon_t\com z_t)=\sigma^2$ if $k=0$.
+:::
+
+## Setting up the system
+
+Summing up, we have 
+
+$$
+\begin{aligned}
+\gamma(k) &= \sum_{l=1}^p \beta_l \, \gamma(k-l) && k\geq 1.
+\\
+\gamma(0) &= \sum_{l=1}^p \beta_l \, \gamma(l) + \sigma^2
+\end{aligned}
+$$
+
+## Example: the AR(1) {.small}
+
+If $p=1$, we saw
+
+$$
+\begin{aligned}
+\gamma(1)&=\beta_1\gamma(0)\\
+\gamma(0)&=\beta_1\gamma(1)+\sigma^2.
+\end{aligned}
+$$
+
+Implying that 
+
+$$
+\begin{aligned}
+\gamma(0)&=\beta_1\gamma(1)+\sigma^2\\
+\gamma(0)&=\beta_1^2\gamma(0)+\sigma^2\\
+\gamma(0)-\beta_1^2\gamma(0)&=\sigma^2\\
+(1-\beta_1^2)\gamma(0)&=\sigma^2\\
+\gamma(0)&=\frac{\sigma^2}{1-\beta_1^2}.\\
+\end{aligned}
+$$
+
+Been there; done that;
+
+## Let's be super pedantic {.small}
+
+We saw:
+
+$$
+\begin{aligned}
+\gamma(k) &= \sum_{l=1}^p \beta_l \, \gamma(k-l) && k\geq 1.
+\end{aligned}
+$$
+
+In other words:
+
+$$
+\begin{matrix}
+\gamma(1)
+&=&
+\beta_1\gamma(0)
+&+&
+\beta_2\gamma(1)
+&+&
+&\cdots 
+&+ &
+\beta_p\gamma(p-1)
+\\
+\gamma(2)
+&=&
+\beta_1\gamma(1)
+&+&
+\beta_2\gamma(0)
+&+&
+&\cdots 
+&+ &
+\beta_p\gamma(p-2)
+\\
+&\vdots
+\\
+\gamma(p)
+&=&
+\beta_1\gamma(p-1)
+&+&
+\beta_2\gamma(p-1)
+&+&
+&\cdots 
+&+ &
+\beta_p\gamma(0)
+\end{matrix}
+$$
+
+A system of $p$ linear equations in $p$ unknowns.
+
+
+## The Yule-Walker equations {.small .scrollable}
+
+Rewriting as a matrix equation:
+
+$$
+\begin{aligned}
+\begin{bmatrix}
+\gamma(0)
+&
+\gamma(1)
+&
+\gamma(2)
+& 
+\cdots
+& 
+\gamma(p-2)
+&
+\gamma(p-1)
+\\
+\gamma(1)
+&
+\gamma(0)
+&
+\gamma(1)
+& 
+\cdots
+& 
+\gamma(p-3)
+&
+\gamma(p-2)
+\\
+\gamma(2)
+&
+\gamma(1)
+&
+\gamma(0)
+& 
+\cdots
+& 
+\gamma(p-4)
+&
+\gamma(p-3)
+\\
+\vdots
+&
+\vdots
+&
+\vdots
+& 
+\ddots
+& 
+\vdots
+&
+\vdots
+\\
+\gamma(p-2)
+&
+\gamma(p-3)
+&
+\gamma(p-4)
+& 
+\cdots
+& 
+\gamma(0)
+&
+\gamma(1)
+\\
+\gamma(p-1)
+&
+\gamma(p-2)
+&
+\gamma(p-3)
+& 
+\cdots
+& 
+\gamma(1)
+&
+\gamma(0)
+\end{bmatrix}
+\begin{bmatrix}
+\beta_1
+\\
+\beta_2
+\\
+\beta_3
+\\
+\vdots
+\\
+\beta_{p-1}
+\\
+\beta_p
+\end{bmatrix}
+&=
+\begin{bmatrix}
+\gamma(1)
+\\
+\gamma(2)
+\\
+\gamma(3)
+\\
+\vdots 
+\\
+\gamma(p-1)
+\\
+\gamma(p)
+\end{bmatrix}.
+\end{aligned}
+$$
+
+So
+
+$$
+\BGamma_p
+\Bbeta_{-0}
+=
+\boldsymbol{\gamma}_p
+.
+$$
+
+## The estimating equations {.small}
+
+We know:
+
+$$
+\begin{aligned}
+\boldsymbol{\gamma}_p
+&=
+\BGamma_p
+\Bbeta_{-0}
+\\
+\gamma(0) &= \Bbeta_{-0}^\tr\boldsymbol{\gamma}_p+\sigma^2
+\\
+\mu
+&=
+\beta_0/\left(1-\sum_{l=1}^p\beta_l\right).
+\end{aligned}
+$$
+
+. . .
+
+Solving for the model parameters:
+
+$$
+\begin{aligned}
+\Bbeta_{-0}
+&=
+\BGamma_p^{-1}
+\boldsymbol{\gamma}_p
+\\
+\sigma^2 &= \gamma(0)-\Bbeta_{-0}^\tr\boldsymbol{\gamma}_p
+\\
+\beta_0
+&=
+\left(1-\sum_{l=1}^p\beta_l\right)\mu.
+\end{aligned}
+$$
+
+## Example: the AR(1)
+
+If $p=1$, then $\BGamma_p=[\gamma(0)]$, $\boldsymbol{\gamma}_p=[\gamma(1)]$, and $\Bbeta_{-0}=[\beta_1]$, so we're just saying that 
+
+$$
+\begin{aligned}
+\beta_1
+&=
+\gamma(1)/\gamma(0)
+\\
+\sigma^2
+&=
+\gamma(0)
+-
+\beta_1
+\gamma(1)
+\\
+&=
+(1-\beta_1^2)\gamma(0)
+\\
+\beta_0
+&=
+(1-\beta_1)\mu.
+\end{aligned}
+$$
+
+. . .
+
+Been there; done that.
+
+## The Yule-Walker estimators
+
+Plug-in sample averages for all expected values:
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_{-0}
+&=
+\hat{\BGamma}_p^{-1}
+\hat{\boldsymbol{\gamma}}_p
+\\
+\hat{\sigma^2} &= \hat{\gamma}_T(0)-\hat{\Bbeta}_{-0}^\tr\hat{\boldsymbol{\gamma}}_p
+\\
+\hat{\beta}_0
+&=
+\left(1-\sum_{l=1}^p\hat{\beta}_l\right)\hat{\mu}_T.
+\end{aligned}
+$$
+
+## Asymptotics
+
+
+::: callout-tip
+## Shumway and Stoffer (2025) Property 3.7
+If the AR(p) is stationary, then
+
+$$
+\sqrt{T} \, (\hat{\boldsymbol{\beta}}_{-0} - \boldsymbol{\beta}_{-0})\cd\N_p\bigl(\mathbf{0}, \, \sigma^2 \, \mathbf{\Gamma}_p^{-1}\bigr).
+$$
+
+where $\mathbf{\Gamma}_p$ is the $p \times p$ autocovariance matrix with $(i,j)$ entry $\gamma(|i-j|)$.
+
+:::
+
+# Maximum likelihood estimation
+
+## Let's improve the notation {.medium}
+
+The autoregression of order p, or AR(p):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\sum\limits_{\ell=1}^p
+\beta_\ell
+y_{t-\ell}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2).
+\end{aligned}
+$$
+
+. . .
+
+This implies a joint distribution governed by a finite set of static parameters $\Btheta = \begin{bmatrix}\beta_0&\beta_1&\cdots &\beta_p&\sigma^2\end{bmatrix}^\tr$:
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{1:T}\given y_{1-p:0}\com\Btheta)
+&=
+\prod_{t=1}^T
+p(y_t\given y_{t-p:t-1}\com\Btheta).
+\end{aligned}
+$$
+
+. . .
+
+Viewed as a function of $\Btheta$, that's a (conditional) *likelihood*! 
+
+. . .
+
+Maximize it, or combine with a prior.
+
+## Maximum likelihood estimation
+
+Treating the observed data $y_{1-p:T}$ as fixed, we want:
+
+$$
+\hat{\Btheta}_T=\argmax{\Btheta}\,p(y_{1:T}\given y_{1-p:0}\com \Btheta).
+$$
+
+To do this, it helps to view the AR(p) is "just" a *multiple* linear regression where $\Bx_t$ encodes the lagged values of $y_t$:
+
+$$
+\begin{aligned}
+y_t&=\Bx_t^\tr\Bbeta+\varepsilon_t,&&\varepsilon_t\iid\N(0\com\sigma^2)
+\\
+\Bx_t&=\begin{bmatrix}
+1 & y_{t-1} & y_{t-2} & \cdots & y_{t-p}
+\end{bmatrix}^\tr\\
+\Bbeta&=\begin{bmatrix}
+\beta_0 & \beta_1 & \beta_2 & \cdots & \beta_p
+\end{bmatrix}^\tr.
+\end{aligned}
+$$
+
+## Maximum likelihood estimation {.medium}
+
+Since $y_t\given \Bx_t\com\Btheta\sim\N\left(\Bx_t^\tr\Bbeta\com\sigma^2\right)$, we have
+
+. . .
+
+$$
+\begin{aligned}
+p(y_{1:T}\given  \Bx_0\com \Btheta)
+&=
+\prod_{t=1}^T
+p(y_t\given \Bx_t\com\Btheta)
+\\
+&=
+\prod_{t=1}^T
+\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{1}{2}\frac{(y_t-\Bx_t^\tr\Bbeta)^2}{\sigma^2}\right)
+\\
+&=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}\sum\limits_{t=1}^T(y_t-\Bx_t^\tr\Bbeta)^2\right)
+.
+\end{aligned}
+$$
+
+. . .
+
+To compute the MLE, we treat this as a function of $\Btheta$ with the data fixed.
+
+## Stack 'em up {.medium}
+
+Construct the response vector and design matrix:
+
+. . .
+
+$$
+\begin{aligned}
+\underbrace{\By_T}_{T\times 1}
+&=
+\begin{bmatrix}y_1&y_2 & \cdots & y_T\end{bmatrix}^\tr
+\\
+\underbrace{\BX_T}_{T\times (p+1)}
+&=
+\begin{bmatrix}
+1 & y_0 & y_{-1} & \cdots & y_{1-p} \\
+1 & y_1 & y_0 & \cdots & y_{2-p} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & y_{T-1} & y_{T-2} & \cdots & y_{T-p}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\Bx_1^\tr\\
+\Bx_2^\tr\\
+\vdots\\
+\Bx_T^\tr
+\end{bmatrix}
+.
+\end{aligned}
+$$
+
+. . .
+
+So the likelihood is:
+
+$$
+\begin{aligned}
+p(y_{1:T}\given  \Bx_0\com \Btheta)
+&=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}\sum\limits_{t=1}^T(y_t-\Bx_t^\tr\Bbeta)^2\right)
+\\
+&=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}||\By_T-\BX_T\Bbeta||_2^2\right)
+.
+\end{aligned}
+$$
+
+
+
+## What are we doing?
+
+Likelihood:
+
+$$
+\begin{aligned}
+L(\Bbeta\com\sigma^2)
+&=
+(2\pi\sigma^2)^{-T/2}
+\exp\left(-\frac{1}{2\sigma^2}||\By_T-\BX_T\Bbeta||_2^2\right)
+.
+\end{aligned}
+$$
+
+Log-likelihood:
+
+$$
+\ell(\Bbeta\com\sigma^2)
+=
+-\frac{T}{2}\ln(2\pi\sigma^2)
+-\frac{1}{2\sigma^2}
+||\By_T-\BX_T\Bbeta||_2^2
+,
+$$
+
+We want:
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_T\com \hat{\sigma_T^2}
+&=\argmax{\Bbeta\com\sigma^2}\,\ell(\Bbeta\com\sigma^2).
+\end{aligned}
+$$
+
+## OLS for the AR(p) {.medium}
+
+. . .
+
+- The maximum (conditional) likelihood estimator in the AR(p) is the same as the ordinary least squares estimator:
+
+. . .
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_T
+&=
+(\BX_T^\tr\BX_T)^{-1}\BX_T^\tr\By_T
+\\
+\hat{\sigma^2_T}
+&=
+||\By_T-\BX_T\hat{\Bbeta}_T||_2^2 / T.
+\end{aligned}
+$$
+
+. . .
+
+- It doesn't matter that there's time series dependence. Once the data are observed and fixed, the *mechanics* are identical to iid multiple regression;
+- For things like prediction, dependence matters, and the correspondence with iid regression breaks down.
+
+## Recursive form
+
+*Do not* incur the $O(t)$ cost of re-computing $(\BX_t^\tr\BX_t)^{-1}$ every period.
+
+. . .
+
+
+Instead:
+
+$$
+\begin{aligned}
+\hat{\Bbeta}_t
+&=
+\hat{\Bbeta}_{t-1}
++
+\Bk_t(y_t-\Bx_t^\tr\hat{\Bbeta}_{t-1})
+\\
+\Bk_t
+&=
+\frac{\BP_{t-1}\Bx_t}
+{1+\Bx_t^\tr\BP_{t-1}\Bx_t}
+\\
+\BP_t
+&=
+\BP_{t-1}
+-
+\Bk_t
+\Bx_t^\tr\BP_{t-1}
+.
+\end{aligned}
+$$
+
+. . .
+
+**Keyword**: rank-1 update!
+
+## Asymptotics
+
+::: callout-tip
+## Shumway and Stoffer (2025) Property 3.9
+If the AR(p) is stationary, then
+
+$$
+\sqrt{T} \, (\hat{\boldsymbol{\beta}}_{-0} - \boldsymbol{\beta}_{-0})\cd\N_p\bigl(\mathbf{0}, \, \sigma^2 \, \mathbf{\Gamma}_p^{-1}\bigr).
+$$
+
+where $\mathbf{\Gamma}_p$ is the $p \times p$ autocovariance matrix with $(i,j)$ entry $\gamma(|i-j|)$.
+
+:::
+
+. . .
+
+Same as Yule-Walker!
+
+# Conjugate Bayesian inference
+
+## Batch form {.small}
+
+Bayesian model with a conjugate prior:
+
+$$
+\begin{aligned}
+\sigma^2
+&\sim
+\text{IG}(a_0\com b_0)
+\\
+\Bbeta\given \sigma^2
+&\sim 
+\text{N}_{p+1}(\Bm_0\com\sigma^2\BH^{-1}_0)
+\\
+y_t
+\given 
+\Bx_t
+\com
+\Bbeta\com\sigma^2
+&\sim \text{N}
+\left(
+\Bx_t^\tr\Bbeta\com\sigma^2
+\right).
+\end{aligned}
+$$
+
+. . .
+
+The posterior is available in closed-form:
+
+$$
+\begin{aligned}
+\sigma^2\given y_{0:T}
+&\sim
+\text{IG}(a_T\com b_T)
+\\
+\Bbeta\given \sigma^2\com y_{0:T}
+&\sim 
+\text{N}_{p+2}(\Bm_T\com\sigma^2\BH^{-1}_T)
+\\
+\\
+\BH_T
+&=
+\BX_T^\tr\BX_T+\BH_0
+\\
+\Bm_T
+&=
+\BH_T^{-1}(\BX_T^\tr\By_T+\BH_0\Bm_0)
+\\
+a_T 
+&= 
+a_0 + T/2
+\\
+b_T
+&=
+b_0
++
+(\By_T^\tr\By_T+\Bm_0^\tr\BH_0\Bm_0-\Bm_T^\tr\BH_T\Bm_T)/2.
+\end{aligned}
+$$
+
+## Recursive form {.small}
+
+Define:
+
+$$
+\begin{aligned}
+e_{t|t-1}&=y_t-\Bx_t^\tr\Bm_{t-1}\\
+r_{t|t-1}^2&=1+\Bx_t^\tr\BH_{t-1}^{-1}\Bx_t\\
+\Bk_t&=\BH_{t-1}^{-1}\Bx_t/r_{t|t-1}^2.
+\end{aligned}
+$$
+
+Then:
+
+$$
+\begin{aligned}
+\Bm_t
+&=
+\Bm_{t-1}
++
+\Bk_te_{t|t-1}
+\\
+\BH_t^{-1}
+&=
+\BH_{t-1}^{-1}-\Bk_t\Bx_t^\tr\BH_{t-1}^{-1}
+\\
+a_t
+&=a_{t-1}+1/2
+\\
+b_t
+&=
+b_{t-1}
++
+\frac{1}{2}
+\frac{e_{t|t-1}^2}{r_{t|t-1}^2}.
+\end{aligned}
+$$
+
+## One-step posterior predictive distribution
+
+We want 
+
+. . .
+
+$$
+p(y_{t+1}\given y_{0:t})
+=
+\int
+\int
+p(y_{t+1}\given\Bbeta\com\sigma^2\com y_{0:t})p(\Bbeta\com\sigma^2\given y_{0:t})\,\dd\Bbeta\,\dd\sigma^2
+,
+$$
+
+. . .
+
+and we know that
+
+$$
+\begin{aligned}
+\sigma^2\given y_{0:t}
+&\sim
+\text{IG}(a_t\com b_t)
+\\
+\Bbeta\given \sigma^2\com y_{0:t}
+&\sim 
+\text{N}_{p+1}(\Bm_t\com\sigma^2\BH^{-1}_t)
+\\
+y_{t+1}\given\Bbeta\com \sigma^2\com y_{0:t}
+&\sim \N(\Bx_{t+1}^\tr\Bbeta\com\sigma^2).
+\end{aligned}
+$$
+
+. . .
+
+There is actually a closed-form solution.
+
+## Marginalize out $\Bbeta$
+
+We know that 
+
+$$
+\begin{aligned}
+\Bbeta\given \sigma^2\com y_{0:t}
+&\sim 
+\text{N}_{p+1}(\Bm_t\com\sigma^2\BH^{-1}_t)
+\\
+y_{t+1}
+&=
+\Bx_{t+1}^\tr\Bbeta
++
+\varepsilon_{t+1}
+,
+&&
+\varepsilon_{t+1}\sim\N(0\com \sigma^2).
+\end{aligned}
+$$
+
+. . .
+
+By affine transformation:
+
+$$
+\Bx_{t+1}^\tr\Bbeta
+\given \sigma^2\com y_{0:t}
+\sim 
+\N(
+\Bx_{t+1}^\tr\Bm_t
+\com
+\sigma^2\Bx_{t+1}^\tr\BH_t^{-1}\Bx_{t+1}
+).
+$$
+
+. . .
+
+By linear combination of independent normals:
+
+$$
+\begin{aligned}
+y_{t+1}\given \sigma^2\com y_{0:t}
+&\sim \N\left(\Bx_{t+1}^\tr\Bm_t\com\sigma^2(1+\Bx_{t+1}^\tr\BH_t^{-1}\Bx_{t+1})\right).
+\end{aligned}
+$$
+
+## Marginalize out $\sigma^2$ {.small}
+
+We know that 
+
+$$
+\begin{aligned}
+\sigma^2\given y_{0:t}
+&\sim
+\text{IG}(a_t\com b_t)
+\\
+y_{t+1}\given \sigma^2\com y_{0:t}
+&\sim \N\left(\Bx_{t+1}^\tr\Bm_t\com\sigma^2(1+\Bx_{t+1}^\tr\BH_t^{-1}\Bx_{t+1})\right).
+\end{aligned}
+$$
+
+. . .
+
+Marginalizing $\sigma^2$ out of this hierarchy is essentially the *definition* of Student's $t$:
+
+. . .
+
+$$
+\begin{aligned}
+y_{t+1}\given y_{0:t}
+&\sim
+t(\nu_{t+1|t}\com\bar{y}_{t+1|t}\com s_{t+1|t}^2)
+\\
+\\
+\nu_{t+1|t}
+&=
+2a_t
+\\
+\bar{y}_{t+1|t}
+&=
+\Bx_{t+1}^\tr\Bm_t
+\\
+s_{t+1|t}^2
+&=
+\frac{b_t}{a_t}
+(1+\Bx_{t+1}^\tr\BH_t^{-1}\Bx_{t+1})
+.
+\end{aligned}
+$$
+
+. . .
+
+So, Student's $t$ with location-scale.
+
+# Lag order selection
+
+## Rules of thumb
+
+Pick $p$ = number of observations in one natural cycle of the data:
+
+. . .
+
+| Data frequency | Typical lag length (p) |
+|----------------|-------------------------|
+| Hourly         | 24                      |
+| Daily          | 7                       |
+| Monthly        | 12                      |
+| Quarterly      | 4                       |
+| Annual         | 1                       |
+
+. . .
+
+Fine as a quick-and-dirty solution. Guidance on this will be domain-specific.
+
+
+## Minimize an information criterion
+
+Take:
+
+$$
+\hat{p}=\argmin{p=1\com2\com...\com\bar{p}}\,\text{IC}(p;\,\By_T\com\BX_T).
+$$
+
+. . .
+
+Common choices:
+
+:::incremental 
+- Akaike information criterion: $\text{AIC}(p)=2p+T\ln(\hat{\sigma^2_p})$;
+- Bayesian information criterion: $\text{BIC}(p)=p\ln T+T\ln(\hat{\sigma^2_p})$.
+:::
+
+. . .
+
+These measure *in-sample* fit, but out-of-sample performance is more important.
+
+## Cross-validation
+
+::: incremental
+- Directly target out-of-sample predictive performance, and tailor selection to the specific predictive task and *measure* of performance that you care about most in your application;
+- In exchange for being more *relevant* than the automated in-sample measures, it's more computationally intensive to implement.
+:::
+
+## Recall: LOO-CV for iid regression {.small}
+
+Leave-one-out cross-validation:
+
+. . .
+
+- For each model configuration, train on all data except observation $i$, and then test on held-out $(\Bx_i\com y_i)$;
+
+. . .
+
+- Average prediction error over all training/test splits, and pick the best model:
+
+. . .
+
+$$
+\hat{\lambda}=\argmin{\lambda\geq0}\,\sum\limits_{i=1}^n\left(y_i-\Bx_i^\tr\hat{\Bbeta}_\lambda^{(-i)}\right)^2
+$$
+
+. . .
+
+- Optimizes out-of-sample point prediction accuracy
+
+. . .
+
+
+- Fine for iid, but with serially dependent time series data, it's not appropriate to randomly rip observations out of the middle and fit a model to what's left before and after.
+
+## Time series cross-validation {.small .scrollable}
+
+Leave-[future]{style="color:red;"}-out cross-validation (LFO-CV):
+
+$$
+\begin{aligned}
+&{\color{blue}\bullet\,\text{training}}\quad{\color{red}\bullet\,\text{test}}\\
+&\begin{matrix}
+\color{blue}{y_1} & \color{lightgray}{y_2} & \color{lightgray}{y_3} & \color{red}{y_4} & \color{lightgray}{y_5} & \color{lightgray}{y_6} & \color{lightgray}{y_7} & \color{lightgray}{y_8} & \color{lightgray}{y_9} & \color{lightgray}{y_{10}}& \cdots & \longrightarrow & \text{error}_1^{(p)} \\
+\color{blue}{y_1} & \color{blue}{y_2} & \color{lightgray}{y_3} & \color{lightgray}{y_4} & \color{red}{y_5} & \color{lightgray}{y_6} & \color{lightgray}{y_7} & \color{lightgray}{y_8} & \color{lightgray}{y_9} & \color{lightgray}{y_{10}}& \cdots & \longrightarrow & \text{error}_2^{(p)} \\
+\color{blue}{y_1} & \color{blue}{y_2} & \color{blue}{y_3} & \color{lightgray}{y_4} & \color{lightgray}{y_5} & \color{red}{y_6} & \color{lightgray}{y_7} & \color{lightgray}{y_8} & \color{lightgray}{y_9} & \color{lightgray}{y_{10}}& \cdots & \longrightarrow & \text{error}_3^{(p)} \\
+\color{blue}{y_1} & \color{blue}{y_2} & \color{blue}{y_3} & \color{blue}{y_4} & \color{lightgray}{y_5} & \color{lightgray}{y_6} & \color{red}{y_7} & \color{lightgray}{y_8} & \color{lightgray}{y_9} & \color{lightgray}{y_{10}}& \cdots & \longrightarrow & \text{error}_4^{(p)} \\
+\color{blue}{y_1} & \color{blue}{y_2} & \color{blue}{y_3} & \color{blue}{y_4} & \color{blue}{y_5} & \color{lightgray}{y_6} & \color{lightgray}{y_7} & \color{red}{y_8} & \color{lightgray}{y_9} & \color{lightgray}{y_{10}}& \cdots & \longrightarrow & \text{error}_5^{(p)} \\
+\color{blue}{y_1} & \color{blue}{y_2} & \color{blue}{y_3} & \color{blue}{y_4} & \color{blue}{y_5} & \color{blue}{y_6} & \color{lightgray}{y_7} & \color{lightgray}{y_8} & \color{red}{y_9} & \color{lightgray}{y_{10}}& \cdots & \longrightarrow & \text{error}_6^{(p)} \\
+\color{blue}{y_1} & \color{blue}{y_2} & \color{blue}{y_3} & \color{blue}{y_4} & \color{blue}{y_5} & \color{blue}{y_6} & \color{blue}{y_7} & \color{lightgray}{y_8} & \color{lightgray}{y_9} & \color{red}{y_{10}}& \cdots & \longrightarrow & \text{error}_7^{(p)}\\
+&&&&&\vdots&&&&&&&\vdots\\
+\end{matrix}
+\end{aligned}
+$$
+
+. . .
+
+Select:
+
+$$
+\hat{p}=\argmin{p=1\com2\com...\com\bar{p}}\,\sum\limits_{t=1}^T\text{error}_t^{(p)}
+$$
+
+## Tailor this to your preferred task
+
+If 3-step-ahead point prediction is most important to you:
+
+$$
+\hat{p}=\argmin{p=1\com2\com...\com\bar{p}}\,\sum\limits_{t=1}^{T-3}(y_{t+3} - \hat{y}_{t+3|t}^{(p)})^2
+$$
+
+If 1-step-ahead density prediction is most important to you:
+
+$$
+\hat{p}=\argmin{p=1\com2\com...\com\bar{p}}\,\sum\limits_{t=1}^{T-1}-\ln \hat{f}_{t+1|t}^{(p)}(y_{t+1})
+$$
+
+And so on. We are optimizing *out-of-sample* performance.
+
+
+## Uncertainty? {.medium}
+
+
+::: incremental
+- "Hyperparameter tuning" is just a euphemism for *estimation*;
+- The same data used to estimate $\Bbeta$ and $\sigma^2$ are also being used to select $p$;
+- There is estimation uncertainty associated with lag order selection, and ideally this is propagated to the forecast distribution;
+    - key word: *post-selection inference*;
+- In practice, this is a massive pain, and people seldom attempt it;
+- They select $\hat{p}$, proceed as if it were fixed and known, accept that their uncertainty quantification is "wrong," and pray that it's not *too* wrong.
+:::
+
+. . .
+
+If you really want to do this properly, try Bayesian model averaging.
+
+# Bayesian model averaging (BMA)
+
+
