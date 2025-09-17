@@ -694,7 +694,7 @@ $$
 
 To compute the MLE, we treat this as a function of $\Btheta$ with the data fixed.
 
-## Stack 'em up {.medium}
+## Stack 'em up {.medium .scrollable}
 
 Construct the response vector and design matrix:
 
