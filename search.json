@@ -120,6 +120,104 @@
     ]
   },
   {
+    "objectID": "slides/07-model-selection.html#nber-nsf-time-series-conference",
+    "href": "slides/07-model-selection.html#nber-nsf-time-series-conference",
+    "title": "Model selection and combination",
+    "section": "NBER-NSF Time Series Conference",
+    "text": "NBER-NSF Time Series Conference\nSeptember 19 - 20 at Rutgers:\n\nnames to know: Richard Davis, Ruey Tsay, Rong Chen;\nvery academic;\nskews towards economics and finance;\na lot of frequentist asymptotics;\nplenty of “score-driven” stuff, factor models, (G)ARCH;\nnot much frequency-domain time series;\nnot much modern AI/ML;\nI get a kick out of the stuff where \\(\\By_t\\) lives on a weird manifold."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#arp",
+    "href": "slides/07-model-selection.html#arp",
+    "title": "Model selection and combination",
+    "section": "AR(p)",
+    "text": "AR(p)\nThe autoregression of order \\(p\\), or AR(\\(p\\)):\n\n\\[\n\\begin{aligned}\ny_t\n&=\n\\beta_0\n+\n\\beta_1\ny_{t-1}\n+\n\\beta_2\ny_{t-2}\n+\n\\cdots\n+\n\\beta_p\ny_{t-p}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\\iid\\text{N}(0\\com\\sigma^2).\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/07-model-selection.html#lag-order-selection",
+    "href": "slides/07-model-selection.html#lag-order-selection",
+    "title": "Model selection and combination",
+    "section": "Lag order selection",
+    "text": "Lag order selection\nThe lag order \\(p\\) is a tuning parameter we must select:\n\\[\n\\hat{p}=\\argmin{p=1\\com 2\\com ...\\com \\bar{p}}\\, \\hat{C}(p).\n\\]\nOptions:\n\nAkaike information criterion (AIC);\nBayesian information criterion (BIC);\nLeave-future-out cross-validation (LFO-CV)."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#uncertainty",
+    "href": "slides/07-model-selection.html#uncertainty",
+    "title": "Model selection and combination",
+    "section": "Uncertainty",
+    "text": "Uncertainty\n\nThere is estimation uncertainty associated with lag order selection;\nIdeally this would be propagated to our forecast distributions, prediction intervals, etc;\nThis is challenging to achieve, and the gains may not be tremendous;\nIf you are dead set on making it happen…"
+  },
+  {
+    "objectID": "slides/07-model-selection.html#a-model",
+    "href": "slides/07-model-selection.html#a-model",
+    "title": "Model selection and combination",
+    "section": "A model",
+    "text": "A model\nYou have some model named \\(M\\):\n\\[\n\\begin{aligned}\n\\Btheta&\\sim p(\\Btheta\\given M)\\\\\n\\By\\given \\Btheta&\\sim p(\\By\\given \\Btheta\\com M).\n\\end{aligned}\n\\]\n\nExample:\n\\[\n\\begin{aligned}\n\\Bbeta\\com\\sigma^2&\\sim \\text{NIG}_p(a_0\\com b_0\\com \\Bm_0\\com\\BH_0)\\\\\ny_t\\given y_{(1-p):(t-1)}\\com\\Bbeta\\com\\sigma^2&\\sim \\text{N}\\left(\\sum\\limits_{l=1}^p\\beta_ly_{t-l}\\com\\sigma^2\\right)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/07-model-selection.html#a-set-of-models",
+    "href": "slides/07-model-selection.html#a-set-of-models",
+    "title": "Model selection and combination",
+    "section": "A set of models",
+    "text": "A set of models\nYou have a finite set of possible models:\n\\[\n\\mathcal{M}=\\{M_1\\com M_2\\com ...\\com M_K\\}.\n\\]\n\nYou place a prior on this set:\n\\[\nP(M_1)+P(M_2)+...+P(M_K)=1.\n\\]\n\n\nUniform is a common choice: \\(P(M_k)=1/K\\)."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#bayesian-model-selection",
+    "href": "slides/07-model-selection.html#bayesian-model-selection",
+    "title": "Model selection and combination",
+    "section": "Bayesian Model Selection",
+    "text": "Bayesian Model Selection\nWe want to compare models \\(M_1, M_2, \\dots, M_K\\) given data \\(y\\).\nThe posterior model probability is\n\\[\nP(M_k \\mid y) = \\frac{p(y \\mid M_k) P(M_k)}{\\sum_{j=1}^K p(y \\mid M_j) P(M_j)}\n\\]\nwhere \\(p(y \\mid M_k)\\) is the marginal likelihood."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#marginal-likelihood",
+    "href": "slides/07-model-selection.html#marginal-likelihood",
+    "title": "Model selection and combination",
+    "section": "Marginal Likelihood",
+    "text": "Marginal Likelihood\nFor model \\(M_k\\) with parameter \\(\\theta_k\\):\n\\[\nP(y \\mid M_k) = \\int p(y \\mid \\theta_k, M_k) p(\\theta_k \\mid M_k) \\, d\\theta_k\n\\]\nThis integral is usually hard to compute exactly."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#we-can-do-it-with-conjugate-priors",
+    "href": "slides/07-model-selection.html#we-can-do-it-with-conjugate-priors",
+    "title": "Model selection and combination",
+    "section": "We can do it with conjugate priors",
+    "text": "We can do it with conjugate priors\n\\[\np(y_{1:T}\\mid \\text{lags}\\com p)=\\frac{1}{(2\\pi)^{T/2}}\\sqrt{\\frac{\\det(\\boldsymbol\\BH_0)}{\\det(\\boldsymbol\\BH_T)}} \\cdot \\frac{b_0^{a_0}}{b_T^{a_T}} \\cdot \\frac{\\Gamma(a_n)}{\\Gamma(a_0)}\n\\]"
+  },
+  {
+    "objectID": "slides/07-model-selection.html#laplace-approximation-idea",
+    "href": "slides/07-model-selection.html#laplace-approximation-idea",
+    "title": "Model selection and combination",
+    "section": "Laplace Approximation Idea",
+    "text": "Laplace Approximation Idea\nAssume \\(n\\) is large and the posterior is peaked. Let \\(\\hat \\theta_k\\) be the MLE under \\(M_k\\). Then\n\\[\n\\int p(y \\mid \\theta_k, M_k) p(\\theta_k \\mid M_k) \\, d\\theta_k\n\\approx p(y \\mid \\hat\\theta_k, M_k) \\cdot (2 \\pi)^{p_k/2} |\\hat \\Sigma_k|^{1/2}\n\\]\nwhere \\(p_k\\) is the number of parameters in \\(M_k\\), and \\(\\hat \\Sigma_k\\) is the estimated covariance of \\(\\hat\\theta_k\\).\n\nLaplace approximation: use multivariate normal to aproximate posterior."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#log-marginal-likelihood-approximation",
+    "href": "slides/07-model-selection.html#log-marginal-likelihood-approximation",
+    "title": "Model selection and combination",
+    "section": "Log Marginal Likelihood Approximation",
+    "text": "Log Marginal Likelihood Approximation\nTake logs and keep leading terms for large \\(n\\):\n\\[\n\\ln p(y \\mid M_k) \\approx \\ln p(y \\mid \\hat\\theta_k, M_k) - \\frac{p_k}{2} \\log n + \\text{constant}\n\\]\nThe constant does not depend on the model."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#definition-of-bic",
+    "href": "slides/07-model-selection.html#definition-of-bic",
+    "title": "Model selection and combination",
+    "section": "Definition of BIC",
+    "text": "Definition of BIC\nThe Bayesian Information Criterion (BIC) is defined as\n\\[\n\\mathrm{BIC}_k = -2 \\ln p(y \\mid \\hat\\theta_k, M_k) + p_k \\log n\n\\]\nso that smaller BIC means higher posterior probability approximately."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#posterior-model-probability-approximation",
+    "href": "slides/07-model-selection.html#posterior-model-probability-approximation",
+    "title": "Model selection and combination",
+    "section": "Posterior Model Probability Approximation",
+    "text": "Posterior Model Probability Approximation\nUsing BIC, we have:\n\\[\nP(M_k \\mid y) \\approx \\frac{\\exp(-\\mathrm{BIC}_k/2) P(M_k)}{\\sum_j \\exp(-\\mathrm{BIC}_j/2) P(M_j)}\n\\]\nHence BIC gives a simple way to compare models using data likelihood and number of parameters."
+  },
+  {
+    "objectID": "slides/07-model-selection.html#whats-bayesian-about-bic",
+    "href": "slides/07-model-selection.html#whats-bayesian-about-bic",
+    "title": "Model selection and combination",
+    "section": "What’s “Bayesian” about BIC?",
+    "text": "What’s “Bayesian” about BIC?\n\nPosterior model probability requires integrating over parameters.\nLaplace approximation for large \\(n\\) gives a simple formula.\nLeads to BIC: penalizes log-likelihood by number of parameters.\nSmaller BIC ≈ higher posterior probability."
+  },
+  {
     "objectID": "slides/06-ar-p-inference.html#arp",
     "href": "slides/06-ar-p-inference.html#arp",
     "title": "How do you estimate and tune the AR(p)?",
@@ -880,7 +978,7 @@
     "href": "index.html",
     "title": "STA 542 Introduction to Time Series Analysis",
     "section": "",
-    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\nslides\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\nslides\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) forecasting\nslides\n\n\n\n\nWed, Sep 10\nGneiting et al (2007 JRSSB)\n🧑‍🏫 Forecast evaluation\nslides\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\ndraft\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p)\ndraft\n\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\nPSET 1 @ 11:30AM\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\n\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\nPSET 2 @ 5PM\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
+    "text": "Below is a prospective outline for the course. Due dates are firm, but topics may change with advanced notice.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n1\nMon, Aug 25\n\n🧑‍🏫 Welcome!\nslides\n\n\n\n\nWed, Aug 27\n\n🧑‍🏫 AR(1) structure\nslides\n\n\n\n2\nMon, Sep 1\n\n❌ Labor Day - No Lecture\n\n\n\n\n\n\nWed, Sep 3\n\n🧑‍🏫 AR(1) inference\nslides\n\n\n\n\nFri, Sep 5\n\n\n\n\nPSET 0 @ 5PM\n\n\n3\nMon, Sep 8\n\n🧑‍🏫 AR(1) forecasting\nslides\n\n\n\n\nWed, Sep 10\nGneiting et al (2007 JRSSB)\n🧑‍🏫 Forecast evaluation\nslides\n\n\n\n4\nMon, Sep 15\n\nSS: Ch. 3\n🧑‍🏫 AR(p) structure\ndraft\n\n\n\n\nWed, Sep 17\n\nSS: Ch. 3\n🧑‍🏫 AR(p) inference\ndraft\n\n\n\n5\nMon, Sep 22\n\nSS: Ch. 3\n🧑‍🏫 Model selection\n\n\nPSET 1 @ 11:30AM\n\n\n\nWed, Sep 24\n\nSS: Ch. 3\n🧑‍🏫 MA\ndraft\n\n\n\n6\nMon, Sep 29\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nWed, Oct 1\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\n\n\n\n\nFri, Oct 3\n\n\n\n\n\n\n7\nMon, Oct 6\n\nSS: Ch. 3\n🧑‍🏫 ARMA\n\nPSET 2 @ 5PM\n\n\n\nWed, Oct 8\n\n📝 Exam 1\n\n\n\n\n\n8\nMon, Oct 13\n\n❌ Fall Break - No Lecture\n\n\n\n\n\n\nWed, Oct 15\n\nSS: Ch. 5.5\n🧑‍🏫 VAR\n\n\n\n\n9\nMon, Oct 20\nKarlsson (2013 chapter)\n🧑‍🏫 VAR\n\n\n\n\n\nWed, Oct 22\n\n🧑‍🏫 VAR\n\n\n\n\n\nFri, Oct 24\n\n\n\nPSET 3 @ 5PM\n\n\n10\nMon, Oct 27\n\nPPC: Ch. 2\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Oct 29\n\nSkä: Ch. 4\n🧑‍🏫 DLMs\n\n\n\n\n11\nMon, Nov 3\n\nSkä: Ch. 8\n🧑‍🏫 DLMs\n\n\n\n\n\nWed, Nov 5\n\n🧑‍🏫 DLMs\n\n\n\n\n\nFri, Nov 7\n\n\n\nPSET 4 @ 5PM\n\n\n12\nMon, Nov 10\nScott (2002 JASA)\n🧑‍🏫 HMMs\n\n\n\n\n\nWed, Nov 12\n\n🧑‍🏫 HMMs\n\n\n\n\n13\nMon, Nov 17\nDoucet, Johansen (2008 chapter)\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nWed, Nov 19\n\n🧑‍🏫 Nonlinear models\n\n\n\n\n\nFri, Nov 21\n\n\n\nPSET 5 @ 5PM\n\n\n14\nMon, Nov 24\n\n📝 Exam 2\n\n\n\n\n\n\nWed, Nov 26\n\n❌ Thanksgiving - No Lecture\n\n\n\n\n\n16\nWed, Dec 10\n\n\n\nProject @ 9AM"
   },
   {
     "objectID": "problems/pset-1.html",
@@ -2317,5 +2415,180 @@
     "title": "How do you do likelihood-based inference in the AR(1)?",
     "section": "This course has a predictive POV",
     "text": "This course has a predictive POV\n\nWe will study specific models and how to estimate them, but this is only a means to an end;\nWe don’t care about inference per se, and certainly won’t go anywhere near hypothesis testing;\nWe use estimated models to generate probabilistic predictions;\nOnce the predictions have been generated, we don’t necessarily care where they came from;\nWe evaluate them in a largely model-agnostic way, looking at historical performance on real data."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#the-autoregressive-model",
+    "href": "slides/08-moving-average.html#the-autoregressive-model",
+    "title": "The moving average model",
+    "section": "The autoregressive model",
+    "text": "The autoregressive model\n\\[\ny_t\n=\n\\beta_0\n+\n\\sum\\limits_{l=1}^p\\beta_ly_{t-l}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\n\\iid\n\\N(0\\com \\sigma^2)\n.\n\\]\n\nThis implies a Gaussian distribution with funky mean and covariance;\nNests iid, random walk, random walk with drift, stationary, and explosive;\n(Conditional) likelihood based inference is the same as iid regression: OLS, conjugate Bayes, etc;\n\nWe can make sense of both theoretically;\n\nProbabilisitic prediction is not the same as iid regression;\n\nBootstrap for classical, posterior predictive for Bayes;\n\n\\(p\\) is a tuning parameter that must be selected or averaged over."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#main-ideas",
+    "href": "slides/08-moving-average.html#main-ideas",
+    "title": "The moving average model",
+    "section": "Main ideas",
+    "text": "Main ideas\n\nA time series model is “just” a joint distribution for a dependent sequence, and you understand the model if you understand the structure of that distribution (family, moments, marginals, conditionals, etc);\nEstimation should be recursive to confront the reality of streaming data;\nPredictions should be probabilistic and incorporate many sources of uncertainty;\nModel selection criteria should be out-of-sample and tailored to your specific prediction/decision task (eg LFO-CV);\nSelection is second best to combination, but combination can be tough to implement, and the size of the gains will depend on the application;\nA Bayesian approach makes recursive estimation, probabilistic prediction, and coherent model combination straightforward (note: I didn’t say easy)."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#why-must-the-errors-be-independent",
+    "href": "slides/08-moving-average.html#why-must-the-errors-be-independent",
+    "title": "The moving average model",
+    "section": "Why must the errors be independent?",
+    "text": "Why must the errors be independent?\nWe have seen this:\n\\[\ny_t\n=\n\\beta_0\n+\n\\sum\\limits_{l=1}^p\\beta_ly_{t-l}\n+\n\\underbrace{\nu_t\n}_{\\text{iid}}\n.\n\\]\nWhat if there is time series dependence in \\(u_t\\) as well?\n\nWhat kind?"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#autoregressive-moving-average-arma",
+    "href": "slides/08-moving-average.html#autoregressive-moving-average-arma",
+    "title": "The moving average model",
+    "section": "Autoregressive moving average (ARMA)",
+    "text": "Autoregressive moving average (ARMA)\nARMA(\\(p\\), \\(q\\)):\n\\[\ny_t\n=\n\\beta_0\n+\n\\underbrace{\\sum\\limits_{l=1}^p\\beta_ly_{t-l}}_{\\text{autoregressive}}\n+\n\\underbrace{\\sum_{i=1}^q\\theta_i\\varepsilon_{t-i}}_{\\text{moving average}}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\n\\iid\n\\N(0\\com \\sigma^2)\n.\n\\]\n\nFlexible class of models that can capture pretty generic linear dependencies.\n\n\\(p=q=0\\) gives the iid model;\n\\(q=0\\) gives the pure AR(\\(p\\)) you’re already sick of;\n\\(p=0\\) gives the pure MA(\\(q\\)), which we study today."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#dynamic-linear-model-dlm",
+    "href": "slides/08-moving-average.html#dynamic-linear-model-dlm",
+    "title": "The moving average model",
+    "section": "Dynamic linear model (DLM)",
+    "text": "Dynamic linear model (DLM)\n\\(\\By_t\\in\\RR^n\\) is observed and \\(\\Bs_t\\in\\RR^p\\) is latent:\n\\[\n\\begin{aligned}\n\\By_t\n&=\n\\BF\\Bs_t\n+\n\\Bepsilon_t,\n&&\n\\Bepsilon_t\\iid\\N_n(\\Bzero\\com \\BV)\n\\\\\n\\Bs_t\n&=\n\\BG\\Bs_{t-1}\n+\n\\Beta_t,\n&&\n\\Beta_t\\iid\\N_p(\\Bzero\\com \\BW)\n\\\\\n& &&\\\\\n\\Bs_0&\\sim\\N_p(\\bar{\\Bs}_{0|0}\\com \\BP_0).\n\\end{aligned}\n\\]\nARMA and several other classes of models are just special cases of this. Once you understand DLMs and the Kalman filter, it all trickles down."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#the-maq",
+    "href": "slides/08-moving-average.html#the-maq",
+    "title": "The moving average model",
+    "section": "The MA(q)",
+    "text": "The MA(q)\nMoving average of order \\(q\\):\n\\[\ny_t\n=\n\\sum_{i=1}^q\\theta_i\\varepsilon_{t-i}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\n\\iid\n\\N(0\\com \\sigma^2)\n.\n\\]\nDoesn’t necessarily describe a tremendous amount of “real” time series. Combine it with the AR piece, and things get interesting."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#what-is-the-joint-distribution",
+    "href": "slides/08-moving-average.html#what-is-the-joint-distribution",
+    "title": "The moving average model",
+    "section": "What is the joint distribution?",
+    "text": "What is the joint distribution?\nNote that\n\\[\n\\begin{aligned}\n\\begin{bmatrix}y_1 \\\\ y_2 \\\\ \\vdots \\\\ y_T\\end{bmatrix}\n&=\n\\begin{bmatrix}\n\\theta_q & \\theta_{q-1} & \\cdots & \\theta_1 & 1 & 0 & 0 & \\cdots & 0 \\\\\n0 & \\theta_q & \\theta_{q-1} & \\cdots & \\theta_1 & 1 & 0 & \\cdots & 0 \\\\\n0 & 0 & \\theta_q & \\theta_{q-1} & \\cdots & \\theta_1 & 1 & \\cdots & 0 \\\\\n\\vdots & & & \\ddots & & & & \\ddots & \\vdots \\\\\n0 & \\cdots & 0 & 0 & \\theta_q & \\theta_{q-1} & \\cdots & \\theta_1 & 1\n\\end{bmatrix}\n\\begin{bmatrix}\n\\varepsilon_{1-q} \\\\[1mm]\n\\varepsilon_{2-q} \\\\[1mm]\n\\vdots \\\\[1mm]\n\\varepsilon_0 \\\\[1mm]\n\\varepsilon_1 \\\\[1mm]\n\\vdots \\\\[1mm]\n\\varepsilon_T\n\\end{bmatrix}\n\\\\\n\\By&=\\BA\\boldsymbol{\\varepsilon}\n.\n\\end{aligned}\n\\]\nWe know \\(\\boldsymbol{\\varepsilon}\\sim\\N_{T+q}(\\Bzero\\com\\sigma^2\\BI_n)\\), so \\(\\By\\) is Gaussian by affine transformation."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#what-is-the-mean",
+    "href": "slides/08-moving-average.html#what-is-the-mean",
+    "title": "The moving average model",
+    "section": "What is the mean?",
+    "text": "What is the mean?\nEasy:\n\\[\n\\begin{aligned}\nE(y_t)\n&=\nE\\left(\n\\sum_{i=1}^q\\theta_i\\varepsilon_{t-i}\n+\n\\varepsilon_t\n\\right)\n\\\\\n&=\n\\sum_{i=1}^q\\theta_iE\\left(\\varepsilon_{t-i}\\right)\n+\nE\\left(\n\\varepsilon_t\n\\right)\n\\\\\n&=\n\\sum_{i=1}^q\\theta_i\\cdot0\n+\n0\n\\\\\n&=0.\n\\end{aligned}\n\\]\n\nAlways zero! No matter \\(q\\) or the parameters or anything. Didn’t use normality, either."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#what-is-the-variance",
+    "href": "slides/08-moving-average.html#what-is-the-variance",
+    "title": "The moving average model",
+    "section": "What is the variance?",
+    "text": "What is the variance?\nSince the \\(\\varepsilon_t\\) are uncorrelated:\n\\[\n\\begin{aligned}\n\\operatorname{var}(y_t)\n    &= \\operatorname{var}\\big(\\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\cdots + \\theta_q \\varepsilon_{t-q}\\big) \\\\[0.5em]\n    &= \\operatorname{var}(\\varepsilon_t) + \\theta_1^2 \\operatorname{var}(\\varepsilon_{t-1}) + \\cdots + \\theta_q^2 \\operatorname{var}(\\varepsilon_{t-q}) \\\\[0.5em]\n      &= \\sigma^2 + \\theta_1^2 \\sigma^2 + \\cdots + \\theta_q^2 \\sigma^2 \\\\[0.5em]\n    &= \\sigma^2 \\left( 1 + \\theta_1^2 + \\theta_2^2 + \\cdots + \\theta_q^2 \\right) \\\\[0.5em]\n    &= \\sigma^2 \\left( 1 + \\sum_{i=1}^q \\theta_i^2 \\right).\n\\end{aligned}\n\\]\nDoesn’t depend on \\(t\\). Interesting…"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#great-tool",
+    "href": "slides/08-moving-average.html#great-tool",
+    "title": "The moving average model",
+    "section": "Great tool!",
+    "text": "Great tool!\n\\[\n\\operatorname{cov}\\!\\left(\\sum_{i=1}^n a_i X_i,\\; \\sum_{j=1}^m b_j Y_j\\right)\n= \\sum_{i=1}^n \\sum_{j=1}^m a_i b_j \\,\\operatorname{cov}(X_i, Y_j).\n\\]"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#covariance-of-the-ma1",
+    "href": "slides/08-moving-average.html#covariance-of-the-ma1",
+    "title": "The moving average model",
+    "section": "Covariance of the MA(1)",
+    "text": "Covariance of the MA(1)\n\\[\n\\begin{aligned}\n\\operatorname{cov}(y_t, y_{t-1})\n    &= \\operatorname{cov}(\\varepsilon_t + \\theta \\varepsilon_{t-1}, \\varepsilon_{t-1} + \\theta \\varepsilon_{t-2}) \\\\[0.5em]\n    &= \\operatorname{cov}(\\varepsilon_t, \\varepsilon_{t-1}) + \\theta \\operatorname{cov}(\\varepsilon_t, \\varepsilon_{t-2})\n       + \\theta \\operatorname{cov}(\\varepsilon_{t-1}, \\varepsilon_{t-1}) + \\theta^2 \\operatorname{cov}(\\varepsilon_{t-1}, \\varepsilon_{t-2}) \\\\[0.5em]\n    &= 0+0+\\theta \\sigma^2+\\theta^2\\cdot 0.\n\\end{aligned}\n\\] Doesn’t depend on \\(t\\)."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#covariance-of-the-ma1-1",
+    "href": "slides/08-moving-average.html#covariance-of-the-ma1-1",
+    "title": "The moving average model",
+    "section": "Covariance of the MA(1)",
+    "text": "Covariance of the MA(1)\n\\[\n\\begin{aligned}\n\\operatorname{cov}(y_t, y_{t-2})\n    &= \\operatorname{cov}(\\varepsilon_t + \\theta \\varepsilon_{t-1}, \\varepsilon_{t-2} + \\theta \\varepsilon_{t-3}) \\\\[0.5em]\n    &= \\operatorname{cov}(\\varepsilon_t, \\varepsilon_{t-3}) + \\theta \\operatorname{cov}(\\varepsilon_t, \\varepsilon_{t-3})\n       + \\theta \\operatorname{cov}(\\varepsilon_{t-1}, \\varepsilon_{t-2}) + \\theta^2 \\operatorname{cov}(\\varepsilon_{t-1}, \\varepsilon_{t-3}) \\\\[0.5em]\n    &= 0+0+\\theta \\cdot0+\\theta^2\\cdot 0.\n\\end{aligned}\n\\] Doesn’t depend on \\(t\\)."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#autocovariance-of-the-ma1",
+    "href": "slides/08-moving-average.html#autocovariance-of-the-ma1",
+    "title": "The moving average model",
+    "section": "Autocovariance of the MA(1)",
+    "text": "Autocovariance of the MA(1)\nFor any \\(t\\), we have:\n\\[\n\\gamma(h) = \\operatorname{cov}(y_t, y_{t-h}) =\n\\begin{cases}\n\\sigma^2 (1 + \\theta^2), & h = 0,\\\\[2mm]\n\\theta \\, \\sigma^2, & |h| = 1,\\\\[1mm]\n0, & |h| &gt; 1.\n\\end{cases}\n\\]\nMA(1) is Gaussian with time-invariant mean and variance, and shift-invariant covariance. Stationary!"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#autocovariance-of-the-ma2",
+    "href": "slides/08-moving-average.html#autocovariance-of-the-ma2",
+    "title": "The moving average model",
+    "section": "Autocovariance of the MA(2)",
+    "text": "Autocovariance of the MA(2)\nFor any \\(t\\), we have:\n\\[\n\\gamma(h) =\n\\begin{cases}\n\\sigma^2 \\big(1 + \\theta_1^2 + \\theta_2^2 \\big), & h = 0,\\\\[1mm]\n\\sigma^2 \\big(\\theta_1 + \\theta_1 \\theta_2 \\big), & |h| = 1,\\\\[1mm]\n\\sigma^2 \\theta_2, & |h| = 2,\\\\[1mm]\n0, & |h| &gt; 2.\n\\end{cases}\n\\]\n\nProblem Set 1!"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#autocovariance-of-the-maq",
+    "href": "slides/08-moving-average.html#autocovariance-of-the-maq",
+    "title": "The moving average model",
+    "section": "Autocovariance of the MA(q)",
+    "text": "Autocovariance of the MA(q)\nSet \\(\\theta_0=1\\). Then for any \\(t\\), we have:\n\\[\n\\gamma(h) =\n\\begin{cases}\n\\sigma^2 \\sum_{i=0}^{q} \\theta_i^2, & h = 0,\\\\[1mm]\n\\sigma^2 \\sum_{i=0}^{q-|h|} \\theta_i \\theta_{i+|h|}, & 1 \\le |h| \\le q,\\\\[1mm]\n0, & |h| &gt; q.\n\\end{cases}\n\\] Across the board no matter \\(q\\) or the parameters."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#summary",
+    "href": "slides/08-moving-average.html#summary",
+    "title": "The moving average model",
+    "section": "Summary",
+    "text": "Summary\n\\[\ny_t\n=\n\\sum_{i=1}^q\\theta_i\\varepsilon_{t-i}\n+\n\\varepsilon_t,\n\\quad\n\\varepsilon_t\n\\iid\n\\N(0\\com \\sigma^2)\n.\n\\]\nThe MA(q) is a strictly stationary Gaussian process, and for all \\(t\\):\n\\[\n\\begin{aligned}\ny_t&\\sim\\N\\left(0\\com \\sigma^2 \\left( 1 + \\sum_{i=1}^q \\theta_i^2 \\right)\\right)\n\\\\\n\\gamma(h) &=\n\\begin{cases}\n\\sigma^2 \\sum_{i=0}^{q-|h|} \\theta_i \\theta_{i+|h|}, & 0 \\le |h| \\le q,\\\\[1mm]\n0, & |h| &gt; q.\n\\end{cases}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#what-does-this-look-like",
+    "href": "slides/08-moving-average.html#what-does-this-look-like",
+    "title": "The moving average model",
+    "section": "What does this look like?",
+    "text": "What does this look like?\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\n\nlibrary(shiny)\n\n# --- Simulation of MA(3) ---\nsimulate_ma_3 &lt;- function(T, theta1, theta2, theta3, sigma){\n  y &lt;- numeric(T)\n  eps &lt;- rnorm(T + 3, 0, sigma)  # extra for lags\n  for(t in 1:T){\n    y[t] &lt;- eps[t+3] + theta1*eps[t+2] + theta2*eps[t+1] + theta3*eps[t]\n  }\n  return(y)\n}\n\n# --- Theoretical autocovariance function of MA(3) ---\nma3_acov &lt;- function(h, theta1, theta2, theta3, sigma2){\n  if(h == 0){\n    return(sigma2 * (1 + theta1^2 + theta2^2 + theta3^2))\n  } else if(h == 1){\n    return(sigma2 * (theta1 + theta1*theta2 + theta2*theta3))\n  } else if(h == 2){\n    return(sigma2 * (theta2 + theta1*theta3))\n  } else if(h == 3){\n    return(sigma2 * theta3)\n  } else {\n    return(0)\n  }\n}\n\n# --- UI ---\nui &lt;- fluidPage(\n  \n  titlePanel(\"MA(3): Sample paths and autocovariance function\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      sliderInput(\"theta1\", \"θ₁\",\n                  min = -2, max = 2, value = 0, step = 0.1),\n      sliderInput(\"theta2\", \"θ₂\",\n                  min = -2, max = 2, value = 0, step = 0.1),\n      sliderInput(\"theta3\", \"θ₃\",\n                  min = -2, max = 2, value = 0, step = 0.1),\n      sliderInput(\"sigma\", \"σ\",\n                  min = 0, max = 2, value = 1, step = 0.1),\n      sliderInput(\"T\", \"T\",\n                  min = 20, max = 200, step = 20, value = 100),\n      actionButton(\"redo\", \"New sample path\")\n    ),\n    \n    mainPanel(\n      plotOutput(\"pathPlot\", height = \"300px\"),\n      plotOutput(\"acovPlot\", height = \"300px\")\n    )\n  )\n)\n\n# --- Server ---\nserver &lt;- function(input, output) {\n  \n  output$pathPlot &lt;- renderPlot({\n    input$redo\n\n      T &lt;- input$T\n      y &lt;- simulate_ma_3(T, input$theta1, input$theta2, input$theta3, input$sigma)\n      \n      # Marginal mean and sd (stationary, constant in t)\n      mean_y &lt;- 0\n      sd_y &lt;- sqrt(ma3_acov(0, input$theta1, input$theta2, input$theta3, input$sigma^2))\n      \n      range &lt;- 1:T\n      alpha &lt;- c(0.01, seq(0.1, 0.9, by = 0.1))\n      \n      plot(range, rep(0, T), type = \"l\",\n           xaxt = \"n\", yaxt = \"n\",\n           xlab = \"t\", ylab = expression(y[t]),\n           ylim = c(-20, 20), bty = \"n\",\n           col = \"white\",\n           main = \"Simulated MA(3) Sample Path with Marginal Distribution\")\n      \n      for(a in alpha){\n        U &lt;- qnorm(1 - a/2, mean = mean_y, sd = sd_y)\n        L &lt;- qnorm(a/2, mean = mean_y, sd = sd_y)\n        polygon(\n          c(range, rev(range)),\n          c(rep(U, T), rev(rep(L, T))),\n          col = rgb(1, 0, 0, 0.15),\n          border = NA\n        )\n      }\n      \n      axis(1, pos = 0)\n      axis(2, pos = 0)\n      \n      lines(range, y, col = \"black\", lwd = 2)\n  })\n  \n  output$acovPlot &lt;- renderPlot({\n    h_max &lt;- 10\n    h_vals &lt;- -h_max:h_max\n    gamma_vals &lt;- sapply(h_vals, function(h) \n      ma3_acov(abs(h), input$theta1, input$theta2, input$theta3, input$sigma^2))\n    \n    plot(h_vals, gamma_vals, type = \"h\", lwd = 2,\n         main = \"Theoretical Autocovariance Function γ(h)\",\n         xlab = \"Lag h\", ylab = expression(gamma(h)))\n    points(h_vals, gamma_vals, pch = 19)\n  })\n}\n\n# --- Run App ---\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#consider-an-ma1",
+    "href": "slides/08-moving-average.html#consider-an-ma1",
+    "title": "The moving average model",
+    "section": "Consider an MA(1)",
+    "text": "Consider an MA(1)\nIf \\(\\theta_1=0.5\\) and \\(\\sigma^2=1\\), then\n\n\\[\n\\begin{aligned}\n\\gamma(0)\n&=\n\\sigma^2(1+\\theta_1^2)\n=\n1+0.5^2=1.25\n\\\\\n\\gamma(1)\n&=\n\\sigma^2\\theta_1\n=\n0.5\n.\n\\end{aligned}\n\\]\n\n\nBut if \\(\\theta_1=2\\) and \\(\\sigma^2=.25\\), then\n\n\n\\[\n\\begin{aligned}\n\\gamma(0)\n&=\n0.25(1+4)\n=\n1.25\n\\\\\n\\gamma(1)\n&=\n0.25\\times 2\n=\n0.5\n.\n\\end{aligned}\n\\]\n\n\nUh oh!"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#identification",
+    "href": "slides/08-moving-average.html#identification",
+    "title": "The moving average model",
+    "section": "Identification",
+    "text": "Identification\n\nIn general, the parameters \\((\\theta_1\\com\\sigma^2)\\) are not identified;\nThere are several values that give you the same joint distribution for \\(y_t\\);\nGiven a data set from (.5, 1), even if \\(T\\) were literally \\(\\infty\\), you won’t be able to tell if these data were generated by (.5, 1) or (2, .25). They are observationally-equivalent.\nFor the MA(1) we impose a restriction that \\(|\\theta_1|&lt;1\\);\nFor general MA(q), this becomes a restriction on the eigenvalues of a matrix. More on that later."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#state-space-form-of-the-maq",
+    "href": "slides/08-moving-average.html#state-space-form-of-the-maq",
+    "title": "The moving average model",
+    "section": "State space form of the MA(q)",
+    "text": "State space form of the MA(q)"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#comments",
+    "href": "slides/08-moving-average.html#comments",
+    "title": "The moving average model",
+    "section": "Comments",
+    "text": "Comments\n\nEstimating a pure MA(q) in isolation is probably not super useful;\nIn general, state space methods and the Kalman filter are absolutely the way to go;\nBut for purposes of illustration, let’s work through a simple method-of-moments calculation for the MA(1)."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#estimating-equations",
+    "href": "slides/08-moving-average.html#estimating-equations",
+    "title": "The moving average model",
+    "section": "Estimating equations",
+    "text": "Estimating equations\nWe know:\n\\[\n\\begin{aligned}\n\\gamma(1) &\\;=\\; \\theta_1\\sigma^2\\\\\n\\gamma(0) &\\;=\\; (1+\\theta_1^2)\\sigma^2=\\sigma^2+\\theta_1^2\\sigma^2. \\\\\n\\end{aligned}\n\\]\n\nTo solve, notice that\n\\[\n\\begin{aligned}\n\\gamma(1)\\theta_1^2-\\gamma(0)\\theta_1+\\gamma(1)=0\\\\\n\\end{aligned}\n\\]\n\n\nSo\n\\[\n\\begin{aligned}\n\\theta_1&=\\frac{\\gamma(0){\\color{red}\\pm}\\sqrt{\\gamma(0)^2-4\\gamma(1)^2}}{2\\gamma(1)}\n\\\\\n\\sigma^2&=\n\\frac{\\gamma(1)}{\\theta_1}\n=\n\\frac{\\gamma(0)}{1+\\theta_1^2}.\n\\end{aligned}\n\\]\nBy convention, we pick whichever solution that is between -1 and 1."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#sample-averages",
+    "href": "slides/08-moving-average.html#sample-averages",
+    "title": "The moving average model",
+    "section": "Sample averages",
+    "text": "Sample averages\n\\[\n\\begin{aligned}\n\\hat{\\gamma}(0) &= \\frac{1}{T}\\sum_{t=1}^{T} (y_t - \\bar{y})^2,\\\\\n\\hat{\\gamma}(1) &= \\frac{1}{T}\\sum_{t=2}^{T} (y_t - \\bar{y})(y_{t-1} - \\bar{y})\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/08-moving-average.html#method-of-moments",
+    "href": "slides/08-moving-average.html#method-of-moments",
+    "title": "The moving average model",
+    "section": "Method of moments",
+    "text": "Method of moments\n\\[\n\\begin{aligned}\n\\hat{\\theta}_1&=\\frac{\\hat{\\gamma}(0){\\color{red}\\pm}\\sqrt{\\hat{\\gamma}(0)^2-4\\hat{\\gamma}(1)^2}}{2\\hat{\\gamma}(1)}\n\\\\\n\\hat{\\sigma^2}&=\n\\frac{\\hat{\\gamma}(1)}{\\hat{\\theta}_1}\n=\n\\frac{\\hat{\\gamma}(0)}{1+\\hat{\\theta}_1^2}.\n\\end{aligned}\n\\] Have to pick a solution."
+  },
+  {
+    "objectID": "slides/08-moving-average.html#asymptotics",
+    "href": "slides/08-moving-average.html#asymptotics",
+    "title": "The moving average model",
+    "section": "Asymptotics",
+    "text": "Asymptotics\n\n\n\n\n\n\nShumway and Stoffer (2025) Example 3.28\n\n\nAssuming \\(|\\theta_1|&lt;1\\), then \\[\n\\sqrt{T}(\\hat{\\theta}_1-\\theta_1)\\cd\\N\\left(0\\com\\frac{1+\\theta_1^2+4\\theta_1^4+\\theta_1^6+\\theta_1^8}{(1-\\theta_1^2)^2}\\right).\n\\]"
   }
 ]
