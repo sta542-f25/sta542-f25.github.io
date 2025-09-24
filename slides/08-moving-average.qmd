@@ -1,0 +1,615 @@
+---
+title: "The moving average model"
+subtitle: "Lecture 8"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
+# Recap 
+
+## The autoregressive model {.small}
+
+$$
+y_t
+=
+\beta_0
++
+\sum\limits_{l=1}^p\beta_ly_{t-l}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+::: incremental
+- This implies a Gaussian distribution with funky mean and covariance;
+- Nests iid, random walk, random walk with drift, stationary, and explosive;
+- (Conditional) likelihood based inference is the same as iid regression: OLS, conjugate Bayes, etc;
+    - We can make sense of both theoretically;
+- Probabilisitic prediction is *not* the same as iid regression;
+    - Bootstrap for classical, posterior predictive for Bayes;
+- $p$ is a tuning parameter that must be selected or averaged over.
+:::
+
+## Main ideas {.small}
+
+::: incremental 
+- A time series model is "just" a joint distribution for a dependent sequence, and you understand the model if you understand the structure of that distribution (family, moments, marginals, conditionals, etc);
+- Estimation should be recursive to confront the reality of streaming data;
+- Predictions should be probabilistic and incorporate many sources of uncertainty;
+- Model selection criteria should be *out-of-sample* and tailored to your specific prediction/decision task (eg LFO-CV);
+- Selection is second best to *combination*, but combination can be tough to implement, and the size of the gains will depend on the application;
+- A Bayesian approach makes recursive estimation, probabilistic prediction, and coherent model combination straightforward (note: I didn't say easy).
+:::
+
+# Where are we going?
+
+## Why must the errors be independent?
+
+We have seen this:
+
+$$
+y_t
+=
+\beta_0
++
+\sum\limits_{l=1}^p\beta_ly_{t-l}
++
+\underbrace{
+u_t
+}_{\text{iid}}
+.
+$$
+
+What if there is time series dependence in $u_t$ as well?
+
+. . .
+
+What kind?
+
+## Autoregressive moving average (ARMA) {.medium}
+
+ARMA($p$, $q$):
+
+$$
+y_t
+=
+\beta_0
++
+\underbrace{\sum\limits_{l=1}^p\beta_ly_{t-l}}_{\text{autoregressive}}
++
+\underbrace{\sum_{i=1}^q\theta_i\varepsilon_{t-i}}_{\text{moving average}}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+. . .
+
+Flexible class of models that can capture pretty generic *linear* dependencies.
+
+::: incremental
+- $p=q=0$ gives the iid model;
+- $q=0$ gives the pure AR($p$) you're already sick of;
+- $p=0$ gives the pure MA($q$), which we study today.
+:::
+
+# Where are we *really* going?
+
+## Dynamic linear model (DLM)
+
+$\By_t\in\RR^n$ is observed and $\Bs_t\in\RR^p$ is latent:
+
+$$
+\begin{aligned}
+\By_t
+&=
+\BF\Bs_t
++
+\Bepsilon_t,
+&&
+\Bepsilon_t\iid\N_n(\Bzero\com \BV)
+\\
+\Bs_t
+&=
+\BG\Bs_{t-1}
++
+\Beta_t,
+&&
+\Beta_t\iid\N_p(\Bzero\com \BW)
+\\
+& &&\\
+\Bs_0&\sim\N_p(\bar{\Bs}_{0|0}\com \BP_0).
+\end{aligned}
+$$
+
+ARMA and several other classes of models are just special cases of this. Once you understand DLMs and the Kalman filter, it all trickles down.
+
+# The moving average model
+
+
+## The MA(q)
+
+Moving average of order $q$:
+
+$$
+y_t
+=
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+Doesn't necessarily describe a tremendous amount of "real" time series. Combine it with the AR piece, and things get interesting.
+
+## What is the joint distribution? {.small}
+
+Note that 
+
+$$
+\begin{aligned}
+\begin{bmatrix}y_1 \\ y_2 \\ \vdots \\ y_T\end{bmatrix}
+&=
+\begin{bmatrix}
+\theta_q & \theta_{q-1} & \cdots & \theta_1 & 1 & 0 & 0 & \cdots & 0 \\
+0 & \theta_q & \theta_{q-1} & \cdots & \theta_1 & 1 & 0 & \cdots & 0 \\
+0 & 0 & \theta_q & \theta_{q-1} & \cdots & \theta_1 & 1 & \cdots & 0 \\
+\vdots & & & \ddots & & & & \ddots & \vdots \\
+0 & \cdots & 0 & 0 & \theta_q & \theta_{q-1} & \cdots & \theta_1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\varepsilon_{1-q} \\[1mm]
+\varepsilon_{2-q} \\[1mm]
+\vdots \\[1mm]
+\varepsilon_0 \\[1mm]
+\varepsilon_1 \\[1mm]
+\vdots \\[1mm]
+\varepsilon_T
+\end{bmatrix}
+\\
+\By&=\BA\boldsymbol{\varepsilon}
+.
+\end{aligned}
+$$
+
+We know $\boldsymbol{\varepsilon}\sim\N_{T+q}(\Bzero\com\sigma^2\BI_n)$, so $\By$ is Gaussian by affine transformation.
+
+## What is the mean? {.small}
+
+Easy:
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+E\left(
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t
+\right)
+\\
+&=
+\sum_{i=1}^q\theta_iE\left(\varepsilon_{t-i}\right)
++
+E\left(
+\varepsilon_t
+\right)
+\\
+&=
+\sum_{i=1}^q\theta_i\cdot0
++
+0
+\\
+&=0.
+\end{aligned}
+$$
+
+. . .
+
+Always zero! No matter $q$ or the parameters or anything. Didn't use normality, either.
+
+## What is the variance? {.small}
+
+Since the $\varepsilon_t$ are uncorrelated:
+
+$$
+\begin{aligned}
+\operatorname{var}(y_t) 
+    &= \operatorname{var}\big(\varepsilon_t + \theta_1 \varepsilon_{t-1} + \cdots + \theta_q \varepsilon_{t-q}\big) \\[0.5em]
+    &= \operatorname{var}(\varepsilon_t) + \theta_1^2 \operatorname{var}(\varepsilon_{t-1}) + \cdots + \theta_q^2 \operatorname{var}(\varepsilon_{t-q}) \\[0.5em]
+      &= \sigma^2 + \theta_1^2 \sigma^2 + \cdots + \theta_q^2 \sigma^2 \\[0.5em]
+    &= \sigma^2 \left( 1 + \theta_1^2 + \theta_2^2 + \cdots + \theta_q^2 \right) \\[0.5em]
+    &= \sigma^2 \left( 1 + \sum_{i=1}^q \theta_i^2 \right).
+\end{aligned}
+$$
+
+Doesn't depend on $t$. Interesting...
+
+## Great tool!
+
+$$
+\operatorname{cov}\!\left(\sum_{i=1}^n a_i X_i,\; \sum_{j=1}^m b_j Y_j\right) 
+= \sum_{i=1}^n \sum_{j=1}^m a_i b_j \,\operatorname{cov}(X_i, Y_j).
+$$
+
+## Covariance of the MA(1) {.small}
+
+$$
+\begin{aligned}
+\operatorname{cov}(y_t, y_{t-1}) 
+    &= \operatorname{cov}(\varepsilon_t + \theta \varepsilon_{t-1}, \varepsilon_{t-1} + \theta \varepsilon_{t-2}) \\[0.5em]
+    &= \operatorname{cov}(\varepsilon_t, \varepsilon_{t-1}) + \theta \operatorname{cov}(\varepsilon_t, \varepsilon_{t-2}) 
+       + \theta \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-1}) + \theta^2 \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-2}) \\[0.5em]
+    &= 0+0+\theta \sigma^2+\theta^2\cdot 0.
+\end{aligned}
+$$
+Doesn't depend on $t$.
+
+## Covariance of the MA(1) {.small}
+
+$$
+\begin{aligned}
+\operatorname{cov}(y_t, y_{t-2}) 
+    &= \operatorname{cov}(\varepsilon_t + \theta \varepsilon_{t-1}, \varepsilon_{t-2} + \theta \varepsilon_{t-3}) \\[0.5em]
+    &= \operatorname{cov}(\varepsilon_t, \varepsilon_{t-3}) + \theta \operatorname{cov}(\varepsilon_t, \varepsilon_{t-3}) 
+       + \theta \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-2}) + \theta^2 \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-3}) \\[0.5em]
+    &= 0+0+\theta \cdot0+\theta^2\cdot 0.
+\end{aligned}
+$$
+Doesn't depend on $t$.
+
+## Autocovariance of the MA(1)
+
+For any $t$, we have:
+
+$$
+\gamma(h) = \operatorname{cov}(y_t, y_{t-h}) =
+\begin{cases}
+\sigma^2 (1 + \theta^2), & h = 0,\\[2mm]
+\theta \, \sigma^2, & |h| = 1,\\[1mm]
+0, & |h| > 1.
+\end{cases}
+$$
+
+MA(1) is Gaussian with time-invariant mean and variance, and shift-invariant covariance. Stationary!
+
+## Autocovariance of the MA(2)
+
+For any $t$, we have:
+
+$$
+\gamma(h) =
+\begin{cases}
+\sigma^2 \big(1 + \theta_1^2 + \theta_2^2 \big), & h = 0,\\[1mm]
+\sigma^2 \big(\theta_1 + \theta_1 \theta_2 \big), & |h| = 1,\\[1mm]
+\sigma^2 \theta_2, & |h| = 2,\\[1mm]
+0, & |h| > 2.
+\end{cases}
+$$
+
+. . .
+
+Problem Set 1!
+
+## Autocovariance of the MA(q)
+
+Set $\theta_0=1$. Then for any $t$, we have:
+
+$$
+\gamma(h) =
+\begin{cases}
+\sigma^2 \sum_{i=0}^{q} \theta_i^2, & h = 0,\\[1mm]
+\sigma^2 \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}, & 1 \le |h| \le q,\\[1mm]
+0, & |h| > q.
+\end{cases}
+$$
+Across the board no matter $q$ or the parameters.
+
+## Summary {.medium}
+
+$$
+y_t
+=
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+The MA(q) is a strictly stationary Gaussian process, and for all $t$:
+
+$$
+\begin{aligned}
+y_t&\sim\N\left(0\com \sigma^2 \left( 1 + \sum_{i=1}^q \theta_i^2 \right)\right)
+\\
+\gamma(h) &=
+\begin{cases}
+\sigma^2 \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}, & 0 \le |h| \le q,\\[1mm]
+0, & |h| > q.
+\end{cases}
+\end{aligned}
+$$
+
+## What does this look like? {.scrollable}
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 700
+library(shiny)
+
+library(shiny)
+
+# --- Simulation of MA(3) ---
+simulate_ma_3 <- function(T, theta1, theta2, theta3, sigma){
+  y <- numeric(T)
+  eps <- rnorm(T + 3, 0, sigma)  # extra for lags
+  for(t in 1:T){
+    y[t] <- eps[t+3] + theta1*eps[t+2] + theta2*eps[t+1] + theta3*eps[t]
+  }
+  return(y)
+}
+
+# --- Theoretical autocovariance function of MA(3) ---
+ma3_acov <- function(h, theta1, theta2, theta3, sigma2){
+  if(h == 0){
+    return(sigma2 * (1 + theta1^2 + theta2^2 + theta3^2))
+  } else if(h == 1){
+    return(sigma2 * (theta1 + theta1*theta2 + theta2*theta3))
+  } else if(h == 2){
+    return(sigma2 * (theta2 + theta1*theta3))
+  } else if(h == 3){
+    return(sigma2 * theta3)
+  } else {
+    return(0)
+  }
+}
+
+# --- UI ---
+ui <- fluidPage(
+  
+  titlePanel("MA(3): Sample paths and autocovariance function"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("theta1", "θ₁",
+                  min = -2, max = 2, value = 0, step = 0.1),
+      sliderInput("theta2", "θ₂",
+                  min = -2, max = 2, value = 0, step = 0.1),
+      sliderInput("theta3", "θ₃",
+                  min = -2, max = 2, value = 0, step = 0.1),
+      sliderInput("sigma", "σ",
+                  min = 0, max = 2, value = 1, step = 0.1),
+      sliderInput("T", "T",
+                  min = 20, max = 200, step = 20, value = 100),
+      actionButton("redo", "New sample path")
+    ),
+    
+    mainPanel(
+      plotOutput("pathPlot", height = "300px"),
+      plotOutput("acovPlot", height = "300px")
+    )
+  )
+)
+
+# --- Server ---
+server <- function(input, output) {
+  
+  output$pathPlot <- renderPlot({
+    input$redo
+
+      T <- input$T
+      y <- simulate_ma_3(T, input$theta1, input$theta2, input$theta3, input$sigma)
+      
+      # Marginal mean and sd (stationary, constant in t)
+      mean_y <- 0
+      sd_y <- sqrt(ma3_acov(0, input$theta1, input$theta2, input$theta3, input$sigma^2))
+      
+      range <- 1:T
+      alpha <- c(0.01, seq(0.1, 0.9, by = 0.1))
+      
+      plot(range, rep(0, T), type = "l",
+           xaxt = "n", yaxt = "n",
+           xlab = "t", ylab = expression(y[t]),
+           ylim = c(-20, 20), bty = "n",
+           col = "white",
+           main = "Simulated MA(3) Sample Path with Marginal Distribution")
+      
+      for(a in alpha){
+        U <- qnorm(1 - a/2, mean = mean_y, sd = sd_y)
+        L <- qnorm(a/2, mean = mean_y, sd = sd_y)
+        polygon(
+          c(range, rev(range)),
+          c(rep(U, T), rev(rep(L, T))),
+          col = rgb(1, 0, 0, 0.15),
+          border = NA
+        )
+      }
+      
+      axis(1, pos = 0)
+      axis(2, pos = 0)
+      
+      lines(range, y, col = "black", lwd = 2)
+  })
+  
+  output$acovPlot <- renderPlot({
+    h_max <- 10
+    h_vals <- -h_max:h_max
+    gamma_vals <- sapply(h_vals, function(h) 
+      ma3_acov(abs(h), input$theta1, input$theta2, input$theta3, input$sigma^2))
+    
+    plot(h_vals, gamma_vals, type = "h", lwd = 2,
+         main = "Theoretical Autocovariance Function γ(h)",
+         xlab = "Lag h", ylab = expression(gamma(h)))
+    points(h_vals, gamma_vals, pch = 19)
+  })
+}
+
+# --- Run App ---
+shinyApp(ui = ui, server = server)
+
+
+```
+
+# Identification: a tale of two MA(1)
+
+## Consider an MA(1)
+
+If $\theta_1=0.5$ and $\sigma^2=1$, then 
+
+. . .
+
+$$
+\begin{aligned}
+\gamma(0)
+&=
+\sigma^2(1+\theta_1^2)
+=
+1+0.5^2=1.25
+\\
+\gamma(1)
+&=
+\sigma^2\theta_1
+=
+0.5
+.
+\end{aligned}
+$$
+
+. . .
+
+But if $\theta_1=2$ and $\sigma^2=.25$, then 
+
+. . .
+
+$$
+\begin{aligned}
+\gamma(0)
+&=
+0.25(1+4)
+=
+1.25
+\\
+\gamma(1)
+&=
+0.25\times 2
+=
+0.5
+.
+\end{aligned}
+$$
+
+. . .
+
+Uh oh!
+
+## Identification {.medium}
+
+::: incremental
+- In general, the parameters $(\theta_1\com\sigma^2)$ are not *identified*;
+- There are several values that give you the same joint distribution for $y_t$;
+- Given a data set from (.5, 1), even if $T$ were literally $\infty$, you won't be able to tell if these data were generated by (.5, 1) or (2, .25). They are *observationally-equivalent*.
+- For the MA(1) we impose a restriction that $|\theta_1|<1$;
+- For general MA(q), this becomes a restriction on the eigenvalues of a matrix. More on that later.
+:::
+
+
+## State space form of the MA(q)
+
+# Inference
+
+## Comments
+
+::: incremental
+- Estimating a pure MA(q) in isolation is probably not super useful;
+- In general, state space methods and the Kalman filter are absolutely the way to go;
+- But for purposes of illustration, let's work through a simple method-of-moments calculation for the MA(1).
+:::
+
+## Estimating equations {.small .scrollable}
+
+We know:
+
+$$
+\begin{aligned}
+\gamma(1) &\;=\; \theta_1\sigma^2\\
+\gamma(0) &\;=\; (1+\theta_1^2)\sigma^2=\sigma^2+\theta_1^2\sigma^2. \\
+\end{aligned}
+$$
+
+. . .
+
+To solve, notice that 
+
+$$
+\begin{aligned}
+\gamma(1)\theta_1^2-\gamma(0)\theta_1+\gamma(1)=0\\
+\end{aligned}
+$$
+
+. . .
+
+So
+
+$$
+\begin{aligned}
+\theta_1&=\frac{\gamma(0){\color{red}\pm}\sqrt{\gamma(0)^2-4\gamma(1)^2}}{2\gamma(1)}
+\\
+\sigma^2&=
+\frac{\gamma(1)}{\theta_1}
+=
+\frac{\gamma(0)}{1+\theta_1^2}.
+\end{aligned}
+$$
+
+By convention, we pick whichever solution that is between -1 and 1.
+
+## Sample averages
+
+$$
+\begin{aligned}
+\hat{\gamma}(0) &= \frac{1}{T}\sum_{t=1}^{T} (y_t - \bar{y})^2,\\
+\hat{\gamma}(1) &= \frac{1}{T}\sum_{t=2}^{T} (y_t - \bar{y})(y_{t-1} - \bar{y})
+\end{aligned}
+$$
+
+## Method of moments
+
+$$
+\begin{aligned}
+\hat{\theta}_1&=\frac{\hat{\gamma}(0){\color{red}\pm}\sqrt{\hat{\gamma}(0)^2-4\hat{\gamma}(1)^2}}{2\hat{\gamma}(1)}
+\\
+\hat{\sigma^2}&=
+\frac{\hat{\gamma}(1)}{\hat{\theta}_1}
+=
+\frac{\hat{\gamma}(0)}{1+\hat{\theta}_1^2}.
+\end{aligned}
+$$
+Have to pick a solution.
+
+## Asymptotics
+
+::: callout-tip
+## Shumway and Stoffer (2025) Example 3.28
+Assuming $|\theta_1|<1$, then
+$$
+\sqrt{T}(\hat{\theta}_1-\theta_1)\cd\N\left(0\com\frac{1+\theta_1^2+4\theta_1^4+\theta_1^6+\theta_1^8}{(1-\theta_1^2)^2}\right).
+$$
+:::
