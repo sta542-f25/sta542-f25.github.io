@@ -1,0 +1,382 @@
+---
+title: "ARMA models"
+subtitle: "Lecture 9"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
+## Exam 1 on Wednesday October 8
+
+```{r}
+#| echo: false
+plot_arma_acf <- function(ar = numeric(), ma = numeric(), lag.max = 10){
+  y_vals <- ARMAacf(ar = ar, ma = ma, lag.max = lag.max)
+  plot(0:lag.max, y_vals, pch = 19, ylim = c(-1, 1),
+       xlab = "h", ylab = expression(rho~"(h)"))
+  segments(0:lag.max, 0, 0:lag.max, y_vals)
+  abline(h = 0, col = "lightgrey")
+}
+```
+
+::: incremental
+- you get both sides of one 8.5" x 11" sheet of notes;
+- grinding through calculations is *not* the focus;
+- focus on our main themes and visual intuition;
+    - sample paths;
+    - autocov/cor functions;
+    - sampling distributions;
+    - forecast distributions;
+    - PIT plots.
+:::
+
+# Recap
+
+## The pure autoregression
+
+$$
+y_t
+=
+\beta_0
++
+\sum\limits_{l=1}^p\beta_ly_{t-l}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+## State-space form 
+
+::::: {.columns}
+::: {.column width="40%"}
+$$
+\begin{aligned}
+    y_t&=\Bf^\tr\Bs_t \\
+    \Bs_t&=\BG\Bs_{t-1}+\Bb+\Beta_t
+\end{aligned}
+$$
+:::
+
+::: {.column width="60%"}
+$$
+\begin{aligned}
+    \Bs_t&=\begin{bmatrix}y_t & y_{t-1} & \cdots & y_{t-(p-1)} \end{bmatrix}^\tr\\
+    \Bf&=\begin{bmatrix}1 & 0 & \cdots & 0\end{bmatrix}^\tr\\
+    \BG&=\begin{bmatrix}
+    \beta_1 & \beta_2 & \cdots & \beta_{p-1} & \beta_p \\
+    1       & 0       & \cdots & 0           & 0 \\
+    0       & 1       & \cdots & 0           & 0 \\
+    \vdots  & \vdots  & \ddots & \vdots      & \vdots \\
+    0       & 0       & \cdots & 1           & 0 \\
+    \end{bmatrix}\\
+    \Beta_t&=\begin{bmatrix}\varepsilon_t & 0 & \cdots & 0\end{bmatrix}^\tr
+    \\
+    \Bb
+    &=
+    \begin{bmatrix}\beta_0 & 0 & \cdots & 0\end{bmatrix}^\tr
+\end{aligned}
+$$
+:::
+:::::
+
+## AR(2) example
+
+$$
+\begin{aligned}
+y_t
+&=
+\begin{bmatrix}
+1 & 0 
+\end{bmatrix}
+\begin{bmatrix}
+y_t\\
+y_{t-1}
+\end{bmatrix}
+\\
+\begin{bmatrix}
+y_t\\
+y_{t-1}
+\end{bmatrix}
+&=
+\begin{bmatrix}
+\beta_1 & \beta_1\\
+1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+y_{t-1}\\
+y_{t-2}
+\end{bmatrix}
++
+\begin{bmatrix}
+\beta_0\\0
+\end{bmatrix}
++
+\begin{bmatrix}
+\varepsilon_{t}\\
+0
+\end{bmatrix}
+\end{aligned}
+$$
+
+
+
+
+## AR(p) structure 
+
+The AR(p) is a Gaussian process, and the moments are given by the [1, 1] elements of 
+
+$$
+\begin{aligned}
+E(\Bs_t)
+&=
+ \mathbf{G}^t \boldsymbol{\mu}_0 + \sum_{k=0}^{t-1} \mathbf{G}^k \mathbf{b}
+\\
+\cov(\Bs_t)
+&=
+\BG^t\BP_0(\BG^\tr)^t+\sum\limits_{k=0}^{t-1}\BG^k\BW(\BG^\tr)^k
+\\
+\cov(\Bs_t\com\Bs_s)
+&=
+\BG^{|t-s|}\cov(\Bs_{\min\{s\com t\}}).
+\end{aligned}
+$$
+
+## Special case: AR(1)
+
+$$
+\begin{aligned}
+E(y_t)
+&=
+\beta_0\sum\limits_{k=0}^{t-1}\beta_1^k
++
+\beta_1^t\mu_0
+\\
+\var(y_t)
+&=
+\sigma^2
+\sum\limits_{k=0}^{t-1}\beta_1^{2k}+
+\beta_1^{2t}\initvar
+\\
+\cov(y_t\com y_s)
+&=
+\beta_1^{|s-t|}\var(y_{\min\{s\com t\}}) 
+.
+\end{aligned}
+$$
+
+## Stationarity
+
+If $\BG$ has eigenvalues inside the unit circle, then the AR(p) is strictly stationary. This means 
+
+$$
+\{y_{t_1}\com y_{t_2}\com ...\com y_{t_n}\}\overset{d}{=}\{y_{t_1+h}\com y_{t_2+h}\com ...\com y_{t_n+h}\}.
+$$
+
+Consequences:
+
+- $E(y_t)=\mu$ for all $t$;
+- $\var(y_t)=\gamma(0)$ for all $t$
+- $\cov(y_{t+h}\com y_t)=\gamma(h)$ for all $t$.
+
+## Autocovariance
+
+For the AR(1), we know:
+
+$$
+\gamma(h)=\beta_1^{|h|}\gamma(0).
+$$
+
+For the general AR(p), we have the Yule-Walker equations:
+
+$$
+\begin{aligned}
+\gamma(k) &= \sum_{l=1}^p \beta_l \, \gamma(k-l) && k\geq 1.
+\\
+\gamma(0) &= \sum_{l=1}^p \beta_l \, \gamma(l) + \sigma^2
+\end{aligned}
+$$
+
+## Autocorrelation
+
+$$
+\begin{aligned}
+\rho(h)
+=\frac{\gamma(h)}{\gamma(0)}
+&=
+\frac{\cov(y_{t+h}\com y_t)}{\var(y_t)}
+\\
+&=
+\frac{\cov(y_{t+h}\com y_t)}{\text{sd}(y_t)\text{sd}(y_t)}
+\\
+&=
+\frac{\cov(y_{t+h}\com y_t)}{\text{sd}(y_{t+h})\text{sd}(y_t)}
+\\
+&=
+\text{cor}(y_{t+h}\com y_t).
+\end{aligned}
+$$
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ar = c(0.7), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ar = c(-0.7), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ar = c(-0.9), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ar = c(.5, .4), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ar = c(1, -.8), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ar = c(-1, -.8), lag.max = 20)
+```
+
+## AR(p) inference 
+
+- Assuming stationarity: Yule-Walker and method of moments;
+- Without stationarity: MLE and OLS;
+- Also: conjugate Bayesian inference.
+
+## AR(p) forecasting
+
+- If you already know the parameters, the forecast distributions $p(y_{t+h}\mid y_{0:t})$ are Gaussian with means and variances given above;
+- Treating point estimates as fixed and known underestimates uncertainty;
+- To get proper uncertainty quantification, you need the bootstrap or a Bayesian approach.
+
+## The pure moving average
+
+$$
+y_t
+=
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+## MA(q) structure
+
+The MA(q) is a strictly stationary Gaussian process, and for all $t$:
+
+$$
+\begin{aligned}
+y_t&\sim\N\left(0\com \sigma^2 \left( 1 + \sum_{i=1}^q \theta_i^2 \right)\right)
+\\
+\gamma(h) &=
+\begin{cases}
+\sigma^2 \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}, & 0 \le |h| \le q,\\[1mm]
+0, & |h| > q.
+\end{cases}
+\end{aligned}
+$$
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ma = c(0.5), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ma = c(-0.5), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ma = c(-0.9), lag.max = 20)
+```
+
+## Autocorrelation functions
+
+```{r}
+plot_arma_acf(ma = c(0.4, -0.6), lag.max = 20)
+```
+
+## MA(q) inference?
+
+We worked a toy method-of-moments example for the MA(1), but beyond that, the algebra is heinous. Take a likelihood-based approach using state-space methods.
+
+# Up next
+
+## The autoregressive moving average model
+
+$$
+y_t
+=
+\beta_0
++
+\underbrace{\sum\limits_{l=1}^p\beta_ly_{t-l}}_{\text{autoregressive}}
++
+\underbrace{\sum_{i=1}^q\theta_i\varepsilon_{t-i}}_{\text{moving average}}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+. . .
+
+Can't do anything analytically:
+
+::: incremental 
+- MLE requires numerical optimization;
+- Bayes requires ugly MCMC;
+- Bootstrapping is a pain;
+- Model combination is probably not worth it.
+:::
+
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.6), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.6), ma = c(-0.5), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.9), ma = c(0.9), lag.max = 20)
+```
+
+
