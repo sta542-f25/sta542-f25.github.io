@@ -571,7 +571,7 @@ $$
 - The assumptions of the theorem (stationary AR) are enough to guarantee absolute summability;
 - The MA($\infty$) would remain coherent if we only had square summability, but it wouldn't be *ergodic*.
 
-## Ergodicity
+## Ergodicity {.medium}
 
 ::: callout-note
 ## Law of large numbers for dependent sequences
@@ -724,7 +724,7 @@ $$
 
 # Rewrite ARMA as pure AR or MA
 
-## Putting it together
+## Putting it together {.medium}
 
 We know:
 
