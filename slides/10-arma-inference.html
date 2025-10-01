@@ -6,16 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<meta name="shinylive:serviceworker_dir" content="..">
-<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
-<link href="../site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.34">
 
   <meta name="author" content="John Zito">
-  <title>STA 542 Fall 2025 – The moving average model</title>
+  <title>STA 542 Fall 2025 – ARMA models II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d5becd29f7c8505d93fcf7093747f253.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -194,8 +123,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="The moving average model – STA 542 Fall 2025">
-<meta property="og:description" content="Lecture 8">
+<meta property="og:title" content="ARMA models II – STA 542 Fall 2025">
+<meta property="og:description" content="Lecture 10">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 <body class="quarto-light">
@@ -320,8 +249,8 @@ $$
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The moving average model</h1>
-  <p class="subtitle">Lecture 8</p>
+  <h1 class="title">ARMA models II</h1>
+  <p class="subtitle">Lecture 10</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -335,80 +264,8 @@ John Zito
 </div>
 
 </section>
-<section>
-<section id="recap" class="title-slide slide level1 center">
-<h1>Recap</h1>
-
-</section>
-<section id="the-autoregressive-model" class="slide level2 small">
-<h2>The autoregressive model</h2>
-<p><span class="math display">\[
-y_t
-=
-\beta_0
-+
-\sum\limits_{l=1}^p\beta_ly_{t-l}
-+
-\varepsilon_t,
-\quad
-\varepsilon_t
-\iid
-\N(0\com \sigma^2)
-.
-\]</span></p>
-<ul>
-<li class="fragment">This implies a Gaussian distribution with funky mean and covariance;</li>
-<li class="fragment">Nests iid, random walk, random walk with drift, stationary, and explosive;</li>
-<li class="fragment">(Conditional) likelihood based inference is the same as iid regression: OLS, conjugate Bayes, etc;
-<ul>
-<li class="fragment">We can make sense of both theoretically;</li>
-</ul></li>
-<li class="fragment">Probabilisitic prediction is <em>not</em> the same as iid regression;
-<ul>
-<li class="fragment">Bootstrap for classical, posterior predictive for Bayes;</li>
-</ul></li>
-<li class="fragment"><span class="math inline">\(p\)</span> is a tuning parameter that must be selected or averaged over.</li>
-</ul>
-</section>
-<section id="main-ideas" class="slide level2 small">
-<h2>Main ideas</h2>
-<ul>
-<li class="fragment">A time series model is “just” a joint distribution for a dependent sequence, and you understand the model if you understand the structure of that distribution (family, moments, marginals, conditionals, etc);</li>
-<li class="fragment">Estimation should be recursive to confront the reality of streaming data;</li>
-<li class="fragment">Predictions should be probabilistic and incorporate many sources of uncertainty;</li>
-<li class="fragment">Model selection criteria should be <em>out-of-sample</em> and tailored to your specific prediction/decision task (eg LFO-CV);</li>
-<li class="fragment">Selection is second best to <em>combination</em>, but combination can be tough to implement, and the size of the gains will depend on the application;</li>
-<li class="fragment">A Bayesian approach makes recursive estimation, probabilistic prediction, and coherent model combination straightforward (note: I didn’t say easy).</li>
-</ul>
-</section></section>
-<section>
-<section id="where-are-we-going" class="title-slide slide level1 center">
-<h1>Where are we going?</h1>
-
-</section>
-<section id="why-must-the-errors-be-independent" class="slide level2">
-<h2>Why must the errors be independent?</h2>
-<p>We have seen this:</p>
-<p><span class="math display">\[
-y_t
-=
-\beta_0
-+
-\sum\limits_{l=1}^p\beta_ly_{t-l}
-+
-\underbrace{
-u_t
-}_{\text{iid}}
-.
-\]</span></p>
-<p>What if there is time series dependence in <span class="math inline">\(u_t\)</span> as well?</p>
-<div class="fragment">
-<p>What kind?</p>
-</div>
-</section>
-<section id="autoregressive-moving-average-arma" class="slide level2 medium">
-<h2>Autoregressive moving average (ARMA)</h2>
-<p>ARMA(<span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span>):</p>
+<section id="where-were-we" class="slide level2">
+<h2>Where were we?</h2>
 <p><span class="math display">\[
 y_t
 =
@@ -426,511 +283,817 @@ y_t
 .
 \]</span></p>
 <div class="fragment">
-<p>Flexible class of models that can capture pretty generic <em>linear</em> dependencies.</p>
+<p>Can’t do anything analytically:</p>
 <ul>
-<li class="fragment"><span class="math inline">\(p=q=0\)</span> gives the iid model;</li>
-<li class="fragment"><span class="math inline">\(q=0\)</span> gives the pure AR(<span class="math inline">\(p\)</span>) you’re already sick of;</li>
-<li class="fragment"><span class="math inline">\(p=0\)</span> gives the pure MA(<span class="math inline">\(q\)</span>), which we study today.</li>
+<li class="fragment">MLE requires numerical optimization;</li>
+<li class="fragment">Bayes requires ugly MCMC;</li>
+<li class="fragment">Forecasts with correct uncertainty quantification are hard;</li>
+<li class="fragment">Bootstrapping is a pain;</li>
+<li class="fragment">Model combination is probably not worth it.</li>
 </ul>
 </div>
-</section></section>
+</section>
+<section id="the-bottom-line-at-the-top" class="slide level2">
+<h2>The bottom line, at the top</h2>
+<ul>
+<li class="fragment">A stationary AR(p) can be written as an MA<span class="math inline">\((\infty)\)</span>;</li>
+<li class="fragment">An “invertible” MA(q) can be written as an AR<span class="math inline">\((\infty)\)</span>;</li>
+<li class="fragment">A stationary and invertible ARMA(p, q) can be written as either an MA<span class="math inline">\((\infty)\)</span> or an AR<span class="math inline">\((\infty)\)</span>.</li>
+</ul>
+<div class="fragment">
+<p>These suggest <em>approximations</em> that can ease the computational burden of estimation and forecasting.</p>
+</div>
+</section>
 <section>
-<section id="where-are-we-really-going" class="title-slide slide level1 center">
-<h1>Where are we <em>really</em> going?</h1>
+<section id="quick-background" class="title-slide slide level1 center">
+<h1>Quick background</h1>
 
 </section>
-<section id="dynamic-linear-model-dlm" class="slide level2">
-<h2>Dynamic linear model (DLM)</h2>
-<p><span class="math inline">\(\By_t\in\RR^n\)</span> is observed and <span class="math inline">\(\Bs_t\in\RR^p\)</span> is latent:</p>
+<section id="lag-operator" class="slide level2">
+<h2>Lag operator</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>The <strong>lab operator</strong> <span class="math inline">\(L\)</span> acts on a time series <span class="math inline">\(y_t\)</span> to return its first lagged value:</p>
+<p><span class="math display">\[
+Ly_{t}=y_{t-1}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Imagine multiple applications:</p>
+<p><span class="math display">\[
+L^2 y_{t}= L L y_{t}=L y_{t-1}=y_{t-2}.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In general:</p>
+<p><span class="math display">\[
+L^ky_t=y_{t-k}.
+\]</span></p>
+</div>
+</section>
+<section id="ar1" class="slide level2">
+<h2>AR(1)</h2>
 <p><span class="math display">\[
 \begin{aligned}
-\By_t
-&amp;=
-\BF\Bs_t
-+
-\Bepsilon_t,
-&amp;&amp;
-\Bepsilon_t\iid\N_n(\Bzero\com \BV)
-\\
-\Bs_t
-&amp;=
-\BG\Bs_{t-1}
-+
-\Beta_t,
-&amp;&amp;
-\Beta_t\iid\N_p(\Bzero\com \BW)
-\\
-&amp; &amp;&amp;\\
-\Bs_0&amp;\sim\N_p(\bar{\Bs}_{0|0}\com \BP_0).
-\end{aligned}
-\]</span></p>
-<p>ARMA and several other classes of models are just special cases of this. Once you understand DLMs and the Kalman filter, it all trickles down.</p>
-</section></section>
-<section>
-<section id="the-moving-average-model" class="title-slide slide level1 center">
-<h1>The moving average model</h1>
-
-</section>
-<section id="the-maq" class="slide level2">
-<h2>The MA(q)</h2>
-<p>Moving average of order <span class="math inline">\(q\)</span>:</p>
-<p><span class="math display">\[
 y_t
-=
-\sum_{i=1}^q\theta_i\varepsilon_{t-i}
-+
-\varepsilon_t,
-\quad
-\varepsilon_t
-\iid
-\N(0\com \sigma^2)
-.
-\]</span></p>
-<p>Doesn’t necessarily describe a tremendous amount of “real” time series. Combine it with the AR piece, and things get interesting.</p>
-</section>
-<section id="what-is-the-joint-distribution" class="slide level2 small">
-<h2>What is the joint distribution?</h2>
-<p>Note that</p>
-<p><span class="math display">\[
-\begin{aligned}
-\begin{bmatrix}y_1 \\ y_2 \\ \vdots \\ y_T\end{bmatrix}
 &amp;=
-\begin{bmatrix}
-\theta_q &amp; \theta_{q-1} &amp; \cdots &amp; \theta_1 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; \theta_q &amp; \theta_{q-1} &amp; \cdots &amp; \theta_1 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 0 &amp; \theta_q &amp; \theta_{q-1} &amp; \cdots &amp; \theta_1 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; &amp; &amp; \ddots &amp; &amp; &amp; &amp; \ddots &amp; \vdots \\
-0 &amp; \cdots &amp; 0 &amp; 0 &amp; \theta_q &amp; \theta_{q-1} &amp; \cdots &amp; \theta_1 &amp; 1
-\end{bmatrix}
-\begin{bmatrix}
-\varepsilon_{1-q} \\[1mm]
-\varepsilon_{2-q} \\[1mm]
-\vdots \\[1mm]
-\varepsilon_0 \\[1mm]
-\varepsilon_1 \\[1mm]
-\vdots \\[1mm]
-\varepsilon_T
-\end{bmatrix}
+\beta_1y_{t-1}+\varepsilon_t
 \\
-\By&amp;=\BA\boldsymbol{\varepsilon}
-.
-\end{aligned}
-\]</span></p>
-<p>We know <span class="math inline">\(\boldsymbol{\varepsilon}\sim\N_{T+q}(\Bzero\com\sigma^2\BI_n)\)</span>, so <span class="math inline">\(\By\)</span> is Gaussian by affine transformation.</p>
-</section>
-<section id="what-is-the-mean" class="slide level2 small">
-<h2>What is the mean?</h2>
-<p>Easy:</p>
-<p><span class="math display">\[
-\begin{aligned}
-E(y_t)
-&amp;=
-E\left(
-\sum_{i=1}^q\theta_i\varepsilon_{t-i}
-+
-\varepsilon_t
-\right)
-\\
-&amp;=
-\sum_{i=1}^q\theta_iE\left(\varepsilon_{t-i}\right)
-+
-E\left(
-\varepsilon_t
-\right)
-\\
-&amp;=
-\sum_{i=1}^q\theta_i\cdot0
-+
-0
-\\
-&amp;=0.
-\end{aligned}
-\]</span></p>
-<div class="fragment">
-<p>Always zero! No matter <span class="math inline">\(q\)</span> or the parameters or anything. Didn’t use normality, either.</p>
-</div>
-</section>
-<section id="what-is-the-variance" class="slide level2 small">
-<h2>What is the variance?</h2>
-<p>Since the <span class="math inline">\(\varepsilon_t\)</span> are uncorrelated:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\operatorname{var}(y_t)
-    &amp;= \operatorname{var}\big(\varepsilon_t + \theta_1 \varepsilon_{t-1} + \cdots + \theta_q \varepsilon_{t-q}\big) \\[0.5em]
-    &amp;= \operatorname{var}(\varepsilon_t) + \theta_1^2 \operatorname{var}(\varepsilon_{t-1}) + \cdots + \theta_q^2 \operatorname{var}(\varepsilon_{t-q}) \\[0.5em]
-      &amp;= \sigma^2 + \theta_1^2 \sigma^2 + \cdots + \theta_q^2 \sigma^2 \\[0.5em]
-    &amp;= \sigma^2 \left( 1 + \theta_1^2 + \theta_2^2 + \cdots + \theta_q^2 \right) \\[0.5em]
-    &amp;= \sigma^2 \left( 1 + \sum_{i=1}^q \theta_i^2 \right).
-\end{aligned}
-\]</span></p>
-<p>Doesn’t depend on <span class="math inline">\(t\)</span>. Interesting…</p>
-</section>
-<section id="great-tool" class="slide level2">
-<h2>Great tool!</h2>
-<p><span class="math display">\[
-\operatorname{cov}\!\left(\sum_{i=1}^n a_i X_i,\; \sum_{j=1}^m b_j Y_j\right)
-= \sum_{i=1}^n \sum_{j=1}^m a_i b_j \,\operatorname{cov}(X_i, Y_j).
-\]</span></p>
-</section>
-<section id="covariance-of-the-ma1" class="slide level2 small">
-<h2>Covariance of the MA(1)</h2>
-<p><span class="math display">\[
-\begin{aligned}
-\operatorname{cov}(y_t, y_{t-1})
-    &amp;= \operatorname{cov}(\varepsilon_t + \theta \varepsilon_{t-1}, \varepsilon_{t-1} + \theta \varepsilon_{t-2}) \\[0.5em]
-    &amp;= \operatorname{cov}(\varepsilon_t, \varepsilon_{t-1}) + \theta \operatorname{cov}(\varepsilon_t, \varepsilon_{t-2})
-       + \theta \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-1}) + \theta^2 \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-2}) \\[0.5em]
-    &amp;= 0+0+\theta \sigma^2+\theta^2\cdot 0.
-\end{aligned}
-\]</span> Doesn’t depend on <span class="math inline">\(t\)</span>.</p>
-</section>
-<section id="covariance-of-the-ma1-1" class="slide level2 small">
-<h2>Covariance of the MA(1)</h2>
-<p><span class="math display">\[
-\begin{aligned}
-\operatorname{cov}(y_t, y_{t-2})
-    &amp;= \operatorname{cov}(\varepsilon_t + \theta \varepsilon_{t-1}, \varepsilon_{t-2} + \theta \varepsilon_{t-3}) \\[0.5em]
-    &amp;= \operatorname{cov}(\varepsilon_t, \varepsilon_{t-3}) + \theta \operatorname{cov}(\varepsilon_t, \varepsilon_{t-3})
-       + \theta \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-2}) + \theta^2 \operatorname{cov}(\varepsilon_{t-1}, \varepsilon_{t-3}) \\[0.5em]
-    &amp;= 0+0+\theta \cdot0+\theta^2\cdot 0.
-\end{aligned}
-\]</span> Doesn’t depend on <span class="math inline">\(t\)</span>.</p>
-</section>
-<section id="autocovariance-of-the-ma1" class="slide level2">
-<h2>Autocovariance of the MA(1)</h2>
-<p>For any <span class="math inline">\(t\)</span>, we have:</p>
-<p><span class="math display">\[
-\gamma(h) = \operatorname{cov}(y_t, y_{t-h}) =
-\begin{cases}
-\sigma^2 (1 + \theta^2), &amp; h = 0,\\[2mm]
-\theta \, \sigma^2, &amp; |h| = 1,\\[1mm]
-0, &amp; |h| &gt; 1.
-\end{cases}
-\]</span></p>
-<p>MA(1) is Gaussian with time-invariant mean and variance, and shift-invariant covariance. Stationary!</p>
-</section>
-<section id="autocovariance-of-the-ma2" class="slide level2">
-<h2>Autocovariance of the MA(2)</h2>
-<p>For any <span class="math inline">\(t\)</span>, we have:</p>
-<p><span class="math display">\[
-\gamma(h) =
-\begin{cases}
-\sigma^2 \big(1 + \theta_1^2 + \theta_2^2 \big), &amp; h = 0,\\[1mm]
-\sigma^2 \big(\theta_1 + \theta_1 \theta_2 \big), &amp; |h| = 1,\\[1mm]
-\sigma^2 \theta_2, &amp; |h| = 2,\\[1mm]
-0, &amp; |h| &gt; 2.
-\end{cases}
-\]</span></p>
-<div class="fragment">
-<p>Problem Set 1!</p>
-</div>
-</section>
-<section id="autocovariance-of-the-maq" class="slide level2">
-<h2>Autocovariance of the MA(q)</h2>
-<p>Set <span class="math inline">\(\theta_0=1\)</span>. Then for any <span class="math inline">\(t\)</span>, we have:</p>
-<p><span class="math display">\[
-\gamma(h) =
-\begin{cases}
-\sigma^2 \sum_{i=0}^{q} \theta_i^2, &amp; h = 0,\\[1mm]
-\sigma^2 \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}, &amp; 1 \le |h| \le q,\\[1mm]
-0, &amp; |h| &gt; q.
-\end{cases}
-\]</span> Across the board no matter <span class="math inline">\(q\)</span> or the parameters.</p>
-</section>
-<section id="summary" class="slide level2 medium">
-<h2>Summary</h2>
-<p><span class="math display">\[
 y_t
-=
-\sum_{i=1}^q\theta_i\varepsilon_{t-i}
-+
-\varepsilon_t,
-\quad
+&amp;=
+\beta_1 Ly_t+\varepsilon_t
+\\
+y_t
+-
+\beta_1 Ly_t
+&amp;=
 \varepsilon_t
-\iid
-\N(0\com \sigma^2)
-.
-\]</span></p>
-<p>The MA(q) is a strictly stationary Gaussian process, and for all <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[
-\begin{aligned}
-y_t&amp;\sim\N\left(0\com \sigma^2 \left( 1 + \sum_{i=1}^q \theta_i^2 \right)\right)
 \\
-\gamma(h) &amp;=
-\begin{cases}
-\sigma^2 \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}, &amp; 0 \le |h| \le q,\\[1mm]
-0, &amp; |h| &gt; q.
-\end{cases}
-\end{aligned}
-\]</span></p>
-</section>
-<section id="what-does-this-look-like" class="slide level2 scrollable">
-<h2>What does this look like?</h2>
-<div class="sourceCode" id="cb1" data-engine="r"><pre class="sourceCode numberSource shinylive-r number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>#| '!! shinylive warning !!': |</span>
-<span id="cb1-2"><a></a>#|   shinylive does not work in self-contained HTML documents.</span>
-<span id="cb1-3"><a></a>#|   Please set `embed-resources: false` in your metadata.</span>
-<span id="cb1-4"><a></a>#| standalone: true</span>
-<span id="cb1-5"><a></a>#| viewerHeight: 700</span>
-<span id="cb1-6"><a></a>library(shiny)</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a>library(shiny)</span>
-<span id="cb1-9"><a></a></span>
-<span id="cb1-10"><a></a># --- Simulation of MA(3) ---</span>
-<span id="cb1-11"><a></a>simulate_ma_3 &lt;- function(T, theta1, theta2, theta3, sigma){</span>
-<span id="cb1-12"><a></a>  y &lt;- numeric(T)</span>
-<span id="cb1-13"><a></a>  eps &lt;- rnorm(T + 3, 0, sigma)  # extra for lags</span>
-<span id="cb1-14"><a></a>  for(t in 1:T){</span>
-<span id="cb1-15"><a></a>    y[t] &lt;- eps[t+3] + theta1*eps[t+2] + theta2*eps[t+1] + theta3*eps[t]</span>
-<span id="cb1-16"><a></a>  }</span>
-<span id="cb1-17"><a></a>  return(y)</span>
-<span id="cb1-18"><a></a>}</span>
-<span id="cb1-19"><a></a></span>
-<span id="cb1-20"><a></a># --- Theoretical autocovariance function of MA(3) ---</span>
-<span id="cb1-21"><a></a>ma3_acov &lt;- function(h, theta1, theta2, theta3, sigma2){</span>
-<span id="cb1-22"><a></a>  if(h == 0){</span>
-<span id="cb1-23"><a></a>    return(sigma2 * (1 + theta1^2 + theta2^2 + theta3^2))</span>
-<span id="cb1-24"><a></a>  } else if(h == 1){</span>
-<span id="cb1-25"><a></a>    return(sigma2 * (theta1 + theta1*theta2 + theta2*theta3))</span>
-<span id="cb1-26"><a></a>  } else if(h == 2){</span>
-<span id="cb1-27"><a></a>    return(sigma2 * (theta2 + theta1*theta3))</span>
-<span id="cb1-28"><a></a>  } else if(h == 3){</span>
-<span id="cb1-29"><a></a>    return(sigma2 * theta3)</span>
-<span id="cb1-30"><a></a>  } else {</span>
-<span id="cb1-31"><a></a>    return(0)</span>
-<span id="cb1-32"><a></a>  }</span>
-<span id="cb1-33"><a></a>}</span>
-<span id="cb1-34"><a></a></span>
-<span id="cb1-35"><a></a># --- UI ---</span>
-<span id="cb1-36"><a></a>ui &lt;- fluidPage(</span>
-<span id="cb1-37"><a></a>  </span>
-<span id="cb1-38"><a></a>  titlePanel("MA(3): Sample paths and autocovariance function"),</span>
-<span id="cb1-39"><a></a>  </span>
-<span id="cb1-40"><a></a>  sidebarLayout(</span>
-<span id="cb1-41"><a></a>    sidebarPanel(</span>
-<span id="cb1-42"><a></a>      sliderInput("theta1", "θ₁",</span>
-<span id="cb1-43"><a></a>                  min = -2, max = 2, value = 0, step = 0.1),</span>
-<span id="cb1-44"><a></a>      sliderInput("theta2", "θ₂",</span>
-<span id="cb1-45"><a></a>                  min = -2, max = 2, value = 0, step = 0.1),</span>
-<span id="cb1-46"><a></a>      sliderInput("theta3", "θ₃",</span>
-<span id="cb1-47"><a></a>                  min = -2, max = 2, value = 0, step = 0.1),</span>
-<span id="cb1-48"><a></a>      sliderInput("sigma", "σ",</span>
-<span id="cb1-49"><a></a>                  min = 0, max = 2, value = 1, step = 0.1),</span>
-<span id="cb1-50"><a></a>      sliderInput("T", "T",</span>
-<span id="cb1-51"><a></a>                  min = 20, max = 200, step = 20, value = 100),</span>
-<span id="cb1-52"><a></a>      actionButton("redo", "New sample path")</span>
-<span id="cb1-53"><a></a>    ),</span>
-<span id="cb1-54"><a></a>    </span>
-<span id="cb1-55"><a></a>    mainPanel(</span>
-<span id="cb1-56"><a></a>      plotOutput("pathPlot", height = "300px"),</span>
-<span id="cb1-57"><a></a>      plotOutput("acovPlot", height = "300px")</span>
-<span id="cb1-58"><a></a>    )</span>
-<span id="cb1-59"><a></a>  )</span>
-<span id="cb1-60"><a></a>)</span>
-<span id="cb1-61"><a></a></span>
-<span id="cb1-62"><a></a># --- Server ---</span>
-<span id="cb1-63"><a></a>server &lt;- function(input, output) {</span>
-<span id="cb1-64"><a></a>  </span>
-<span id="cb1-65"><a></a>  output$pathPlot &lt;- renderPlot({</span>
-<span id="cb1-66"><a></a>    input$redo</span>
-<span id="cb1-67"><a></a></span>
-<span id="cb1-68"><a></a>      T &lt;- input$T</span>
-<span id="cb1-69"><a></a>      y &lt;- simulate_ma_3(T, input$theta1, input$theta2, input$theta3, input$sigma)</span>
-<span id="cb1-70"><a></a>      </span>
-<span id="cb1-71"><a></a>      # Marginal mean and sd (stationary, constant in t)</span>
-<span id="cb1-72"><a></a>      mean_y &lt;- 0</span>
-<span id="cb1-73"><a></a>      sd_y &lt;- sqrt(ma3_acov(0, input$theta1, input$theta2, input$theta3, input$sigma^2))</span>
-<span id="cb1-74"><a></a>      </span>
-<span id="cb1-75"><a></a>      range &lt;- 1:T</span>
-<span id="cb1-76"><a></a>      alpha &lt;- c(0.01, seq(0.1, 0.9, by = 0.1))</span>
-<span id="cb1-77"><a></a>      </span>
-<span id="cb1-78"><a></a>      plot(range, rep(0, T), type = "l",</span>
-<span id="cb1-79"><a></a>           xaxt = "n", yaxt = "n",</span>
-<span id="cb1-80"><a></a>           xlab = "t", ylab = expression(y[t]),</span>
-<span id="cb1-81"><a></a>           ylim = c(-20, 20), bty = "n",</span>
-<span id="cb1-82"><a></a>           col = "white",</span>
-<span id="cb1-83"><a></a>           main = "Simulated MA(3) Sample Path with Marginal Distribution")</span>
-<span id="cb1-84"><a></a>      </span>
-<span id="cb1-85"><a></a>      for(a in alpha){</span>
-<span id="cb1-86"><a></a>        U &lt;- qnorm(1 - a/2, mean = mean_y, sd = sd_y)</span>
-<span id="cb1-87"><a></a>        L &lt;- qnorm(a/2, mean = mean_y, sd = sd_y)</span>
-<span id="cb1-88"><a></a>        polygon(</span>
-<span id="cb1-89"><a></a>          c(range, rev(range)),</span>
-<span id="cb1-90"><a></a>          c(rep(U, T), rev(rep(L, T))),</span>
-<span id="cb1-91"><a></a>          col = rgb(1, 0, 0, 0.15),</span>
-<span id="cb1-92"><a></a>          border = NA</span>
-<span id="cb1-93"><a></a>        )</span>
-<span id="cb1-94"><a></a>      }</span>
-<span id="cb1-95"><a></a>      </span>
-<span id="cb1-96"><a></a>      axis(1, pos = 0)</span>
-<span id="cb1-97"><a></a>      axis(2, pos = 0)</span>
-<span id="cb1-98"><a></a>      </span>
-<span id="cb1-99"><a></a>      lines(range, y, col = "black", lwd = 2)</span>
-<span id="cb1-100"><a></a>  })</span>
-<span id="cb1-101"><a></a>  </span>
-<span id="cb1-102"><a></a>  output$acovPlot &lt;- renderPlot({</span>
-<span id="cb1-103"><a></a>    h_max &lt;- 10</span>
-<span id="cb1-104"><a></a>    h_vals &lt;- -h_max:h_max</span>
-<span id="cb1-105"><a></a>    gamma_vals &lt;- sapply(h_vals, function(h) </span>
-<span id="cb1-106"><a></a>      ma3_acov(abs(h), input$theta1, input$theta2, input$theta3, input$sigma^2))</span>
-<span id="cb1-107"><a></a>    </span>
-<span id="cb1-108"><a></a>    plot(h_vals, gamma_vals, type = "h", lwd = 2,</span>
-<span id="cb1-109"><a></a>         main = "Theoretical Autocovariance Function γ(h)",</span>
-<span id="cb1-110"><a></a>         xlab = "Lag h", ylab = expression(gamma(h)))</span>
-<span id="cb1-111"><a></a>    points(h_vals, gamma_vals, pch = 19)</span>
-<span id="cb1-112"><a></a>  })</span>
-<span id="cb1-113"><a></a>}</span>
-<span id="cb1-114"><a></a></span>
-<span id="cb1-115"><a></a># --- Run App ---</span>
-<span id="cb1-116"><a></a>shinyApp(ui = ui, server = server)</span>
-<span id="cb1-117"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
-<section>
-<section id="identification-a-tale-of-two-ma1" class="title-slide slide level1 center">
-<h1>Identification: a tale of two MA(1)</h1>
-
-</section>
-<section id="consider-an-ma1" class="slide level2">
-<h2>Consider an MA(1)</h2>
-<p>If <span class="math inline">\(\theta_1=0.5\)</span> and <span class="math inline">\(\sigma^2=1\)</span>, then</p>
-<div class="fragment">
-<p><span class="math display">\[
-\begin{aligned}
-\gamma(0)
+(1
+-
+\beta_1 L)y_t
 &amp;=
-\sigma^2(1+\theta_1^2)
-=
-1+0.5^2=1.25
-\\
-\gamma(1)
+\varepsilon_t.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="ar2" class="slide level2">
+<h2>AR(2)</h2>
+<p><span class="math display">\[
+\begin{aligned}
+y_t
 &amp;=
-\sigma^2\theta_1
-=
-0.5
-.
-\end{aligned}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>But if <span class="math inline">\(\theta_1=2\)</span> and <span class="math inline">\(\sigma^2=.25\)</span>, then</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-\begin{aligned}
-\gamma(0)
+\beta_1y_{t-1}+\beta_2y_{t-2}+\varepsilon_t
+\\
+y_t
 &amp;=
-0.25(1+4)
-=
-1.25
+\beta_1Ly_t+\beta_2L^2y_t+\varepsilon_t
 \\
-\gamma(1)
+y_t
+-
+\beta_1Ly_t-\beta_2L^2y_t
 &amp;=
-0.25\times 2
-=
-0.5
-.
-\end{aligned}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Uh oh!</p>
-</div>
-</section>
-<section id="identification" class="slide level2 medium">
-<h2>Identification</h2>
-<ul>
-<li class="fragment">In general, the parameters <span class="math inline">\((\theta_1\com\sigma^2)\)</span> are not <em>identified</em>;</li>
-<li class="fragment">There are several values that give you the same joint distribution for <span class="math inline">\(y_t\)</span>;</li>
-<li class="fragment">Given a data set from (.5, 1), even if <span class="math inline">\(T\)</span> were literally <span class="math inline">\(\infty\)</span>, you won’t be able to tell if these data were generated by (.5, 1) or (2, .25). They are <em>observationally-equivalent</em>.</li>
-<li class="fragment">For the MA(1) we impose a restriction that <span class="math inline">\(|\theta_1|&lt;1\)</span>;</li>
-<li class="fragment">We’ll revisit MA(q) later.</li>
-</ul>
-</section></section>
-<section>
-<section id="inference" class="title-slide slide level1 center">
-<h1>Inference</h1>
-
-</section>
-<section id="comments" class="slide level2">
-<h2>Comments</h2>
-<ul>
-<li class="fragment">Estimating a pure MA(q) in isolation is probably not super useful;</li>
-<li class="fragment">In general, state space methods and the Kalman filter are absolutely the way to go;</li>
-<li class="fragment">But for purposes of illustration, let’s work through a simple method-of-moments calculation for the MA(1).</li>
-</ul>
-</section>
-<section id="estimating-equations" class="slide level2 small scrollable">
-<h2>Estimating equations</h2>
-<p>We know:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\gamma(1) &amp;\;=\; \theta_1\sigma^2\\
-\gamma(0) &amp;\;=\; (1+\theta_1^2)\sigma^2=\sigma^2+\theta_1^2\sigma^2. \\
-\end{aligned}
-\]</span></p>
-<div class="fragment">
-<p>To solve, notice that</p>
-<p><span class="math display">\[
-\begin{aligned}
-\gamma(1)\theta_1^2-\gamma(0)\theta_1+\gamma(1)=0\\
-\end{aligned}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>So</p>
-<p><span class="math display">\[
-\begin{aligned}
-\theta_1&amp;=\frac{\gamma(0){\color{red}\pm}\sqrt{\gamma(0)^2-4\gamma(1)^2}}{2\gamma(1)}
+\varepsilon_t
 \\
-\sigma^2&amp;=
-\frac{\gamma(1)}{\theta_1}
-=
-\frac{\gamma(0)}{1+\theta_1^2}.
+(1
+-
+\beta_1 L-\beta_2L^2)y_t
+&amp;=
+\varepsilon_t.
 \end{aligned}
 \]</span></p>
-<p>By convention, we pick whichever solution that is between -1 and 1.</p>
+</section>
+<section id="the-arp" class="slide level2">
+<h2>The AR(p)</h2>
+<p>Old way of writing it:</p>
+<p><span class="math display">\[
+y_t=\sum\limits_{l=1}^p\beta_ly_{t-l}+\varepsilon_t.
+\]</span></p>
+<div class="fragment">
+<p>New way of writing it:</p>
+<p><span class="math display">\[
+\left(1-\sum\limits_{l=1}^p\beta_lL^l\right)y_t=\varepsilon_t.
+\]</span></p>
 </div>
 </section>
-<section id="sample-averages" class="slide level2">
-<h2>Sample averages</h2>
-<p><span class="math display">\[
-\begin{aligned}
-\hat{\gamma}(0) &amp;= \frac{1}{T}\sum_{t=1}^{T} (y_t - \bar{y})^2,\\
-\hat{\gamma}(1) &amp;= \frac{1}{T}\sum_{t=2}^{T} (y_t - \bar{y})(y_{t-1} - \bar{y})
-\end{aligned}
-\]</span></p>
-</section>
-<section id="method-of-moments" class="slide level2">
-<h2>Method of moments</h2>
-<p><span class="math display">\[
-\begin{aligned}
-\hat{\theta}_1&amp;=\frac{\hat{\gamma}(0){\color{red}\pm}\sqrt{\hat{\gamma}(0)^2-4\hat{\gamma}(1)^2}}{2\hat{\gamma}(1)}
-\\
-\hat{\sigma^2}&amp;=
-\frac{\hat{\gamma}(1)}{\hat{\theta}_1}
-=
-\frac{\hat{\gamma}(0)}{1+\hat{\theta}_1^2}.
-\end{aligned}
-\]</span> Have to pick a solution.</p>
-</section>
-<section id="asymptotics" class="slide level2">
-<h2>Asymptotics</h2>
+<section id="the-ar-polynomial" class="slide level2">
+<h2>The AR polynomial</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Shumway and Stoffer (2025) Example 3.28</strong></p>
+<p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>Assuming <span class="math inline">\(|\theta_1|&lt;1\)</span>, then <span class="math display">\[
-\sqrt{T}(\hat{\theta}_1-\theta_1)\cd\N\left(0\com\frac{1+\theta_1^2+4\theta_1^4+\theta_1^6+\theta_1^8}{(1-\theta_1^2)^2}\right).
+<p>If <span class="math inline">\(\beta_{1:p}\)</span> are the non-zero coefficients of an AR(p), then the <strong>AR polynomial</strong> is</p>
+<p><span class="math display">\[
+\beta(z) = 1-\beta_1z-\beta_2z^2-...-\beta_pz^p,\quad z\in\mathbb{C}.
 \]</span></p>
 </div>
 </div>
 </div>
+<div class="fragment">
+<p>Plug in the lag operator <span class="math inline">\(L\)</span>, and we see that the AR(p) is</p>
+<p><span class="math display">\[
+\beta(L)y_t=\varepsilon_t.
+\]</span></p>
+</div>
+</section>
+<section id="ma1" class="slide level2">
+<h2>MA(1)</h2>
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\varepsilon_t+\theta_1\varepsilon_{t-1}
+\\
+&amp;=
+\varepsilon_t+\theta_1L\varepsilon_t
+\\
+&amp;=
+(1+\theta_1L)\varepsilon_t.
+\\
+\end{aligned}
+\]</span></p>
+</section>
+<section id="ma2" class="slide level2">
+<h2>MA(2)</h2>
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\varepsilon_t+\theta_1\varepsilon_{t-1} + \theta_2\varepsilon_{t-2}
+\\
+&amp;=
+\varepsilon_t+\theta_1L\varepsilon_t + \theta_2L^2\varepsilon_{t}
+\\
+&amp;=
+(1+\theta_1L+\theta_2L^2)\varepsilon_t.
+\\
+\end{aligned}
+\]</span></p>
+</section>
+<section id="the-maq" class="slide level2">
+<h2>The MA(q)</h2>
+<p>Old way of writing it:</p>
+<p><span class="math display">\[
+y_t
+=
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t.
+.
+\]</span></p>
+<div class="fragment">
+<p>New way of writing it:</p>
+<p><span class="math display">\[
+y_t=\left(1+\sum\limits_{i=1}^q\theta_iL^i\right)\varepsilon_t.
+\]</span></p>
+</div>
+</section>
+<section id="the-ma-polynomial" class="slide level2">
+<h2>The MA polynomial</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(\theta_{1:q}\)</span> are the non-zero coefficients of an MA(q), then the <strong>MA polynomial</strong> is</p>
+<p><span class="math display">\[
+\theta(z) = 1+\theta_1z+\theta_2z^2+...+\theta_qz^q,\quad z\in\mathbb{C}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Plug in the lag operator <span class="math inline">\(L\)</span>, and we see that the MA(q) is</p>
+<p><span class="math display">\[
+y_t=\theta(L)\varepsilon_t.
+\]</span></p>
+</div>
+</section>
+<section id="arma1-1" class="slide level2">
+<h2>ARMA(1, 1)</h2>
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\beta_1y_{t-1}
++
+\varepsilon_t+\theta_1\varepsilon_{t-1}
+\\
+y_t
+&amp;=
+\beta_1Ly_t
++
+(1+\theta_1L)\varepsilon_t
+\\
+(1-\beta_1L)
+y_t
+&amp;=
+(1+\theta_1L)\varepsilon_t.
+\end{aligned}
+\]</span></p>
+</section>
+<section id="armap-q" class="slide level2">
+<h2>ARMA(p, q)</h2>
+<p>Old way of writing it:</p>
+<p><span class="math display">\[
+y_t
+=
+\sum\limits_{l=1}^p\beta_ly_{t-l}
++
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t
+\]</span></p>
+<div class="fragment">
+<p>New way of writing it:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\beta(L)y_t
+&amp;=
+\theta(L)\varepsilon_t.
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="a-tale-of-two-polynomials" class="slide level2">
+<h2>A tale of two polynomials</h2>
+<p>The ARMA(p, q):</p>
+<p><span class="math display">\[
+\beta(L)y_t
+=
+\theta(L)\varepsilon_t,
+\quad\varepsilon\iid\N(0\com\sigma^2).
+\]</span></p>
+<div class="fragment">
+<p>Much hinges on the properties of these two goofy polynomials of a complex argument:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\beta(z)&amp;=1-\sum\limits_{l=1}^p\beta_lz^l\\
+\theta(z)&amp;=1+\sum\limits_{i=1}^q\theta_iz^i.
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="question" class="slide level2">
+<h2>Question</h2>
+<div class="fragment">
+<p>Can we write this?</p>
+<p><span class="math display">\[
+y_t=\frac{\theta(L)}{\beta(L)}\varepsilon_t.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Can we write this?</p>
+<p><span class="math display">\[
+\frac{\beta(L)}{\theta(L)}y_t=\varepsilon_t.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The <em>inverses</em> <span class="math inline">\(1/\beta(L)\)</span> and <span class="math inline">\(1/\theta(L)\)</span> only converge if the respective polynomials have roots <em>outside</em> the unit circle. Are you tingling?</p>
+</div>
+</section></section>
+<section>
+<section id="rewrite-arp-as-mainfty" class="title-slide slide level1 center">
+<h1>Rewrite AR(p) as MA(<span class="math inline">\(\infty\)</span>)</h1>
+
+</section>
+<section id="example-ar1-as-mainfty" class="slide level2">
+<h2>Example: AR(1) as MA(<span class="math inline">\(\infty\)</span>)</h2>
+<p>Assuming mean-zero (<span class="math inline">\(\beta_0=0\)</span>), we know</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_1&amp;=\beta_1y_0+\varepsilon_1\\
+y_2&amp;=\beta_1y_1+\varepsilon_2\\
+y_3&amp;=\beta_1y_2+\varepsilon_3\\
+&amp;\vdots\\
+y_{t-1}&amp;=\beta_1y_{t-2}+\varepsilon_{t-1}\\
+y_t&amp;=\beta_1y_{t-1}+\varepsilon_t\\
+&amp;\vdots
+\end{aligned}
+\]</span></p>
+</section>
+<section id="example-ar1-as-mainfty-1" class="slide level2">
+<h2>Example: AR(1) as MA(<span class="math inline">\(\infty\)</span>)</h2>
+<p>Apply recursive substitution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_t
+&amp;=
+\beta_1y_{t-1}+\varepsilon_t\\
+&amp;=
+\beta_1(\beta_1y_{t-2}+\varepsilon_{t-1})+\varepsilon_t\\
+&amp;=
+\beta_1^2y_{t-2}+\beta_1\varepsilon_{t-1}+\varepsilon_t\\
+&amp;=
+\beta_1^2(\beta_1y_{t-3}+\varepsilon_{t-2})+\beta_1\varepsilon_{t-1}+\varepsilon_t\\
+&amp;=
+\beta_1^3y_{t-3}+\beta_1^2\varepsilon_{t-2}+\beta_1\varepsilon_{t-1}+\varepsilon_t\\
+&amp;\vdots\\
+&amp;=
+\beta_1^ky_{t-k}
++
+\sum\limits_{j=0}^{k-1}\beta_1^j\varepsilon_{t-j}
+\\
+&amp;\vdots
+\end{aligned}
+\]</span></p>
+</section>
+<section id="example-ar1-as-mainfty-2" class="slide level2">
+<h2>Example: AR(1) as MA(<span class="math inline">\(\infty\)</span>)</h2>
+<p>Keep doing that forever, and eventually</p>
+<p><span class="math display">\[
+y_t
+=
+\sum\limits_{j=0}^\infty \beta_1^j\varepsilon_{t-j}.
+\]</span> In order for the right-hand side to be finite, we need <span class="math inline">\(|\beta_1|&lt;1\)</span>.</p>
+<p>In other words, the AR(1) has to be stationary.</p>
+</section>
+<section id="in-general-arp-as-mainfty" class="slide level2">
+<h2>In general: AR(p) as MA(<span class="math inline">\(\infty\)</span>)</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>MA(<span class="math inline">\(\infty\)</span>) representation</strong></p>
+</div>
+<div class="callout-content">
+<p>If an AR(p) is stationary, then it can be written</p>
+<p><span class="math display">\[
+y_t=\frac{1}{\beta(L)}\varepsilon_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+\]</span> where <span class="math inline">\(\psi_0=1\)</span> and <span class="math inline">\(\sum_{j=0}^\infty |\psi_j|&lt;\infty\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>In other words, there is an infinite order MA polynomial</p>
+<p><span class="math display">\[
+\psi(z)=1+\psi_1z+\psi_2z^2+\psi_3z^3+...
+\]</span></p>
+<p>and <span class="math inline">\(y_t=\psi(L)\varepsilon_t\)</span>.</p>
+</div>
+</section>
+<section id="stationarity-redux" class="slide level2 medium">
+<h2>Stationarity redux</h2>
+<p>Companion form matrix:</p>
+<p><span class="math display">\[
+\BG
+=
+\begin{bmatrix}
+\beta_1 &amp; \beta_2  &amp; \cdots &amp; \beta_{p-1} &amp; \beta_p\\
+1 &amp; 0  &amp; \cdots &amp; 0 &amp; 0\\
+0 &amp; 1  &amp; \cdots &amp; 0 &amp; 0\\
+\vdots &amp; \vdots  &amp; \ddots &amp; \vdots &amp; \vdots\\
+0 &amp; 0  &amp; \cdots &amp; 1 &amp; 0
+\end{bmatrix}
+\]</span></p>
+<div class="fragment">
+<p>AR polynomial:</p>
+<p><span class="math display">\[
+\beta(z) = 1-\beta_1z-\beta_2z^2-...-\beta_pz^p
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\BG\)</span> having eigenvalues <em>inside</em> the unit circle is the same as <span class="math inline">\(\beta(z)\)</span> having roots <em>outside</em> the unit circle.</p>
+</div>
+</section>
+<section id="eigenvalues-of-the-companion-matrix" class="slide level2">
+<h2>Eigenvalues of the companion matrix</h2>
+<p>The eigenvalues solve</p>
+<p><span class="math display">\[
+\det(\BG-\lambda\BI_p)=0
+\]</span></p>
+<div class="fragment">
+<p>If <span class="math inline">\(p=2\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\det\begin{pmatrix}
+\beta_1-\lambda &amp; \beta_2\\
+1 &amp; -\lambda
+\end{pmatrix}
+&amp;=
+-\lambda(\beta_1-\lambda)-\beta_2
+\\
+&amp;=
+\lambda^2-\beta_1\lambda-\beta_2.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In general, you can show that</p>
+<p><span class="math display">\[
+\det(\BG-\lambda\BI_p)
+=
+\lambda^p
+-
+\beta_1\lambda^{p-1}
+-
+\beta_2\lambda^{p-2}
+-
+\cdots
+-
+\beta_p
+.
+\]</span></p>
+</div>
+</section>
+<section id="relation-to-the-ar-polynomial" class="slide level2">
+<h2>Relation to the AR polynomial</h2>
+<p>Eigenvalues of <span class="math inline">\(\BG\)</span> are roots of:</p>
+<p><span class="math display">\[
+g(\lambda)=
+\lambda^p
+-
+\beta_1\lambda^{p-1}
+-
+\beta_2\lambda^{p-2}
+-
+\cdots
+-
+\beta_p.
+\]</span></p>
+<div class="fragment">
+<p>Notice that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\beta(1/\lambda) &amp;= 1-\frac{\beta_1}{\lambda}-\frac{\beta_2}{\lambda^2}-...-\frac{\beta_p}{\lambda^p}
+\\
+&amp;=
+\frac{\lambda^p}{\lambda^p}
+\left(
+1-\frac{\beta_1}{\lambda}-\frac{\beta_2}{\lambda^2}-...-\frac{\beta_p}{\lambda^p}\right)\\
+&amp;=
+\frac{1}{\lambda^p}(\lambda^p
+-
+\beta_1\lambda^{p-1}
+-
+\beta_2\lambda^{p-2}
+-
+\cdots
+-
+\beta_p)
+\\
+&amp;=
+g(\lambda)/\lambda^p.
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="main-idea" class="slide level2">
+<h2>Main idea</h2>
+<div class="fragment">
+<ul>
+<li>We know</li>
+</ul>
+<p><span class="math display">\[
+\beta\left(\frac{1}{\lambda}\right)=\frac{g(\lambda)}{\lambda^{p}}.
+\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>The roots of <span class="math inline">\(\beta(z)\)</span> and the roots of <span class="math inline">\(g(\lambda)\)</span> are reciprocals of one another;</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>If <span class="math inline">\(|\lambda|&lt;1\)</span>, then <span class="math inline">\(|1/\lambda|=1/|\lambda|&gt;1\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="where-do-the-new-coefficients-come-from" class="slide level2">
+<h2>Where do the new coefficients come from?</h2>
+<p>Theoretically, we have</p>
+<p><span class="math display">\[
+y_t=\frac{1}{\beta(L)}\varepsilon_t=\psi(L)\varepsilon_t,
+\]</span></p>
+<p>so whatever they are, the <span class="math inline">\(\psi_j\)</span> solve</p>
+<p><span class="math display">\[
+\psi(z)=\sum\limits_{j=0}^\infty\psi_jz^j=\frac{1}{\beta(z)}=\frac{1}{1-\sum\limits_{l=1}^p\beta_lz^l}.
+\]</span></p>
+</section>
+<section id="parting-thought-summability" class="slide level2">
+<h2>Parting thought: summability</h2>
+<ul>
+<li>The assumptions of the theorem (stationary AR) are enough to guarantee absolute summability;</li>
+<li>The MA(<span class="math inline">\(\infty\)</span>) would remain coherent if we only had square summability, but it wouldn’t be <em>ergodic</em>.</li>
+</ul>
+</section>
+<section id="ergodicity" class="slide level2">
+<h2>Ergodicity</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Law of large numbers for dependent sequences</strong></p>
+</div>
+<div class="callout-content">
+<p>If <span class="math inline">\(y_t\)</span> is stationary with <span class="math inline">\(E(y_t) = \mu\)</span>, <span class="math inline">\(\gamma(h)=\cov(y_{t+h},\,y_t)\)</span>, and</p>
+<p><span class="math display">\[
+\sum\limits_{h=0}^\infty|\gamma(h)|&lt;\infty,
+\]</span></p>
+<p>then</p>
+<p><span class="math display">\[
+\bar{y}_T=\frac{1}{T}\sum\limits_{t=1}^Ty_t\overset{L^2}{\to}\mu.
+\]</span></p>
+<p>Which implies convergence in probability, distribution, etc.</p>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">This is what is meant by <em>ergodic</em>;</li>
+<li class="fragment">Without it, stuff like method-of-moments breaks down;</li>
+<li class="fragment">Square summable is not enough.</li>
+</ul>
+</section></section>
+<section>
+<section id="rewrite-maq-as-arinfty" class="title-slide slide level1 center">
+<h1>Rewrite MA(q) as AR<span class="math inline">\((\infty)\)</span></h1>
+
+</section>
+<section id="example-ma1-as-arinfty" class="slide level2">
+<h2>Example: MA(1) as AR<span class="math inline">\((\infty)\)</span></h2>
+<p>We know that</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_1&amp;=\varepsilon_1+\theta_1\varepsilon_{0} &amp;&amp;\implies &amp;&amp;\varepsilon_1=y_1-\theta_1\varepsilon_0\\
+y_2&amp;=\varepsilon_2+\theta_1\varepsilon_{1} &amp;&amp;\implies &amp;&amp;\varepsilon_2=y_2-\theta_1\varepsilon_1\\
+y_3&amp;=\varepsilon_3+\theta_1\varepsilon_{2} &amp;&amp;\implies &amp;&amp;\varepsilon_3=y_3-\theta_1\varepsilon_2\\
+&amp; &amp;&amp;\vdots\\
+y_{t-1}&amp;=\varepsilon_{t-1}+\theta_1\varepsilon_{t-2} &amp;&amp;\implies &amp;&amp;\varepsilon_{t-1}=y_{t-1}-\theta_1\varepsilon_{t-2}\\
+y_t&amp;=\varepsilon_t+\theta_1\varepsilon_{t-1} &amp;&amp;\implies &amp;&amp;\varepsilon_t=y_t-\theta_1\varepsilon_{t-1}\\
+&amp; &amp;&amp;\vdots
+\end{aligned}
+\]</span></p>
+</section>
+<section id="example-ma1-as-arinfty-1" class="slide level2">
+<h2>Example: MA(1) as AR<span class="math inline">\((\infty)\)</span></h2>
+<p>Recursive substitution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\varepsilon_t
+&amp;=
+y_t
+-
+\theta_1\varepsilon_{t-1}
+\\
+&amp;=
+y_t
+-
+\theta_1(y_{t-1}-\theta_1\varepsilon_{t-2})
+\\
+&amp;=
+y_t
+-
+\theta_1y_{t-1}+\theta_1^2\varepsilon_{t-2}
+\\
+&amp;=
+y_t
+-
+\theta_1y_{t-1}+\theta_1^2(y_{t-2}-\theta_1\varepsilon_{t-3})
+\\
+&amp;=
+y_t
+-
+\theta_1y_{t-1}+\theta_1^2y_{t-2}-\theta_1^3\varepsilon_{t-3}
+\\
+&amp;\vdots \\
+&amp;=
+\sum\limits_{j=0}^{k-1} (-\theta_1)^jy_{t-j} + (-\theta_1)^{k}\varepsilon_{t-k}
+\\
+&amp;\vdots
+\end{aligned}
+\]</span></p>
+</section>
+<section id="example-ma1-as-arinfty-2" class="slide level2">
+<h2>Example: MA(1) as AR<span class="math inline">\((\infty)\)</span></h2>
+<p>Keep doing that forever, and eventually</p>
+<p><span class="math display">\[
+\varepsilon_t
+=
+\sum\limits_{j=0}^\infty (-\theta_1)^jy_{t-j}.
+\]</span> In order for the right-hand side to be finite, we need <span class="math inline">\(|\theta_1|&lt;1\)</span>.</p>
+<p>In other words, the MA(1) has to be identified.</p>
+</section>
+<section id="invertibility" class="slide level2">
+<h2>Invertibility</h2>
+<p>If the MA polynomial</p>
+<p><span class="math display">\[
+\theta(z)=1+\theta_1z+\theta_2z^2+...+\theta_qz^q
+\]</span></p>
+<p>has roots outside the unit circle, then we can <em>invert</em>:</p>
+<p><span class="math display">\[
+y_t=\theta(L)\varepsilon_t\quad \Longleftrightarrow\quad \frac{1}{\theta(L)}y_t=\varepsilon_t
+\]</span></p>
+<p>This condition on the roots is also what ensures <em>identification</em>.</p>
+</section>
+<section id="in-general-maq-as-arinfty" class="slide level2">
+<h2>In general: MA(q) as AR<span class="math inline">\((\infty)\)</span></h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>AR(<span class="math inline">\(\infty\)</span>) representation</strong></p>
+</div>
+<div class="callout-content">
+<p>If an MA(q) is invertible, then it can be written</p>
+<p><span class="math display">\[
+\varepsilon_t=\frac{1}{\theta(L)}y_t=\sum\limits_{j=0}^\infty \pi_jy_{t-j},
+\]</span> where <span class="math inline">\(\pi_0=1\)</span> and <span class="math inline">\(\sum_{j=0}^\infty |\pi_j|&lt;\infty\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>In other words, there is an infinite order AR polynomial</p>
+<p><span class="math display">\[
+\pi(z)=1+\pi_1z+\pi_2z^2+\pi_3z^3+...
+\]</span></p>
+<p>and <span class="math inline">\(\varepsilon_t=\pi(L)y_t\)</span>.</p>
+</div>
+</section>
+<section id="where-do-the-new-coefficients-come-from-1" class="slide level2">
+<h2>Where do the new coefficients come from?</h2>
+<p>Theoretically, we have</p>
+<p><span class="math display">\[
+\varepsilon_t=\frac{1}{\theta(L)}y_t=\pi(L)y_t,
+\]</span></p>
+<p>so whatever they are, the <span class="math inline">\(\pi_j\)</span> solve</p>
+<p><span class="math display">\[
+\pi(z)=\sum\limits_{j=0}^\infty\pi_jz^j=\frac{1}{\theta(z)}=\frac{1}{1+\sum\limits_{i=1}^q\theta_iz^i}.
+\]</span></p>
+</section></section>
+<section>
+<section id="rewrite-arma-as-pure-ar-or-ma" class="title-slide slide level1 center">
+<h1>Rewrite ARMA as pure AR or MA</h1>
+
+</section>
+<section id="putting-it-together" class="slide level2">
+<h2>Putting it together</h2>
+<p>We know:</p>
+<p><span class="math display">\[
+\beta(L)y_t
+=
+\theta(L)\varepsilon_t.
+\]</span></p>
+<div class="fragment">
+<p>If it’s stationary, you get an MA(<span class="math inline">\(\infty\)</span>):</p>
+<p><span class="math display">\[
+y_t=\frac{\theta(L)}{\beta(L)}\varepsilon_t.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>If it’s invertible, you get an AR(<span class="math inline">\(\infty\)</span>):</p>
+<p><span class="math display">\[
+\frac{\beta(L)}{\theta(L)}y_t=\varepsilon_t.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>If it’s both stationary and invertible, take your pick.</p>
+</div>
+</section>
+<section id="arma-as-mainfty" class="slide level2">
+<h2>ARMA as MA(<span class="math inline">\(\infty\)</span>)</h2>
+<p>A stationary ARMA(p, q) can be written</p>
+<p><span class="math display">\[
+y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+\]</span></p>
+<p>where the <span class="math inline">\(\psi_j\)</span> solve</p>
+<p><span class="math display">\[
+\psi(z)=\sum\limits_{j=0}^\infty \psi_jz^j=\frac{\theta(z)}{\beta(z)},\quad |z|\leq 1.
+\]</span></p>
+<p>How?</p>
+</section>
+<section id="recursion-for-the-new-weights" class="slide level2 small">
+<h2>Recursion for the new weights</h2>
+<p>Match the coefficients:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\psi(z)
+&amp;=\frac{\theta(z)}{\beta(z)}
+\\
+\beta(z)\psi(z)
+&amp;=\theta(z)
+\\
+(1-\beta_1z-\beta_2z^2-...-\beta_pz^p)(1+\psi_1z+\psi_2z^2+...)
+&amp;=
+1+\theta_1z+\theta_2z^2+...+\theta_qz^q.
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>Multiply the left side out, and it must be that</p>
+<p><span class="math display">\[
+\begin{aligned}
+\psi_0 &amp;= 1, \\
+\psi_1 - \beta_1 \psi_0 &amp;= \theta_1, \\
+\psi_2 - \beta_1 \psi_1 - \phi_2 \psi_0 &amp;= \theta_2, \\
+\psi_3 - \beta_1 \psi_2 - \phi_2 \psi_1 - \phi_3 \psi_0 &amp;= \theta_3, \\
+&amp;\ \ \vdots
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+<section id="in-general" class="slide level2">
+<h2>In general</h2>
+<p>Get a computer to grind through:</p>
+<p><span class="math display">\[
+\psi_j - \sum_{k=1}^p \beta_k \psi_{j-k} = 0,
+\qquad j \geq \max(p, q+1)
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\psi_j - \sum_{k=1}^j \beta_k \psi_{j-k} = \theta_j,
+\qquad 0 \leq j &lt; \max(p, q+1).
+\]</span></p>
+</section>
+<section id="arma-as-arinfty" class="slide level2">
+<h2>ARMA as AR(<span class="math inline">\(\infty\)</span>)</h2>
+<p>A invertible ARMA(p, q) can be written</p>
+<p><span class="math display">\[
+\varepsilon_t=\sum\limits_{j=0}^\infty \pi_jy_{t-j},
+\]</span></p>
+<p>where the <span class="math inline">\(\pi_j\)</span> solve</p>
+<p><span class="math display">\[
+\pi(z)=\sum\limits_{j=0}^\infty \pi_jz^j=\frac{\beta(z)}{\theta(z)},\quad |z|\leq 1.
+\]</span></p>
+<p>Weights follow similar idea from before. Just let a computer do it.</p>
+</section>
+<section id="big-ol-theorem" class="slide level2 small">
+<h2>Big ol’ theorem</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Wold representation</strong></p>
+</div>
+<div class="callout-content">
+<p>Any stationary mean-zero process <span class="math inline">\(y_t\)</span> can be uniquely written as</p>
+<p><span class="math display">\[
+y_t=\nu_t+\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\varepsilon_t\)</span> uncorrelated with variance <span class="math inline">\(\sigma^2&gt;0\)</span>;</li>
+<li><span class="math inline">\(\psi_j\)</span> square summable;</li>
+<li><span class="math inline">\(\nu_t\)</span> perfectly predictable given its history (<em>deterministic</em>).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Shumway and Stoffer:</p>
+<blockquote>
+<p>The theorem…falls short of our needs because we would prefer the noise process…to be independent…<span class="math inline">\(\{\psi_j\}\)</span> to be absolutely summable. But the decomposition does give us the confidence that we will not be completely oﬀ the mark by fitting ARMA models to many types of time series.</p>
+</blockquote>
+</div>
+<div class="fragment">
+<p>Whatever.</p>
 
 
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
