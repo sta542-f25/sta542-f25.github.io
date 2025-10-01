@@ -1,0 +1,867 @@
+---
+title: "ARMA models II"
+subtitle: "Lecture 10"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
+## Where were we?
+
+$$
+y_t
+=
+\beta_0
++
+\underbrace{\sum\limits_{l=1}^p\beta_ly_{t-l}}_{\text{autoregressive}}
++
+\underbrace{\sum_{i=1}^q\theta_i\varepsilon_{t-i}}_{\text{moving average}}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+. . .
+
+Can't do anything analytically:
+
+::: incremental 
+- MLE requires numerical optimization;
+- Bayes requires ugly MCMC;
+- Forecasts with correct uncertainty quantification are hard;
+- Bootstrapping is a pain;
+- Model combination is probably not worth it.
+:::
+
+## The bottom line, at the top 
+
+::: incremental 
+- A stationary AR(p) can be written as an MA$(\infty)$;
+- An "invertible" MA(q) can be written as an AR$(\infty)$;
+- A stationary and invertible ARMA(p, q) can be written as either an MA$(\infty)$ or an AR$(\infty)$.
+:::
+
+. . .
+
+These suggest *approximations* that can ease the computational burden of estimation and forecasting.
+
+# Quick background
+
+## Lag operator
+
+::: callout-note
+## Definition
+The **lab operator** $L$ acts on a time series $y_t$ to return its first lagged value:
+
+$$
+Ly_{t}=y_{t-1}.
+$$
+:::
+
+. . .
+
+Imagine multiple applications:
+
+$$
+L^2 y_{t}= L L y_{t}=L y_{t-1}=y_{t-2}.
+$$
+
+. . .
+
+In general: 
+
+$$
+L^ky_t=y_{t-k}.
+$$
+
+## AR(1)
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_1y_{t-1}+\varepsilon_t
+\\
+y_t
+&=
+\beta_1 Ly_t+\varepsilon_t
+\\
+y_t
+-
+\beta_1 Ly_t
+&=
+\varepsilon_t
+\\
+(1
+-
+\beta_1 L)y_t
+&=
+\varepsilon_t.
+\end{aligned}
+$$
+
+## AR(2)
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_1y_{t-1}+\beta_2y_{t-2}+\varepsilon_t
+\\
+y_t
+&=
+\beta_1Ly_t+\beta_2L^2y_t+\varepsilon_t
+\\
+y_t
+-
+\beta_1Ly_t-\beta_2L^2y_t
+&=
+\varepsilon_t
+\\
+(1
+-
+\beta_1 L-\beta_2L^2)y_t
+&=
+\varepsilon_t.
+\end{aligned}
+$$
+
+## The AR(p)
+
+Old way of writing it:
+
+$$
+y_t=\sum\limits_{l=1}^p\beta_ly_{t-l}+\varepsilon_t.
+$$
+
+. . .
+
+New way of writing it:
+
+$$
+\left(1-\sum\limits_{l=1}^p\beta_lL^l\right)y_t=\varepsilon_t.
+$$
+
+## The AR polynomial
+
+::: callout-tip
+## Definition
+If $\beta_{1:p}$ are the non-zero coefficients of an AR(p), then the **AR polynomial** is 
+
+$$
+\beta(z) = 1-\beta_1z-\beta_2z^2-...-\beta_pz^p,\quad z\in\mathbb{C}.
+$$
+:::
+
+. . .
+
+Plug in the lag operator $L$, and we see that the AR(p) is
+
+$$
+\beta(L)y_t=\varepsilon_t.
+$$
+
+## MA(1)
+
+$$
+\begin{aligned}
+y_t
+&=
+\varepsilon_t+\theta_1\varepsilon_{t-1}
+\\
+&=
+\varepsilon_t+\theta_1L\varepsilon_t
+\\
+&=
+(1+\theta_1L)\varepsilon_t.
+\\
+\end{aligned}
+$$
+
+## MA(2)
+
+$$
+\begin{aligned}
+y_t
+&=
+\varepsilon_t+\theta_1\varepsilon_{t-1} + \theta_2\varepsilon_{t-2}
+\\
+&=
+\varepsilon_t+\theta_1L\varepsilon_t + \theta_2L^2\varepsilon_{t}
+\\
+&=
+(1+\theta_1L+\theta_2L^2)\varepsilon_t.
+\\
+\end{aligned}
+$$
+
+## The MA(q)
+
+Old way of writing it:
+
+$$
+y_t
+=
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t.
+.
+$$
+
+. . .
+
+New way of writing it:
+
+$$
+y_t=\left(1+\sum\limits_{i=1}^q\theta_iL^i\right)\varepsilon_t.
+$$
+
+## The MA polynomial
+
+
+::: callout-tip
+## Definition
+If $\theta_{1:q}$ are the non-zero coefficients of an MA(q), then the **MA polynomial** is 
+
+$$
+\theta(z) = 1+\theta_1z+\theta_2z^2+...+\theta_qz^q,\quad z\in\mathbb{C}.
+$$
+:::
+
+. . .
+
+Plug in the lag operator $L$, and we see that the MA(q) is
+
+$$
+y_t=\theta(L)\varepsilon_t.
+$$
+
+## ARMA(1, 1)
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_1y_{t-1}
++
+\varepsilon_t+\theta_1\varepsilon_{t-1}
+\\
+y_t
+&=
+\beta_1Ly_t
++
+(1+\theta_1L)\varepsilon_t
+\\
+(1-\beta_1L)
+y_t
+&=
+(1+\theta_1L)\varepsilon_t.
+\end{aligned}
+$$
+
+## ARMA(p, q)
+
+Old way of writing it:
+
+$$
+y_t
+=
+\sum\limits_{l=1}^p\beta_ly_{t-l}
++
+\sum_{i=1}^q\theta_i\varepsilon_{t-i}
++
+\varepsilon_t
+$$
+
+. . .
+
+New way of writing it:
+
+$$
+\begin{aligned}
+\beta(L)y_t
+&=
+\theta(L)\varepsilon_t.
+\end{aligned}
+$$
+
+## A tale of two polynomials
+
+The ARMA(p, q):
+
+$$
+\beta(L)y_t
+=
+\theta(L)\varepsilon_t,
+\quad\varepsilon\iid\N(0\com\sigma^2).
+$$
+
+. . .
+
+Much hinges on the properties of these two goofy polynomials of a complex argument:
+
+$$
+\begin{aligned}
+\beta(z)&=1-\sum\limits_{l=1}^p\beta_lz^l\\
+\theta(z)&=1+\sum\limits_{i=1}^q\theta_iz^i.
+\end{aligned}
+$$
+
+## Question
+
+. . .
+
+
+Can we write this?
+
+$$
+y_t=\frac{\theta(L)}{\beta(L)}\varepsilon_t.
+$$
+
+. . .
+
+Can we write this?
+
+$$
+\frac{\beta(L)}{\theta(L)}y_t=\varepsilon_t.
+$$
+
+. . .
+
+The *inverses* $1/\beta(L)$ and $1/\theta(L)$ only converge if the respective polynomials have roots *outside* the unit circle. Are you tingling?
+
+# Rewrite AR(p) as MA($\infty$)
+
+## Example: AR(1) as MA($\infty$)
+
+Assuming mean-zero ($\beta_0=0$), we know
+
+$$
+\begin{aligned}
+y_1&=\beta_1y_0+\varepsilon_1\\
+y_2&=\beta_1y_1+\varepsilon_2\\
+y_3&=\beta_1y_2+\varepsilon_3\\
+&\vdots\\
+y_{t-1}&=\beta_1y_{t-2}+\varepsilon_{t-1}\\
+y_t&=\beta_1y_{t-1}+\varepsilon_t\\
+&\vdots
+\end{aligned}
+$$
+
+## Example: AR(1) as MA($\infty$)
+
+Apply recursive substitution:
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_1y_{t-1}+\varepsilon_t\\
+&=
+\beta_1(\beta_1y_{t-2}+\varepsilon_{t-1})+\varepsilon_t\\
+&=
+\beta_1^2y_{t-2}+\beta_1\varepsilon_{t-1}+\varepsilon_t\\
+&=
+\beta_1^2(\beta_1y_{t-3}+\varepsilon_{t-2})+\beta_1\varepsilon_{t-1}+\varepsilon_t\\
+&=
+\beta_1^3y_{t-3}+\beta_1^2\varepsilon_{t-2}+\beta_1\varepsilon_{t-1}+\varepsilon_t\\
+&\vdots\\
+&=
+\beta_1^ky_{t-k}
++
+\sum\limits_{j=0}^{k-1}\beta_1^j\varepsilon_{t-j}
+\\
+&\vdots
+\end{aligned}
+$$
+
+## Example: AR(1) as MA($\infty$)
+
+Keep doing that forever, and eventually
+
+$$
+y_t
+=
+\sum\limits_{j=0}^\infty \beta_1^j\varepsilon_{t-j}.
+$$
+In order for the right-hand side to be finite, we need $|\beta_1|<1$. 
+
+In other words, the AR(1) has to be stationary.
+
+## In general: AR(p) as MA($\infty$)
+
+::: callout-tip
+## MA($\infty$) representation
+If an AR(p) is stationary, then it can be written
+
+$$
+y_t=\frac{1}{\beta(L)}\varepsilon_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+$$
+where $\psi_0=1$ and $\sum_{j=0}^\infty |\psi_j|<\infty$.
+
+:::
+
+. . .
+
+In other words, there is an infinite order MA polynomial
+
+$$
+\psi(z)=1+\psi_1z+\psi_2z^2+\psi_3z^3+...
+$$
+
+and $y_t=\psi(L)\varepsilon_t$.
+
+## Stationarity redux {.medium}
+
+Companion form matrix:
+
+$$
+\BG
+=
+\begin{bmatrix}
+\beta_1 & \beta_2  & \cdots & \beta_{p-1} & \beta_p\\
+1 & 0  & \cdots & 0 & 0\\
+0 & 1  & \cdots & 0 & 0\\
+\vdots & \vdots  & \ddots & \vdots & \vdots\\
+0 & 0  & \cdots & 1 & 0
+\end{bmatrix}
+$$
+
+. . .
+
+AR polynomial:
+
+$$
+\beta(z) = 1-\beta_1z-\beta_2z^2-...-\beta_pz^p
+$$
+
+. . .
+
+$\BG$ having eigenvalues *inside* the unit circle is the same as $\beta(z)$ having roots *outside* the unit circle.
+
+## Eigenvalues of the companion matrix
+
+The eigenvalues solve 
+
+$$
+\det(\BG-\lambda\BI_p)=0
+$$
+
+. . .
+
+If $p=2$, 
+
+$$
+\begin{aligned}
+\det\begin{pmatrix}
+\beta_1-\lambda & \beta_2\\
+1 & -\lambda
+\end{pmatrix}
+&=
+-\lambda(\beta_1-\lambda)-\beta_2
+\\
+&=
+\lambda^2-\beta_1\lambda-\beta_2.
+\end{aligned}
+$$
+
+. . .
+
+In general, you can show that
+
+$$
+\det(\BG-\lambda\BI_p)
+=
+\lambda^p
+-
+\beta_1\lambda^{p-1}
+-
+\beta_2\lambda^{p-2}
+-
+\cdots 
+-
+\beta_p
+.
+$$
+
+## Relation to the AR polynomial
+
+Eigenvalues of $\BG$ are roots of: 
+
+$$
+g(\lambda)=
+\lambda^p
+-
+\beta_1\lambda^{p-1}
+-
+\beta_2\lambda^{p-2}
+-
+\cdots 
+-
+\beta_p.
+$$
+
+. . .
+
+Notice that 
+
+$$
+\begin{aligned}
+\beta(1/\lambda) &= 1-\frac{\beta_1}{\lambda}-\frac{\beta_2}{\lambda^2}-...-\frac{\beta_p}{\lambda^p}
+\\
+&=
+\frac{\lambda^p}{\lambda^p}
+\left(
+1-\frac{\beta_1}{\lambda}-\frac{\beta_2}{\lambda^2}-...-\frac{\beta_p}{\lambda^p}\right)\\
+&=
+\frac{1}{\lambda^p}(\lambda^p
+-
+\beta_1\lambda^{p-1}
+-
+\beta_2\lambda^{p-2}
+-
+\cdots 
+-
+\beta_p)
+\\
+&=
+g(\lambda)/\lambda^p.
+\end{aligned}
+$$
+
+## Main idea
+
+. . .
+
+- We know 
+
+$$
+\beta\left(\frac{1}{\lambda}\right)=\frac{g(\lambda)}{\lambda^{p}}.
+$$
+
+. . .
+
+- The roots of $\beta(z)$ and the roots of $g(\lambda)$ are reciprocals of one another;
+
+. . .
+
+- If $|\lambda|<1$, then $|1/\lambda|=1/|\lambda|>1$. 
+
+## Where do the new coefficients come from?
+
+Theoretically, we have 
+
+$$
+y_t=\frac{1}{\beta(L)}\varepsilon_t=\psi(L)\varepsilon_t,
+$$
+
+so whatever they are, the $\psi_j$ solve
+
+$$
+\psi(z)=\sum\limits_{j=0}^\infty\psi_jz^j=\frac{1}{\beta(z)}=\frac{1}{1-\sum\limits_{l=1}^p\beta_lz^l}.
+$$
+
+## Parting thought: summability
+
+- The assumptions of the theorem (stationary AR) are enough to guarantee absolute summability;
+- The MA($\infty$) would remain coherent if we only had square summability, but it wouldn't be *ergodic*.
+
+## Ergodicity
+
+::: callout-note
+## Law of large numbers for dependent sequences
+If $y_t$ is stationary with $E(y_t) = \mu$, $\gamma(h)=\cov(y_{t+h},\,y_t)$, and
+
+$$
+\sum\limits_{h=0}^\infty|\gamma(h)|<\infty,
+$$
+
+then 
+
+$$
+\bar{y}_T=\frac{1}{T}\sum\limits_{t=1}^Ty_t\overset{L^2}{\to}\mu.
+$$
+
+Which implies convergence in probability, distribution, etc.
+
+:::
+
+::: incremental 
+- This is what is meant by *ergodic*;
+- Without it, stuff like method-of-moments breaks down;
+- Square summable is not enough.
+:::
+
+# Rewrite MA(q) as AR$(\infty)$
+
+
+## Example: MA(1) as AR$(\infty)$
+
+We know that 
+
+$$
+\begin{aligned}
+y_1&=\varepsilon_1+\theta_1\varepsilon_{0} &&\implies &&\varepsilon_1=y_1-\theta_1\varepsilon_0\\
+y_2&=\varepsilon_2+\theta_1\varepsilon_{1} &&\implies &&\varepsilon_2=y_2-\theta_1\varepsilon_1\\
+y_3&=\varepsilon_3+\theta_1\varepsilon_{2} &&\implies &&\varepsilon_3=y_3-\theta_1\varepsilon_2\\
+& &&\vdots\\
+y_{t-1}&=\varepsilon_{t-1}+\theta_1\varepsilon_{t-2} &&\implies &&\varepsilon_{t-1}=y_{t-1}-\theta_1\varepsilon_{t-2}\\
+y_t&=\varepsilon_t+\theta_1\varepsilon_{t-1} &&\implies &&\varepsilon_t=y_t-\theta_1\varepsilon_{t-1}\\
+& &&\vdots
+\end{aligned}
+$$
+
+## Example: MA(1) as AR$(\infty)$
+
+Recursive substitution:
+
+$$
+\begin{aligned}
+\varepsilon_t
+&=
+y_t
+-
+\theta_1\varepsilon_{t-1}
+\\
+&=
+y_t
+-
+\theta_1(y_{t-1}-\theta_1\varepsilon_{t-2})
+\\
+&=
+y_t
+-
+\theta_1y_{t-1}+\theta_1^2\varepsilon_{t-2}
+\\
+&=
+y_t
+-
+\theta_1y_{t-1}+\theta_1^2(y_{t-2}-\theta_1\varepsilon_{t-3})
+\\
+&=
+y_t
+-
+\theta_1y_{t-1}+\theta_1^2y_{t-2}-\theta_1^3\varepsilon_{t-3}
+\\
+&\vdots \\
+&=
+\sum\limits_{j=0}^{k-1} (-\theta_1)^jy_{t-j} + (-\theta_1)^{k}\varepsilon_{t-k}
+\\
+&\vdots 
+\end{aligned}
+$$
+
+## Example: MA(1) as AR$(\infty)$
+
+Keep doing that forever, and eventually
+
+$$
+\varepsilon_t
+=
+\sum\limits_{j=0}^\infty (-\theta_1)^jy_{t-j}.
+$$
+In order for the right-hand side to be finite, we need $|\theta_1|<1$. 
+
+In other words, the MA(1) has to be identified.
+
+## Invertibility
+
+If the MA polynomial 
+
+$$
+\theta(z)=1+\theta_1z+\theta_2z^2+...+\theta_qz^q
+$$
+
+has roots outside the unit circle, then we can *invert*:
+
+$$
+y_t=\theta(L)\varepsilon_t\quad \Longleftrightarrow\quad \frac{1}{\theta(L)}y_t=\varepsilon_t
+$$
+
+This condition on the roots is also what ensures *identification*.
+
+## In general: MA(q) as AR$(\infty)$
+
+::: callout-tip
+## AR($\infty$) representation
+If an MA(q) is invertible, then it can be written
+
+$$
+\varepsilon_t=\frac{1}{\theta(L)}y_t=\sum\limits_{j=0}^\infty \pi_jy_{t-j},
+$$
+where $\pi_0=1$ and $\sum_{j=0}^\infty |\pi_j|<\infty$.
+
+:::
+
+. . .
+
+In other words, there is an infinite order AR polynomial
+
+$$
+\pi(z)=1+\pi_1z+\pi_2z^2+\pi_3z^3+...
+$$
+
+and $\varepsilon_t=\pi(L)y_t$.
+
+## Where do the new coefficients come from?
+
+Theoretically, we have 
+
+$$
+\varepsilon_t=\frac{1}{\theta(L)}y_t=\pi(L)y_t,
+$$
+
+so whatever they are, the $\pi_j$ solve
+
+$$
+\pi(z)=\sum\limits_{j=0}^\infty\pi_jz^j=\frac{1}{\theta(z)}=\frac{1}{1+\sum\limits_{i=1}^q\theta_iz^i}.
+$$
+
+# Rewrite ARMA as pure AR or MA
+
+## Putting it together
+
+We know:
+
+$$
+\beta(L)y_t
+=
+\theta(L)\varepsilon_t.
+$$
+
+. . .
+
+If it's stationary, you get an MA($\infty$):
+
+$$
+y_t=\frac{\theta(L)}{\beta(L)}\varepsilon_t.
+$$
+
+. . .
+
+If it's invertible, you get an AR($\infty$):
+
+$$
+\frac{\beta(L)}{\theta(L)}y_t=\varepsilon_t.
+$$
+
+
+. . .
+
+If it's both stationary and invertible, take your pick.
+
+
+## ARMA as MA($\infty$)
+
+A stationary ARMA(p, q) can be written
+
+$$
+y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+$$
+
+where the $\psi_j$ solve 
+
+$$
+\psi(z)=\sum\limits_{j=0}^\infty \psi_jz^j=\frac{\theta(z)}{\beta(z)},\quad |z|\leq 1.
+$$
+
+How?
+
+## Recursion for the new weights {.small}
+
+Match the coefficients:
+
+$$
+\begin{aligned}
+\psi(z)
+&=\frac{\theta(z)}{\beta(z)}
+\\
+\beta(z)\psi(z)
+&=\theta(z)
+\\
+(1-\beta_1z-\beta_2z^2-...-\beta_pz^p)(1+\psi_1z+\psi_2z^2+...)
+&=
+1+\theta_1z+\theta_2z^2+...+\theta_qz^q.
+\end{aligned}
+$$
+
+. . .
+
+Multiply the left side out, and it must be that 
+
+$$
+\begin{aligned}
+\psi_0 &= 1, \\
+\psi_1 - \beta_1 \psi_0 &= \theta_1, \\
+\psi_2 - \beta_1 \psi_1 - \phi_2 \psi_0 &= \theta_2, \\
+\psi_3 - \beta_1 \psi_2 - \phi_2 \psi_1 - \phi_3 \psi_0 &= \theta_3, \\
+&\ \ \vdots
+\end{aligned}
+$$
+
+## In general
+
+Get a computer to grind through:
+
+$$
+\psi_j - \sum_{k=1}^p \beta_k \psi_{j-k} = 0, 
+\qquad j \geq \max(p, q+1)
+$$
+
+and 
+
+$$
+\psi_j - \sum_{k=1}^j \beta_k \psi_{j-k} = \theta_j, 
+\qquad 0 \leq j < \max(p, q+1).
+$$
+
+
+## ARMA as AR($\infty$)
+
+A invertible ARMA(p, q) can be written
+
+$$
+\varepsilon_t=\sum\limits_{j=0}^\infty \pi_jy_{t-j},
+$$
+
+where the $\pi_j$ solve 
+
+$$
+\pi(z)=\sum\limits_{j=0}^\infty \pi_jz^j=\frac{\beta(z)}{\theta(z)},\quad |z|\leq 1.
+$$
+
+Weights follow similar idea from before. Just let a computer do it.
+
+## Big ol' theorem {.small}
+
+::: callout-important
+## Wold representation
+
+Any stationary mean-zero process $y_t$ can be uniquely written as 
+
+$$
+y_t=\nu_t+\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+$$
+
+where 
+
+- $\varepsilon_t$ uncorrelated with variance $\sigma^2>0$;
+- $\psi_j$ square summable;
+- $\nu_t$ perfectly predictable given its history (*deterministic*).
+
+:::
+
+. . .
+
+Shumway and Stoffer:
+
+> The theorem...falls short of our needs because we would prefer the noise process...to be independent...$\{\psi_j\}$ to be absolutely summable. But the decomposition does give us the confidence that we will not be completely oﬀ the mark by fitting ARMA models to many types of time series.
+
+. . .
+
+Whatever.
