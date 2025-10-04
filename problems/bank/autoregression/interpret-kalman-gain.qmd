@@ -1,0 +1,52 @@
+[Last time](https://sta542-f25.github.io/problems/pset-1.html#problem-5), you derived a recursive updating rule for conjugate Bayesian linear regression. The recursion for the posterior mean of the regression coefficients is
+
+$$
+\newcommand{\tr}{{\scriptscriptstyle\mathsf{T}}}
+\begin{aligned}
+\mathbf{k}_t&=\frac{\mathbf{H}_{t-1}^{-1}\mathbf{x}_t}{1+\mathbf{x}_t^\tr\mathbf{H}_{t-1}^{-1}\mathbf{x}_t}
+\\
+\mathbf{m}_t
+&=
+\mathbf{m}_{t-1}
++
+\mathbf{k}_t(y_t-\mathbf{x}_t^\tr\mathbf{m}_{t-1})
+.
+\end{aligned}
+$$
+
+That vector $\mathbf{k}_t$ is sometimes called the **Kalman gain**. You probably derived this using purely linear algebraic ideas like the Sherman-Morrison formula, but in fact the form of this recursion has important probabilistic meaning as well. 
+
+Imagine you are taking a conjugate Bayesian approach to fitting a Gaussian AR(p). After observing the first $t-1$ observations, here is where things stand:
+
+$$
+\begin{aligned}
+\sigma^2\,|\, y_{1:t-1}
+&\sim
+\text{IG}(a_{t-1},\, b_{t-1})
+\\
+\boldsymbol{\beta}\,|\, \sigma^2,\, y_{1:t-1}
+&\sim 
+\text{N}_{p+1}(\mathbf{m}_{t-1},\,\sigma^2\mathbf{H}^{-1}_{t-1})\\
+y_t\,|\,\boldsymbol{\beta},\,\sigma^2,\, y_{1:t-1}
+&\sim\text{N}(\mathbf{x}_t^{\scriptscriptstyle\mathsf{T}}\boldsymbol{\beta},\,\sigma^2) &&
+\mathbf{x}_t=\begin{bmatrix}1&y_{t-1}&\cdots &y_{t-p}\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}.
+\end{aligned}
+$$
+
+a. Using results from [Problem Set 0](https://sta542-f25.github.io/problems/pset-0.html), show that the joint distribution of $\boldsymbol{\beta}$ and $y_t$ is multivariate normal, and state the moments:
+
+$$
+\begin{bmatrix}
+\boldsymbol{\beta}\\
+y_{t}
+\end{bmatrix}
+\,|\,\sigma^2,\,y_{1:t-1}
+\sim
+\text{N}_{p+2}
+\left(?,\,?\right)
+$$
+
+b. Using part a and standard results for the conditional distributions of multivariate normals, what is the conditional posterior $p(\boldsymbol{\beta}\,|\,\sigma^2,\,y_{1:t})$?
+
+c. Using part b, what is the *probabilistic* interpretation of the Kalman gain $\mathbf{k}_t$?
+

@@ -1,0 +1,41 @@
+The `ARMAacf` function in base `R` computes the autocorrelation function $\rho(h)=\gamma(h)/\gamma(0)$ for the ARMA(p, q) model. Here I've wrapped it in a helper that creates a plot:
+
+```{r}
+# plot the autocorrelation function of an ARMA
+plot_arma_acf <- function(ar = numeric(), ma = numeric(), lag.max = 10){
+  y_vals <- ARMAacf(ar = ar, ma = ma, lag.max = lag.max)
+  plot(0:lag.max, y_vals, pch = 19, ylim = c(-1, 1),
+       xlab = "h", ylab = expression(rho~"(h)"))
+  segments(0:lag.max, 0, 0:lag.max, y_vals)
+  abline(h = 0, col = "lightgrey")
+}
+```
+
+So there you go. John Zito did something nice for once. But unfortunately, his evil twin Zohn Jito is back making ridiculous demands. He visits your office in an unhinged frenzy. Much like [Klytaemnestra](https://youtu.be/aCPkvtCsD2k?si=fieRy0INnI6lBMqT) in Strauss's opera *Elektra*, his sleep has been troubled ("Ich habe keine guten Nächte"). He has been haunted by feverish dreams of autocorrelation functions, but he knows not from whence they came. Dripping with sweat, he pants:
+
+  1. “The autocorrelations start high, but then shrink smoothly and monotonically toward zero, without changing sign. It feels like each step of the series only remembers the last one, nothing more complicated.”
+  1. “The correlations seem to alternate signs: positive, then negative, then positive again. They get smaller each time, kind of like a ringing bell that fades away.”
+  1. “The correlations are definitely there at lag 1, a little bit at lag 2, but after that it looks like nothing. Totally flat.”
+  1. “At lag 1 the correlation is negative, but then it’s pretty much gone. Looks like it bounces once and stops.”
+  1. “The autocorrelations stick around forever. They go down, but it’s painfully slow, like the series doesn’t want to forget the past. It looks borderline nonstationary.”
+  1. “There’s a big spike at lag 1, smaller at lag 2, then it tails off smoothly. It’s not a clean cut-off, but it doesn’t oscillate either.”
+  1. “Lag 1 correlation is very strong, lag 2 is still positive but smaller, and then they slowly decay. No sign changes. The series is persistent, but it looks like the short-term correlation is extra strong compared to the long-term tail.”
+  1. “At lag 1 it’s negative, lag 2 bounces back positive, then it decays but stays positive after that.”
+  1. “It’s not a smooth oscillation like a sine wave, but the correlations jump positive, negative, positive for a few lags before dying off.”
+  1. “There’s one big spike at lag 1, maybe a tiny one at lag 2, and then nothing.”
+  1. “First correlation positive, second negative, third positive but small, then basically gone.”
+  1. “The decay is slower than I’d expect for an MA, but the lag-1 correlation isn’t as huge as in an AR(1). It’s like a compromise between short-term and long-term memory.”
+  1. “The first few correlations are really high and fluctuate a little in sign, then they slowly die away like a bell fading in a canyon. It’s more complicated than the simple sine-wave oscillation.”
+  1. "Correlations die very quickly after lag 3, but the first three lags don’t decrease monotonically—they bounce around a bit.”
+  1. “The series looks nearly like white noise. Most of the correlations are tiny, but if you squint you can see a barely-there persistence beyond lag 5 or 6.”
+  1. “Some of the lags alternate in sign, others don’t. It’s not a simple sine wave, more like a complicated dance that fades gradually.”
+  1. "Lag 1 correlation is negative and quite strong, then lag 2 is barely positive, then the series remembers the past moderately for several lags.”
+
+Help bring this poor man some relief! Play around with different values of $p$, $q$, and the model parameters until you get an autocorrelation function that matches each description.
+
+::: callout-tip 
+## Just do ten
+Respond to ten of the statements for full credit, but play around with all of them to prepare for the midterm.
+:::
+
+

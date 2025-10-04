@@ -1,0 +1,35 @@
+---
+title: "Problem Set 2"
+subtitle: Due Monday October 6 at 11:30 AM
+draft: false
+editor: 
+  mode: source
+---
+
+## Problem 1
+
+{{< include bank/autoregression/ar-2-stationary-region.qmd >}}
+
+## Problem 2
+
+{{< include bank/autoregression/ar-2-yule-walker.qmd >}}
+
+## Problem 3
+
+{{< include bank/autoregression/interpret-kalman-gain.qmd >}}
+
+## Problem 4
+
+{{< include bank/autoregression/ma-as-state-space.qmd >}}
+
+## Problem 5
+
+{{< include bank/autoregression/match-autocorr.qmd >}}
+
+## Problem 6
+
+{{< include bank/autoregression/ar-p-bma.qmd >}}
+
+## Submission
+
+{{< include bank/_submission.qmd >}}

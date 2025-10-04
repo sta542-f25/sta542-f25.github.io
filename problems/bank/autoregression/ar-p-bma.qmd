@@ -1,0 +1,77 @@
+The `arima.sim` function in base `R` does exactly what it says it does. Feel free to read the [documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/arima.sim.html). Furthermore, below the fold are some helper functions that implement basic operations for Bayesian linear regression with conjugate priors:
+
+::: {.callout-tip collapse="true"}
+## Free stuff!
+```{r}
+blr_nig_update <- function(y_t, x_t, a, b, m, invH) {
+  # Given old prior (a, b, m, invH) and new data point (y, x), compute posterior
+  # x_t: column vector (p x 1), m: column vector (p x 1), invH: (p x p)
+  
+  e <- as.numeric(y_t - t(x_t) %*% m)
+  r2 <- as.numeric(1 + t(x_t) %*% invH %*% x_t)
+  k <- invH %*% x_t / r2
+  
+  # update mean
+  m_new <- m + k * e
+  
+  # update covariance
+  invH_new <- invH - k %*% t(x_t) %*% invH
+  
+  # update shape and scale
+  a_new <- a + 0.5
+  b_new <- b + 0.5 * (e^2 / r2)
+  
+  return(list(a = a_new, b = b_new, m = m_new, invH = invH_new))
+}
+
+blr_1step_predictive <- function(x, a, b, m, invH){
+  list(df = 2*a, 
+       ybar = c(t(x) %*% m), 
+       s2 = (b/a) * c(1 + t(x) %*% invH %*% x))
+}
+
+blr_marginal_likelihood <- function(y, X, mu0, Lambda0, a0, b0, 
+                                    mu_n, Lambda_n, a_n, b_n) {
+  n <- length(y)
+  k <- ncol(X)
+  
+  # determinants via Cholesky for stability
+  det_ratio <- determinant(Lambda0, logarithm = TRUE)$modulus -
+    determinant(Lambda_n, logarithm = TRUE)$modulus
+  
+  log_ml <- lgamma(a_n) - lgamma(a0) +
+    a0 * log(b0) - a_n * log(b_n) +
+    0.5 * det_ratio -
+    (n / 2) * log(2 * pi)
+  
+  ml <- exp(log_ml)
+  return(list(log_marginal_lik = as.numeric(log_ml),
+              marginal_lik = as.numeric(ml)))
+}
+```
+:::
+
+Using these raw materials, write a simulation study that generates a synthetic time series from a pure MA(1) with $\theta_1=0.99$. Then, *mistakenly* fit Bayesian AR(p) to the simulated data using these initial priors:
+
+$$
+\begin{aligned}
+p&\sim\text{Unif}(\{1,\,2,\,3\})\\
+\sigma^2&\sim\text{IG}(1,\,1)\\
+\boldsymbol{\beta}\,|\,\sigma^2,\,p&\sim\text{N}_{p+1}\left(\mathbf{0},\,\sigma^2\mathbf{I}_{p+1}\right).
+\end{aligned}
+$$
+
+Starting from these priors, write a for loop that processes the data one observation at a time for each model. Along the way, keep track of the one-step-ahead posterior predictive distributions (non-standard Student's $t$), the posterior model probabilities, and the "best" model (the one with highest probability).
+
+At the end of the simulation, construct the histogram of PITs for each of three forecasting distributions:
+
+|     |  |
+| -------- | ------- |
+| "best" plug-in  | $\text{N}(\mathbf{x}_t^{\scriptscriptstyle\mathsf{T}}\mathbf{m}_{t-1}, b_{t-1} / a_{t-1})$    |
+| "best" posterior predictive | $p(y_t\,|\,y_{1:t-1},\,\hat{p})$     |
+| model-averaged    |  $\sum_{p=1}^3\text{Pr}(p\,|\,y_{1:t-1})\times p(y_t\,|\,y_{1:t-1},\,p)$   |
+
+Comment on the calibration of each, and don't forget that the model we are fitting is fundamentally misspecified. 
+
+
+

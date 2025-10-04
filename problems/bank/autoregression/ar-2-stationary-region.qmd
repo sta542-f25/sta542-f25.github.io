@@ -1,0 +1,40 @@
+Consider the mean-zero AR(2):
+
+$$
+y_t=\beta_1y_{t-1}+\beta_2y_{t-2}+\varepsilon_t,\quad\varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2).
+$$
+
+We can rewrite this in state-space form:
+
+$$
+\begin{aligned}
+y_t&=\begin{bmatrix}1&0\end{bmatrix}\begin{bmatrix}y_t\\y_{t-1}\end{bmatrix}
+\\
+\begin{bmatrix}y_t\\y_{t-1}\end{bmatrix}
+&=
+\begin{bmatrix}\beta_1&\beta_2\\1&0\end{bmatrix}
+\begin{bmatrix}y_{t-1}\\y_{t-2}\end{bmatrix}
++
+\begin{bmatrix}\varepsilon_t\\0\end{bmatrix}
+.
+\end{aligned}
+$$
+
+In order for the process to be stationary, the eigenvalues of the companion matrix must all lie inside the unit circle. This happens if and only if the pair $(\beta_1,\,\beta_2)$ lies in this region:
+
+```{r}
+#| echo: false
+#| fig-align: center
+par(mar = c(1, 1, 1, 1))
+plot(0, col = "white", xlim = c(-3, 3), 
+     ylim = c(-2, 2), xaxt = "n", yaxt = "n", bty = "n",
+     xlab = "", ylab = "")
+segments(c(-2, -2, 0), c(-1, -1, 1), c(0, 2, 2), c(1, -1, -1))
+axis(1, pos = 0)
+axis(2, pos = 0)
+polygon(c(-2, 0, 2, 2, 0, -2), c(-1, -1, -1, -1, 1, -1), col = rgb(1, 0, 0, alpha = 0.25))
+```
+
+Prove it.
+
+

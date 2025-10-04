@@ -1,0 +1,12 @@
+Consider again the mean-zero AR(2):
+
+$$
+y_t=\beta_1y_{t-1}+\beta_2y_{t-2}+\varepsilon_t,\quad\varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2).
+$$
+
+Assuming the process is stationary, derive concrete formulas for the Yule-Walker estimators of $\beta_1$, $\beta_2$, and $\sigma^2$. To keep the formulas clean, you may find it helpful to introduce notation for the **autocorrelation function** of a stationary process:
+
+$$
+\rho(h)=\frac{\gamma(h)}{\gamma(0)}=\frac{\text{cov}(y_{t+h},\,y_t)}{\text{var}(y_t)}=\text{cor}(y_{t+h},\,y_t).
+$$
+
