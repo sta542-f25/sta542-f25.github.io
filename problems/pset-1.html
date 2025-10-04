@@ -386,7 +386,7 @@ b_0
 <ol type="a">
 <li>Derive a recursion that takes the old hyperparameters and the new data and computes the new hyperparameters <em>without inverting any matrices</em>;</li>
 <li>
-<code>c(sunspots)</code> is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a <code>for</code> loop in <code>R</code> that uses your recursion to fit an AR(1) to these data one observation at a time. Verify that at the end of the loop, you get the same estimates that you would have gotten if you had applied the batch update to the entire data set all at once.</li>
+<code>c(sunspots)</code> is a monthly time series of mean relative sunspot numbers from 1749 to 1983. Write a <code>for</code> loop in <code>R</code> that uses your recursion to fit an AR(1) to these data one observation at a time. Verify at the end of the loop that you get the same posterior hyperparameters that you would have gotten if you had applied the batch update to the entire data set all at once.</li>
 </ol></section><section id="problem-6" class="level2"><h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
 <p><a href="https://fred.stlouisfed.org">FRED</a> is a fabulous source of economic time series data, and this problem encourages you to play around with it. Please do the following:</p>
 <ul>
