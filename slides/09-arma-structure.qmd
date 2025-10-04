@@ -1,5 +1,5 @@
 ---
-title: "ARMA models"
+title: "ARMA models I"
 subtitle: "Lecture 9"
 format: revealjs
 auto-stretch: false
@@ -379,4 +379,27 @@ plot_arma_acf(ar = c(0.6), ma = c(-0.5), lag.max = 20)
 plot_arma_acf(ar = c(0.9), ma = c(0.9), lag.max = 20)
 ```
 
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.7), ma = c(0.5), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.7), ma = c(0), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.6, -0.3), ma = c(0.4), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.8), ma = c(-0.5, 0.3), lag.max = 20)
+```
 

@@ -158,7 +158,7 @@ $$
 \gamma(-h)=\cov(y_{t-h}\com y_{t})=\cov(y_{t}\com y_{t-h})=\gamma(h).
 $$
 
-## Sample averages (TODO)
+## Sample averages
 
 The "population" moments can be estimated with sample averages:
 
