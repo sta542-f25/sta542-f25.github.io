@@ -211,7 +211,7 @@ y_t
 <p>For better or worse, there are many equivalent ways to do this depending on what you think of as the “state,” and they all have their uses:</p>
 <ol type="a">
 <li><span class="math inline">\(\mathbf{s}_t=\begin{bmatrix}\varepsilon_t &amp; \varepsilon_{t-1}&amp;\cdots &amp; \varepsilon_{t-q}\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^{q+1}\)</span>;</li>
-<li><span class="math inline">\(\mathbf{s}_t=\begin{bmatrix}\sum\limits_{i=0}^q\theta_i\varepsilon_{t-i} &amp; \sum\limits_{i=2}^q\theta_i\varepsilon_{t-i+2}&amp;\cdots&amp;\theta_q\varepsilon_t\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^{q+1}\)</span>;</li>
+<li><span class="math inline">\(\mathbf{s}_t=\begin{bmatrix}\sum\limits_{i=0}^q\theta_i\varepsilon_{t-i} &amp; \sum\limits_{i=1}^q\theta_i\varepsilon_{t-i+1}&amp;\cdots&amp;\theta_q\varepsilon_t\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^{q+1}\)</span>;</li>
 <li><span class="math inline">\(\mathbf{s}_t=\begin{bmatrix}y_t-\varepsilon_t &amp; y_{t-1}-\varepsilon_{t-1}&amp;\cdots &amp; y_{t-q+1}-\varepsilon_{t-q+1}\end{bmatrix}^{\scriptscriptstyle\mathsf{T}}\in\mathbb{R}^q\)</span>;</li>
 </ol>
 <p>For each version of the state vector, figure out what the system components need to be in order for the state-space system to be equivalent to the MA(q). Some of the objects in the system might be unnecessary and you can set them to zero.</p>
