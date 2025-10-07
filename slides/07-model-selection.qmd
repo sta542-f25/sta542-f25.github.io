@@ -1,0 +1,290 @@
+---
+title: "Model selection and combination"
+subtitle: "Lecture 7"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
+# Recap
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+nig_update <- function(y_t, x_t, a, b, m, V) {
+  # x_t: column vector (p x 1), m: column vector (p x 1), V: (p x p)
+  
+  # predictive residual
+  r <- as.numeric(y_t - t(x_t) %*% m)
+  
+  # scalar c = 1 + x' V x
+  c_val <- as.numeric(1 + t(x_t) %*% V %*% x_t)
+  
+  # update mean
+  m_new <- m + (V %*% x_t / c_val) * r
+  
+  # update covariance
+  Vx <- V %*% x_t
+  V_new <- V - (Vx %*% t(Vx)) / c_val
+  
+  # update shape and scale
+  a_new <- a + 0.5
+  b_new <- b + 0.5 * (r^2 / c_val)
+  
+  return(list(a = a_new, b = b_new, m = m_new, V = V_new))
+}
+
+simulate_ar_p <- function(T, b0, b, s, m0, s0) {
+  p <- length(b)              # lag order
+  y <- numeric(T + p)         # include space for initial conditions
+  
+  # simulate initial conditions
+  y[1:p] <- rnorm(p, m0, s0)
+  
+  # simulate forward
+  for (t in (p + 1):(T + p)) {
+    y[t] <- b0 + sum(b * y[(t - 1):(t - p)]) + rnorm(1, 0, s)
+  }
+  
+  # return only the last T values (exclude initial conditions)
+  return(y[(p + 1):(T + p)])
+}
+
+
+```
+
+## AR(p) {.small}
+
+The autoregression of order $p$, or AR($p$):
+
+. . .
+
+$$
+\begin{aligned}
+y_t
+&=
+\beta_0
++
+\beta_1
+y_{t-1}
++
+\beta_2
+y_{t-2}
++
+\cdots 
++
+\beta_p
+y_{t-p}
++
+\varepsilon_t,
+\quad
+\varepsilon_t\iid\text{N}(0\com\sigma^2).
+\end{aligned}
+$$
+
+## Lag order selection
+
+The lag order $p$ is a tuning parameter we must select:
+
+$$
+\hat{p}=\argmin{p=1\com 2\com ...\com \bar{p}}\, \hat{C}(p).
+$$
+
+Options:
+
+::: incremental
+- Akaike information criterion (AIC);
+- Bayesian information criterion (BIC);
+- Leave-future-out cross-validation (LFO-CV).
+:::
+
+## Uncertainty
+
+::: incremental
+- There is estimation uncertainty associated with lag order selection;
+- Ideally this would be propagated to our forecast distributions, prediction intervals, etc;
+- This is challenging to achieve, and the gains may not be tremendous;
+- If you are dead set on making it happen...
+:::
+
+# Bayesian model averaging (BMA)
+
+## A model
+
+You have some model named $M$:
+
+$$
+\begin{aligned}
+\Btheta&\sim p(\Btheta\given M)\\
+\By\given \Btheta&\sim p(\By\given \Btheta\com M).
+\end{aligned}
+$$
+
+. . .
+
+Example:
+
+$$
+\begin{aligned}
+\Bbeta\com\sigma^2&\sim \text{NIG}_p(a_0\com b_0\com \Bm_0\com\BH_0)\\
+y_t\given y_{(1-p):(t-1)}\com\Bbeta\com\sigma^2&\sim \text{N}\left(\sum\limits_{l=1}^p\beta_ly_{t-l}\com\sigma^2\right)
+\end{aligned}
+$$
+
+
+## A set of models
+
+You have a finite set of possible models:
+
+$$
+\mathcal{M}=\{M_1\com M_2\com ...\com M_K\}.
+$$
+
+. . .
+
+You place a prior on this set:
+
+$$
+P(M_1)+P(M_2)+...+P(M_K)=1.
+$$
+
+. . .
+
+Uniform is a common choice: $P(M_k)=1/K$.
+
+
+## Bayesian model selection
+
+We want to compare models $M_1, M_2, \dots, M_K$ given data $y$.
+
+The **posterior model probability** is
+
+$$
+P(M_k \mid y) = \frac{p(y \mid M_k) P(M_k)}{\sum_{j=1}^K p(y \mid M_j) P(M_j)}
+$$
+
+where $p(y \mid M_k)$ is the **marginal likelihood**.
+
+
+
+## Marginal likelihood
+
+For model $M_k$ with parameter $\theta_k$:
+
+$$
+p(y \mid M_k) = \int p(y \mid \theta_k, M_k) p(\theta_k \mid M_k) \, \dd \theta_k
+$$
+
+This integral is usually **hard to compute exactly**.
+
+## Marginal likelihood
+
+The marginal likelihood is just that pesky denominator in Bayes' theorem:
+
+$$
+p(\theta_k\mid y\com M_k)=\frac{p(y \mid \theta_k, M_k) p(\theta_k \mid M_k)}{p(y\mid M_k)}.
+$$
+
+So alternatively:
+
+$$
+p(y\mid M_k)=\frac{p(y \mid \theta_k, M_k) p(\theta_k \mid M_k)}{p(\theta_k\mid y\com M_k)}
+$$
+
+for all values of $\theta_k$.
+
+## We can do it with conjugate priors 
+
+Linear regression with conjugate-normal-inverse-gamma priors has:
+
+$$
+p(y_{1:T}\mid \text{lags}\com p)=\frac{1}{(2\pi)^{T/2}}\sqrt{\frac{\det(\boldsymbol\BH_0)}{\det(\boldsymbol\BH_T)}} \cdot \frac{b_0^{a_0}}{b_T^{a_T}} \cdot \frac{\Gamma(a_T)}{\Gamma(a_0)}
+$$
+
+
+## The bottom line, at the top
+
+The *Bayesian* information criterion (BIC) is an asymptotic approximation.
+
+## Bayesian asymptotics {.small}
+
+::: callout-tip
+## Bernstein-von-Mises theorem
+
+In low-dimensional, correctly-specified parametric models that satisfy various technical regularity conditions, the Bayesian posterior and the classical sampling distribution of the MLE agree in the limit:
+
+$$
+p(\theta\mid y_{1:T}) \approx \text{N}\left(\hat{\theta}_T^{(\text{MLE})},\,\mathcal{I}(\theta_0)^{-1}/T\right)\quad \text{for large } T
+$$
+
+:::
+
+- With enough data, the posterior mean/median behaves like the MLE;
+- Bayesian credible intervals agree with classical confidence intervals;
+- "low-dimensional, correctly-specified parametric models" is not necessarily a good description of modern data analysis, but proving BvM theorems in more sophisticated settings is an active area of research, and it's a comforting sanity check for some.
+
+
+## Laplace approximation {.small}
+
+Assume $T$ is large and the posterior is peaked. Let $\hat \theta_k$ be the MLE under $M_k$. Then
+
+$$
+\int p(y \mid \theta_k, M_k) p(\theta_k \mid M_k) \, \dd\theta_k
+\approx p(y \mid \hat\theta_k, M_k) \cdot (2 \pi)^{p_k/2} |\hat \Sigma_k|^{1/2}
+$$
+
+where $p_k$ is the number of parameters in $M_k$, and $\hat \Sigma_k$ is the estimated covariance of $\hat\theta_k$.
+
+. . . 
+
+Laplace approximation: appeal to BvM and use multivariate normal to approximate posterior.
+
+
+
+## Log Marginal Likelihood Approximation
+
+Take logs and keep leading terms for large $T$:
+
+$$
+\ln p(y \mid M_k) \approx \ln p(y \mid \hat\theta_k, M_k) - \frac{p_k}{2} \log T + \text{constant}
+$$
+
+The constant does **not depend on the model**.
+
+
+
+## Definition of BIC
+
+The **Bayesian Information Criterion (BIC)** is defined as
+
+$$
+\mathrm{BIC}_k = -2 \ln p(y \mid \hat\theta_k, M_k) + p_k \log T
+$$
+
+so that **smaller BIC means higher posterior probability** approximately.
+
+
+
+## Posterior Model Probability Approximation
+
+Using BIC, we have:
+
+$$
+P(M_k \mid y) \approx \frac{\exp(-\mathrm{BIC}_k/2) P(M_k)}{\sum_j \exp(-\mathrm{BIC}_j/2) P(M_j)}
+$$
+
+Hence **BIC gives a simple way to compare models** using data likelihood and number of parameters.
+
+Might be a nice shortcut if doing everything exactly is hellishly difficult.
+
+
+
+## What's "Bayesian" about BIC?
+
+- Posterior model probability requires integrating over parameters.
+- Laplace approximation for large $n$ gives a simple formula.
+- Leads to BIC: penalizes log-likelihood by number of parameters.
+- Smaller BIC ≈ higher posterior probability.
