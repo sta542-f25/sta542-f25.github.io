@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.34">
 <meta name="author" content="John Zito">
-<title>STA 542 Fall 2025 – Model selection and combination</title>
+<title>STA 542 Fall 2025 – ARMA models III</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d5becd29f7c8505d93fcf7093747f253.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -123,8 +189,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Model selection and combination – STA 542 Fall 2025">
-<meta property="og:description" content="Lecture 7">
+<meta property="og:title" content="ARMA models III – STA 542 Fall 2025">
+<meta property="og:description" content="Lecture 11">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 <body class="quarto-light">
@@ -248,8 +314,8 @@ $$
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Model selection and combination</h1>
-  <p class="subtitle">Lecture 7</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">ARMA models III</h1>
+  <p class="subtitle">Lecture 11</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -262,170 +328,196 @@ John Zito
     </div>
 </div>
 
-</section><section><section id="recap" class="title-slide slide level1 center"><h1>Recap</h1>
+</section><section><section id="logistics" class="title-slide slide level1 center"><h1>Logistics</h1>
 
-</section><section id="arp" class="slide level2 small"><h2>AR(p)</h2>
-<p>The autoregression of order <span class="math inline">\(p\)</span>, or AR(<span class="math inline">\(p\)</span>):</p>
-<div class="fragment">
+</section><section id="later-today" class="slide level2"><h2>Later today</h2>
+<ul>
+<li>PSET 1 grades;</li>
+<li>PSET 2 solutions.</li>
+</ul></section><section id="exam-wednesday" class="slide level2 small"><h2>Exam Wednesday</h2>
+<ul>
+<li class="fragment">You get both sides of one 8.5” x 11” sheet of notes;</li>
+<li class="fragment">None of the ARMA theory;</li>
+<li class="fragment">Math will closely track what you’ve seen multiple times in lecture and on problem sets;</li>
+<li class="fragment">Be prepared to write about themes and concepts;</li>
+<li class="fragment">Expect tests of your visual intuition:
+<ul>
+<li class="fragment">sample paths;</li>
+<li class="fragment">autocov/cor functions;</li>
+<li class="fragment">sampling distributions;</li>
+<li class="fragment">forecast distributions;</li>
+<li class="fragment">PIT plots.</li>
+</ul>
+</li>
+</ul></section></section><section><section id="recap" class="title-slide slide level1 center"><h1>Recap</h1>
+
+</section><section id="autoregressive-moving-average" class="slide level2"><h2>Autoregressive moving average</h2>
+<p>ARMA(p, q):</p>
 <p><span class="math display">\[
-\begin{aligned}
 y_t
-&amp;=
+=
 \beta_0
 +
-\beta_1
-y_{t-1}
+\underbrace{\sum\limits_{l=1}^p\beta_ly_{t-l}}_{\text{autoregressive}}
 +
-\beta_2
-y_{t-2}
-+
-\cdots
-+
-\beta_p
-y_{t-p}
+\underbrace{\sum_{i=1}^q\theta_i\varepsilon_{t-i}}_{\text{moving average}}
 +
 \varepsilon_t,
 \quad
-\varepsilon_t\iid\text{N}(0\com\sigma^2).
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+\]</span></p>
+<ul>
+<li>If stationary, write as an MA<span class="math inline">\((\infty)\)</span>;</li>
+<li>If invertible, write as an AR<span class="math inline">\((\infty)\)</span>;</li>
+</ul></section><section id="polynomials" class="slide level2"><h2>Polynomials</h2>
+<p>Stationary means this polynomial has roots outside the unit circle:</p>
+<p><span class="math display">\[
+\beta(z) = 1-\beta_1z-\beta_2z^2-...-\beta_pz^p,\quad z\in\mathbb{C}.
+\]</span></p>
+<p>Invertible means this polynomial has roots outside the unit circle:</p>
+<p><span class="math display">\[
+\theta(z) = 1+\theta_1z+\theta_2z^2+...+\theta_qz^q,\quad z\in\mathbb{C}.
+\]</span></p>
+</section><section id="polynomials-1" class="slide level2"><h2>Polynomials</h2>
+<p>The ARMA can be rewritten in terms of polynomials of the lag operator</p>
+<p><span class="math display">\[
+\begin{aligned}
+\beta(L)y_t
+&amp;=
+\theta(L)\varepsilon_t,
 \end{aligned}
 \]</span></p>
-</div>
-</section><section id="lag-order-selection" class="slide level2"><h2>Lag order selection</h2>
-<p>The lag order <span class="math inline">\(p\)</span> is a tuning parameter we must select:</p>
+<p>where <span class="math inline">\(Ly_t=Ly_{t-1}\)</span>.</p>
+</section><section id="arma-to-ma" class="slide level2"><h2>ARMA to MA</h2>
+<p>A stationary ARMA(p, q) can be written</p>
 <p><span class="math display">\[
-\hat{p}=\argmin{p=1\com 2\com ...\com \bar{p}}\, \hat{C}(p).
+y_t=\frac{\theta(L)}{\beta(L)}\varepsilon_t=\psi(L)\varepsilon_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 \]</span></p>
-<p>Options:</p>
-<ul>
-<li class="fragment">Akaike information criterion (AIC);</li>
-<li class="fragment">Bayesian information criterion (BIC);</li>
-<li class="fragment">Leave-future-out cross-validation (LFO-CV).</li>
-</ul></section><section id="uncertainty" class="slide level2"><h2>Uncertainty</h2>
-<ul>
-<li class="fragment">There is estimation uncertainty associated with lag order selection;</li>
-<li class="fragment">Ideally this would be propagated to our forecast distributions, prediction intervals, etc;</li>
-<li class="fragment">This is challenging to achieve, and the gains may not be tremendous;</li>
-<li class="fragment">If you are dead set on making it happen…</li>
-</ul></section></section><section><section id="bayesian-model-averaging-bma" class="title-slide slide level1 center"><h1>Bayesian model averaging (BMA)</h1>
+<p>where the <span class="math inline">\(\psi_j\)</span> solve</p>
+<p><span class="math display">\[
+\psi(z)=\sum\limits_{j=0}^\infty \psi_jz^j=\frac{\theta(z)}{\beta(z)},\quad |z|\leq 1.
+\]</span></p>
+<p>Let a computer worry about it.</p>
+</section><section id="arma-to-ar" class="slide level2"><h2>ARMA to AR</h2>
+<p>A invertible ARMA(p, q) can be written</p>
+<p><span class="math display">\[
+\varepsilon_t=\frac{\beta(L)}{\theta(L)}y_t=\pi(L)y_t=\sum\limits_{j=0}^\infty \pi_jy_{t-j},
+\]</span></p>
+<p>where the <span class="math inline">\(\pi_j\)</span> solve</p>
+<p><span class="math display">\[
+\pi(z)=\sum\limits_{j=0}^\infty \pi_jz^j=\frac{\beta(z)}{\theta(z)},\quad |z|\leq 1.
+\]</span></p>
+<p>Again, I trust the computer.</p>
+</section></section><section><section id="so-what" class="title-slide slide level1 center"><h1>So what?</h1>
 
-</section><section id="a-model" class="slide level2"><h2>A model</h2>
-<p>You have some model named <span class="math inline">\(M\)</span>:</p>
+</section><section id="moments" class="slide level2"><h2>Moments</h2>
+<p>Assume an ARMA is stationary (but not necessarily invertible!). Then</p>
 <p><span class="math display">\[
-\begin{aligned}
-\Btheta&amp;\sim p(\Btheta\given M)\\
-\By\given \Btheta&amp;\sim p(\By\given \Btheta\com M).
-\end{aligned}
-\]</span></p>
-<div class="fragment">
-<p>Example:</p>
+E(y_t)
+=
+\frac{\beta_0}{1-\sum\limits_{l=1}^p\beta_l}
+.
+\]</span> Same as pure AR, since the MA piece is mean-zero by construction.</p>
+</section><section id="moments-1" class="slide level2 small"><h2>Moments</h2>
+<p>Assume an ARMA is stationary (but not necessarily invertible!) and mean zero. We know</p>
 <p><span class="math display">\[
-\begin{aligned}
-\Bbeta\com\sigma^2&amp;\sim \text{NIG}_p(a_0\com b_0\com \Bm_0\com\BH_0)\\
-y_t\given y_{(1-p):(t-1)}\com\Bbeta\com\sigma^2&amp;\sim \text{N}\left(\sum\limits_{l=1}^p\beta_ly_{t-l}\com\sigma^2\right)
-\end{aligned}
+y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 \]</span></p>
-</div>
-</section><section id="a-set-of-models" class="slide level2"><h2>A set of models</h2>
-<p>You have a finite set of possible models:</p>
+<p>so</p>
 <p><span class="math display">\[
-\mathcal{M}=\{M_1\com M_2\com ...\com M_K\}.
+\gamma(h)=\cov(y_{t+h}\com y_t)=\cov\left(\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t+h-j}\com \sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j}\right)=\sigma^2\sum\limits_{j=0}^\infty \psi_j\psi_{j+h}.
 \]</span></p>
-<div class="fragment">
-<p>You place a prior on this set:</p>
-<p><span class="math display">\[
-P(M_1)+P(M_2)+...+P(M_K)=1.
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Uniform is a common choice: <span class="math inline">\(P(M_k)=1/K\)</span>.</p>
-</div>
-</section><section id="bayesian-model-selection" class="slide level2"><h2>Bayesian model selection</h2>
-<p>We want to compare models <span class="math inline">\(M_1, M_2, \dots, M_K\)</span> given data <span class="math inline">\(y\)</span>.</p>
-<p>The <strong>posterior model probability</strong> is</p>
-<p><span class="math display">\[
-P(M_k \mid y) = \frac{p(y \mid M_k) P(M_k)}{\sum_{j=1}^K p(y \mid M_j) P(M_j)}
-\]</span></p>
-<p>where <span class="math inline">\(p(y \mid M_k)\)</span> is the <strong>marginal likelihood</strong>.</p>
-</section><section id="marginal-likelihood" class="slide level2"><h2>Marginal likelihood</h2>
-<p>For model <span class="math inline">\(M_k\)</span> with parameter <span class="math inline">\(\theta_k\)</span>:</p>
-<p><span class="math display">\[
-p(y \mid M_k) = \int p(y \mid \theta_k, M_k) p(\theta_k \mid M_k) \, \dd \theta_k
-\]</span></p>
-<p>This integral is usually <strong>hard to compute exactly</strong>.</p>
-</section><section id="marginal-likelihood-1" class="slide level2"><h2>Marginal likelihood</h2>
-<p>The marginal likelihood is just that pesky denominator in Bayes’ theorem:</p>
-<p><span class="math display">\[
-p(\theta_k\mid y\com M_k)=\frac{p(y \mid \theta_k, M_k) p(\theta_k \mid M_k)}{p(y\mid M_k)}.
-\]</span></p>
-<p>So alternatively:</p>
-<p><span class="math display">\[
-p(y\mid M_k)=\frac{p(y \mid \theta_k, M_k) p(\theta_k \mid M_k)}{p(\theta_k\mid y\com M_k)}
-\]</span></p>
-<p>for all values of <span class="math inline">\(\theta_k\)</span>.</p>
-</section><section id="we-can-do-it-with-conjugate-priors" class="slide level2"><h2>We can do it with conjugate priors</h2>
-<p>Linear regression with conjugate-normal-inverse-gamma priors has:</p>
-<p><span class="math display">\[
-p(y_{1:T}\mid \text{lags}\com p)=\frac{1}{(2\pi)^{T/2}}\sqrt{\frac{\det(\boldsymbol\BH_0)}{\det(\boldsymbol\BH_T)}} \cdot \frac{b_0^{a_0}}{b_T^{a_T}} \cdot \frac{\Gamma(a_T)}{\Gamma(a_0)}
-\]</span></p>
-</section><section id="the-bottom-line-at-the-top" class="slide level2"><h2>The bottom line, at the top</h2>
-<p>The <em>Bayesian</em> information criterion (BIC) is an asymptotic approximation.</p>
-</section><section id="bayesian-asymptotics" class="slide level2 small"><h2>Bayesian asymptotics</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bernstein-von-Mises theorem</strong></p>
-</div>
-<div class="callout-content">
-<p>In low-dimensional, correctly-specified parametric models that satisfy various technical regularity conditions, the Bayesian posterior and the classical sampling distribution of the MLE agree in the limit:</p>
-<p><span class="math display">\[
-p(\theta\mid y_{1:T}) \approx \text{N}\left(\hat{\theta}_T^{(\text{MLE})},\,\mathcal{I}(\theta_0)^{-1}/T\right)\quad \text{for large } T
-\]</span></p>
+<p>Approximate with a large number of terms.</p>
+</section><section id="recursive-characterization" class="slide level2"><h2>Recursive characterization</h2>
+</section><section id="autocorrelation-function" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.6</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
 </div>
 </div>
 </div>
-<ul>
-<li>With enough data, the posterior mean/median behaves like the MLE;</li>
-<li>Bayesian credible intervals agree with classical confidence intervals;</li>
-<li>“low-dimensional, correctly-specified parametric models” is not necessarily a good description of modern data analysis, but proving BvM theorems in more sophisticated settings is an active area of research, and it’s a comforting sanity check for some.</li>
-</ul></section><section id="laplace-approximation" class="slide level2 small"><h2>Laplace approximation</h2>
-<p>Assume <span class="math inline">\(T\)</span> is large and the posterior is peaked. Let <span class="math inline">\(\hat \theta_k\)</span> be the MLE under <span class="math inline">\(M_k\)</span>. Then</p>
-<p><span class="math display">\[
-\int p(y \mid \theta_k, M_k) p(\theta_k \mid M_k) \, \dd\theta_k
-\approx p(y \mid \hat\theta_k, M_k) \cdot (2 \pi)^{p_k/2} |\hat \Sigma_k|^{1/2}
-\]</span></p>
-<p>where <span class="math inline">\(p_k\)</span> is the number of parameters in <span class="math inline">\(M_k\)</span>, and <span class="math inline">\(\hat \Sigma_k\)</span> is the estimated covariance of <span class="math inline">\(\hat\theta_k\)</span>.</p>
-<div class="fragment">
-<p>Laplace approximation: appeal to BvM and use multivariate normal to approximate posterior.</p>
+</section><section id="autocorrelation-function-1" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.6</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
 </div>
-</section><section id="log-marginal-likelihood-approximation" class="slide level2"><h2>Log Marginal Likelihood Approximation</h2>
-<p>Take logs and keep leading terms for large <span class="math inline">\(T\)</span>:</p>
+</div>
+</div>
+</section><section id="autocorrelation-function-2" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.9</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="fl">0.9</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="autocorrelation-function-3" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="autocorrelation-function-4" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="dv">0</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="autocorrelation-function-5" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="sc">-</span><span class="fl">0.3</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="fl">0.4</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="autocorrelation-function-6" class="slide level2"><h2>Autocorrelation function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.8</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.3</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="forecasting" class="slide level2"><h2>Forecasting</h2>
+<p>Assume the process is stable and invertible, and the ARMA parameters are fixed and known (they’re not!). You can extract forecasts from</p>
 <p><span class="math display">\[
-\ln p(y \mid M_k) \approx \ln p(y \mid \hat\theta_k, M_k) - \frac{p_k}{2} \log T + \text{constant}
+y_{t+h}\mid y_{-\infty:t}\sim \text{N}(\mu_{t+h|t}\com v_{t+h|t}^2).
 \]</span></p>
-<p>The constant does <strong>not depend on the model</strong>.</p>
-</section><section id="definition-of-bic" class="slide level2"><h2>Definition of BIC</h2>
-<p>The <strong>Bayesian Information Criterion (BIC)</strong> is defined as</p>
-<p><span class="math display">\[
-\mathrm{BIC}_k = -2 \ln p(y \mid \hat\theta_k, M_k) + p_k \log T
-\]</span></p>
-<p>so that <strong>smaller BIC means higher posterior probability</strong> approximately.</p>
-</section><section id="posterior-model-probability-approximation" class="slide level2"><h2>Posterior Model Probability Approximation</h2>
-<p>Using BIC, we have:</p>
-<p><span class="math display">\[
-P(M_k \mid y) \approx \frac{\exp(-\mathrm{BIC}_k/2) P(M_k)}{\sum_j \exp(-\mathrm{BIC}_j/2) P(M_j)}
-\]</span></p>
-<p>Hence <strong>BIC gives a simple way to compare models</strong> using data likelihood and number of parameters.</p>
-<p>Might be a nice shortcut if doing everything exactly is hellishly difficult.</p>
-</section><section id="whats-bayesian-about-bic" class="slide level2"><h2>What’s “Bayesian” about BIC?</h2>
-<ul>
-<li>Posterior model probability requires integrating over parameters.</li>
-<li>Laplace approximation for large <span class="math inline">\(n\)</span> gives a simple formula.</li>
-<li>Leads to BIC: penalizes log-likelihood by number of parameters.</li>
-<li>Smaller BIC ≈ higher posterior probability.</li>
-</ul>
+<p>What are the moments?</p>
+</section><section id="example" class="slide level2"><h2>example</h2>
+</section><section id="caution" class="slide level2"><h2>Caution</h2>
+<p>Augmenting these forecasts with extra sources of uncertainty is challenging and folks seldom attempt it. Sad!</p>
+</section><section id="state-space-form" class="slide level2"><h2>State space form</h2>
+</section><section id="example-1" class="slide level2"><h2>example</h2>
+</section><section id="inference" class="slide level2"><h2>inference</h2>
+</section><section id="example-2" class="slide level2"><h2>example</h2>
+</section><section id="asymptotics" class="slide level2"><h2>asymptotics</h2>
+</section><section id="seasonality" class="slide level2"><h2>seasonality</h2>
+</section><section id="section" class="slide level2"><h2></h2>
 
 
 </section></section>
