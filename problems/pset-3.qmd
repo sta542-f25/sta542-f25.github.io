@@ -1,0 +1,118 @@
+---
+title: "Problem Set 3"
+subtitle: Due Monday October 27 at 11:30 AM
+draft: false
+editor: 
+  mode: source
+---
+
+Consider this non-linear, non-Gaussian state-space model:
+
+$$
+\begin{aligned}
+y_t\mid h_t
+&\overset{\text{indep}}{\sim} 
+\text{N}\left(0,\,h_t^{-1}\right)
+\\
+h_t
+&=
+\frac{1}{\beta}
+h_{t-1}
+\eta_t,
+&&
+\eta_t
+\overset{\text{iid}}{\sim}
+\text{Beta}\left(\alpha,\,\frac{1}{2}\right)
+\\
+&\\
+h_0
+&\sim 
+\text{Gamma}\left(a_{0|0}=\alpha+\frac{1}{2},\,b_{0|0}\right)
+\end{aligned}
+$$
+
+The latent state $h_t$ is the *precision* (inverse variance) of $y_t$, and this model captures *heteroskedasticity* in $y_t$. It turns out that this is one of the few state-space models that we can "solve" analytically. Behold:
+
+# Problem 1
+
+First, let's establish a useful technical result. Consider a random pair $(X,\,Y)$ with a joint distribution given by this hierarchy:
+
+$$
+\begin{aligned}
+    X
+    &\sim 
+    \textrm{Beta}(a,\, b)
+    \\
+    Y\mid X = x 
+    &\sim 
+    \textrm{Gamma}\left(a+b,\, \frac{c}{x}\right).
+\end{aligned}
+$$
+
+What is the marginal distribution of $Y$?
+
+# Problem 2
+
+Now return to the state-space model. Derive a recursion for the prior predictive distribution:
+
+$$
+p(h_t\mid y_{1:t-1}) = \int p(h_t\mid h_{t-1})p(h_{t-1}\mid y_{1:t-1})\,\text{d}h_{t-1}.
+$$
+
+# Problem 3
+
+Derive a recursion for the predictive distribution:
+
+$$
+p(y_t\mid y_{1:t-1}) = \int p(y_t\mid h_t)p(h_t\mid y_{1:t-1})\,\text{d}h_t.
+$$
+
+# Problem 4
+
+Now, put it all together. Derive the filtering distribution:
+
+$$
+p(h_t\mid y_{1:t}) = \frac{p(y_t\mid h_t)p(h_t\mid y_{1:t-1})}{p(y_t\mid y_{1:t-1})}.
+$$
+
+# Problem 5
+
+It is not actually straightforward to characterize the usual smoothing distribution $p(h_t\mid y_{1:T})$ in closed-form, but oh well. The full posterior for the entire sequence is given by
+
+$$
+p(h_{1:T}\mid y_{1:T})=p(h_T\mid y_{1:T})\prod_{t=0}^{T-1}p(h_t\mid h_{t+1},\,y_{1:t}),
+$$
+
+and we can derive $p(h_t\mid h_{t+1},\,y_{1:t})$. Given that, we can easily simulate the whole darn thing and approximate any marginals we want.
+
+Show that $p(h_t\mid h_{t+1},\,y_{1:t})$. can be characterized as a *shifted* gamma distribution, with parameters that depend on the output of the forward filter.
+
+# Problem 6
+
+Modify the model slightly to include non-zero mean
+
+$$
+y_t\mid h_t,\,\mu
+\overset{\text{indep}}{\sim} 
+\text{N}\left(\mu,\,h_t^{-1}\right),
+$$
+
+and place a prior on it:
+
+$$
+\mu\sim\text{N}(\bar{\mu}_0,\,\tau^2_0).
+$$
+
+We will continue to treat $\alpha$ and $\beta$ in the state transition as fixed, but now we wish to access the full posterior $p(\mu,\,h_{0:T}\mid y_{1:T})$. Derive and implement a Gibbs sampler that targets this distribution.
+
+
+
+# Problem 7
+
+Here is one of my all time favorite papers:
+
+- Geweke, John[^1] (2004): "[Getting it right: joint distribution tests of posterior simulators](https://doi.org/10.1198/016214504000001132)," Journal of the American Statistical Association.
+
+It's short. Read it. Then, use it to check that your Gibbs sampler from the previous part is actually correct. If it's not, fix it and re-check until you "get it right."
+
+[^1]: Geweke (pronounced "gave a key") used to be an econ professor here at Duke, and in 1987 he became the founding director of the Institute of Statistics and Decision Sciences (ISDS), which was renamed the Department of Statistical Science in 2007.
