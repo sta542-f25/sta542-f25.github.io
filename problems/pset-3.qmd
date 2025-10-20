@@ -31,7 +31,7 @@ h_0
 \end{aligned}
 $$
 
-The latent state $h_t$ is the *precision* (inverse variance) of $y_t$, and this model captures *heteroskedasticity* in $y_t$. It turns out that this is one of the few state-space models that we can "solve" analytically. Behold:
+The latent state $h_t$ is the *precision* (inverse variance) of $y_t$, and this model captures *heteroskedasticity* in $y_t$. It turns out that this is one of the few state-space models that we can "solve" analytically. In all that follows, the parameters $\beta$ and $\alpha$ will be treated as fixed and known.
 
 # Problem 1
 
