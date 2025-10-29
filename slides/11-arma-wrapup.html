@@ -303,6 +303,7 @@ $$
 \newcommand{\BPsi}{\boldsymbol{\Psi}}
 \newcommand{\BGamma}{\boldsymbol{\Gamma}}
 \newcommand{\BPhi}{\boldsymbol{\Phi}}
+\newcommand{\Bphi}{\boldsymbol{\phi}}
 \newcommand{\BUpsilon}{\boldsymbol{\Upsilon}}
 \newcommand{\BXi}{\boldsymbol{\Xi}}
 \newcommand{\Bpi}{\boldsymbol{\pi}}
@@ -437,7 +438,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.6</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -447,7 +448,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.6</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -457,7 +458,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.9</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="fl">0.9</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -467,7 +468,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="fl">0.5</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -477,7 +478,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.7</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="dv">0</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -487,7 +488,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="sc">-</span><span class="fl">0.3</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="fl">0.4</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -497,7 +498,7 @@ y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">plot_arma_acf</span>(<span class="at">ar =</span> <span class="fu">c</span>(<span class="fl">0.8</span>), <span class="at">ma =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.3</span>), <span class="at">lag.max =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img data-src="11-arma-wrapup_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<figure><p><img data-src="11-arma-wrapup_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -720,41 +721,6 @@ y_{t+h}\mid y_{-\infty:t}\sim \text{N}(\mu_{t+h|t}\com v_{t+h|t}^2).
           RevealZoom
         ]
       });
-    </script><script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
     </script><script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

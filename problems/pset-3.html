@@ -98,7 +98,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="Problem Set 3 – STA 542 Fall 2025">
-<meta property="og:description" content="Due Monday October 27 at 11:30 AM">
+<meta property="og:description" content="Due Monday November 3 at 11:30 AM">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
 
@@ -191,7 +191,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Problem Set 3</h1>
-<p class="subtitle lead">Due Monday October 27 at 11:30 AM</p>
+<p class="subtitle lead">Due Monday November 3 at 11:30 AM</p>
 </div>
 
 
@@ -231,7 +231,7 @@ h_0
 \text{Gamma}\left(a_{0|0}=\alpha+\frac{1}{2},\,b_{0|0}\right)
 \end{aligned}
 \]</span></p>
-<p>The latent state <span class="math inline">\(h_t\)</span> is the <em>precision</em> (inverse variance) of <span class="math inline">\(y_t\)</span>, and this model captures <em>heteroskedasticity</em> in <span class="math inline">\(y_t\)</span>. It turns out that this is one of the few state-space models that we can “solve” analytically. Behold:</p>
+<p>The latent state <span class="math inline">\(h_t\)</span> is the <em>precision</em> (inverse variance) of <span class="math inline">\(y_t\)</span>, and this model captures <em>heteroskedasticity</em> in <span class="math inline">\(y_t\)</span>. It turns out that this is one of the few state-space models that we can “solve” analytically. In all that follows, the parameters <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\alpha\)</span> will be treated as fixed and known.</p>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
 <p>First, let’s establish a useful technical result. Consider a random pair <span class="math inline">\((X,\,Y)\)</span> with a joint distribution given by this hierarchy:</p>
@@ -250,7 +250,13 @@ h_0
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p>Now return to the state-space model. Derive a recursion for the prior predictive distribution:</p>
+<p>Now return to the state-space model. Assume we enter period <span class="math inline">\(t\)</span> with the period <span class="math inline">\(t-1\)</span> filtering distribution</p>
+<p><span class="math display">\[
+h_{t-1}\mid y_{1:t-1}
+\sim
+\text{Gamma}\left(a_{t-1|t-1}=\alpha+\frac{1}{2},\,b_{t-1|t-1}\right).
+\]</span></p>
+<p>Derive a recursion for the state predictive distribution:</p>
 <p><span class="math display">\[
 p(h_t\mid y_{1:t-1}) = \int p(h_t\mid h_{t-1})p(h_{t-1}\mid y_{1:t-1})\,\text{d}h_{t-1}.
 \]</span></p>
@@ -273,10 +279,10 @@ p(h_t\mid y_{1:t}) = \frac{p(y_t\mid h_t)p(h_t\mid y_{1:t-1})}{p(y_t\mid y_{1:t-
 <h1>Problem 5</h1>
 <p>It is not actually straightforward to characterize the usual smoothing distribution <span class="math inline">\(p(h_t\mid y_{1:T})\)</span> in closed-form, but oh well. The full posterior for the entire sequence is given by</p>
 <p><span class="math display">\[
-p(h_{1:T}\mid y_{1:T})=p(h_T\mid y_{1:T})\prod_{t=0}^{T-1}p(h_t\mid h_{t+1},\,y_{1:t}),
+p(h_{0:T}\mid y_{1:T})=p(h_T\mid y_{1:T})\prod_{t=0}^{T-1}p(h_t\mid h_{t+1},\,y_{1:t}),
 \]</span></p>
 <p>and we can derive <span class="math inline">\(p(h_t\mid h_{t+1},\,y_{1:t})\)</span>. Given that, we can easily simulate the whole darn thing and approximate any marginals we want.</p>
-<p>Show that <span class="math inline">\(p(h_t\mid h_{t+1},\,y_{1:t})\)</span>. can be characterized as a <em>shifted</em> gamma distribution, with parameters that depend on the output of the forward filter.</p>
+<p>Show that <span class="math inline">\(p(h_t\mid h_{t+1},\,y_{1:t})\)</span> can be characterized as a <em>shifted</em> gamma distribution, with parameters that depend on the output of the forward filter.</p>
 </section>
 <section id="problem-6" class="level1">
 <h1>Problem 6</h1>
