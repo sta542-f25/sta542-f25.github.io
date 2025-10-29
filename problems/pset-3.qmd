@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 3"
-subtitle: Due Monday October 27 at 11:30 AM
+subtitle: Due Monday November 3 at 11:30 AM
 draft: false
 editor: 
   mode: source
@@ -53,7 +53,15 @@ What is the marginal distribution of $Y$?
 
 # Problem 2
 
-Now return to the state-space model. Derive a recursion for the prior predictive distribution:
+Now return to the state-space model. Assume we enter period $t$ with the period $t-1$ filtering distribution 
+
+$$
+h_{t-1}\mid y_{1:t-1}
+\sim 
+\text{Gamma}\left(a_{t-1|t-1}=\alpha+\frac{1}{2},\,b_{t-1|t-1}\right).
+$$
+
+Derive a recursion for the state predictive distribution:
 
 $$
 p(h_t\mid y_{1:t-1}) = \int p(h_t\mid h_{t-1})p(h_{t-1}\mid y_{1:t-1})\,\text{d}h_{t-1}.
@@ -80,12 +88,12 @@ $$
 It is not actually straightforward to characterize the usual smoothing distribution $p(h_t\mid y_{1:T})$ in closed-form, but oh well. The full posterior for the entire sequence is given by
 
 $$
-p(h_{1:T}\mid y_{1:T})=p(h_T\mid y_{1:T})\prod_{t=0}^{T-1}p(h_t\mid h_{t+1},\,y_{1:t}),
+p(h_{0:T}\mid y_{1:T})=p(h_T\mid y_{1:T})\prod_{t=0}^{T-1}p(h_t\mid h_{t+1},\,y_{1:t}),
 $$
 
 and we can derive $p(h_t\mid h_{t+1},\,y_{1:t})$. Given that, we can easily simulate the whole darn thing and approximate any marginals we want.
 
-Show that $p(h_t\mid h_{t+1},\,y_{1:t})$. can be characterized as a *shifted* gamma distribution, with parameters that depend on the output of the forward filter.
+Show that $p(h_t\mid h_{t+1},\,y_{1:t})$ can be characterized as a *shifted* gamma distribution, with parameters that depend on the output of the forward filter.
 
 # Problem 6
 
