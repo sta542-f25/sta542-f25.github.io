@@ -35,6 +35,12 @@ website:
             text: Problem Set 0
           - href: problems/pset-1.qmd
             text: Probem Set 1
+          - href: problems/pset-2.qmd
+            text: Probem Set 2
+          - href: problems/pset-3.qmd
+            text: Probem Set 3
+          - href: problems/pset-4.qmd
+            text: Probem Set 4
             
   page-footer:
     right: 'This page is built with [Quarto](https://quarto.org/).'

@@ -1,0 +1,110 @@
+---
+title: "Problem Set 4"
+draft: false
+editor: 
+  mode: source
+---
+
+Our second exam is all about state space models, and discussing the high-level concepts will be just as important as the technical details. In addition to your lecture notes, the book by [Särkkä](https://users.aalto.fi/~ssarkka/pub/cup_book_online_20131111.pdf), the article by [Scott](https://doi.org/10.1198/016214502753479464), and the chapter by [Doucet and Johansen](https://www.stats.ox.ac.uk/~doucet/doucet_johansen_tutorialPF2011.pdf) are excellent resources to consult.
+
+If you do all of the practice below, you will be prepared for the exam.
+
+# Problem 1
+
+In general, a state space model is specified by four components:
+
+$$
+\newcommand{\By}{\mathbf{y}}
+\newcommand{\Bs}{\mathbf{s}}
+\newcommand{\Btheta}{\boldsymbol{\theta}}
+\newcommand{\com}{,\,}
+\newcommand{\dd}{\textrm{d}}
+\begin{aligned}
+     &  p(\By_t\mid \Bs_t\com \Btheta) && (\text{measurement distribution})\\
+     & p(\Bs_t\mid \Bs_{t-1}\com \Btheta)&& (\text{transition distribution})\\
+     & p(\Bs_0\mid \Btheta)&& (\text{initial condition})\\
+     & p(\Btheta)&& (\text{parameter prior})
+\end{aligned}
+$$
+
+The general filtering recursion is:
+
+$$
+\begin{aligned}
+    p(\Bs_t\mid \By_{1:t}\com \Btheta)
+    &=
+    \frac{p(\By_t\mid \Bs_t\com\Btheta)p(\Bs_t\mid \By_{1:t-1}\com \Btheta)}{p(\By_t\mid \By_{1:t-1}\com\Btheta)}
+    \\
+    p(\By_t\mid \By_{1:t-1}\com\Btheta)
+    &=
+    \int 
+    p(\By_t\mid \Bs_t\com\Btheta)p(\Bs_t\mid \By_{1:t-1}\com \Btheta)
+    \,\dd \Bs_t
+    \\
+    p(\Bs_t\mid \By_{1:t-1}\com \Btheta)
+    &=
+    \int 
+    p(\Bs_t\mid \Bs_{t-1}\com \Btheta)p(\Bs_{t-1}\mid \By_{1:t-1}\com \Btheta)
+    \,
+    \dd\Bs_{t-1}
+\end{aligned}
+$$
+
+The general smoothing recursion is:
+
+$$
+\begin{aligned}
+\begin{align*}
+    p(\Bs_{0:T}\mid \By_{1:T}\com \Btheta)
+    &=
+    p(\Bs_T\mid \By_{1:T}\com \Btheta)\prod_{t=0}^{T-1}p(\Bs_t\mid \Bs_{t+1}\com \By_{1:t}\com \Btheta)
+    \\
+    \\
+    p(\Bs_t\mid \By_{1:T}\com \Btheta)
+    &=
+    p(\Bs_{t}\mid \By_{1:t}\com \Btheta)
+    \int
+    p(\Bs_{t+1}\mid \Bs_{t}\com \Btheta)
+    \frac{p(\Bs_{t+1}\mid \By_{1:T}\com \Btheta)}{p(\Bs_{t+1}\mid \By_{1:t}\com \Btheta)}
+    \,
+    \dd
+    \Bs_{t+1}
+    .
+\end{align*}
+\end{aligned}
+$$
+
+Make sure you understand where these come from, and make sure you understand the role that *conditional independence* plays.
+
+# Problem 2
+
+Consider three ingredients;
+
+- the generic formulas from the previous problem;
+- the dynamic linear model (DLM) with Gaussian errors;
+- the properties of the multivariate normal distribution that we reviewed on [Problem Set 0](https://sta542-f25.github.io/problems/pset-0.html).
+
+Put these three things together, and you get the Kalman filter and smoother. Make sure you understand every step of this derivation. If there is a piece you don't understand, please ask me about it!
+
+# Problem 3
+
+Let $y_t\in\{0\com 1\}$ be an observed binary time series, and let $s_t\in\{0\com 1\}$ be an unobserved binary time series. Write down a hidden Markov model for these data, and derive recursions for filtering and smoothing.
+
+**Note**: every variable here is binary, and every parameter is a probability (number between zero and one), so make your recursions as compact and concise as possible. 
+
+# Problem 4
+
+If I started cold calling on people during lecture, would you have a concise answer to these questions off the dome?
+
+- What is the graphical structure of a state space model, and how is this delated to conditional independence?
+- What is the conceptual difference between filtering and smoothing?
+- What is the difference between smoothing and *simulation* smoothing?
+- If all I cared about was a classical point estimator for $\Btheta$, how does FFBS help with that?
+- If I want to access the full, joint posterior $p(\Btheta\com \Bs_{0:T}\mid \By_{1:T})$ of both the parameter and *all* the states, how can FFBS help me with that?
+- Why are there so few families of state space models where we can solve the filtering and smoothing problems analytically?
+- Why is *any* hidden Markov model automatically tractable (at least in principle)?
+- What is an example of an intractable state space model? What makes it intractable?
+- How is a time-varying parameter linear regression model a special case of a DLM?
+- Why do I say that the measurement distribution is the likelihood and the state transition is the prior?
+
+
