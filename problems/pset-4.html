@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ar-2-yule-walker – STA 542 Fall 2025</title>
+<title>Problem Set 4 – STA 542 Fall 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-7e3fde4f3f6223aa5a1e65c779016629.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../problems/pset-3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7ad8df1012cc34949a7a0ac4d54234c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7e3fde4f3f6223aa5a1e65c779016629.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -97,7 +98,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="STA 542 Fall 2025">
+<meta property="og:title" content="Problem Set 4 – STA 542 Fall 2025">
 <meta property="og:description" content="Homepage for STA 542 Introduction to Time Series Analysis at Duke University, Fall 2025.">
 <meta property="og:site_name" content="STA 542 Fall 2025">
 </head>
@@ -111,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../problems/pset-0.html">Problem Sets</a></li><li class="breadcrumb-item"><a href="../problems/pset-4.html">Probem Set 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -125,8 +126,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -138,46 +139,46 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../syllabus/syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../syllabus/syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Problem Sets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-0.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Problem Set 0</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-1.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probem Set 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probem Set 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-3.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probem Set 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../problems/pset-4.html" class="sidebar-item-text sidebar-link">
+  <a href="../problems/pset-4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Probem Set 4</span></a>
   </div>
 </li>
@@ -188,25 +189,136 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../problems/pset-0.html">Problem Sets</a></li><li class="breadcrumb-item"><a href="../problems/pset-4.html">Probem Set 4</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Problem Set 4</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<p>Consider again the mean-zero AR(2):</p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Our second exam is all about state space models, and discussing the high-level concepts will be just as important as the technical details. In addition to your lecture notes, the book by <a href="https://users.aalto.fi/~ssarkka/pub/cup_book_online_20131111.pdf">Särkkä</a>, the article by <a href="https://doi.org/10.1198/016214502753479464">Scott</a>, and the chapter by <a href="https://www.stats.ox.ac.uk/~doucet/doucet_johansen_tutorialPF2011.pdf">Doucet and Johansen</a> are excellent resources to consult.</p>
+<p>If you do all of the practice below, you will be prepared for the exam.</p>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<p>In general, a state space model is specified by four components:</p>
 <p><span class="math display">\[
-y_t=\beta_1y_{t-1}+\beta_2y_{t-2}+\varepsilon_t,\quad\varepsilon_t\overset{\text{iid}}{\sim}\text{N}(0,\,\sigma^2).
+\newcommand{\By}{\mathbf{y}}
+\newcommand{\Bs}{\mathbf{s}}
+\newcommand{\Btheta}{\boldsymbol{\theta}}
+\newcommand{\com}{,\,}
+\newcommand{\dd}{\textrm{d}}
+\begin{aligned}
+     &amp;  p(\By_t\mid \Bs_t\com \Btheta) &amp;&amp; (\text{measurement distribution})\\
+     &amp; p(\Bs_t\mid \Bs_{t-1}\com \Btheta)&amp;&amp; (\text{transition distribution})\\
+     &amp; p(\Bs_0\mid \Btheta)&amp;&amp; (\text{initial condition})\\
+     &amp; p(\Btheta)&amp;&amp; (\text{parameter prior})
+\end{aligned}
 \]</span></p>
-<p>Assuming the process is stationary, derive concrete formulas for the Yule-Walker estimators of <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, and <span class="math inline">\(\sigma^2\)</span>. To keep the formulas clean, you may find it helpful to introduce notation for the <strong>autocorrelation function</strong> of a stationary process:</p>
+<p>The general filtering recursion is:</p>
 <p><span class="math display">\[
-\rho(h)=\frac{\gamma(h)}{\gamma(0)}=\frac{\text{cov}(y_{t+h},\,y_t)}{\text{var}(y_t)}=\text{cor}(y_{t+h},\,y_t).
+\begin{aligned}
+    p(\Bs_t\mid \By_{1:t}\com \Btheta)
+    &amp;=
+    \frac{p(\By_t\mid \Bs_t\com\Btheta)p(\Bs_t\mid \By_{1:t-1}\com \Btheta)}{p(\By_t\mid \By_{1:t-1}\com\Btheta)}
+    \\
+    p(\By_t\mid \By_{1:t-1}\com\Btheta)
+    &amp;=
+    \int
+    p(\By_t\mid \Bs_t\com\Btheta)p(\Bs_t\mid \By_{1:t-1}\com \Btheta)
+    \,\dd \Bs_t
+    \\
+    p(\Bs_t\mid \By_{1:t-1}\com \Btheta)
+    &amp;=
+    \int
+    p(\Bs_t\mid \Bs_{t-1}\com \Btheta)p(\Bs_{t-1}\mid \By_{1:t-1}\com \Btheta)
+    \,
+    \dd\Bs_{t-1}
+\end{aligned}
 \]</span></p>
+<p>The general smoothing recursion is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\begin{align*}
+    p(\Bs_{0:T}\mid \By_{1:T}\com \Btheta)
+    &amp;=
+    p(\Bs_T\mid \By_{1:T}\com \Btheta)\prod_{t=0}^{T-1}p(\Bs_t\mid \Bs_{t+1}\com \By_{1:t}\com \Btheta)
+    \\
+    \\
+    p(\Bs_t\mid \By_{1:T}\com \Btheta)
+    &amp;=
+    p(\Bs_{t}\mid \By_{1:t}\com \Btheta)
+    \int
+    p(\Bs_{t+1}\mid \Bs_{t}\com \Btheta)
+    \frac{p(\Bs_{t+1}\mid \By_{1:T}\com \Btheta)}{p(\Bs_{t+1}\mid \By_{1:t}\com \Btheta)}
+    \,
+    \dd
+    \Bs_{t+1}
+    .
+\end{align*}
+\end{aligned}
+\]</span></p>
+<p>Make sure you understand where these come from, and make sure you understand the role that <em>conditional independence</em> plays.</p>
+</section>
+<section id="problem-2" class="level1">
+<h1>Problem 2</h1>
+<p>Consider three ingredients;</p>
+<ul>
+<li>the generic formulas from the previous problem;</li>
+<li>the dynamic linear model (DLM) with Gaussian errors;</li>
+<li>the properties of the multivariate normal distribution that we reviewed on <a href="https://sta542-f25.github.io/problems/pset-0.html">Problem Set 0</a>.</li>
+</ul>
+<p>Put these three things together, and you get the Kalman filter and smoother. Make sure you understand every step of this derivation. If there is a piece you don’t understand, please ask me about it!</p>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<p>Let <span class="math inline">\(y_t\in\{0\com 1\}\)</span> be an observed binary time series, and let <span class="math inline">\(s_t\in\{0\com 1\}\)</span> be an unobserved binary time series. Write down a hidden Markov model for these data, and derive recursions for filtering and smoothing.</p>
+<p><strong>Note</strong>: every variable here is binary, and every parameter is a probability (number between zero and one), so make your recursions as compact and concise as possible.</p>
+</section>
+<section id="problem-4" class="level1">
+<h1>Problem 4</h1>
+<p>If I started cold calling on people during lecture, would you have a concise answer to these questions off the dome?</p>
+<ul>
+<li>What is the graphical structure of a state space model, and how is this delated to conditional independence?</li>
+<li>What is the conceptual difference between filtering and smoothing?</li>
+<li>What is the difference between smoothing and <em>simulation</em> smoothing?</li>
+<li>If all I cared about was a classical point estimator for <span class="math inline">\(\Btheta\)</span>, how does FFBS help with that?</li>
+<li>If I want to access the full, joint posterior <span class="math inline">\(p(\Btheta\com \Bs_{0:T}\mid \By_{1:T})\)</span> of both the parameter and <em>all</em> the states, how can FFBS help me with that?</li>
+<li>Why are there so few families of state space models where we can solve the filtering and smoothing problems analytically?</li>
+<li>Why is <em>any</em> hidden Markov model automatically tractable (at least in principle)?</li>
+<li>What is an example of an intractable state space model? What makes it intractable?</li>
+<li>How is a time-varying parameter linear regression model a special case of a DLM?</li>
+<li>Why do I say that the measurement distribution is the likelihood and the state transition is the prior?</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -608,6 +720,15 @@ y_t=\beta_1y_{t-1}+\beta_2y_{t-2}+\varepsilon_t,\quad\varepsilon_t\overset{\text
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../problems/pset-3.html" class="pagination-link" aria-label="Probem Set 3">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Probem Set 3</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
