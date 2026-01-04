@@ -1,0 +1,235 @@
+---
+title: "ARMA models III"
+subtitle: "Lecture 11"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
+# Logistics
+
+## Later today
+
+- PSET 1 grades;
+- PSET 2 solutions.
+
+## Exam Wednesday {.small}
+
+::: incremental 
+- You get both sides of one 8.5" x 11" sheet of notes;
+- None of the ARMA theory;
+- Math will closely track what you've seen multiple times in lecture and on problem sets;
+- Be prepared to write about themes and concepts;
+- Expect tests of your visual intuition:
+    - sample paths;
+    - autocov/cor functions;
+    - sampling distributions;
+    - forecast distributions;
+    - PIT plots.
+:::
+
+# Recap 
+
+
+```{r}
+#| echo: false
+plot_arma_acf <- function(ar = numeric(), ma = numeric(), lag.max = 10){
+  y_vals <- ARMAacf(ar = ar, ma = ma, lag.max = lag.max)
+  plot(0:lag.max, y_vals, pch = 19, ylim = c(-1, 1),
+       xlab = "h", ylab = expression(rho~"(h)"))
+  segments(0:lag.max, 0, 0:lag.max, y_vals)
+  abline(h = 0, col = "lightgrey")
+}
+```
+
+## Autoregressive moving average
+
+ARMA(p, q):
+
+$$
+y_t
+=
+\beta_0
++
+\underbrace{\sum\limits_{l=1}^p\beta_ly_{t-l}}_{\text{autoregressive}}
++
+\underbrace{\sum_{i=1}^q\theta_i\varepsilon_{t-i}}_{\text{moving average}}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+- If stationary, write as an MA$(\infty)$;
+- If invertible, write as an AR$(\infty)$;
+
+## Polynomials
+
+Stationary means this polynomial has roots outside the unit circle:
+
+$$
+\beta(z) = 1-\beta_1z-\beta_2z^2-...-\beta_pz^p,\quad z\in\mathbb{C}.
+$$
+
+Invertible means this polynomial has roots outside the unit circle:
+
+$$
+\theta(z) = 1+\theta_1z+\theta_2z^2+...+\theta_qz^q,\quad z\in\mathbb{C}.
+$$
+
+
+## Polynomials
+
+The ARMA can be rewritten in terms of polynomials of the lag operator
+
+$$
+\begin{aligned}
+\beta(L)y_t
+&=
+\theta(L)\varepsilon_t,
+\end{aligned}
+$$
+
+where $Ly_t=Ly_{t-1}$.
+
+## ARMA to MA
+
+A stationary ARMA(p, q) can be written
+
+$$
+y_t=\frac{\theta(L)}{\beta(L)}\varepsilon_t=\psi(L)\varepsilon_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+$$
+
+where the $\psi_j$ solve 
+
+$$
+\psi(z)=\sum\limits_{j=0}^\infty \psi_jz^j=\frac{\theta(z)}{\beta(z)},\quad |z|\leq 1.
+$$
+
+Let a computer worry about it.
+
+
+## ARMA to AR
+
+A invertible ARMA(p, q) can be written
+
+$$
+\varepsilon_t=\frac{\beta(L)}{\theta(L)}y_t=\pi(L)y_t=\sum\limits_{j=0}^\infty \pi_jy_{t-j},
+$$
+
+where the $\pi_j$ solve 
+
+$$
+\pi(z)=\sum\limits_{j=0}^\infty \pi_jz^j=\frac{\beta(z)}{\theta(z)},\quad |z|\leq 1.
+$$
+
+Again, I trust the computer.
+
+# So what?
+
+## Moments
+
+Assume an ARMA is stationary (but not necessarily invertible!). Then 
+
+$$
+E(y_t)
+=
+\frac{\beta_0}{1-\sum\limits_{l=1}^p\beta_l}
+.
+$$
+Same as pure AR, since the MA piece is mean-zero by construction.
+
+## Moments {.small}
+
+Assume an ARMA is stationary (but not necessarily invertible!) and mean zero. We know 
+
+$$
+y_t=\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j},
+$$
+
+so
+
+$$
+\gamma(h)=\cov(y_{t+h}\com y_t)=\cov\left(\sum\limits_{j=0}^\infty \psi_j\varepsilon_{t+h-j}\com \sum\limits_{j=0}^\infty \psi_j\varepsilon_{t-j}\right)=\sigma^2\sum\limits_{j=0}^\infty \psi_j\psi_{j+h}.
+$$
+
+Approximate with a large number of terms.
+
+## Recursive characterization
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.6), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.6), ma = c(-0.5), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.9), ma = c(0.9), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.7), ma = c(0.5), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.7), ma = c(0), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.6, -0.3), ma = c(0.4), lag.max = 20)
+```
+
+## Autocorrelation function 
+
+```{r}
+plot_arma_acf(ar = c(0.8), ma = c(-0.5, 0.3), lag.max = 20)
+```
+
+## Forecasting 
+
+Assume the process is stable and invertible, and the ARMA parameters are fixed and known (they're not!). You can extract forecasts from 
+
+$$
+y_{t+h}\mid y_{-\infty:t}\sim \text{N}(\mu_{t+h|t}\com v_{t+h|t}^2).
+$$
+
+What are the moments?
+
+## example
+
+## Caution 
+
+Augmenting these forecasts with extra sources of uncertainty is challenging and folks seldom attempt it. Sad!
+
+## State space form
+
+## example
+
+## inference
+
+## example 
+
+## asymptotics
+
+## seasonality 
+
+## 
+

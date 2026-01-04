@@ -1,0 +1,211 @@
+---
+title: "What's the use of the Kalman recursions?"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
+
+```{r}
+#| echo: false
+#| message: false 
+#| warning: false
+library(KFAS)
+library(dlm)
+```
+
+# Getting the computer to do this stuff for you
+
+## Two `R` packages
+
+[`KFAS`](https://cran.r-project.org/web/packages/KFAS/index.html) package based on Durbin-Koopman:
+
+```{r}
+#| message: false 
+#| warning: false
+library(KFAS)
+```
+
+[`dlm`](https://cran.r-project.org/web/packages/dlm/index.html) package from Duke PhD alum Giovanni Petris:
+
+```{r}
+#| message: false 
+#| warning: false
+library(dlm)
+```
+
+## Ugly Durbin-Koopman notation
+
+$$
+\newcommand{\state}{\Balpha}
+\begin{aligned}
+    \By_t&=\BZ_t\state_t+\Bepsilon_t, &&\Bepsilon_t\indep\textrm{N}_p(\Bzero\com \BH_t)\\
+    \state_t&=\BT_{t-1}\state_{t-1}+\BR_{t-1}\Beta_{t-1}, &&\Beta_{t-1}\indep\textrm{N}_m(\Bzero\com \BQ_t)\\
+    \state_1&\sim\textrm{N}_m(\Ba_1\com \BP_1).
+\end{aligned}
+$$
+
+## Basic interface
+
+Clunky but thorough:
+
+```{r}
+#| eval: false
+
+model <- SSModel(y ~ -1 + SSMcustom(Z, T, R, Q, a1, P1), H)
+```
+
+- `y` is a matrix storing the time series observations in the *rows*;
+- `Z`, `T`, `R`, `Q`, `H` can be matrices or 3-D arrays;
+- `SSMcustom` is the most general model constructor, but the package provides many shortcuts as well.
+
+## Running the filter and smoother
+
+```{r}
+#| eval: false
+
+output <- KFS(model, ...)
+```
+
+- `output$att`: matrix with $\bar{\Bs}_{t|t}$ in the rows;
+- `output$Ptt`: 3-D array with $\BP_{t|t}$ in the pages;
+- `output$alphahat`: matrix with $\bar{\Bs}_{t|T}$ in the rows;
+- `output$V`: 3-D array with $\BP_{t|T}$ in the pages;
+
+`output` also contains an overwhelming amount of other stuff that you can probably ignore most of the time.
+
+# Signal extraction
+
+# Parameter estimation in the ARMA
+
+## Recall
+
+Assume stationary and invertible:
+
+$$
+y_t
+=
+\beta_0
++
+\underbrace{\sum\limits_{l=1}^p\beta_ly_{t-l}}_{\text{autoregressive}}
++
+\underbrace{\sum_{i=1}^q\phi_i\varepsilon_{t-i}}_{\text{moving average}}
++
+\varepsilon_t,
+\quad
+\varepsilon_t
+\iid
+\N(0\com \sigma^2)
+.
+$$
+
+**Note**: please be flexible. I changed the MA parameter notation slightly, for reasons that will quickly become apparent.
+
+
+
+## Maximum likelihood
+
+We want 
+
+$$
+\hat{\Btheta}=(\hat{\Bbeta}\com \hat{\Bphi})=\argmax p(\By_{1:T}\mid \Btheta).
+$$
+
+## Likelihood function 
+
+$$
+\begin{aligned}
+p(\By_{1:T}\mid \Btheta)&=\prod_{t=1}^Tp(\By_{t}\mid \By_{1:t-1}\com\Btheta)\\
+&=\prod_{t=1}^T \text{N}_n(\By_t\mid \bar{\By}_{t|t-1}\com\BM_{t|t-1}).
+\end{aligned}
+$$
+
+The Kalman filter gives us this stuff for free!
+
+## `arima` {.small}
+
+This is exactly what the `arima` command in base `R` does:
+
+```{r}
+arima(Nile, order = c(3, 0, 4))
+```
+[Read the docs](https://stat.ethz.ch/R-manual/R-devel/RHOME/library/stats/html/arima.html) if you don't believe me!
+
+## Data plot
+
+```{r}
+plot(Nile)
+```
+
+# Bayesian inference
+
+## Recall 
+
+A general state space model:
+
+$$
+\begin{aligned}
+& p(\By_t\mid \Bs_t\com \Btheta) && (\text{measurement distribution})\\
+& p(\Bs_t\mid \Bs_{t-1}\com \Btheta) && (\text{transition distribution})\\
+& p(\Bs_0\mid \Btheta) && (\text{initial condition})\\
+& p(\Btheta) && (\text{parameter prior})
+\end{aligned}
+$$
+
+## The full Monty
+
+THe inferential ideal:
+
+$$
+p(\Bs_{0:T}\com\Btheta\mid\By_{1:T})=\frac{p(\By_{1:T}\mid\Bs_{0:T}\com\Btheta)p(\Bs_{0:T}\com\Btheta)}{p(\By_{1:T})}
+$$
+
+. . .
+
+Very hard in general!
+
+## In some special cases...
+
+Target $p(\Bs_{0:T}\com\Btheta\mid\By_{1:T})$ with a pure Gibbs sampler: 
+
+- $p(\Btheta\mid \By_{1:T}\com\Bs_{0:T})$: sometimes we know this exactly;
+- $p(\Bs_{0:T}\mid \By_{1:T}\com\Btheta)$: sometimes we know this exactly;
+
+
+## DLM
+
+
+
+$$
+\begin{aligned}
+    \By_t&=\BF(\Btheta)\Bs_t+\Bepsilon_t, &&\Bepsilon_t\indep\textrm{N}_n(\Bzero\com \BV(\Btheta))\\
+    \Bs_t&=\BG(\Btheta)\Bs_{t-1}+\Beta_t, &&\Beta_t\indep\textrm{N}_p(\Bzero\com \BW(\Btheta))\\
+    \Bs_0&\sim\textrm{N}_p(\overline{\Bs}_{0|0}\com \BP_{0|0})\\
+    \Btheta&\sim p(\Btheta)
+\end{aligned}
+$$
+
+## Gibbs sampler for the DLM
+
+Target $p(\Bs_{0:T}\com\Btheta\mid\By_{1:T})$ with a Gibbs sampler: 
+
+- $p(\Btheta\mid \By_{1:T}\com\Bs_{0:T})$: sometimes we know this exactly;
+- $p(\Bs_{0:T}\mid \By_{1:T}\com\Btheta)$: sample directly using the *Kalman simulation smoother*;
+
+## Kalman simulation smoother
+
+One of the worst pieces of jargon ever. It just means "sampling from the full posterior:"
+
+$$
+\begin{aligned}
+p(\Bs_{0:T}\mid \By_{1:T}\com\Btheta) &= p(\Bs_T\mid \By_T\com \Btheta)\prod_{t=0}^{T-1}p(\Bs_t\mid\Bs_{t+1}\com \By_{1:T}\com \Btheta)\\
+&\\
+\Bs_t\mid\Bs_{t+1}\com \By_{1:T}\com \Btheta&\sim \text{N}_p(\bar{\Bs}_{t|t+1,T}\com \BP_{t|t+1,T})\\
+\bar{\Bs}_{t|t+1,T}&= \overline{\Bs}_{t|t}+\BC_t\left(\Bs_{t+1}-\overline{\Bs}_{t+1|t}\right)\\
+\BP_{t|t+1,T}&=\BP_{t|t} - \BC_t\BP_{t+1|t}\BC^\tr
+\end{aligned}
+$$
+
+## The `dlm` package
+

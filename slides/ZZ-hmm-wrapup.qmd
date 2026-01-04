@@ -1,0 +1,9 @@
+---
+title: "Finish HMMs and Start Importance Sampling"
+subtitle: "Lecture Who Knows"
+format: revealjs
+auto-stretch: false
+filters:
+  - shinylive
+---
+
