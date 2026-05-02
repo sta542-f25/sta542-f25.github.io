@@ -10,7 +10,7 @@ ui <- fluidPage(
                   min = 0.01, max = 3, value = 1, step = 0.01),
       sliderInput("error_var", "Measurement error variance:",
                   min = 0.01, max = 3, value = 1, step = 0.01),
-      sliderInput("state_var", "Transition error Variance:",
+      sliderInput("state_var", "Transition error variance:",
                   min = 0.01, max = 3, value = 1, step = 0.01),
       checkboxInput("show_filtered", "Show Filtered Means (red)", value = TRUE),
       checkboxInput("show_smoothed", "Show Smoothed Means (blue)", value = TRUE)
